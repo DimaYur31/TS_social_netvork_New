@@ -1,0 +1,45 @@
+.photos{
+	padding: 10px;
+	display: grid;
+	gap:10px;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 24%));
+}
+
+
+.photo{
+	position: relative;
+	/* width: 200px; */
+	/* height: 250px; */
+	display: flex;
+	justify-content: center;
+	transition: 1.5s;
+	padding-bottom: 120%;
+}
+
+.photo img{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.photo div{
+	position: absolute;
+	bottom: 10px;
+	width: 80%;
+
+	/* left: 50%; */
+	display: flex;
+	justify-content: space-between;
+}
+
+.photo:hover button{
+display: flex;	
+}
+.photo button{
+	cursor: pointer;
+	display: none;
+}

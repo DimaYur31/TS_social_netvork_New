@@ -1,0 +1,42 @@
+.user {
+	display: grid;
+	grid-template-columns: 0.3fr 0.7fr;
+	padding: 20px;
+}
+
+.user img {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	object-position: top;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.user h3 {
+	font-size: 20px;
+	color: #557ba7;
+}
+
+.user ul {
+	list-style: none;
+}
+
+.user li {
+	padding: 5px;
+	color: #557ba7;
+	font-size: 18px;
+}
+
+.user span {
+	display: inline-block;
+	width: 100px;
+	margin-right: 100px;
+	color: #8699a7;
+}
+
+#imgId{
+	position: absolute;
+	visibility: hidden;
+	left: -100%;
+}

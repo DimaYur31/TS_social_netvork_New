@@ -1,0 +1,53 @@
+.auth {
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.auth form {
+	display: flex;
+	flex-direction: column;
+	/* margin: 10px; */
+	width: 40vw;
+	background: #edeef0;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 1px 1px 6px 0px #acadad;
+}
+
+.auth .box{
+display: grid;
+grid-template-columns: 0.8fr 2.2fr;
+}
+
+.auth input {
+	margin: 5px 0 10px 0;
+	padding: 5px;
+	border: 1.5px solid #4d76a3;
+	border-radius: 5px;
+	outline: none;
+	width: 90%;
+	height: 18px;
+}
+
+.auth form button {
+	width: 90%;
+}
+
+.auth span{
+	margin-left: 10px;
+	color: #4d76a3;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 20px;
+	letter-spacing: 1px;
+}
+
+.check{
+	display: grid;
+	grid-template-columns: 130px 20px;
+	align-items: center;
+}

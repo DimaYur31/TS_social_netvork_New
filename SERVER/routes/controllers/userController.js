@@ -16,23 +16,12 @@ class UserController {
 					return res.status(500).json(e)
 				}
 			}
-			// console.log(req.files)
-			// res.status(200).json(req.body)
-			// if (req.files) {
-			// 	try {
-			// 		const { avatar } = req.files
-			// 		let fileName = uuid.v4() + '.jpg'
-			// 		avatar.mv(path.resolve(__dirname, '..', '..', 'static', fileName))
-			// 		req.body.avatar = fileName
-			// 	} catch (e) {
-			// 		console.log(e)
-			// 	}
-			// }
-
 			try {
 				const user = await User.findByIdAndUpdate(req.params.id, {
 					$set: req.body
-				})
+				},
+					{ new: true })
+				console.log(req.body)
 				res.status(200).json(user)
 			} catch (e) {
 				return res.status(500).json(e)
@@ -145,7 +134,7 @@ class UserController {
 				const user = await User.findById(req.params.id)
 
 				await user.updateOne({ $push: { photos: fileName } })
-				res.status(200).json(user.photos)
+				res.status(200).json(fileName)
 			} catch (e) {
 				res.status(400).json(e)
 			}
@@ -157,11 +146,13 @@ class UserController {
 	async deletePhoto(req, res) {
 		try {
 			if (req.params.id === req.body.userId) {
-				const user = await User.findById(req.params.id)
-				console.log(user)
-
-				await user.photos.deleteOne({ value: req.body.photo })
-				res.status(200).json(user.photos)
+				const user = await User.findOneAndUpdate(
+					{ _id: req.params.id },
+					{
+						$pull: { photos: req.body.photo }
+					}
+				)
+				res.status(204).json('ok')
 			} else {
 				res.status(400).json('Вы можете удалить только свои фото')
 			}

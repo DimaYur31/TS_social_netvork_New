@@ -1,0 +1,7 @@
+.loading {
+	position: fixed;
+	z-index: 100;
+	left: 50vw;
+	top: 50vh;
+	transform: translate(-50%);
+}
