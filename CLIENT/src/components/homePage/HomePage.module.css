@@ -1,0 +1,9 @@
+.home{
+	position: relative;
+	display: grid;
+	grid-template-columns: 1.3fr 0.7fr;
+	height: calc(100vh - 60px);
+	grid-gap: 20px;
+	margin: 20px;
+	
+}

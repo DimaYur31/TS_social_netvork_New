@@ -1,0 +1,15 @@
+.posts {
+position: relative;
+margin-top: 30px;
+border-radius: 10px;
+height: 70vh;
+overflow-y: scroll;
+}
+
+
+
+.posts h2 {
+	font-style: italic;
+	color: #00000094;
+	font-weight: 500;
+}

@@ -1,33 +1,5 @@
-body {
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
-
-.App {
-	position: relative;
-	display: grid;
-	grid-template:
-		[start] "header header" 100px [row2]
-		[row2] "navbar contentWrapper" 1fr [row3]
-		[row3] "footer footer" 50px [row-end] / 200px 1fr;
-	min-height: 100vh;
-}
-
-header {
-	grid-area: header;
-}
-.navbar {
-	grid-area: navbar;
-	background: #f5f9fa;
-	color: #8396a3;
-}
-.contentWrapper {
-	grid-area: contentWrapper;
-}
-.footer {
-	grid-area: footer;
-	justify-content: center;
-	width: 100%;
-	display: flex;
 }

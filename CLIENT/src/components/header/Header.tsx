@@ -1,32 +1,31 @@
 import { NavLink } from 'react-router-dom'
-import { useAvatar } from '../../hooks/hooks'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
+import { useAvatar } from '../../hooks/hooks'
+
+import Search from '../styleedComponents/Search'
+import SmalAvatar from '../styleedComponents/SmalAvatar'
 //@ts-ignore
 import s from './Header.module.css'
 
 const Header = () => {
-	const { defaultUser, isAuth } = useAppSelector((state) => state.profilePage)
+	const { isAuth } = useAppSelector((state) => state.profilePage)
 	const avatar = useAvatar()
 
 	return (
 		<header className={s.header} >
-			<h1>VKomnate</h1>
+			<h1>V _ Komnate</h1>
 
-			<div className={s.search}>
-				<input type="text" />
-			</div>
+			<Search />
 
 			{isAuth
 				? <div className={s.autorisation}>
 					<div>
-						<span>mails</span>
-						<span>meseges</span>
-						<span>piople</span>
+						<NavLink to={'/'}>Homepage</NavLink>
+						<NavLink to={'/rooms'}>TimeLine</NavLink>
 					</div>
 
 					<div className={s.user}>
-						<img src={avatar} alt="" />
-						{/* <p>{defaultUser.name}</p> */}
+						<SmalAvatar src={avatar} />
 					</div>
 				</div>
 				: <div className={s.login}>

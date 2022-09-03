@@ -1,0 +1,12 @@
+.room{
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	flex-wrap: wrap;
+	height: 100vh
+}
+
+.room video{
+	width: 90%;
+	height: 80%;
+}

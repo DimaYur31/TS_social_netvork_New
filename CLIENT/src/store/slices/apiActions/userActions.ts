@@ -4,14 +4,17 @@ import { UserChanges } from "../../../types/profile"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
 import { addPhoto, removePhoto, setUser } from "../profileSlice"
-import Status from './../../../components/profile/myInfo/Status';
+
+
 
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
+
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
 		const user = await userRegistration(email, password, name, surname)
 		dispatch(setUser(user))
 		dispatch(toggleLoading(false))
+		return true
 	}
 }
 
@@ -21,6 +24,7 @@ export const loginThunkCreator = (email: string, password: string) => {
 		const user = await userLogin(email, password)
 		dispatch(setUser(user))
 		dispatch(toggleLoading(false))
+		return true
 	}
 }
 

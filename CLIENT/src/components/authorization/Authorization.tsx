@@ -1,56 +1,38 @@
-import { useState, useEffect, HtmlHTMLAttributes } from 'react'
-// import { Navigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useAppDispatch } from '../../hooks/reactReduxHooks'
 // @ts-ignore 
 import s from './Authorization.module.css'
 
+import { errorEmail, errorPassword } from '../../hooks/useFormValidation'
+import { useFormValidation } from '../../hooks/useFormValidation'
+import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions';
 import Btn1 from '../elements/btn/Btn1'
 import Error from '../elements/error/Error'
-import { errorEmail, errorPassword } from '../../validation/validation'
-import { useInput } from '../../validation/validation'
-import { registrationThunkCreator, loginThunkCreator } from './../../store/slices/apiActions/userActions';
-import {
-	useAppDispatch,
-	// useAppSelector 
-} from '../../hooks/reactReduxHooks'
 
 const Authorization = () => {
 	const dispatch = useAppDispatch()
-	// const { isAuth } = useAppSelector(state => state.profilePage)
+	const loginEmail = { isEmpty: true, minLength: 3, maxLength: 30, isEmail: true, }
+	const loginPassword = { isEmpty: true, minLength: 8, maxLength: 16, isEmail: null }
+	const email = useFormValidation('', loginEmail)
+	const password = useFormValidation('', loginPassword)
 
-	const loginEmail = { isEmpty: true, minLength: 3, isEmail: true, }
-	const loginPassword = { isEmpty: true, minLength: 8, maxLength: 16 }
-	const email = useInput('', loginEmail)
-	const password = useInput('', loginPassword)
-	const [registration, setRegistration] = useState(true)
+	const [registration, setRegistration] = useState(false)
 	const [checkPasword, setCheckPasword] = useState('')
 	const [name, setName] = useState('')
 	const [surname, setSurname] = useState('')
-
-	interface ICheckBox extends HtmlHTMLAttributes<boolean> {
-		checked: boolean | undefined
-	}
-	const [checked, setChecked] = useState<React.ChangeEventHandler<ICheckBox>>()
+	const [checked, setChecked] = useState(false)
 
 	const click = async () => {
-		if (password.value !== checkPasword) {
-			alert('Проверьте пароль')
-		} else {
-			if (registration) {
-				dispatch(registrationThunkCreator(email.value, password.value, name, surname))
-			} else {
-				dispatch(loginThunkCreator(email.value, password.value))
-			}
-
-		}
-
+		password.value !== checkPasword
+			? alert('Проверьте пароль')
+			: registration
+				? dispatch(registrationThunkCreator(email.value, password.value, name, surname))
+				: dispatch(loginThunkCreator(email.value, password.value))
 	}
-
-	// useEffect(() => {
-	// if (isAuth) return <Navigate to='/profile' />
-	// }, [isAuth])не нужно
 
 	return (
 		<div className={s.auth}>
+			<h1>V _ Comnate <br /> <span>This is social-media project for traning</span></h1>
 			<form>
 				<p>{registration ? 'You have profile?' : 'Make new profile?'}
 					<span onClick={(e) => {
@@ -87,10 +69,10 @@ const Authorization = () => {
 
 						<input
 							onChange={e => password.onChange(e)}
-							onBlur={() => password.onBlur()}
+							// onBlur={() => password.onBlur()}
 							value={password.value}
 							type={checked ? 'text' : 'password'}
-							placeholder='Enter your password...'
+							placeholder='Password'
 						/>
 
 					</div>
@@ -113,9 +95,7 @@ const Authorization = () => {
 					<p>Show password</p>
 					<input
 						type="checkbox"
-						//@ts-ignore
 						checked={checked}
-						//@ts-ignore
 						onChange={() => setChecked(!checked)}
 					/>
 				</div>
@@ -150,7 +130,7 @@ const Authorization = () => {
 				</>}
 
 				<Btn1
-					disabled={!email.inputValid || !password.inputValid}
+					// disabled={!email.inputValid || !password.inputValid}
 					text={registration ? 'Registration' : 'Login'}
 					cnanging={true}
 					onClick={() => click()}

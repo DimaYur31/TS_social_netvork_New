@@ -1,0 +1,16 @@
+.frienfList{
+	
+	margin: 10px;
+}
+
+.frienfList li{
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.frienfList li img{
+	margin-right: 10px;
+}

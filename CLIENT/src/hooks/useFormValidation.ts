@@ -1,6 +1,23 @@
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
-const useValidation = (value, validations) => {
+
+interface Ivalidations {
+	isEmpty: boolean
+	minLength: number
+	maxLength: number
+	isEmail: boolean | null
+}
+
+
+// interface IuseValidationReturn {
+// 	isEmpty: boolean
+// 	minLengthError: boolean
+// 	emailError: boolean
+// 	maxLengthError: boolean
+// 	inputValid: boolean
+// }
+
+const useValidation = (value: string, validations: Ivalidations) => {
 	const [isEmpty, setEmpty] = useState(true)
 	const [minLengthError, setMinLengthError] = useState(false)
 	const [maxLengthError, setMaxLengthError] = useState(false)
@@ -12,6 +29,7 @@ const useValidation = (value, validations) => {
 			switch (validation) {
 				case 'minLength':
 					value.length < validations[validation] ? setMinLengthError(true) : setMinLengthError(false)
+
 					break
 				case 'isEmpty':
 					value ? setEmpty(false) : setEmpty(true)
@@ -44,12 +62,12 @@ const useValidation = (value, validations) => {
 	}
 }
 
-export const useInput = (initialValue, validations) => {
+export const useFormValidation = (initialValue: string, validations: Ivalidations) => {
 	const [value, setValue] = useState(initialValue)
 	const [isDirty, setDirty] = useState(false)
 	const valid = useValidation(value, validations)
 
-	const onChange = (e) => setValue(e.target.value)
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
 	const onBlur = () => setDirty(true)
 
 	return {
@@ -61,7 +79,15 @@ export const useInput = (initialValue, validations) => {
 	}
 }
 
-export const errorEmail = (email) => {
+
+interface IErrorEmail {
+	isDirty: boolean
+	isEmpty: boolean
+	minLengthError: boolean
+	emailError: boolean
+}
+
+export const errorEmail = (email: IErrorEmail) => {
 	if (email.isDirty && email.isEmpty) {
 		return 'Поле не может быть пустым'
 	} else if (email.isDirty && email.minLengthError) {
@@ -72,7 +98,13 @@ export const errorEmail = (email) => {
 	return null
 }
 
-export const errorPassword = (password) => {
+interface IErrorPassword {
+	isDirty: boolean
+	isEmpty: boolean
+	minLengthError: boolean
+	maxLengthError: boolean
+}
+export const errorPassword = (password: IErrorPassword) => {
 	if (password.isDirty && password.isEmpty) {
 		return 'Поле не может быть пустым'
 	} else if (password.isDirty && password.minLengthError) {
@@ -82,7 +114,3 @@ export const errorPassword = (password) => {
 	}
 	return null
 }
-
-{/* {(email.isDirty && email.isEmpty) && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-{(email.isDirty && email.minLengthError) && <div style={{ color: 'red' }}>Некорректная длинна</div>}
-{(email.isDirty && email.emailError) && <div style={{ color: 'red' }}>Некорректный Email</div>} */}

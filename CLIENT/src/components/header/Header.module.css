@@ -1,68 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
 .header {
-	justify-content: center;
-	width: 100%;
+	position: relative;
 	display: grid;
-	grid-template-columns: minmax(150px, 0.4fr) minmax(100px, 0.2fr) minmax(100px, 0.4fr);
-	background: #4d76a3;
+	grid-template-columns: minmax(210px, 2fr) minmax(150px, 2fr) minmax(210px, 3fr);
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	justify-content: space-between;
+	background:  #0690fd;
 	align-items: center;
+	color: #fff;
+	height: 60px;
+	z-index: 100;
 }
+
 .header h1 {
-	color: #fff;
-	text-align: center;
-}
-
-.header span {
-	margin: 10px;
-	padding: 5px;
-	border: 1px solid #fff;
-	color: #fff;
-}
-
-.search {
-	text-align: center;
-}
-.search input {
-	width: 200px;
-	border: none;
-	border-radius: 5px;
-	font-size: 18px;
-	padding: 5px;
-	outline: none;
+	font-family: 'Bad Script', cursive;
+	padding-left: 30px;
 }
 
 .autorisation {
+	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(2, minmax(50px, auto));
+	/* grid-template-columns: 1fr 1fr; */
 	align-items: center;
 	grid-gap: 20px;
 	justify-items: end;
-	/* padding-right: 30px; */
-}
-
-.user {
-	display: flex;
 }
 
 .user img {
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	object-fit: cover;
 	margin-right: 20px;
-	object-position: 0 0;
 }
 
-.user p {
-	color: #fff;
-	font-size: 18px;
-	padding: 0px 20px 0px 0px;
-}
 
-.login {
-	position: absolute;
-	right: 30px;
-}
-.login a {
+
+.header a {
 	color: #fff;
 	text-decoration: none;
+	margin: 0 15px ;
 }
