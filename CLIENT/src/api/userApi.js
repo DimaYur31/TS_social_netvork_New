@@ -25,6 +25,11 @@ export const getUser = async () => {
 	return data
 }
 
+export const getUserData = async (id) => {
+	const { data } = await authInstans.get(`api/user/data/:${id}`)
+	return data
+}
+
 export const getFriends = async (userId) => {
 	const { data } = await authInstans.get(`api/user/friends/${userId}`)
 	return data

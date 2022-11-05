@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 // @ts-ignore 
 import s from './Authorization.module.css'
@@ -22,7 +22,7 @@ const Authorization = () => {
 	const [surname, setSurname] = useState('')
 	const [checked, setChecked] = useState(false)
 
-	const click = async () => {
+	const submit = async () => {
 		password.value !== checkPasword
 			? alert('Проверьте пароль')
 			: registration
@@ -30,16 +30,28 @@ const Authorization = () => {
 				: dispatch(loginThunkCreator(email.value, password.value))
 	}
 
+	const changeForm = (e: MouseEvent<HTMLSpanElement>) => {
+		e.preventDefault()
+		setRegistration(!registration)
+	}
+
 	return (
 		<div className={s.auth}>
-			<h1>V _ Comnate <br /> <span>This is social-media project for traning</span></h1>
+			<div className={s.leftBox}>
+				<h1>V _ Comnate</h1>
+				<p>This is social-media project for traning</p>
+			</div>
 			<form>
-				<p>{registration ? 'You have profile?' : 'Make new profile?'}
-					<span onClick={(e) => {
-						e.preventDefault()
-						setRegistration(!registration)
-					}}>
-						{registration ? 'Login' : 'Registration'}
+				<p>
+					{registration
+						? 'You have profile?'
+						: 'Make new profile?'
+					}
+					<span onClick={e => changeForm(e)}>
+						{registration
+							? 'Login'
+							: 'Registration'
+						}
 					</span>
 				</p>
 
@@ -133,7 +145,7 @@ const Authorization = () => {
 					// disabled={!email.inputValid || !password.inputValid}
 					text={registration ? 'Registration' : 'Login'}
 					cnanging={true}
-					onClick={() => click()}
+					onClick={() => submit()}
 				/>
 			</form>
 		</div>

@@ -1,18 +1,21 @@
 .auth {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	height: 100%;
 	background: #F0F2F6;
 	height: 100vh;
+	padding: 30px 100px;
 }
 
-.auth h1{
+.leftBox h1{
 	color: #0690fd;
+	margin-bottom: 20px;
 }
 
-.auth h1 span{
+.leftBox p{
 	color:#000;
+	font-size: 20px;
 	text-decoration: none;
 }
 
@@ -41,16 +44,23 @@ align-items: center;
 }
 
 .auth form button {
-	width: 60%;
+	width: 50%;
+	align-self: center;
 }
 
 .auth span{
 	margin-left: 10px;
-	color: #0690fd;
-	text-decoration: underline;
+	color: #0692fda9;
+	font-style: italic;
+	/* text-decoration: underline; */
 	cursor: pointer;
 	font-size: 20px;
 	letter-spacing: 1px;
+	transition: .5s;
+}
+
+.auth span:hover{
+	color: #0690fd;
 }
 
 .check{

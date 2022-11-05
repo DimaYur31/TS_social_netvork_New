@@ -1,47 +1,73 @@
-import React from 'react'//@ts-ignore
+import React, { MouseEvent, useState } from 'react'//@ts-ignore
 import s from './Post.module.css'
-import { useAppSelector } from '../../../../hooks/reactReduxHooks'
-import { useAvatar } from './../../../../hooks/hooks';
-import SmalAvatar from '../../../styleedComponents/SmalAvatar';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
+import { getPhoto, useAvatar } from './../../../../hooks/hooks'
+import SmalAvatar from '../../../styleedComponents/SmalAvatar'
+import { PostType } from '../../../../types/post'
+import { format } from 'timeago.js'
+import { likeDislikeThunk } from '../../../../store/slices/apiActions/postActions'
+import { getUserData } from '../../../../api/userApi'
+import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 
 type TPost = {
-	post: {
-		id: number
-		postImg: string
-		timeago: string
-		likes: number
-		coments: number
-		text: string
-	}
+	post: PostType<string>
 }
 
-// const Post = ({ user: { avatar, fullName }, post: { message, liks } }) => {
 const Post: React.FC<TPost> = ({ post }) => {
 	const { defaultUser } = useAppSelector(state => state.profilePage)
+	const [isLiked, setIsLiked] = useState(post.likes.includes(defaultUser._id))
 	const avatar = useAvatar()
+	const dispatch = useAppDispatch()
+
+	const hendlerLikes = (e: MouseEvent<HTMLSpanElement>) => {
+		e.preventDefault()
+		dispatch(likeDislikeThunk(defaultUser._id, post._id))
+		// setIsLiked(!isLiked)
+	}
+
+	interface getUserDataInterface {
+		(id: string): Promise<{ img: string, name: string }>
+	}
+
+	const getUsersData: getUserDataInterface = async (id) => {
+		let user
+		if (post.userId === defaultUser._id) {
+			return user = { img: avatar, name: defaultUser.name }
+		} else {
+			let user = await getUserData(id)
+			return user = { img: user.avatar, name: user.name }
+		}
+	}
+
+	let currentUser = getUsersData(post.userId)
+
+
 	return (
 		<div className={s.post} >
 			<div className={s.head}>
-				<SmalAvatar src={avatar} />				<p>{defaultUser.name}</p>
-				<p className={s.time}>5 minets ago</p>
-				<span>...</span>
+				<SmalAvatar src={avatar} />
+				<p className={s.time}>{format(post.createdAt)}</p>
+				<ButtonsPopap post={post} />
+				{/* <span>...</span> */}
 			</div>
-
+			<hr />
 			<div className={s.body}>
 				<p>{post.text}</p>
 				<div>
-					<img src={post.postImg} />
+					<img src={getPhoto(post.img)} />
 				</div>
 			</div>
 
 			<div className={s.statistics} >
 				<div>
-					<span>Like</span>
+					<span onClick={(e) => hendlerLikes(e)}>Like</span>
 					<span>Dislike</span>
-					<p>{`${post.likes} people like it`}</p>
+					<p>{`${post.likes.length} likes`}</p>
 				</div>
+
 				<div>
-					<p>{`${post.coments} comments`}</p>
+					{/* {`${post.coments} comments`} */}
+					9 comments
 				</div>
 			</div>
 		</div>

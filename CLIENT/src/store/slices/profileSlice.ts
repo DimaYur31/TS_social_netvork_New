@@ -22,9 +22,7 @@ const profileSlice = createSlice({
 			state = initialState
 		},
 		removePhoto(state: ProfileType, action: PayloadAction<string>) {
-			let newphotos = state.defaultUser.photos.filter((photo) => photo !== action.payload)
-			state.defaultUser.photos = newphotos
-			// state.defaultUser.photos = action.payload
+			state.defaultUser.photos = state.defaultUser.photos.filter((photo) => photo !== action.payload)
 		}
 	}
 })

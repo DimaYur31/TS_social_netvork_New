@@ -1,7 +1,8 @@
 import { authInstans } from './api'
 
-export const createPost = async (post) => {
-	const { data } = await authInstans.post('/post', { post })
+export const createPost = async (formData) => {
+	console.log(formData)
+	const { data } = await authInstans.post('api/post', formData)
 	return data
 }
 
@@ -10,13 +11,15 @@ export const editPost = async (id, userId, changes) => {
 	return data
 }
 
-export const deletePost = async (id) => {
-	const { data } = await authInstans.delete(`api/post/${id}`)
-	return data
+export const deletePost = async (id, userId) => {
+	const response = await authInstans.delete(`api/post/${id}`)
+	return response.status
 }
 
-export const likePost = async (id) => {
-	const { data } = await authInstans.put(`api/post/${id}/like`)
+export const likePost = async (_id, postId) => {
+	const { data } = await authInstans.put(`api/post/like/${postId}`, { userId: _id })
+	console.log(data)
+
 	return data
 }
 

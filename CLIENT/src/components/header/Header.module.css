@@ -30,9 +30,13 @@
 	grid-gap: 20px;
 	justify-items: end;
 }
-
+.user{
+	display: flex;
+	align-items: center;
+}
 .user img {
 	margin-right: 20px;
+	margin-left: 10px;
 }
 
 

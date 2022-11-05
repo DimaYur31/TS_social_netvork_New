@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 //@ts-ignore
 import s from './MyInfo.module.css'
-// import Loading from '../../elements/loading/Loading'
-import Status from './Status'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
-import { useAvatar } from '../../../hooks/hooks'
+import { getPhoto, useAvatar } from '../../../hooks/hooks'
 import { userExit } from '../../../store/slices/profileSlice'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../styleedComponents/Button'
@@ -13,8 +11,7 @@ const MyInfo: React.FC = () => {
 	const { defaultUser, isAuth } = useAppSelector(state => state.profilePage)
 	const dispatch = useAppDispatch()
 	const avatar = useAvatar()
-	const bgPhon = 'https://vjoy.cc/wp-content/uploads/2019/07/1-1.jpg'
-	// const [file, setFile] = useState([])
+
 	const navigate = useNavigate()
 
 	const exit = (e: React.MouseEvent) => {
@@ -23,9 +20,6 @@ const MyInfo: React.FC = () => {
 		window.location.reload();
 	}
 
-	// const selectFile = (e:React.ChangeEvent<HTMLSelectElement>) => {
-	// setFile(e.target.files[0])
-	// }
 	useEffect(() => {
 		if (!isAuth) {
 			navigate('/login')
@@ -35,18 +29,18 @@ const MyInfo: React.FC = () => {
 	return (
 		<div className={s.user}>
 			<div>
-				<img src={bgPhon} />
+				<img src={getPhoto(defaultUser.coverPicture)} />
 			</div>
 
 			<div className={s.info} >
 				<img src={avatar} />
 				<h3>{`${defaultUser.name} ${defaultUser.surname}`}</h3>
-				<Status status={defaultUser.status} />
+				{/* <Status status={defaultUser.status} /> */}
 			</div>
 
 
 
-			<Button exit={exit}>Exit</Button>
+			<Button clik={exit}>Exit</Button>
 		</div>
 	)
 }

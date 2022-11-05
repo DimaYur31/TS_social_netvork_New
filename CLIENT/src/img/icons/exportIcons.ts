@@ -10,11 +10,15 @@ import { ReactComponent as Music } from './music.svg'//@ts-ignore
 import { ReactComponent as Folder } from './folder.svg'//@ts-ignore
 import { ReactComponent as Login } from './login.svg'//@ts-ignore
 import { ReactComponent as News } from './news.svg'//@ts-ignore
+import { ReactComponent as Settings } from './settings.svg'//@ts-ignore
+import { ReactComponent as Cancel } from './cancel.svg'//@ts-ignore
+import { ReactComponent as Dustbin } from './dustbin.svg'//@ts-ignore
+import { ReactComponent as More } from './more.svg'//@ts-ignore
 
 
 
 export const SVG = {
 	Icon, Chat, Friends, Users, Community,
 	Gallery, VideoCall, Music, Folder, Login,
-	News
+	News, Settings, Cancel, Dustbin, More
 }

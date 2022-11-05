@@ -6,10 +6,11 @@ export type UserType = {
 	surname: string,
 	status: ''//string | null,
 	avatar: string,
+	coverPicture: string,
 	birthday: '',//string | null,
 	country: '',//string | null,
 	city: '',//string | null,
-	work: '',//string | null,
+	job: '',//string | null,
 	languages: Array<string>,
 	photos: Array<string>,
 	// posts: [] as Array<PoastType> | null,
@@ -23,16 +24,16 @@ export type ProfileType = {
 }
 
 export type UserChanges = {
-	email?: string,
+	// email?: string,
 	password?: string,
 	name?: string,
 	surname?: string,
-	status?: string
+	// status?: string
 	avatar?: string,
 	birthday?: string
 	country?: string
 	city?: string
-	work?: string
+	job?: string
 	languages?: string
-	photos?: string
+	// photos?: string
 }

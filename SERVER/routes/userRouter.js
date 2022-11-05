@@ -2,6 +2,8 @@ const Router = require('express')
 const router = new Router()
 const userController = require('./controllers/userController')
 
+
+router.get('/data/:id', userController.getUserData)
 router.put('/:id', userController.update)
 router.post('/photo/:id', userController.addPhoto)
 router.delete('/photo/:id', userController.deletePhoto)

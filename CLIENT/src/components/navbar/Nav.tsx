@@ -24,7 +24,7 @@ const Nav = () => {
 				</NavLink>
 			</li>
 			<li>
-				<NavLink to="/dialogs" className={handlerActive} >
+				<NavLink to="/addpost" className={handlerActive} >
 					<SVG.Chat className={s.icons} width='20' height='20' />
 					Messanges
 				</NavLink>

@@ -2,8 +2,16 @@ const bcrypt = require('bcryptjs')
 const uuid = require('uuid')
 const path = require('path')
 const User = require('../../models/User')
+const fs = require('fs')
 
 class UserController {
+
+	async getUserData(req, res) {
+		const user = await User.findById(req.params.id)
+		// res.status(200).json(user)
+		let currentUser = { name: user.name, avatar: user.avatar }
+		res.status(200).json(currentUser)
+	}
 
 	async update(req, res) {
 		const { userId, isAdmin, password } = req.body
@@ -145,12 +153,14 @@ class UserController {
 	async deletePhoto(req, res) {
 		try {
 			if (req.params.id === req.body.userId) {
+
 				const user = await User.findOneAndUpdate(
 					{ _id: req.params.id },
 					{
 						$pull: { photos: req.body.photo }
 					}
 				)
+				fs.unlink(path.resolve(__dirname, '..', '..', 'static', req.body.photo), () => { })
 				res.status(204).json('ok')
 			} else {
 				res.status(400).json('Вы можете удалить только свои фото')

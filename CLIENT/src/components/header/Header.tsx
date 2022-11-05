@@ -8,7 +8,7 @@ import SmalAvatar from '../styleedComponents/SmalAvatar'
 import s from './Header.module.css'
 
 const Header = () => {
-	const { isAuth } = useAppSelector((state) => state.profilePage)
+	const { isAuth, defaultUser } = useAppSelector((state) => state.profilePage)
 	const avatar = useAvatar()
 
 	return (
@@ -25,6 +25,7 @@ const Header = () => {
 					</div>
 
 					<div className={s.user}>
+						<div>{defaultUser.name}</div>
 						<SmalAvatar src={avatar} />
 					</div>
 				</div>

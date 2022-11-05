@@ -6,15 +6,12 @@ import { toggleLoading } from "../appSlice"
 import { addPhoto, removePhoto, setUser } from "../profileSlice"
 
 
-
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
-
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
 		const user = await userRegistration(email, password, name, surname)
 		dispatch(setUser(user))
 		dispatch(toggleLoading(false))
-		return true
 	}
 }
 
@@ -24,7 +21,6 @@ export const loginThunkCreator = (email: string, password: string) => {
 		const user = await userLogin(email, password)
 		dispatch(setUser(user))
 		dispatch(toggleLoading(false))
-		return true
 	}
 }
 
@@ -46,13 +42,15 @@ export const uploadPhotoThunkCreator = (id: string, formData: FormData) => {
 
 export const deletePhotoThunk = (userId: string, photo: string) => {
 	return async (dispatch: AppDispatch) => {
-		let Status = await deletePhoto(userId, photo)
-		Status === 204 && dispatch(removePhoto(photo))
+		let status = await deletePhoto(userId, photo)
+		status === 204 && dispatch(removePhoto(photo))
 	}
 }
 
 export const changeUserProfile = (userId: string, changes: UserChanges) => {
 	return async (dispatch: AppDispatch) => {
+		// console.log(changes)
+
 		let user = await updateUser(userId, changes)
 		dispatch(setUser(user))
 	}
