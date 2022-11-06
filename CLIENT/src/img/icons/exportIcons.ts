@@ -14,11 +14,14 @@ import { ReactComponent as Settings } from './settings.svg'//@ts-ignore
 import { ReactComponent as Cancel } from './cancel.svg'//@ts-ignore
 import { ReactComponent as Dustbin } from './dustbin.svg'//@ts-ignore
 import { ReactComponent as More } from './more.svg'//@ts-ignore
+import { ReactComponent as Like } from './like.svg'//@ts-ignore
+import { ReactComponent as Dislike } from './dislike.svg'//@ts-ignore
 
 
 
 export const SVG = {
 	Icon, Chat, Friends, Users, Community,
 	Gallery, VideoCall, Music, Folder, Login,
-	News, Settings, Cancel, Dustbin, More
+	News, Settings, Cancel, Dustbin, More,
+	Like, Dislike
 }

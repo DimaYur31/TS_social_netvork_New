@@ -25,13 +25,13 @@ const MyPosts = () => {
 
 	return (
 		<div className={s.posts}>
-			{posts.length == 0
-				? <h2>Add Your Posts</h2>
-				: <div>{
+			{posts.length
+				? <div>{
 					posts.map(post => {
 						return <Post key={post._id} post={post} />
 					})
 				}</div>
+				: <h2>Add Your Posts</h2>
 			}
 		</div>
 	)

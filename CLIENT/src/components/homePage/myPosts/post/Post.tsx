@@ -8,6 +8,7 @@ import { format } from 'timeago.js'
 import { likeDislikeThunk } from '../../../../store/slices/apiActions/postActions'
 import { getUserData } from '../../../../api/userApi'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
+import { SVG } from '../../../../img/icons/exportIcons'
 
 type TPost = {
 	post: PostType<string>
@@ -44,25 +45,26 @@ const Post: React.FC<TPost> = ({ post }) => {
 
 	return (
 		<div className={s.post} >
+
 			<div className={s.head}>
 				<SmalAvatar src={avatar} />
 				<p className={s.time}>{format(post.createdAt)}</p>
 				<ButtonsPopap post={post} />
-				{/* <span>...</span> */}
 			</div>
-			<hr />
+
+
 			<div className={s.body}>
-				<p>{post.text}</p>
 				<div>
 					<img src={getPhoto(post.img)} />
 				</div>
+				<p>{post.text}</p>
 			</div>
 
 			<div className={s.statistics} >
 				<div>
-					<span onClick={(e) => hendlerLikes(e)}>Like</span>
-					<span>Dislike</span>
+					<span onClick={(e) => hendlerLikes(e)}><SVG.Like /></span>
 					<p>{`${post.likes.length} likes`}</p>
+					<span><SVG.Dislike /></span>
 				</div>
 
 				<div>

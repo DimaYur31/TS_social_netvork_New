@@ -2,6 +2,9 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
+	padding: 0 10px;
+	justify-content: space-between;
 }
 
 .rightBar p{
@@ -17,6 +20,6 @@
 
 .rightBar ul{
 	position: relative;
-	overflow-y: scroll;
 	max-height: 50vh;
+	overflow-y: scroll;
 }

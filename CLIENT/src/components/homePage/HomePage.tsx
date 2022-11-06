@@ -1,18 +1,16 @@
-import React from 'react'
 import Feed from './feed/Feed'
+import RightBar from './rightBar/RightBar'
 import MyPosts from './myPosts/MyPosts'//@ts-ignore
 import s from './HomePage.module.css'
-import RightBar from './rightBar/RightBar'
 
 const HomePage = () => {
 	return (
 		<div className={s.home}>
-			<div>
+			<div className={s.left}>
 				<Feed />
 				<MyPosts />
 			</div>
 			<RightBar />
-
 		</div>
 	)
 }
