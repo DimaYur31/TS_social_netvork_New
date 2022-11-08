@@ -8,7 +8,6 @@ const User = new Schema({
 	status: { type: String, max: 80 },
 	avatar: { type: String, default: 'defaultAvatar.png' },
 	coverPicture: { type: String, default: 'defaultCover.png' },
-	coverPicture: { type: String },
 	birthday: { type: String, default: '' },
 	country: { type: String, default: '' },
 	city: { type: String, default: '' },

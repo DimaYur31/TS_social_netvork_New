@@ -9,6 +9,7 @@ import { likeDislikeThunk } from '../../../../store/slices/apiActions/postAction
 import { getUserData } from '../../../../api/userApi'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import { SVG } from '../../../../img/icons/exportIcons'
+import { Link } from 'react-router-dom'
 
 type TPost = {
 	post: PostType<string>
@@ -47,7 +48,10 @@ const Post: React.FC<TPost> = ({ post }) => {
 		<div className={s.post} >
 
 			<div className={s.head}>
-				<SmalAvatar src={avatar} />
+				<Link to={`/profile/${defaultUser}`}>
+					<SmalAvatar src={avatar} />
+					<p className={s.time}>{defaultUser.name}</p>
+				</Link>
 				<p className={s.time}>{format(post.createdAt)}</p>
 				<ButtonsPopap post={post} />
 			</div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import SmalAvatar from '../styleedComponents/SmalAvatar'
 import IsOnline from '../styleedComponents/IsOnline'
 

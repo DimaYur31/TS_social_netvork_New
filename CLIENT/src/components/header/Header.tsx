@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { useAvatar } from '../../hooks/hooks'
 
@@ -13,7 +13,9 @@ const Header = () => {
 
 	return (
 		<header className={s.header} >
-			<h1>V _ Komnate</h1>
+			<Link to='/'>
+				<h1>V_Komnate</h1>
+			</Link>
 
 			<Search />
 

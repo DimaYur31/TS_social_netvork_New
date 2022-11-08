@@ -1,8 +1,6 @@
 import FriendItem from './FriendItem'//@ts-ignore
 import s from './Friendlist.module.css'
 
-
-
 const data = [
 	{ id: 1, isOnline: true, img: 'https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg', name: 'Dima' },
 	{ id: 2, isOnline: true, img: 'https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg', name: 'Dima' },
@@ -23,9 +21,7 @@ const FriendList = () => {
 				return <FriendItem isOnline={item.isOnline} src={item.img} key={item.id}>{item.name}</FriendItem>
 			})
 		}
-
 	</ul>
-
 }
 
 export default FriendList

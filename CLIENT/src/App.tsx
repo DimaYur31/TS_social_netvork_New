@@ -7,35 +7,36 @@ import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks'
 import Navbar from './components/navbar/Navbar'
 import Header from './components/header/Header'
 import Loading from './components/elements/loading/Loading'
-// import Authorization from './components/authorization/Authorization'
-// import AuthorizationTest from './components/authorization/AuthorizationTest'
 import HomePage from './components/homePage/HomePage'
 import ContentWrapper from './components/styleedComponents/ContentWrapper'
+// import Authorization from './components/authorization/Authorization'
+// import AuthorizationTest from './components/authorization/AuthorizationTest'
+const UsersPage = lazy(() => import('./components/userspage/UsersPage'))
 const Authorization = lazy(() => import('./components/authorization/Authorization'))
 const Profile = lazy(() => import('./components/profile/Profile'))
 const Photos = lazy(() => import('./components/photos/Photos'))
 const Rooms = lazy(() => import('./components/rooms/Rooms'))
 const Room = lazy(() => import('./components/rooms/Room'))
-// const AddPost = lazy(() => import('./components/homePage/myPosts/addPost/AddPost'))
 
-const App: React.FC = () => {
+const App = () => {
 	const dispatch = useAppDispatch()
-	const { isAuth } = useAppSelector(state => state.profilePage)
 	const navigate = useNavigate()
+	const { isAuth } = useAppSelector(state => state.profilePage)
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
-		if (token) {
+		if (!token) {
+			navigate('/login')
+		} else {
 			dispatch(chechAuthUser())
 			navigate('/')
-		} else {
-			navigate('/login')
 		}
 	}, [isAuth])
 
 	return (
 		<>
 			{isAuth && <Header />}
+
 			<ContentWrapper isAuth={isAuth}>
 				{isAuth && <Navbar />}
 
@@ -43,7 +44,8 @@ const App: React.FC = () => {
 					{isAuth
 						? <Routes>
 							<Route path='/' element={<HomePage />} />
-							<Route path='/profile/*' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
+							<Route path='/profile/:userName' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
+							<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
 							<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 							<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
 							<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />

@@ -41,9 +41,10 @@ const Photo: FC<TPprops> = ({ id, photo, hoverMouse, CSSposition }) => {
 
 	return (
 		<div
-			style={{ transformOrigin: `${CSSposition}` }}
+			// style={{ transformOrigin: `${CSSposition}` }}
+			// onMouseOver={(e) => { hoverMouse(e.currentTarget.getBoundingClientRect()) }}
 			className={s.photo}
-			onMouseOver={(e) => { hoverMouse(e.currentTarget.getBoundingClientRect()) }}>
+		>
 			{/* <StyledPhoto cssPisition='left top' ref={ref}> */}
 			<img src={getPhoto(photo)} />
 

@@ -15,10 +15,13 @@
 	padding: 10px;
 }
 
-.head img{
-margin-right: 10px;
-
+.post a{
+	position: relative;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
 }
+
 .head .time{
 	margin-left: 10px;
 	font-size: 14px;
@@ -32,7 +35,9 @@ margin-right: 10px;
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	padding: 10px;
 }
+
 
 .body p{
 	padding: 10px;
@@ -40,14 +45,15 @@ margin-right: 10px;
 
 .body div{
 	position: relative;
-padding-top: 45%;
+padding-top: 50%;
 }
 .body img{
 	position: absolute;
-	width: 100%;
+	width: 90%;
 	height: 100%;
 	top: 0;
-	left: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	object-fit: cover;
 }
 

@@ -55,7 +55,7 @@ class UserController {
 	}
 	// get a user
 	async getUser(req, res) {
-		const userId = req.query.userId
+		const userId = req.query
 		const name = req.query.name
 		try {
 			const user = userId
@@ -65,6 +65,16 @@ class UserController {
 			res.status(200).json(other)
 		} catch (e) {
 			res.status(500).json(e)
+		}
+	}
+
+	async getUsers(req, res) {
+		try {
+			const userId = req.params.userId
+			const users = await User.find({ _id: { $ne: userId } })
+			res.status(200).json(users)
+		} catch (error) {
+			res.status(500).json(error)
 		}
 	}
 

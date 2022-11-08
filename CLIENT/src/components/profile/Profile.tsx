@@ -7,7 +7,6 @@ import MyInfo from './myInfo/MyInfo'
 import s from './MyProfile.module.css'
 
 const Profile: React.FC = () => {
-	console.log('render Profile')
 
 	return (
 		<section >
