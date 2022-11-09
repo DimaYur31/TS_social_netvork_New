@@ -3,7 +3,7 @@ import { deletePhoto, updateUser, uploadPhoto } from "../../../api/userApi"
 import { UserChanges } from "../../../types/profile"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
-import { addPhoto, removePhoto, setUser } from "../profileSlice"
+import { addPhoto, removePhoto, setRenderUser, setUser } from "../profileSlice"
 
 
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
@@ -11,6 +11,7 @@ export const registrationThunkCreator = (email: string, password: string, name: 
 		dispatch(toggleLoading(true))
 		const user = await userRegistration(email, password, name, surname)
 		dispatch(setUser(user))
+		dispatch(setRenderUser(user))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -20,6 +21,7 @@ export const loginThunkCreator = (email: string, password: string) => {
 		dispatch(toggleLoading(true))
 		const user = await userLogin(email, password)
 		dispatch(setUser(user))
+		dispatch(setRenderUser(user))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -29,6 +31,7 @@ export const chechAuthUser = () => {
 		dispatch(toggleLoading(true))
 		const user = await check()
 		dispatch(setUser(user))
+		dispatch(setRenderUser(user))
 		dispatch(toggleLoading(false))
 	}
 }

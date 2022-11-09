@@ -3,26 +3,26 @@ import { NavLink } from 'react-router-dom'
 import { SVG } from './../../img/icons/exportIcons'
 //@ts-ignore
 import s from './Navbar.module.css'
-import { useAppSelector } from '../../hooks/reactReduxHooks';
+import { useAppSelector } from '../../hooks/reactReduxHooks'
 
 interface ILink extends React.HTMLProps<HTMLLinkElement> {
 	isActive: boolean
 }
 
 const Nav = () => {
-	const { name } = useAppSelector(state => state.profilePage.defaultUser)
+	const { _id } = useAppSelector(state => state.profilePage.defaultUser)
 	const handlerActive = ({ isActive }: ILink) => (isActive ? s.active : 'link')
 
 	return <nav className={s.nav} >
 		<ul>
 			<li>
-				<NavLink to='/' className={handlerActive} >
-					<SVG.Music className={s.icons} width='20' height='20' />
+				<NavLink to={`/${_id}`} className={handlerActive} >
+					<SVG.Home className={s.icons} width='20' height='20' />
 					Home
 				</NavLink>
 			</li>
 			<li>
-				<NavLink to={`/profile/${name}`} className={handlerActive} >
+				<NavLink to={`/profile/${_id}`} className={handlerActive} >
 					<SVG.Icon className={s.icons} width='20' height='20' />
 					Profile
 				</NavLink>
@@ -34,13 +34,13 @@ const Nav = () => {
 				</NavLink>
 			</li> */}
 			<li>
-				<NavLink to="/friends" className={handlerActive} >
+				<NavLink to='/friends' className={handlerActive} >
 					<SVG.Friends className={s.icons} width='20' height='20' />
 					Friends
 				</NavLink>
 			</li>
 			<li>
-				<NavLink to="/users" className={handlerActive} >
+				<NavLink to='/users' className={handlerActive} >
 					<SVG.Users className={s.icons} width='20' height='20' />
 					Users
 				</NavLink>

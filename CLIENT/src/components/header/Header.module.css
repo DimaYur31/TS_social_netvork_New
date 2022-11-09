@@ -24,11 +24,43 @@
 .autorisation {
 	position: relative;
 	display: grid;
-	grid-template-columns: repeat(2, minmax(50px, auto));
-	/* grid-template-columns: 1fr 1fr; */
+	/* grid-template-columns: repeat(2, minmax(50px, auto)); */
+	grid-template-columns: 1fr 1fr;
 	align-items: center;
-	grid-gap: 20px;
+	/* grid-gap: 20px; */
 	justify-items: end;
+}
+.btns{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	align-items: center;
+}
+
+.autorisation button{
+	position: relative;
+	padding: 5px 6px 7px 6px;
+	cursor: pointer;
+	height: 35px;
+	outline: none;
+	border:1.5px solid #fff;
+	background-color: #0690fd;
+	border-radius: 5px;
+	justify-self: center;
+}
+.autorisation a{
+	padding:5px 7px 3px 7px;
+	border:1.5px solid #fff;
+	border-radius: 5px;
+	min-width: 35px;
+	text-align: center;
+	align-self: center;
+	justify-self: center;
+}
+
+.autorisation svg{
+	width: 20px;
+	height: 20px;
+	fill:#fff;
 }
 .user{
 	display: flex;
@@ -44,5 +76,5 @@
 .header a {
 	color: #fff;
 	text-decoration: none;
-	margin: 0 15px ;
+	/* margin: 0 15px ; */
 }

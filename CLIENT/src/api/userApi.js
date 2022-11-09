@@ -26,7 +26,7 @@ export const getUser = async () => {
 }
 
 export const getUserData = async (id) => {
-	const { data } = await authInstans.get(`api/user/data/:${id}`)
+	const { data } = await authInstans.get(`api/user/data/${id}`)
 	return data
 }
 

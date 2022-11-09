@@ -10,7 +10,7 @@ const AddPostPopap = () => {
 	}
 	return (
 		<>
-			<Button clik={() => setIsOpen(true)}>Add Post</Button>
+			<Button onClick={() => setIsOpen(true)}>Add Post</Button>
 			<OverLayPopap isOpened={isOpend} onClose={handlePopap}>
 				<AddPost onClose={handlePopap} />
 			</OverLayPopap>

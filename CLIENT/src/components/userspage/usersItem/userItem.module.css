@@ -36,10 +36,10 @@
 }
 .image img{
 	padding: 10px;
-	border-radius: 25%;
+	border-radius: 50%;
 	height: max(20vh, 150px);
 	width: max(20vh, 150px);
-	background-size: cover;
+	object-fit: cover;
 }
 
 .btns{

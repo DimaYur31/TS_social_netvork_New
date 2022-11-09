@@ -7,10 +7,22 @@ const fs = require('fs')
 class UserController {
 
 	async getUserData(req, res) {
-		const user = await User.findById(req.params.id)
-		// res.status(200).json(user)
-		let currentUser = { name: user.name, avatar: user.avatar }
-		res.status(200).json(currentUser)
+		try {
+			const user = await User.findById(req.params.id)
+
+			res.status(200).json(user)
+		} catch (error) {
+			res.status(500).json(error)
+		}
+		// let currentUser = {}
+		// const keys = Object.keys(user._doc)
+
+		// for (let key of keys) {
+		// if (key !== 'email' && key !== 'password') {
+		// currentUser[key] = user._doc[key]
+		// }
+		// }
+		// console.log(user)
 	}
 
 	async update(req, res) {

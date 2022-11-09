@@ -18,6 +18,7 @@ type TPost = {
 const Post: React.FC<TPost> = ({ post }) => {
 	const { defaultUser } = useAppSelector(state => state.profilePage)
 	const [isLiked, setIsLiked] = useState(post.likes.includes(defaultUser._id))
+
 	const avatar = useAvatar()
 	const dispatch = useAppDispatch()
 

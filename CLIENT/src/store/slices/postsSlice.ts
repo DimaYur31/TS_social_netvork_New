@@ -1,3 +1,4 @@
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { PostType, PostsTypeState } from '../../types/post'
 

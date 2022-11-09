@@ -77,13 +77,13 @@ cursor:pointer;
 `
 interface IProps {
 	children?: ReactNode
-	clik: (e: React.MouseEvent) => void
+	onClick: (e: React.MouseEvent) => void
 }
 
 const Button: FC<IProps> = (props) => {
 
 	return (
-		<SButton {...props} onClick={(e) => props.clik(e)}>
+		<SButton {...props} onClick={(e) => props.onClick(e)}>
 			<span {...props} />
 		</SButton>
 	)

@@ -1,4 +1,3 @@
-import AddPostPopap from '../elements/popap/AddPostPopap'
 import MyPosts from '../homePage/myPosts/MyPosts'
 import About from './myInfo/about/About'
 import MyInfo from './myInfo/MyInfo'
@@ -11,7 +10,6 @@ const Profile: React.FC = () => {
 	return (
 		<section >
 			<MyInfo />
-			<AddPostPopap />
 			<div className={s.profile}>
 				<MyPosts />
 				<About />

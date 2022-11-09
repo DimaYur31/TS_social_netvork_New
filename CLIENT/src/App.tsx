@@ -21,7 +21,7 @@ const Room = lazy(() => import('./components/rooms/Room'))
 const App = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const { isAuth } = useAppSelector(state => state.profilePage)
+	const { isAuth, defaultUser } = useAppSelector(state => state.profilePage)
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
@@ -29,7 +29,7 @@ const App = () => {
 			navigate('/login')
 		} else {
 			dispatch(chechAuthUser())
-			navigate('/')
+			navigate(`/${defaultUser._id}`)
 		}
 	}, [isAuth])
 
@@ -43,8 +43,8 @@ const App = () => {
 				<div>
 					{isAuth
 						? <Routes>
-							<Route path='/' element={<HomePage />} />
-							<Route path='/profile/:userName' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
+							<Route path='/:_id' element={<HomePage />} />
+							<Route path='/profile/:_id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
 							<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
 							<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 							<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />

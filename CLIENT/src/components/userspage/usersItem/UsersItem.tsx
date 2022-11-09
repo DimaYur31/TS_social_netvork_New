@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { UserType } from '../../../types/profile'
 import { getPhoto } from '../../../hooks/hooks'//@ts-ignore
 import s from './userItem.module.css'
@@ -9,10 +9,11 @@ type propsType = {
 }
 
 const UsersItem: FC<propsType> = ({ currentUser }) => {
-	const { avatar, surname, name } = currentUser
+	const { avatar, surname, name, _id } = currentUser
+
 	return (
 		<div className={s.usersItem}>
-			<Link to={`/profile/:userId`}>
+			<Link to={`/profile/${_id}`}>
 				<div className={s.image}>
 					<img src={getPhoto(avatar)} />
 				</div>

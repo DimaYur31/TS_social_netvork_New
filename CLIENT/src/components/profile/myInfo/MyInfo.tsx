@@ -1,24 +1,18 @@
 import { useEffect } from 'react'
 //@ts-ignore
 import s from './MyInfo.module.css'
-import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
-import { getPhoto, useAvatar } from '../../../hooks/hooks'
-import { userExit } from '../../../store/slices/profileSlice'
+import { useAppSelector } from '../../../hooks/reactReduxHooks'
+import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/hooks'
 import { useNavigate } from 'react-router-dom'
-import Button from '../../styleedComponents/Button'
+import AddPostPopap from '../../elements/popap/AddPostPopap'
 
 const MyInfo: React.FC = () => {
-	const { defaultUser, isAuth } = useAppSelector(state => state.profilePage)
-	const dispatch = useAppDispatch()
-	const avatar = useAvatar()
-
 	const navigate = useNavigate()
+	const { renderUser, isAuth } = useAppSelector(state => state.profilePage)
+	const avatar = useAvatar()
+	const isOwner = useIsOwner()
 
-	const exit = (e: React.MouseEvent) => {
-		e.preventDefault()
-		dispatch(userExit())
-		window.location.reload();
-	}
+	useRenderUser()
 
 	useEffect(() => {
 		if (!isAuth) {
@@ -29,18 +23,15 @@ const MyInfo: React.FC = () => {
 	return (
 		<div className={s.user}>
 			<div>
-				<img src={getPhoto(defaultUser.coverPicture)} />
+				<img src={getPhoto(renderUser.coverPicture)} />
 			</div>
 
 			<div className={s.info} >
 				<img src={avatar} />
-				<h3>{`${defaultUser.name} ${defaultUser.surname}`}</h3>
-				{/* <Status status={defaultUser.status} /> */}
+				<h3>{`${renderUser.name} ${renderUser.surname}`}</h3>
 			</div>
 
-
-
-			<Button clik={exit}>Exit</Button>
+			{isOwner && <AddPostPopap />}
 		</div>
 	)
 }

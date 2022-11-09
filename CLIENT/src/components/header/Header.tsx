@@ -1,3 +1,4 @@
+import { useAppDispatch } from './../../hooks/reactReduxHooks';
 import { Link, NavLink } from 'react-router-dom'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { useAvatar } from '../../hooks/hooks'
@@ -6,10 +7,19 @@ import Search from '../styleedComponents/Search'
 import SmalAvatar from '../styleedComponents/SmalAvatar'
 //@ts-ignore
 import s from './Header.module.css'
+import { userExit } from '../../store/slices/profileSlice'
+import { SVG } from '../../img/icons/exportIcons';
 
 const Header = () => {
+	const dispatch = useAppDispatch()
 	const { isAuth, defaultUser } = useAppSelector((state) => state.profilePage)
-	const avatar = useAvatar()
+	const avatar = useAvatar(defaultUser.avatar)
+
+	const exit = (e: React.MouseEvent) => {
+		e.preventDefault()
+		dispatch(userExit())
+		window.location.reload();
+	}
 
 	return (
 		<header className={s.header} >
@@ -21,9 +31,10 @@ const Header = () => {
 
 			{isAuth
 				? <div className={s.autorisation}>
-					<div>
-						<NavLink to={'/'}>Homepage</NavLink>
+					<div className={s.btns}>
+						<NavLink to={`/${defaultUser._id}`}><SVG.Home /></NavLink>
 						<NavLink to={'/rooms'}>TimeLine</NavLink>
+						<button onClick={exit}><SVG.Exit /></button>
 					</div>
 
 					<div className={s.user}>

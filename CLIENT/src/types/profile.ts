@@ -20,8 +20,12 @@ export type UserType = {
 
 export type ProfileType = {
 	defaultUser: UserType,
+	currentUser: UserType
+	renderUser: UserType
 	isAuth: boolean
 }
+
+// export type CurrentUser = Omit<UserType, 'email' | 'password'>
 
 export type UserChanges = {
 	// email?: string,

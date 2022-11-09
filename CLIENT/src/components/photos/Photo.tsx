@@ -5,31 +5,13 @@ import { SVG } from '../../img/icons/exportIcons'
 import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions'
 // @ts-ignore
 import s from './Photo.module.css'
-// import StyledPhoto from '../styleedComponents/StyledPhoto'
-// import { usePosition } from './../../hooks/usePosition'
-// import useDeviceWidth from '../../hooks/useDeviceWidth'
-
 
 type TPprops = {
 	photo: string
 	id: string
-	hoverMouse: (rect: DOMRect) => void
-	CSSposition: string
 }
-
-
-// const Photo: ForwardRefRenderFunction<HTMLDivElement, TPprops> = ({ id, photo}) => {
-
-
-const Photo: FC<TPprops> = ({ id, photo, hoverMouse, CSSposition }) => {
+const Photo: FC<TPprops> = ({ id, photo }) => {
 	const dispatch = useAppDispatch()
-	// const chaeldDiv = useRef() as RefObject<HTMLDivElement>
-	// const [chaeld, setChaeld] = useState(null as DOMRect | null)
-
-	// useEffect(() => {
-	// 	setChaeld(chaeldDiv.current && chaeldDiv.current.getBoundingClientRect())
-	// }, [])
-
 
 	const delPhoto = (id: string, photo: string) => {
 		dispatch(deletePhotoThunk(id, photo))
@@ -40,12 +22,7 @@ const Photo: FC<TPprops> = ({ id, photo, hoverMouse, CSSposition }) => {
 	}
 
 	return (
-		<div
-			// style={{ transformOrigin: `${CSSposition}` }}
-			// onMouseOver={(e) => { hoverMouse(e.currentTarget.getBoundingClientRect()) }}
-			className={s.photo}
-		>
-			{/* <StyledPhoto cssPisition='left top' ref={ref}> */}
+		<div className={s.photo}>
 			<img src={getPhoto(photo)} />
 
 			<div>
@@ -54,21 +31,16 @@ const Photo: FC<TPprops> = ({ id, photo, hoverMouse, CSSposition }) => {
 					onClick={() => delPhoto(id, photo)}
 				/> */}
 				<button
-					// onMouseOver={e => e.stopPropagation()}
 					onClick={() => delPhoto(id, photo)}>
 					<SVG.Dustbin className={s.button} />
 				</button>
 				<button onClick={() => setAvatar(photo)}>
 					<SVG.More className={`${s.button} ${s.more}`} />
 				</button>
-				<div className={s.bage}>
 
-				</div>
 			</div>
-			{/* </StyledPhoto> */}
 		</div>
 	)
 }
 
 export default Photo
-// const Photo = forwardRef<HTMLDivElement, TPprops>(DefaultPhoto)

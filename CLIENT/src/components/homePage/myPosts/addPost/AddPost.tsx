@@ -44,7 +44,7 @@ const AddPost: FC<typeProps> = ({ onClose }) => {
 					accept='image/*,.png,.jpg,.gif,.web'
 				/>
 			</label>
-			<Button clik={createPost}>Send</Button>
+			<Button onClick={createPost}>Send</Button>
 		</div>
 	)
 }
