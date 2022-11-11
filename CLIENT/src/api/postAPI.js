@@ -32,7 +32,7 @@ export const getTimeLine = async (userId) => {
 	const { data } = await authInstans.get(`api/post/timeline/${userId}`)
 	return data
 }
-
+// разобраться с этими двумя
 export const getProfilePosts = async (name) => {
 	const { data } = await authInstans.get(`api/post/profile/${name}`)
 	return data

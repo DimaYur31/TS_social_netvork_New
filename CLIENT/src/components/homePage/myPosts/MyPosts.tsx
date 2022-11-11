@@ -2,7 +2,7 @@ import Post from './post/Post'
 //@ts-ignore
 import s from './MyPosts.module.css'
 import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
 
 const MyPosts = () => {
@@ -12,7 +12,7 @@ const MyPosts = () => {
 
 	useEffect(() => {
 		dispatch(fetchPostsThunk(_id))
-	}, [])
+	}, [_id])
 
 	return (
 		<div className={s.posts}>

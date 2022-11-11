@@ -1,0 +1,13 @@
+.buttonFollowed{
+	background:#0690FD;
+	color: #fff;
+	border :none;
+	outline : none;
+	cursor : pointer;
+	padding: 5px 10px;
+	/* font-size: 14px; */
+}
+
+.isActive{
+	background:#df04d1;
+}

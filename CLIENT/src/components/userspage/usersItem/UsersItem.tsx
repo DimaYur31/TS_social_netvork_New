@@ -23,8 +23,6 @@ const UsersItem: FC<propsType> = ({ currentUser }) => {
 			</Link>
 			<div className={s.btns} >
 				<FollowButton currentUserId={currentUser._id} />
-				{/* <button>follow+</button> */}
-				{/* <span>message</span> */}
 			</div>
 		</div >
 	)
