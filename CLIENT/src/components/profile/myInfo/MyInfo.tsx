@@ -5,6 +5,7 @@ import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/hooks'
 import { useNavigate } from 'react-router-dom'
 import AddPostPopap from '../../elements/popap/AddPostPopap'
+import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 
 const MyInfo: React.FC = () => {
 	const navigate = useNavigate()
@@ -31,7 +32,9 @@ const MyInfo: React.FC = () => {
 				<h3>{`${renderUser.name} ${renderUser.surname}`}</h3>
 			</div>
 
-			{isOwner && <AddPostPopap />}
+			{isOwner
+				? <AddPostPopap />
+				: <FollowButton currentUserId={renderUser._id} />}
 		</div>
 	)
 }

@@ -14,8 +14,8 @@ export type UserType = {
 	languages: Array<string>,
 	photos: Array<string>,
 	// posts: [] as Array<PoastType> | null,
-	followers: Array<number>,
-	followings: Array<number>,
+	followers: Array<string>,
+	followings: Array<string>,
 }
 
 export type ProfileType = {

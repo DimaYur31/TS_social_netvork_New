@@ -19,9 +19,9 @@ const profileSlice = createSlice({
 		setCurrentUser(state: ProfileType, action: PayloadAction<UserType>) {
 			state.currentUser = action.payload
 		},
-		clearCurrentUser(state: ProfileType, action: PayloadAction) {
-			state.currentUser = {} as UserType
-		},
+		// clearCurrentUser(state: ProfileType, action: PayloadAction) {
+		// 	state.currentUser = {} as UserType
+		// },
 		setRenderUser(state: ProfileType, action: PayloadAction<UserType>) {
 			state.renderUser = action.payload
 		},
@@ -34,13 +34,19 @@ const profileSlice = createSlice({
 		},
 		removePhoto(state: ProfileType, action: PayloadAction<string>) {
 			state.defaultUser.photos = state.defaultUser.photos.filter((photo) => photo !== action.payload)
+		},
+		follow(state: ProfileType, action: PayloadAction<string[]>) {
+			state.defaultUser.followings = action.payload
+		},
+		unfollow(state: ProfileType, action: PayloadAction<string[]>) {
+			state.defaultUser.followings = action.payload
 		}
 	}
 })
 
 export const {
 	setUser, addPhoto, userExit, removePhoto,
-	setCurrentUser, clearCurrentUser, setRenderUser
+	setCurrentUser, setRenderUser, follow, unfollow
 } = profileSlice.actions
 
 export default profileSlice.reducer

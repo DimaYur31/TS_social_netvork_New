@@ -1,9 +1,9 @@
 import { userRegistration, userLogin, check } from "../../../api/authAPI"
-import { deletePhoto, updateUser, uploadPhoto } from "../../../api/userApi"
+import { deletePhoto, followUser, updateUser, uploadPhoto } from "../../../api/userApi"
 import { UserChanges } from "../../../types/profile"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
-import { addPhoto, removePhoto, setRenderUser, setUser } from "../profileSlice"
+import { addPhoto, follow, removePhoto, setRenderUser, setUser, unfollow } from "../profileSlice"
 
 
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
@@ -56,5 +56,20 @@ export const changeUserProfile = (userId: string, changes: UserChanges) => {
 
 		let user = await updateUser(userId, changes)
 		dispatch(setUser(user))
+	}
+}
+
+export const followUnfollowThunk = (userId: string, id: string, isFollow: boolean) => {
+
+	return async (dispatch: AppDispatch) => {
+		const data = await followUser(userId, id, isFollow)
+		if (!isFollow) {
+			dispatch(follow(data))
+			return true
+
+		} else {
+			dispatch(unfollow(data))
+			return false
+		}
 	}
 }

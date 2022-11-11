@@ -35,9 +35,10 @@ export const getFriends = async (userId) => {
 	return data
 }
 // isFollow == trye -- follow; ==false -- unfollow
-export const followUser = async (id, userId, isFollow) => {
+export const followUser = async (userId, id, isFollow) => {
 	const { data } = isFollow
-		? await authInstans.put(`api/user/${id}/follow`, { userId })
-		: await authInstans.put(`api/user/${id}/unfollow`, { userId })
+		? await authInstans.put(`api/user/${id}/unfollow`, { userId })
+		: await authInstans.put(`api/user/${id}/follow`, { userId })
+	console.log(data)
 	return data
 }

@@ -1,4 +1,5 @@
-import Post from './post/Post'//@ts-ignore
+import Post from './post/Post'
+//@ts-ignore
 import s from './MyPosts.module.css'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks';

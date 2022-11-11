@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserType } from '../../../types/profile'
 import { getPhoto } from '../../../hooks/hooks'//@ts-ignore
 import s from './userItem.module.css'
+import FollowButton from '../../elements/btn/isFollow/FolLowButton';
 
 type propsType = {
 	currentUser: UserType
@@ -21,8 +22,9 @@ const UsersItem: FC<propsType> = ({ currentUser }) => {
 				<h3>{surname}</h3>
 			</Link>
 			<div className={s.btns} >
-				<span>follow</span>
-				<span>message</span>
+				<FollowButton currentUserId={currentUser._id} />
+				{/* <button>follow+</button> */}
+				{/* <span>message</span> */}
 			</div>
 		</div >
 	)

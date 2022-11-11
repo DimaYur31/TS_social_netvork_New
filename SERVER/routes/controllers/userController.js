@@ -117,10 +117,10 @@ class UserController {
 
 				if (!user.followers.includes(userId)) {
 					await user.updateOne({ $push: { followers: userId } })
-					await currentUser.updateOne({ $push: { followings: req.param.id } })
-					res.status(200).json('Вы подписались')
+					await currentUser.updateOne({ $push: { followings: req.params.id } })
+					res.status(200).json(currentUser.followings)
 				} else {
-					res.status(403).json('Вы уже подписаны на данного пользователя')
+					res.status(403).json('Вы уже подписаны')
 				}
 			} catch (e) {
 				res.status(500).json(e)
@@ -131,7 +131,8 @@ class UserController {
 	}
 	// unfollow a user
 	async unfollow(req, res) {
-		const { userId } = req.body.id
+		const { userId } = req.body
+
 		if (userId !== req.params.id) {
 			try {
 				const user = await User.findById(req.params.id)
@@ -140,7 +141,7 @@ class UserController {
 				if (user.followers.includes(userId)) {
 					await user.updateOne({ $pull: { followers: userId } })
 					await currentUser.updateOne({ $pull: { followings: req.params.id } })
-					res.status(200).json('Вы отписались от данного пользователя')
+					res.status(200).json(currentUser.followings)
 				} else {
 					res.status(403).json('Вы не подписвнны на данного пользователя')
 				}
