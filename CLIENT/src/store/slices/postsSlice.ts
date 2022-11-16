@@ -16,16 +16,12 @@ const postsSlice = createSlice({
 	initialState,
 	reducers: {
 		setPosts(state: PostsTypeState, action: PayloadAction<PostType<string>[]>) {
-			// state.posts = action.payload
 			const sortedPost = action.payload.sort((a, b) => {
 				let dateOne = new Date(`${a.updatedAt}`)
 				let dateTwo = new Date(`${b.updatedAt}`)
 				return dateTwo.getTime() - dateOne.getTime()
-
 			})
 			state.posts = sortedPost
-			console.log(sortedPost)
-
 		},
 
 		likeDislike(state: PostsTypeState, action: PayloadAction<likePayload>) {
@@ -39,10 +35,6 @@ const postsSlice = createSlice({
 		removePost(state: PostsTypeState, action: PayloadAction<string>) {
 			state.posts = state.posts.filter(post => post._id !== action.payload)
 		}
-		// addPhoto(state: ProfileType, action: PayloadAction<string>) {
-		// state.defaultUser.photos.push(action.payload)
-		// }
-
 	}
 })
 

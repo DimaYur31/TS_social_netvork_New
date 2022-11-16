@@ -34,34 +34,30 @@ const App = () => {
 		}
 	}, [isAuth])
 
-	return (
-		<>
-			{isAuth && <Header />}
+	return <>
+		{isAuth && <Header />}
 
-			<ContentWrapper isAuth={isAuth}>
-				{isAuth && <Navbar />}
+		<ContentWrapper isAuth={isAuth}>
+			{isAuth && <Navbar />}
 
-				<div>
-					{isAuth
-						? <Routes>
-							<Route path='/:_id' element={<HomePage />} />
-							<Route path='/profile/:_id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
-							<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
-							<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
-							<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
-							<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
-							{/* <Route path='/addpost' element={<Suspense fallback={<Loading />}><AddPost /></Suspense>} /> */}
-						</Routes>
-						: <Routes>
-							{/* <Route path='/login' element={<Authorization />} /> */}
-							<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
-							<Route path='/login' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
-						</Routes>
-					}
-				</div>
-			</ContentWrapper>
-		</ >
-	)
+			<div>
+				{isAuth
+					? <Routes>
+						<Route path='/:_id' element={<HomePage />} />
+						<Route path='/profile/:_id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
+						<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
+						<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
+						<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
+						<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
+					</Routes>
+					: <Routes>
+						<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
+						<Route path='/login' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
+					</Routes>
+				}
+			</div>
+		</ContentWrapper>
+	</ >
 }
 
 export default App

@@ -1,21 +1,18 @@
+import { useRenderUser } from '../../hooks/hooks'
 import Feed from './feed/Feed'
 import RightBar from './rightBar/RightBar'
-import MyPosts from './myPosts/MyPosts'
+import TimeLine from './timeline/TimeLine'
 //@ts-ignore
 import s from './HomePage.module.css'
-import { useRenderUser } from '../../hooks/hooks'
-import TimeLine from './timeline/TimeLine'
 
 const HomePage = () => {
 	useRenderUser()
-
 
 	return (
 		<div className={s.home}>
 			<div className={s.left}>
 				<Feed />
 				<TimeLine />
-				{/* timeline должен быть */}
 			</div>
 			<RightBar />
 		</div>

@@ -1,10 +1,6 @@
 const Post = require('../../models/Post')
 const User = require('../../models/User')
 const jwt = require('jsonwebtoken')
-// const bcrypt = require('bcryptjs')
-// const uuid = require('uuid')
-// const path = require('path')
-// const fs = require('fs')
 
 class PostController {
 	// create post

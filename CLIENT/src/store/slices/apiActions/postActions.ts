@@ -1,5 +1,4 @@
 import { deletePost, getProfilePosts, getTimeLine, likePost } from "../../../api/postAPI"
-// import { CreatePostType } from "../../../types/post"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
 import { likeDislike, removePost, setPosts } from "../postsSlice"

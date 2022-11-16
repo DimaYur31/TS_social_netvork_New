@@ -5,7 +5,6 @@ import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
 import { PostType } from '../../../types/post'
-import { setPosts } from '../../../store/slices/postsSlice'
 
 type PropsType = {
 	allPosts?: PostType<string>[]

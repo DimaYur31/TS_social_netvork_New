@@ -1,4 +1,6 @@
-import React, { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react'
+//@ts-ignore
+import s from './TimeLine.module.css'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
 import { PostType } from '../../../types/post'
@@ -19,9 +21,7 @@ const TimeLine: FC<PropsType> = () => {
 	}, [_id])
 
 	return (
-		<div
-		// className={s.posts}
-		>
+		<div className={s.posts}>
 			{posts.length
 				? <div>{
 					posts.map(post => {
