@@ -94,15 +94,15 @@ class PostController {
 		try {
 			const user = await User.findById(req.params.userId)
 			const userPosts = await Post.find({ userId: user._id })
-			const friendPosts = await Promise.all(
+			const followingsPosts = await Promise.all(
 				user.followings.map(friendId => {
-					// console.log(`hi ${users}`)
 					return Post.find({ userId: friendId })
-					// return User.find({ userId: friendId })
-					// return { post, avatar: user.avatar, name: user.name }
 				})
 			)
-			res.status(200).json(userPosts.concat(...friendPosts))
+
+			const timeline = [...userPosts, ...followingsPosts[0]]
+
+			res.status(200).json(timeline)
 		} catch (e) {
 			res.status(500).json(e)
 		}
@@ -110,8 +110,7 @@ class PostController {
 	// get user's all posts
 	async getProfilePosts(req, res) {
 		try {
-			const user = await User.findOne({ userName: req.params.userName })
-			const posts = await Post.find({ userId: user._id })
+			const posts = await Post.find({ userId: req.params.userId })
 			res.status(200).json(posts)
 		} catch (e) {
 			res.status(500).json(e)

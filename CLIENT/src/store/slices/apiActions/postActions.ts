@@ -1,4 +1,4 @@
-import { deletePost, getTimeLine, likePost } from "../../../api/postAPI"
+import { deletePost, getProfilePosts, getTimeLine, likePost } from "../../../api/postAPI"
 // import { CreatePostType } from "../../../types/post"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
@@ -33,8 +33,17 @@ export const createPostThunk = (_id: string, text: string, img: Blob,) => {
 export const fetchPostsThunk = (userId: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
-		const posts = await getTimeLine(userId)
+		const posts = await getProfilePosts(userId)
 		dispatch(setPosts(posts))
+		dispatch(toggleLoading(false))
+	}
+}
+
+export const fetchTimeLineThunk = (userId: string) => {
+	return async (dispatch: AppDispatch) => {
+		dispatch(toggleLoading(true))
+		const timeLine = await getTimeLine(userId)
+		dispatch(setPosts(timeLine))
 		dispatch(toggleLoading(false))
 	}
 }

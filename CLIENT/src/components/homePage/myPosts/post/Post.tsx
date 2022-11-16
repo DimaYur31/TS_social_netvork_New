@@ -1,10 +1,11 @@
-import React, { MouseEvent, useEffect, useState } from 'react'//@ts-ignore
+import { FC, useEffect, useState } from 'react'
+import { format } from 'timeago.js'
+//@ts-ignore
 import s from './Post.module.css'
-import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
-import { getPhoto, } from './../../../../hooks/hooks'
+import { useAppSelector } from '../../../../hooks/reactReduxHooks'
+import { getPhoto } from './../../../../hooks/hooks'
 import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import { PostType } from '../../../../types/post'
-import { format } from 'timeago.js'
 // import { likeDislikeThunk } from '../../../../store/slices/apiActions/postActions'
 import { getUserData } from '../../../../api/userApi'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
@@ -16,7 +17,7 @@ type TPost = {
 	post: PostType<string>
 }
 
-const Post: React.FC<TPost> = ({ post }) => {
+const Post: FC<TPost> = ({ post }) => {
 	// const dispatch = useAppDispatch()
 	const { defaultUser, renderUser } = useAppSelector(state => state.profilePage)
 	const [thisUser, setThisUser] = useState(defaultUser)

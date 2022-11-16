@@ -1,12 +1,18 @@
 import Post from './post/Post'
 //@ts-ignore
 import s from './MyPosts.module.css'
-import { useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
+import { PostType } from '../../../types/post'
+import { setPosts } from '../../../store/slices/postsSlice'
 
-const MyPosts = () => {
-	const { _id } = useAppSelector(store => store.profilePage.renderUser)//????
+type PropsType = {
+	allPosts?: PostType<string>[]
+}
+
+const MyPosts: FC<PropsType> = () => {
+	const { _id } = useAppSelector(store => store.profilePage.renderUser)
 	const { posts } = useAppSelector(store => store.postPage)
 	const dispatch = useAppDispatch()
 

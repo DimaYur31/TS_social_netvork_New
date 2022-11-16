@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, Suspense } from 'react'
+import { lazy, useEffect, Suspense } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import { chechAuthUser } from './store/slices/apiActions/userActions'
@@ -28,8 +28,9 @@ const App = () => {
 		if (!token) {
 			navigate('/login')
 		} else {
-			dispatch(chechAuthUser())
-			navigate(`/${defaultUser._id}`)
+			dispatch(chechAuthUser()).then(
+				() => navigate(`/${defaultUser._id}`)
+			)
 		}
 	}, [isAuth])
 
