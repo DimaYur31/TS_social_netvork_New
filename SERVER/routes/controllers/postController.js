@@ -18,6 +18,7 @@ class PostController {
 			res.status(500).json('error Ok')
 		}
 	}
+
 	// update post
 	async updatePost(req, res) {
 		try {
@@ -33,6 +34,7 @@ class PostController {
 			res.status(500).json(e)
 		}
 	}
+
 	// delete post
 	async deletePost(req, res) {
 		try {
@@ -53,24 +55,59 @@ class PostController {
 		}
 	}
 
-	// llike/dislike post
-	async likeDislikePost(req, res) {
+	// like 
+	async likePost(req, res) {
 		try {
 			const post = await Post.findById(req.params.id)
+
 			if (post.userId !== req.body.userId) {
+
+				if (post.dislikes.includes(req.body.userId)) {
+					await post.updateOne({ $pull: { dislikes: req.body.userId } }, { new: true })
+				}
 				if (!post.likes.includes(req.body.userId)) {
-					await post.updateOne({ $push: { likes: req.body.userId } })
-					console.log(post)
-					res.status(200).json(post.likes)
+					await post.updateOne({ $push: { likes: req.body.userId } }, { new: true })
+					const updatedPost = await Post.findById(req.params.id)
+
+					res.status(200).json({ likes: updatedPost.likes, dislikes: updatedPost.dislikes })
 				} else {
-					await post.updateOne({ $pull: { likes: req.body.userId } })
-					console.log(post)
-					res.status(200).json(post.likes)
+					await post.updateOne({ $pull: { likes: req.body.userId } }, { new: true })
+					const updatedPost = await Post.findById(req.params.id)
+
+					res.status(200).json({ likes: updatedPost.likes, dislikes: updatedPost.dislikes })
 				}
 			} else {
-				res.status(200).json(post.likes)
+				res.status(200).json('вы не можете лайкать себе')
 			}
+		} catch (e) {
+			res.status(500).json(e)
+		}
+	}
 
+	// dislike
+	async dislikePost(req, res) {
+		try {
+			const post = await Post.findById(req.params.id)
+
+			if (post.userId !== req.body.userId) {
+
+				if (post.likes.includes(req.body.userId)) {
+					await post.updateOne({ $pull: { likes: req.body.userId } }, { new: true })
+				}
+				if (!post.dislikes.includes(req.body.userId)) {
+					await post.updateOne({ $push: { dislikes: req.body.userId } }, { new: true })
+					const updatedPost = await Post.findById(req.params.id)
+
+					res.status(200).json({ likes: updatedPost.likes, dislikes: updatedPost.dislikes })
+				} else {
+					await post.updateOne({ $pull: { dislikes: req.body.userId } }, { new: true })
+					const updatedPost = await Post.findById(req.params.id)
+
+					res.status(200).json({ likes: updatedPost.likes, dislikes: updatedPost.dislikes })
+				}
+			} else {
+				res.status(200).json('вы не можете поставить дислайк себе')
+			}
 		} catch (e) {
 			res.status(500).json(e)
 		}
@@ -85,6 +122,7 @@ class PostController {
 			res.status(500).json(e)
 		}
 	}
+
 	// get timeline posts
 	async getTimeLinePosts(req, res) {
 		try {
@@ -96,13 +134,16 @@ class PostController {
 				})
 			)
 
-			const timeline = [...userPosts, ...followingsPosts[0]]
-
-			res.status(200).json(timeline)
+			if (followingsPosts.length) {
+				res.status(200).json([...userPosts, ...followingsPosts[0]])
+			} else {
+				res.status(200).json(userPosts)
+			}
 		} catch (e) {
 			res.status(500).json(e)
 		}
 	}
+
 	// get user's all posts
 	async getProfilePosts(req, res) {
 		try {

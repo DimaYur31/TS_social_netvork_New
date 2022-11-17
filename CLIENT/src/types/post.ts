@@ -5,6 +5,7 @@ export type PostType<T> = {
 	text: string
 	img: T
 	likes: Array<string>
+	dislikes: Array<string>
 	createdAt: Date
 	updatedAt: Date
 }

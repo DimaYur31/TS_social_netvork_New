@@ -1,24 +1,19 @@
-import { FC, useEffect } from 'react'
+import { useEffect } from 'react'
 //@ts-ignore
 import s from './TimeLine.module.css'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
-import { PostType } from '../../../types/post'
 import Post from '../myPosts/post/Post'
 
-
-type PropsType = {
-	allPosts?: PostType<string>[]
-}
-
-const TimeLine: FC<PropsType> = () => {
+const TimeLine = () => {
 	const dispatch = useAppDispatch()
-	const { _id } = useAppSelector(store => store.profilePage.defaultUser)
+	const { defaultUser } = useAppSelector(store => store.profilePage)
 	const { posts } = useAppSelector(store => store.postPage)
 
+
 	useEffect(() => {
-		dispatch(fetchTimeLineThunk(_id))
-	}, [_id])
+		dispatch(fetchTimeLineThunk(defaultUser._id))
+	}, [])
 
 	return (
 		<div className={s.posts}>

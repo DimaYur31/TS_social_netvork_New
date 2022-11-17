@@ -8,7 +8,8 @@ const initialState = {
 
 interface likePayload {
 	postId: string,
-	likes: string[]
+	likes: string[],
+	dislikes: string[],
 }
 
 const postsSlice = createSlice({
@@ -27,7 +28,8 @@ const postsSlice = createSlice({
 		likeDislike(state: PostsTypeState, action: PayloadAction<likePayload>) {
 			state.posts.forEach((post: PostType<string>, item, posts) => {
 				if (posts[item]._id === action.payload.postId) {
-					post.likes = action.payload.likes
+					posts[item].likes = action.payload.likes
+					posts[item].dislikes = action.payload.dislikes
 				}
 			})
 		},

@@ -6,20 +6,23 @@ export const createPost = async (formData) => {
 	return data
 }
 
-export const editPost = async (id, userId, changes) => {
-	const { data } = await authInstans.put(`api/post/${id}`, { userId, changes })
-	return data
-}
+// export const editPost = async (id, userId, changes) => {
+// 	const { data } = await authInstans.put(`api/post/${id}`, { userId, changes })
+// 	return data
+// }
 
-export const deletePost = async (id, userId) => {
+export const deletePost = async (id) => {
 	const response = await authInstans.delete(`api/post/${id}`)
 	return response.status
 }
 
 export const likePost = async (_id, postId) => {
 	const { data } = await authInstans.put(`api/post/like/${postId}`, { userId: _id })
-	console.log(data)
+	return data
+}
 
+export const dislikePost = async (_id, postId) => {
+	const { data } = await authInstans.put(`api/post/dislike/${postId}`, { userId: _id })
 	return data
 }
 

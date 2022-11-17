@@ -1,4 +1,4 @@
-import { deletePost, getProfilePosts, getTimeLine, likePost } from "../../../api/postAPI"
+import { deletePost, dislikePost, getProfilePosts, getTimeLine, likePost } from "../../../api/postAPI"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
 import { likeDislike, removePost, setPosts } from "../postsSlice"
@@ -21,7 +21,6 @@ export const createPostThunk = (_id: string, text: string, img: Blob,) => {
 		formData.append('text', text)
 		formData.append('img', image)
 		let posts = await createPost(formData)
-
 		dispatch(addPhoto(image))
 		dispatch(setPosts(posts))
 
@@ -47,12 +46,21 @@ export const fetchTimeLineThunk = (userId: string) => {
 	}
 }
 
-export const likeDislikeThunk = (_id: string, postId: string) => {
+export const likeThunk = (_id: string, postId: string) => {
 	return async (dispatch: AppDispatch) => {
-		console.log(_id, postId)
+		const { likes, dislikes } = await likePost(_id, postId)
+		if (likes && dislikes) {
+			dispatch(likeDislike({ postId, likes, dislikes }))
+		}
+	}
+}
 
-		const likes = await likePost(_id, postId)
-		dispatch(likeDislike({ postId, likes }))
+export const dislikeThunk = (_id: string, postId: string) => {
+	return async (dispatch: AppDispatch) => {
+		const { likes, dislikes } = await dislikePost(_id, postId)
+		if (likes && dislikes) {
+			dispatch(likeDislike({ postId, likes, dislikes }))
+		}
 	}
 }
 

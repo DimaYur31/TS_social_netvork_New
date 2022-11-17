@@ -76,6 +76,10 @@ padding-top: 50%;
 	padding: 0 5px;
 }
 
+.statistics .active>svg{
+	fill: red;
+}
+
 .statistics span svg{
 	width: 15px;
 	height: 15px;
