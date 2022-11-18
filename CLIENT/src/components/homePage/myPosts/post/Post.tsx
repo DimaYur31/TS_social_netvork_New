@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { format } from 'timeago.js'
 //@ts-ignore
 import s from './Post.module.css'
@@ -8,7 +9,6 @@ import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import { PostType } from '../../../../types/post'
 import { getUserData } from '../../../../api/userApi'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
-import { Link } from 'react-router-dom'
 import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
 
 type TPost = {
@@ -44,7 +44,6 @@ const Post: FC<TPost> = ({ post }) => {
 				<ButtonsPopap post={post} />
 			</div>
 
-
 			<div className={s.body}>
 				<div>
 					<img src={getPhoto(post.img)} />
@@ -53,16 +52,18 @@ const Post: FC<TPost> = ({ post }) => {
 			</div>
 
 			<div className={s.statistic} >
+
 				<LikeDislikeComponent
 					likes={post.likes}
 					dislikes={post.dislikes}
 					currentObjectId={post._id}
+					currentObjectUserId={post.userId}
 				/>
 				{/* {`${post.coments} comments`} */}
 				9 comments
 			</div>
 		</div >
-		// </div >
 	)
 }
+
 export default Post

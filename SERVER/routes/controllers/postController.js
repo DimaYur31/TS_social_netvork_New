@@ -8,14 +8,13 @@ class PostController {
 		try {
 			const { img, userId, text } = req.body
 			const dataPost = { userId, text, img }
-
 			const newPost = new Post(dataPost)
 			const savedPost = await newPost.save()
-
 			const posts = await Post.find({ userId: savedPost.userId })
+
 			res.status(200).json(posts)
 		} catch (e) {
-			res.status(500).json('error Ok')
+			res.status(500).json('error')
 		}
 	}
 

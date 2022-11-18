@@ -1,7 +1,6 @@
 import { authInstans } from './api'
 
 export const createPost = async (formData) => {
-	console.log(formData)
 	const { data } = await authInstans.post('api/post', formData)
 	return data
 }
