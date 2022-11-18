@@ -1,0 +1,28 @@
+.statistic{
+	display: flex;
+	align-items: center;
+}
+
+.statistic span{
+	cursor:pointer;
+	padding: 0 5px;
+}
+.statistic p{
+	margin-right: 5px;
+}
+
+.statistic .active .like{
+	fill: #fff;
+	background-color: rgb(76, 199, 76);
+}
+.statistic .active .dislike{
+	background-color: rgb(229, 28, 28);
+	fill: #fff;
+}
+
+.statistic span svg{
+	width: 25px;
+	height: 25px;
+	padding: 4px;
+	border-radius: 5px;
+}
