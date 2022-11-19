@@ -1,12 +1,9 @@
-
-import FriendList from '../friends/FriendList'
 import Nav from './Nav'
+import FriendList from '../friends/FriendList'
 //@ts-ignore
 import s from './Navbar.module.css'
 
 const Navbar = () => {
-
-
 	return (
 		<section className={s.navbar}>
 			<Nav />

@@ -25,7 +25,8 @@ export type ProfileType = {
 	isAuth: boolean
 }
 
-// export type CurrentUser = Omit<UserType, 'email' | 'password'>
+// export type UsersType = Omit<UserType, 'email' | 'password'>
+export type UsersType = Pick<UserType, '_id' | 'name' | 'avatar'>
 
 export type UserChanges = {
 	// email?: string,

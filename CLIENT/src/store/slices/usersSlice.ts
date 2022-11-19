@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserType } from "../../types/profile";
+import { UsersType, UserType } from "../../types/profile";
 
 const initialState = {
-	users: [] as UserType[]
+	users: [] as UserType[],
+	friends: [] as UsersType[]
 }
 
 type StateInterfase = typeof initialState
@@ -13,9 +14,12 @@ const usersSlice = createSlice({
 	reducers: {
 		setUsers(state: StateInterfase, action: PayloadAction<UserType[]>) {
 			state.users = action.payload
+		},
+		setFriends(state: StateInterfase, action: PayloadAction<UsersType[]>) {
+			state.friends = action.payload
 		}
 	}
 })
 
-export const { setUsers } = usersSlice.actions
+export const { setUsers, setFriends } = usersSlice.actions
 export default usersSlice.reducer

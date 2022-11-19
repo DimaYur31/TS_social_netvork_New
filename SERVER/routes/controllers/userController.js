@@ -14,15 +14,6 @@ class UserController {
 		} catch (error) {
 			res.status(500).json(error)
 		}
-		// let currentUser = {}
-		// const keys = Object.keys(user._doc)
-
-		// for (let key of keys) {
-		// if (key !== 'email' && key !== 'password') {
-		// currentUser[key] = user._doc[key]
-		// }
-		// }
-		// console.log(user)
 	}
 
 	async update(req, res) {
@@ -92,19 +83,15 @@ class UserController {
 
 	async getFriends(req, res) {
 		try {
-			const user = User.findById(req.params.id)
+			const user = await User.findById(req.params.id)
 			const friends = await Promise.all(
 				user.followings.map(friendId => {
-					return User.findById(friendId)
+					return User.findById(friendId, { _id: 1, name: 1, avatar: 1 })
 				})
 			)
-			let friendList = []
-			friends.map(friend => {
-				const { _id, name, profilePicture } = friend
-				friendList.posh({ _id, name, profilePicture })
-			})
-		} catch (e) {
-			res.status(500).json(e)
+			res.status(200).json(friends)
+		} catch (error) {
+			res.status(500).json(error)
 		}
 	}
 	// folllow a user

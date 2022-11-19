@@ -1,9 +1,6 @@
-import styled from "styled-components";
-
-
+import styled from 'styled-components'
 
 const Sircle = styled.span<IProps>`
-
 	content:'';
 	position: absolute;
 	top: 0;
@@ -15,10 +12,10 @@ const Sircle = styled.span<IProps>`
 		left:30px;
 		top: -4px;
 		width: 10px;
-	height: 10px;
-	border: 2px solid white;
-	border-radius: 50%;
-	background: ${({ isOnline }) => isOnline ? 'rgb(10, 207, 3)' : 'red'};
+		height: 10px;
+		border: ${({ isOnline }) => isOnline ? '2px solid white' : 'none'};
+		border-radius: 50%;
+		background: ${({ isOnline }) => isOnline ? 'rgb(10, 207, 3)' : 'none'};
 	}
 `;
 
@@ -27,7 +24,6 @@ interface IProps {
 }
 
 const IsOnline: React.FC<IProps> = (props) => {
-
 	return <Sircle  {...props} />
 }
 

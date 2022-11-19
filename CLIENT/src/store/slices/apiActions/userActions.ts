@@ -5,7 +5,6 @@ import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
 import { addPhoto, follow, removePhoto, setRenderUser, setUser, unfollow } from "../profileSlice"
 
-
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
