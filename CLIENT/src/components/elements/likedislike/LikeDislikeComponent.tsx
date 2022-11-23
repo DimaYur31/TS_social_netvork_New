@@ -1,9 +1,8 @@
 import { FC, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
-import { SVG } from '../../../img/icons/exportIcons'
-import { dislikeThunk, likeThunk } from '../../../store/slices/apiActions/postActions'
-//@ts-ignore
 import s from './LikeDislikeComponent.module.css'
+import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
+import { dislikeThunk, likeThunk } from '../../../store/slices/apiActions/postActions'
+import { SVG } from '../../../img/icons/exportIcons'
 
 type LikeDislikePropsType = {
 	likes: string[]

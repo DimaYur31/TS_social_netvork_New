@@ -2,7 +2,6 @@ import { ChangeEvent, FC, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { createPostThunk } from '../../../../store/slices/apiActions/postActions'
 import Button from '../../../styleedComponents/Button'
-//@ts-ignore
 import s from './AddPost.module.css'
 
 type typeProps = {

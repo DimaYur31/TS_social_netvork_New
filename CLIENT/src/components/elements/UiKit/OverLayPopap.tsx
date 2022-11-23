@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
-import Portal from './Portal'
-//@ts-ignore
 import s from './OverLayPopap.module.css'
+
+import Portal from './Portal'
 
 type propsType = {
 	children: ReactNode

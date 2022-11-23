@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
-import FriendItem from './FriendItem'
-//@ts-ignore
-import s from './Friendlist.module.css'
+
+import UserItem from '../elements/user-item/UserItem'
 
 const FriendList = () => {
 	const dispatch = useAppDispatch()
@@ -14,12 +13,12 @@ const FriendList = () => {
 		dispatch(getFriendsThunk(_id))
 	}, [followings])
 
-	return <ul className={s.frienfList}>
+	return <ul>
 		{
 			friends.map((friend) => {
 				return (
-					<FriendItem
-						friend={friend}
+					<UserItem
+						user={friend}
 						key={friend._id}
 					/>
 				)

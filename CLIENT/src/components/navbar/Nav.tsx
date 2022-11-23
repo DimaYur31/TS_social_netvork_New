@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { SVG } from './../../img/icons/exportIcons'
-//@ts-ignore
 import s from './Navbar.module.css'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 
@@ -45,12 +44,12 @@ const Nav = () => {
 					Users
 				</NavLink>
 			</li>
-			{/* <li>
-				<NavLink to="/communities" className={handlerActive} >
+			<li>
+				<NavLink to="/messanger" className={handlerActive} >
 					<SVG.Community className={s.icons} width='20' height='20' />
-					Communities
+					Messenger
 				</NavLink>
-			</li> */}
+			</li>
 			<li>
 				<NavLink to='/photos' className={handlerActive} >
 					<SVG.Gallery className={s.icons} width='20' height='20' />

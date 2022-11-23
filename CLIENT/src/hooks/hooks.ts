@@ -14,8 +14,10 @@ export const useAvatar = (img?: string) => {
 	}
 }
 
-export const getPhoto = (img: string) => {
+export const getPhoto = (img: string, isDB = true) => {
+	if (!isDB) return img
 	return `${process.env.REACT_APP_API_URL}${img}`
+
 }
 //hook берет id из адресной строки и задает в state данные юзера которые нужно отрисовывать на данной странице
 export const useRenderUser = () => {

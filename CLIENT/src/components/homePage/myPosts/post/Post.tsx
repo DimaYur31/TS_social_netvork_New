@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'timeago.js'
-//@ts-ignore
 import s from './Post.module.css'
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { getPhoto } from './../../../../hooks/hooks'

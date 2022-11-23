@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
-//@ts-ignore
 import s from './ButtonsPopap.module.css'
-import { SVG } from '../../../../img/icons/exportIcons';
-import { PostType } from '../../../../types/post';
-import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks';
-import { deletePostThunk } from '../../../../store/slices/apiActions/postActions';
+import { PostType } from '../../../../types/post'
+import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
+import { deletePostThunk } from '../../../../store/slices/apiActions/postActions'
+import { SVG } from '../../../../img/icons/exportIcons'
+
 type TypeProps = {
 	post: PostType<string>
 }
@@ -24,20 +24,18 @@ const ButtonsPopap: FC<TypeProps> = ({ post }) => {
 		}
 	}
 
-	return (
-		<>
-			<div className={s.wrapper}>
+	return <>
+		<div className={s.wrapper}>
 
-				<span onClick={handlePopap}><SVG.More /></span>
-				{isOpend
-					? <div className={s.buttons}>
-						<span onClick={() => deletePost()}><SVG.Dustbin /></span>
-					</div>
-					: null
-				}
-			</div>
-		</>
-	)
+			<span onClick={handlePopap}><SVG.More /></span>
+			{isOpend
+				? <div className={s.buttons}>
+					<span onClick={() => deletePost()}><SVG.Dustbin /></span>
+				</div>
+				: null
+			}
+		</div>
+	</>
 }
 
 export default ButtonsPopap

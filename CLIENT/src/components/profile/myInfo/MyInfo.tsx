@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-//@ts-ignore
 import s from './MyInfo.module.css'
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/hooks'

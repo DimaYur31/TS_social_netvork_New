@@ -1,14 +1,12 @@
-import { useAppDispatch } from './../../hooks/reactReduxHooks';
 import { Link, NavLink } from 'react-router-dom'
-import { useAppSelector } from '../../hooks/reactReduxHooks'
+import s from './Header.module.css'
+import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
 import { useAvatar } from '../../hooks/hooks'
+import { userExit } from '../../store/slices/profileSlice'
+import { SVG } from '../../img/icons/exportIcons'
 
 import Search from '../styleedComponents/Search'
 import SmalAvatar from '../styleedComponents/SmalAvatar'
-//@ts-ignore
-import s from './Header.module.css'
-import { userExit } from '../../store/slices/profileSlice'
-import { SVG } from '../../img/icons/exportIcons';
 
 const Header = () => {
 	const dispatch = useAppDispatch()

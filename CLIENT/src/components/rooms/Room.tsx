@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import useWebRTC, { LOCAL_VIDEO } from '../../hooks/useWebRTC'
-//@ts-ignore
 import s from './Room.module.css'
 
 interface IPairs {

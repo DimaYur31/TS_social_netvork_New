@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
-import Feed from '../homePage/feed/Feed'
-//@ts-ignore
 import s from './usersPage.module.css'
-import { useAppSelector } from '../../hooks/reactReduxHooks';
-import { useAppDispatch } from './../../hooks/reactReduxHooks';
-import { getAllUsers } from '../../store/slices/apiActions/usersActions';
-import UsersItem from './usersItem/UsersItem';
+import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks'
+import { getAllUsers } from '../../store/slices/apiActions/usersActions'
+
+import Feed from '../homePage/feed/Feed'
+import UsersItem from './usersItem/UsersItem'
 
 const UsersPage = () => {
 	const dispatch = useAppDispatch()
@@ -23,7 +22,6 @@ const UsersPage = () => {
 				{users
 					? users.map(user => {
 						return <UsersItem key={user._id} currentUser={user} />
-
 					})
 					: null
 				}

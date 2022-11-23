@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-//@ts-ignore
 import s from './TimeLine.module.css'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'

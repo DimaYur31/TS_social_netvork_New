@@ -1,5 +1,5 @@
-import Share from '../share/Share'//@ts-ignore
 import s from './Feed.module.css'
+import Share from '../share/Share'
 
 const Feed = () => {
 	return (

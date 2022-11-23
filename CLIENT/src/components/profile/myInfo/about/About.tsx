@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
 import Modal from '../../../elements/modal/Modal'
-//@ts-ignore
 import s from '../../MyProfile.module.css'
 import ProfileFormSetings from './profileForm/ProfileFormSetings'
 import { SVG } from './../../../../img/icons/exportIcons'

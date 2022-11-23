@@ -3,7 +3,6 @@ import { getPhoto } from '../../hooks/hooks'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { SVG } from '../../img/icons/exportIcons'
 import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions'
-// @ts-ignore
 import s from './Photo.module.css'
 
 type TPprops = {

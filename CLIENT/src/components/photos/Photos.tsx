@@ -2,7 +2,6 @@ import { ChangeEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { uploadPhotoThunkCreator } from '../../store/slices/apiActions/userActions'
 import Photo from './Photo'
-//@ts-ignore
 import s from './Photo.module.css'
 
 const Photos = () => {

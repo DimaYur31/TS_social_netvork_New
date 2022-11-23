@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import { UserType } from '../../../types/profile'
-import { getPhoto } from '../../../hooks/hooks'//@ts-ignore
+import { Link } from 'react-router-dom'
 import s from './userItem.module.css'
-import FollowButton from '../../elements/btn/isFollow/FolLowButton';
+import { UserType } from '../../../types/profile'
+import { getPhoto } from '../../../hooks/hooks'
+
+import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 
 type propsType = {
 	currentUser: UserType

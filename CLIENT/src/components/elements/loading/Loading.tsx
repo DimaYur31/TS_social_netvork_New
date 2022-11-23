@@ -1,6 +1,5 @@
-//@ts-ignore
-import loading from './Loading.svg'//@ts-ignore
-import s from './Loading.module.css'
+import s from './Loading.module.css'//@ts-ignore
+import loading from './Loading.svg'
 
 const Loading = () => {
 	return (
