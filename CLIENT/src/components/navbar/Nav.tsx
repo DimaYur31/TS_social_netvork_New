@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { SVG } from './../../img/icons/exportIcons'
 import s from './Navbar.module.css'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
+import { SVG } from './../../img/icons/exportIcons'
 
 interface ILink extends React.HTMLProps<HTMLLinkElement> {
 	isActive: boolean
