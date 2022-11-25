@@ -2,17 +2,29 @@
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr 4fr;
-	max-height: calc(100vh - 60px);
-	overflow-y: scroll;
+	height: calc(100vh - 60px);
+	
+	padding-top: 10px;
 }
 
 .list{
-	max-height: calc(100vh - 60px);
-	overflow-y: scroll;
+	/* height: calc(100vh - 60px); */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	width: 80%;
+	overflow-y: auto;
 	padding: 20px 0;
 }
 
 .panel{
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	
+}
+
+.panel input{
+	width: 80%;
 }

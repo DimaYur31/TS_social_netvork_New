@@ -1,47 +1,45 @@
+import { useState } from 'react'
 import s from './Messanger.module.css'
+import { useAppSelector } from '../../hooks/reactReduxHooks'
+import { messageApi } from '../../store/query/messagesApi'
 
 import Input from '../elements/input/Input'
-import UserItem from '../elements/user-item/UserItem'
 import Button from '../styleedComponents/Button'
 import ChatBox from './chatBox/ChatBox'
-import { ConversationType } from '../../types/conwersations'
-
-const conversetionsData = [
-	{ _id: '1', avatar: 'https://cdn0.youla.io/files/images/360_360/60/a8/60a8d291f985d749fb24f7f5-1.jpg', name: 'Oleg' },
-	{ _id: '2', avatar: 'https://cdn0.youla.io/files/images/360_360/60/a8/60a8d291f985d749fb24f7f5-1.jpg', name: 'Sveta' },
-	{ _id: '3', avatar: 'https://cdn0.youla.io/files/images/360_360/60/a8/60a8d291f985d749fb24f7f5-1.jpg', name: 'Masha' },
-	{ _id: '4', avatar: 'https://cdn0.youla.io/files/images/360_360/60/a8/60a8d291f985d749fb24f7f5-1.jpg', name: 'Dima' },
-	{ _id: '5', avatar: 'https://cdn0.youla.io/files/images/360_360/60/a8/60a8d291f985d749fb24f7f5-1.jpg', name: 'Sergey' },
-]
-
-// const data:ConversationType[] = [
-// 	{ _id: '5',
-// 	 conversationId:'weww',
-// 	 sender:'weqe',
-// 	 text:'sdsad',
-// 	 createdAt:'dsda',
-// 	 updatedAt:'sds'
-// 	}
-// ]
+import MessageRoom from './messageRoom/MessageRoom'
 
 const Messanger = () => {
+	const [currentChat, setCurrentChat] = useState<string | null>(null)
+	const { _id } = useAppSelector(store => store.profilePage.defaultUser)
+	const { data: messageRooms } = messageApi.useGetConversationsQuery(_id)
+
 	return (
 		<div className={s.messanger}>
-			<div >
-				{
-					conversetionsData.map(item => {
-						return <UserItem user={item} key={item._id} isDB={false} />
-					})
+			< >
+				{messageRooms && messageRooms.map(room => {
+					return <div onClick={() => setCurrentChat(room._id)}>
+						<MessageRoom
+							key={room._id}
+							userId={_id}
+							room={room}
+						/>
+					</div>
+				})
 				}
-			</div>
+			</>
+			{
+				currentChat
+					? <div className={s.list}>
+						<ChatBox conversationId={currentChat} />
 
-			<div className={s.list}>
-				<ChatBox />
-				<div className={s.panel} >
-					<Input />
-					<Button onClick={() => null}>Send</Button>
-				</div>
-			</div>
+						<div className={s.panel} >
+							<Input />
+							<Button onClick={() => null}>Send</Button>
+						</div>
+					</div>
+					: <p>Open a conversation to start a chat.</p>
+			}
+
 		</div>
 	)
 }
