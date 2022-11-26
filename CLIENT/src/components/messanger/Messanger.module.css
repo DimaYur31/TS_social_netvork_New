@@ -17,14 +17,3 @@
 	overflow-y: auto;
 	padding: 20px 0;
 }
-
-.panel{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	
-}
-
-.panel input{
-	width: 80%;
-}

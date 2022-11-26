@@ -1,11 +1,10 @@
 import { MouseEvent, useState } from 'react'
-import { useAppDispatch } from '../../hooks/reactReduxHooks'
-// @ts-ignore 
 import s from './Authorization.module.css'
-
+import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { errorEmail, errorPassword } from '../../hooks/useFormValidation'
 import { useFormValidation } from '../../hooks/useFormValidation'
 import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions';
+
 import Btn1 from '../elements/btn/Btn1'
 import Error from '../elements/error/Error'
 

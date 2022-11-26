@@ -21,7 +21,7 @@
 }
 
 .message p{
-	padding: 10px;
+	padding: 15px;
 	background-color: #343ad4;
 	border-radius: 10px;
 	max-width: 500px;
@@ -36,6 +36,7 @@
 .owner{
 	justify-content: end;
 }
+
 
 .owner p{
 	background-color: #0690FD;

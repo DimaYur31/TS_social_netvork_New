@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { AddConversations, ConversationType, MessageType } from '../../types/conwersations';
+import { AddConversations, ConversationType, MessageType, AddMeassageType } from '../../types/conwersations';
 
 export const messageApi = createApi({
 	reducerPath: 'messageApi',
@@ -26,6 +26,15 @@ export const messageApi = createApi({
 				url: `messages/${conversationId}`,
 			}),
 			providesTags: result => ['Message']
+		}),
+
+		addMessage: build.mutation<MessageType, AddMeassageType>({
+			query: (message) => ({
+				url: 'messages',
+				method: 'POST',
+				body: message
+			}),
+			invalidatesTags: ['Message']
 		})
 	})
 })
@@ -34,5 +43,6 @@ export const {
 	useGetConversationsQuery,
 	useAddConversationsMutation,
 
-	useGetMessagesQuery
+	useGetMessagesQuery,
+	useAddMessageMutation
 } = messageApi

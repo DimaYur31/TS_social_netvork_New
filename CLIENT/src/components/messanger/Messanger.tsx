@@ -3,10 +3,9 @@ import s from './Messanger.module.css'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { messageApi } from '../../store/query/messagesApi'
 
-import Input from '../elements/input/Input'
-import Button from '../styleedComponents/Button'
 import ChatBox from './chatBox/ChatBox'
 import MessageRoom from './messageRoom/MessageRoom'
+import ChatForm from './chatForm/ChatForm'
 
 const Messanger = () => {
 	const [currentChat, setCurrentChat] = useState<string | null>(null)
@@ -15,7 +14,7 @@ const Messanger = () => {
 
 	return (
 		<div className={s.messanger}>
-			< >
+			<>
 				{messageRooms && messageRooms.map(room => {
 					return <div onClick={() => setCurrentChat(room._id)}>
 						<MessageRoom
@@ -32,10 +31,7 @@ const Messanger = () => {
 					? <div className={s.list}>
 						<ChatBox conversationId={currentChat} />
 
-						<div className={s.panel} >
-							<Input />
-							<Button onClick={() => null}>Send</Button>
-						</div>
+						<ChatForm userId={_id} chatId={currentChat} />
 					</div>
 					: <p>Open a conversation to start a chat.</p>
 			}

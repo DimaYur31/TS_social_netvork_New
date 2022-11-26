@@ -14,6 +14,8 @@ export type MessageType = {
 	updatedAt: Date;
 }
 
+export type AddMeassageType = Pick<MessageType, 'conversationId' | 'sender' | 'text'>
+
 export type AddConversations = {
 	senderId: string
 	receiverId: string
