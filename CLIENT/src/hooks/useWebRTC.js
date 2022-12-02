@@ -1,8 +1,8 @@
 import { useRef, useEffect, useCallback } from 'react'
+import freeice from 'freeice'
 import { socket } from '../socket/index'
 import useStateWithColback from './useStateWithColback.js'
 import { ACTIONS } from '../socket/actions'
-import freeice from 'freeice'
 
 export const LOCAL_VIDEO = 'LOCAL_VODEO'
 
@@ -10,12 +10,14 @@ export default function useWebRTC(roomID) {
 	const [clients, updateClaents] = useStateWithColback([])
 
 	const addNewClient = useCallback((newClient, cb) => {
+
 		updateClaents(list => {
 			if (!list.includes(newClient)) {
 				return [...list, newClient]
 			}
 			return list
 		}, cb)
+
 	}, [clients, updateClaents])
 
 	const peerConnections = useRef({})

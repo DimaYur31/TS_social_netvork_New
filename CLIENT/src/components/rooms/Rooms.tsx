@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { v4 } from 'uuid'
 import { ACTIONS } from '../../socket/actions'
 import { socket } from '../../socket/index'
-import { v4 } from 'uuid'
 
 const Rooms = () => {
 	const navigate = useNavigate()
@@ -37,9 +37,9 @@ const Rooms = () => {
 					rooms.map(roomID => (
 						<li key={roomID}>
 							{roomID}
-							<button onClick={(e) => {
-								createNewRoom(e, roomID)
-							}}>JOIN ROOM</button>
+							<button onClick={(e) => { createNewRoom(e, roomID) }}>
+								JOIN ROOM
+							</button>
 						</li>
 					))}
 			</ul>

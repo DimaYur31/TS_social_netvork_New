@@ -12,12 +12,11 @@ const loyout = (clientsNumber = 1) => {
 			if (index % 2 === 0) {
 				acc.push(arr.slice(index, index + 2))
 			}
-
 			return acc
 		}, [])
 
 	const rowsNumber = pairs.length
-	const height = `${100 / rowsNumber}%`
+	const height = `${95 / rowsNumber}%`
 
 	return pairs.map<Array<IPairs>>((row: any, index, arr) => {
 		if (index === arr.length - 1 && row.length === 1) {

@@ -7,4 +7,6 @@ const options: Partial<ManagerOptions & SocketOptions> = {
 	transports: ['websocket']// для кросбраузерных запросов
 }
 
-export const socket = io('http://localhost:4020', options)
+const path = process.env.REACT_APP_API_URL || 'http://localhost:4020'
+
+export const socket = io(path, options)
