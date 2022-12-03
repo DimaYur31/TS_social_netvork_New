@@ -21,7 +21,7 @@ const Header = () => {
 
 	return (
 		<header className={s.header} >
-			<Link to='/'>
+			<Link to={`/${defaultUser._id}`}>
 				<h1>V_Komnate</h1>
 			</Link>
 

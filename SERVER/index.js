@@ -3,10 +3,13 @@ const express = require('express')
 const fileUpload = require('express-fileupload')
 const path = require('path')
 const mongoose = require('mongoose')
+// const ACTIONS = require('./actions')
+// const { version, validate } = require('uuid')
 // const cors = require('cors')
 
 const router = require('./routes/routes')
 const corsMiddleware = require('./middleware/cors.middleware')
+const usersSocket = require('./socket/usersSocket')
 const wideoSocket = require('./socket/wideoSocket')
 
 const app = express()
@@ -23,13 +26,103 @@ app.use(express.static(path.join(__dirname, 'static')))
 app.use(express.json())
 app.use('/api', router)
 
+usersSocket.start(io)
 wideoSocket.start(io)
+// {
 
+// 	function getClientsRooms() {
+// 			const { rooms } = io.sockets.adapter
+
+// 			return Array.from(rooms.keys())
+// 				.filter(roomID => validate(roomID) && version(roomID) === 4)
+// 		}
+
+// 		function shareRoomsInfo() {
+// 				console.log('rooms')
+// 				io.emit(ACTIONS.SHARE_ROOMS, {
+// 						rooms: getClientsRooms()
+// 					})
+// 				}
+// 			}
 
 const start = async () => {
 	try {
 		await mongoose.connect(dbURL)
+
 		// io.on('connection', socket => {
+
+		// 	// ----------------------------------------------------
+		// 	io.on('connection', socket => {
+		// 		shareRoomsInfo()
+
+		// 		socket.on(ACTIONS.JOIN, config => {
+		// 			const { room: roomID } = config
+		// 			const { rooms: joinedRooms } = socket
+
+		// 			if (Array.from(joinedRooms).includes(roomID)) {
+		// 				return console.warn(`Already joined to ${roomID}`)
+		// 			}
+
+		// 			const clients = Array.from(io.sockets.adapter.rooms.get(roomID) || [])
+
+		// 			clients.forEach(clientID => {
+		// 				io.to(clientID).emit(ACTIONS.ADD_PEER, {
+		// 					perrID: socket.id,
+		// 					createOffer: false
+		// 				})
+
+		// 				socket.emit(ACTIONS.ADD_PEER, {
+		// 					perrID: clientID,
+		// 					createOffer: true
+		// 				})
+		// 			})
+
+		// 			socket.join(roomID)
+		// 			shareRoomsInfo()
+		// 		})
+
+		// 		function leaveRoom() {
+		// 			const { rooms } = socket
+
+		// 			Array.from(rooms)
+		// 				.filter(roomID => validate(roomID) && version(roomID) === 4)//!!!!
+		// 				.forEach(roomID => {
+		// 					const clients = Array.from(io.sockets.adapter.rooms.get(roomID) || [])
+
+		// 					clients.forEach(clientID => {
+		// 						io.to(clientID).emit(ACTIONS.REMOVE_PEER, {
+		// 							peerID: socket.id
+		// 						})
+
+		// 						socket.emit(ACTIONS.REMOVE_PEER, {
+		// 							peerID: clientID
+		// 						})
+		// 					})
+
+		// 					socket.leave(roomID)
+		// 				})
+
+		// 			shareRoomsInfo()
+		// 		}
+
+		// 		socket.on(ACTIONS.LEAVE, leaveRoom)
+		// 		socket.on('disconnecting', leaveRoom)
+
+		// 		socket.on(ACTIONS.RELAY_SDP, ({ peerID, sessionDescription }) => {
+		// 			io.to(peerID).emit(ACTIONS.SESSION_DESCRIPTION, {
+		// 				peerID: socket.id,
+		// 				sessionDescription
+		// 			})
+		// 		})
+
+		// 		socket.on(ACTIONS.RELAY_ICE, ({ peerID, iceCandidate }) => {
+		// 			io.to(peerID).emit(ACTIONS.ICE_CANDIDATE, {
+		// 				peerID: socket.id,
+		// 				iceCandidate
+		// 			})
+		// 		})
+
+		// 	})
 
 
 		// })

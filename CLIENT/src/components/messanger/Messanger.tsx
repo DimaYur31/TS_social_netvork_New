@@ -14,11 +14,11 @@ const Messanger = () => {
 	const { data: messageRooms } = messageApi.useGetConversationsQuery(_id)
 
 	// ========================================================
-	const [socket, setSocket] = useState<Socket | null>(null)
+	// const [socket, setSocket] = useState<Socket | null>(null)
 
-	useEffect(() => {
-		setSocket(io('ws://localhost:8900'))
-	}, [])
+	// useEffect(() => {
+	// 	setSocket(io('ws://localhost:8900'))
+	// }, [])
 	// ========================================================
 
 	return (

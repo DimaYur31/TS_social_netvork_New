@@ -6,27 +6,27 @@ const ACTIONS = require('../actions')
 module.exports = {
 	start: function (io) {
 
-		const wideoSocket = io.of('/wideo')
+
 		// ---------------------------------------------------------
 		function getClientsRooms() {
 			const { rooms } = io.sockets.adapter
-
 			return Array.from(rooms.keys())
 				.filter(roomID => validate(roomID) && version(roomID) === 4)
 		}
 
 		function shareRoomsInfo() {
+			console.log('rooms')
 			io.emit(ACTIONS.SHARE_ROOMS, {
 				rooms: getClientsRooms()
 			})
 		}
 		// ----------------------------------------------------
-		wideoSocket.on('connection', wideoSocket => {
+		io.on('connection', socket => {
 			shareRoomsInfo()
 
-			wideoSocket.on(ACTIONS.JOIN, config => {
+			socket.on(ACTIONS.JOIN, config => {
 				const { room: roomID } = config
-				const { rooms: joinedRooms } = wideoSocket
+				const { rooms: joinedRooms } = socket
 
 				if (Array.from(joinedRooms).includes(roomID)) {
 					return console.warn(`Already joined to ${roomID}`)
@@ -36,22 +36,22 @@ module.exports = {
 
 				clients.forEach(clientID => {
 					io.to(clientID).emit(ACTIONS.ADD_PEER, {
-						perrID: wideoSocket.id,
+						perrID: socket.id,
 						createOffer: false
 					})
 
-					wideoSocket.emit(ACTIONS.ADD_PEER, {
+					socket.emit(ACTIONS.ADD_PEER, {
 						perrID: clientID,
 						createOffer: true
 					})
 				})
 
-				const ACTIONS = require('./actions').join(roomID)
+				socket.join(roomID)
 				shareRoomsInfo()
 			})
 
 			function leaveRoom() {
-				const { rooms } = wideoSocket
+				const { rooms } = socket
 
 				Array.from(rooms)
 					.filter(roomID => validate(roomID) && version(roomID) === 4)//!!!!
@@ -60,33 +60,33 @@ module.exports = {
 
 						clients.forEach(clientID => {
 							io.to(clientID).emit(ACTIONS.REMOVE_PEER, {
-								peerID: wideoSocket.id
+								peerID: socket.id
 							})
 
-							wideoSocket.emit(ACTIONS.REMOVE_PEER, {
+							socket.emit(ACTIONS.REMOVE_PEER, {
 								peerID: clientID
 							})
 						})
 
-						wideoSocket.leave(roomID)
+						socket.leave(roomID)
 					})
 
 				shareRoomsInfo()
 			}
 
-			wideoSocket.on(ACTIONS.LEAVE, leaveRoom)
-			wideoSocket.on('disconnecting', leaveRoom)
+			socket.on(ACTIONS.LEAVE, leaveRoom)
+			socket.on('disconnecting', leaveRoom)
 
-			wideoSocket.on(ACTIONS.RELAY_SDP, ({ peerID, sessionDescription }) => {
+			socket.on(ACTIONS.RELAY_SDP, ({ peerID, sessionDescription }) => {
 				io.to(peerID).emit(ACTIONS.SESSION_DESCRIPTION, {
-					peerID: wideoSocket.id,
+					peerID: socket.id,
 					sessionDescription
 				})
 			})
 
-			wideoSocket.on(ACTIONS.RELAY_ICE, ({ peerID, iceCandidate }) => {
+			socket.on(ACTIONS.RELAY_ICE, ({ peerID, iceCandidate }) => {
 				io.to(peerID).emit(ACTIONS.ICE_CANDIDATE, {
-					peerID: wideoSocket.id,
+					peerID: socket.id,
 					iceCandidate
 				})
 			})
@@ -94,6 +94,7 @@ module.exports = {
 		})
 	}
 }
+
 
 
 // example

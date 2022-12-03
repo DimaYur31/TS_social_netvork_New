@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import { chechAuthUser } from './store/slices/apiActions/userActions'
 import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks'
+import { socket } from './socket/index'
 
 import Navbar from './components/navbar/Navbar'
 import Header from './components/header/Header'
@@ -19,10 +20,22 @@ const Rooms = lazy(() => import('./components/rooms/Rooms'))
 const Room = lazy(() => import('./components/rooms/Room'))
 const Messanger = lazy(() => import('./components/messanger/Messanger'))
 
+
+
 const App = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const { isAuth, defaultUser } = useAppSelector(state => state.profilePage)
+	// console.log(defaultUser)
+
+	useEffect(() => {
+		socket.emit('addUser', defaultUser._id)
+		socket.on('getUsers', users => {
+			console.log(users)
+		})
+
+		// return socket.off('getUsers')
+	}, [])
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
@@ -34,6 +47,7 @@ const App = () => {
 			)
 		}
 	}, [isAuth])
+
 
 	return <>
 		{isAuth && <Header />}
