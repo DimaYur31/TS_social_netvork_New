@@ -1,16 +1,26 @@
 import { FC, useRef, useEffect } from 'react';
 import s from './ChatBox.module.css'
-import { messageApi } from '../../../store/query/messagesApi'
-
+import { messageApi } from '../../../../мусор/query/messagesApi'
+import { socket } from '../../../socket'
 import Message from '../message/Message'
+import { MessageType } from '../../../types/conwersations';
 
 const ChatBox: FC<{ conversationId: string }> = ({ conversationId }) => {
 	const scrollRef = useRef<HTMLDivElement>(null)
-	const { data: messages } = messageApi.useGetMessagesQuery(conversationId)
+	const { data: messages, } = messageApi.useGetMessagesQuery(conversationId)
+	const [getMessage] = messageApi.useAddMessageMutation()
+
+	const addNewMessage = async (message: MessageType) => {
+		await getMessage(message)
+	}
 
 	useEffect(() => {
 		scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
-	}, [messages])
+
+		socket.on('getMessage', message => {
+			addNewMessage(message)
+		})
+	}, [])
 
 	return (
 		<div className={s.chat}>{

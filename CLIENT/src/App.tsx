@@ -26,13 +26,15 @@ const App = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const { isAuth, defaultUser } = useAppSelector(state => state.profilePage)
-	// console.log(defaultUser)
 
 	useEffect(() => {
-		socket.emit('addUser', defaultUser._id)
-		socket.on('getUsers', users => {
-			console.log(users)
-		})
+		if (defaultUser._id) {
+
+			socket.emit('addUser', defaultUser._id)
+			socket.on('getUsers', users => {
+				console.log('users online')
+			})
+		}
 
 		// return socket.off('getUsers')
 	}, [])
@@ -58,13 +60,14 @@ const App = () => {
 			<div>
 				{isAuth
 					? <Routes>
-						<Route path='/:_id' element={<HomePage />} />
-						<Route path='/profile/:_id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
+						<Route path='/:id' element={<HomePage />} />
+						<Route path='/profile/:id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
 						<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
 						<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 						<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
 						<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
 						<Route path='/messanger' element={<Suspense fallback={<Loading />}><Messanger /></Suspense>} />
+						{/* <Route path='*' element={<h2>Page not found</h2>} /> */}
 					</Routes>
 					: <Routes>
 						<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />

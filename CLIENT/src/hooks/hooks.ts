@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from './reactReduxHooks'
-import { useParams } from 'react-router-dom';
-import { useLayoutEffect } from 'react';
-import { changeDefailtAndCurrentUsers } from '../store/slices/apiActions/usersActions';
+import { useParams } from 'react-router-dom'
+import { useEffect, useLayoutEffect } from 'react'
+import { changeDefaultAndCurrentUsers } from '../store/slices/apiActions/usersActions'
 
 
 export const useAvatar = (img?: string) => {
@@ -25,8 +25,8 @@ export const useRenderUser = () => {
 	const { defaultUser } = useAppSelector(state => state.profilePage)
 	const params = useParams()
 
-	useLayoutEffect(() => {
-		dispatch(changeDefailtAndCurrentUsers(defaultUser, params._id))
+	useEffect(() => {
+		params._id && dispatch(changeDefaultAndCurrentUsers(defaultUser, params._id))
 	}, [params._id])
 }
 

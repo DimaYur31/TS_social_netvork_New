@@ -18,9 +18,9 @@ export const getAllUsers = (_id: string) => {
 	}
 }
 
-export const changeDefailtAndCurrentUsers = (defaultUser: UserType, id: string | undefined) => {
+export const changeDefaultAndCurrentUsers = (defaultUser: UserType, id: string | undefined) => {
 	return async (dispatch: AppDispatch) => {
-		if (defaultUser._id === id) {
+		if (defaultUser._id !== id && id !== undefined) {
 			dispatch(setRenderUser(defaultUser))
 		} else {
 			dispatch(toggleLoading(true))

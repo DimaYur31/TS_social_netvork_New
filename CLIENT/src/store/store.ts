@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { messageApi } from './query/messagesApi'
+import { messageApi } from '../../мусор/query/messagesApi'
 import { rootReducer } from './rootReduser'
 
 export const store = configureStore({

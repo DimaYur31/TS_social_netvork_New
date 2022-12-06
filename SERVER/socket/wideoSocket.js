@@ -15,7 +15,6 @@ module.exports = {
 		}
 
 		function shareRoomsInfo() {
-			console.log('rooms')
 			io.emit(ACTIONS.SHARE_ROOMS, {
 				rooms: getClientsRooms()
 			})

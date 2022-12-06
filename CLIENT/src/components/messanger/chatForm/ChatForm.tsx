@@ -3,7 +3,8 @@ import s from './ChatForm.module.css'
 
 // import Input from '../../elements/input/Input'
 import Button from '../../styleedComponents/Button'
-import { messageApi } from '../../../store/query/messagesApi'
+// import { messageApi } from '../../../store/query/messagesApi'
+import { socket } from '../../../socket'
 
 type ChatFormProps = {
 	userId: string
@@ -11,18 +12,18 @@ type ChatFormProps = {
 }
 
 const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
-	const [createMessage] = messageApi.useAddMessageMutation()
+	// const [createMessage] = messageApi.useAddMessageMutation()
 	const [input, setInput] = useState('')
 
 	const sendMessage = async () => {
 		if (input) {
-			const newMessage = {
+			// await createMessage(newMessage)
+
+			socket.emit('sendMessage', {
 				conversationId: chatId,
 				sender: userId,
 				text: input
-			}
-
-			await createMessage(newMessage)
+			})
 			setInput('')
 		}
 	}

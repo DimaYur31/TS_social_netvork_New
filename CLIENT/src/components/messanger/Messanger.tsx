@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import s from './Messanger.module.css'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
-import { messageApi } from '../../store/query/messagesApi'
-import { io, Socket } from 'socket.io-client'
+import { messageApi } from '../../../мусор/query/messagesApi'
 
 import ChatBox from './chatBox/ChatBox'
 import MessageRoom from './messageRoom/MessageRoom'
@@ -13,13 +12,10 @@ const Messanger = () => {
 	const { _id } = useAppSelector(store => store.profilePage.defaultUser)
 	const { data: messageRooms } = messageApi.useGetConversationsQuery(_id)
 
-	// ========================================================
-	// const [socket, setSocket] = useState<Socket | null>(null)
 
 	// useEffect(() => {
-	// 	setSocket(io('ws://localhost:8900'))
+
 	// }, [])
-	// ========================================================
 
 	return (
 		<div className={s.messanger}>

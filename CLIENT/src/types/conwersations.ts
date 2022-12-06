@@ -14,6 +14,12 @@ export type MessageType = {
 	updatedAt: Date;
 }
 
+export type chatsStateType = {
+	chats: ConversationType[],
+	currentChat: string,
+	messages: MessageType[]
+}
+
 export type AddMeassageType = Pick<MessageType, 'conversationId' | 'sender' | 'text'>
 
 export type AddConversations = {

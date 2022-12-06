@@ -24,6 +24,7 @@
 		"src",
 		"мусор/StyledPhoto.tsx",
 		"мусор/usePosition.ts",
-		"мусор/useDeviceWidth.ts"
+		"мусор/useDeviceWidth.ts",
+		"мусор/query"
 	]
 }
