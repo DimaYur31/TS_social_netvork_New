@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import s from './Messenger.module.css'
+import s from './Messenger.module.scss'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { getChatsThunk } from '../../store/slices/apiActions/chatActions'
 
