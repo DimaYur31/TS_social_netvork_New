@@ -1,0 +1,43 @@
+.message {
+	position: relative;
+	display: flex;
+	gap: 10px;
+	margin: 15px;
+	
+	>div{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+		justify-content: space-between;
+	}
+	
+	img{
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		object-fit: cover;	
+	}
+	
+	p{
+		padding: 15px;
+		background-color: #343ad4;
+		border-radius: 10px;
+		max-width: 500px;
+		color: #fff;
+	}
+	
+	span{
+		font-size: 12px;
+		color: #757575;
+	}
+}
+	
+.owner{
+	justify-content: end;
+	
+	p{
+		background-color: #0690FD;
+		color:#fff;
+	}
+}

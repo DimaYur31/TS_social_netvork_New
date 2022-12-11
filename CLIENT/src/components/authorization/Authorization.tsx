@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from 'react'
-import s from './Authorization.module.css'
+import s from './Authorization.module.scss'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { errorEmail, errorPassword } from '../../hooks/useFormValidation'
 import { useFormValidation } from '../../hooks/useFormValidation'

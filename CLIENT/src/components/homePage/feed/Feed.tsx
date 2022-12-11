@@ -1,4 +1,4 @@
-import s from './Feed.module.css'
+import s from './Feed.module.scss'
 import Share from '../share/Share'
 
 const Feed = () => {

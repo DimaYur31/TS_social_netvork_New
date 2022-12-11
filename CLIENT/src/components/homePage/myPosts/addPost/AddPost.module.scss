@@ -1,0 +1,22 @@
+.wrapper{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	height: 250px;
+	gap:20px;
+	
+	textarea{
+		resize: none;
+		outline: none;
+		height: 70%;
+	}
+	
+	input{
+		opacity: 0;
+	}
+	
+	label span{
+		cursor: pointer;
+	}
+	}

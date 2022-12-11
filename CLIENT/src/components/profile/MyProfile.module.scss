@@ -1,0 +1,52 @@
+.profile{
+	position: relative;
+	display: grid;
+	grid-template-columns: 1.5fr 0.5fr;
+	grid-gap: 10px;
+	margin: 10px;
+	
+	ul {
+		list-style: none;
+	}
+	
+	li {
+		padding: 5px;
+		color: #000;
+		font-weight: 400;
+	}
+	
+	span {
+		display: inline-block;
+		color: #000;
+		font-weight: 600;
+	}
+	
+	.open{
+		position: relative;
+		width: 18px;
+		height: 18px;
+		border: none;
+		background: #fff;
+		cursor: pointer;
+		margin-left: 15px;
+	} 
+	
+	.settings{
+		position: relative;
+		width: 18px;
+		height: 18px;
+		fill: #000;
+	
+		:hover{
+			animation: Rotate 0.35s 1 linear;
+		}
+		
+		@keyframes Rotate{
+			0%{
+				transform: rotate(0rad) scale(1);
+			}100%{
+				transform: rotate(1.5rad) scale(1.1);
+			}
+		}
+	}		
+}

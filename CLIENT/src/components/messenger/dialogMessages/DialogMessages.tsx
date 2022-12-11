@@ -1,5 +1,5 @@
 import { FC, useRef, useEffect } from 'react'
-import s from './DialogMessages.module.css'
+import s from './DialogMessages.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 // import { socket } from '../../../socket'

@@ -1,8 +1,9 @@
-import Post from './post/Post'
-import s from './MyPosts.module.css'
 import { useEffect } from 'react'
+import s from './MyPosts.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
+
+import Post from './post/Post'
 
 const MyPosts = () => {
 	const { _id } = useAppSelector(store => store.profilePage.renderUser)

@@ -1,0 +1,48 @@
+.navbar{
+	position: relative;
+	height: calc(100vh - 60px);
+	width: 100%;
+}
+
+.nav {
+	position: relative;
+	
+	ul {
+		list-style: none;
+		padding-left: 20px;
+		transition: 0.5s;
+	margin: 10px 0;
+	}
+
+	li {
+		position: relative;
+		display: flex;
+		align-items: center;
+		line-height: 30px;
+		transition: 0.5s;
+	}
+
+	a {
+		position: relative;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	a.active {
+		color:  #0690FD;
+		background: #fff;
+	}
+
+	a.active .icons{
+		fill:#0690FD
+	}
+
+	.icons {
+		fill: #040404;
+		margin-right: 8px;
+	}
+
+}

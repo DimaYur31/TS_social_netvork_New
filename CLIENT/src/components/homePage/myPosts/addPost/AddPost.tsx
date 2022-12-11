@@ -1,8 +1,9 @@
 import { ChangeEvent, FC, useState } from 'react'
+import s from './AddPost.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { createPostThunk } from '../../../../store/slices/apiActions/postActions'
+
 import Button from '../../../styleedComponents/Button'
-import s from './AddPost.module.css'
 
 type typeProps = {
 	onClose: () => void

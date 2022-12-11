@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useRenderUser } from '../../hooks/hooks'
+import { useAppSelector } from '../../hooks/reactReduxHooks'
+import s from './HomePage.module.scss'
+
 import Feed from './feed/Feed'
 import RightBar from './rightBar/RightBar'
 import TimeLine from './timeline/TimeLine'
-import s from './HomePage.module.css'
-import { useLocation } from 'react-router-dom'
-import { useAppSelector } from '../../hooks/reactReduxHooks'
 
 
 const HomePage = () => {

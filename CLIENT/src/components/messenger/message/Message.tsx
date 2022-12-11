@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { format } from 'timeago.js'
-import s from './Message.module.css'
+import s from './Message.module.scss'
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { MessageType } from '../../../types/conwersations'
 import { UserType } from '../../../types/profile'

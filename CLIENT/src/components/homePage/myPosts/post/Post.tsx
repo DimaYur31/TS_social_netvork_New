@@ -1,12 +1,13 @@
 import { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'timeago.js'
-import s from './Post.module.css'
+import s from './Post.module.scss'
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { getPhoto } from './../../../../hooks/hooks'
-import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import { PostType } from '../../../../types/post'
 import { getUserData } from '../../../../api/userApi'
+
+import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
 

@@ -1,6 +1,7 @@
+import s from './Navbar.module.scss'
+
 import Nav from './Nav'
 import FriendList from '../friends/FriendList'
-import s from './Navbar.module.css'
 
 const Navbar = () => {
 	return (

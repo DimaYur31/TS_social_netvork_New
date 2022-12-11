@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
+.header {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(210px, 2fr) minmax(150px, 2fr) minmax(210px, 3fr);
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	justify-content: space-between;
+	background:  #0690fd;
+	align-items: center;
+	color: #fff;
+	height: 60px;
+	z-index: 100;
+	
+	h1 {
+		font-family: 'Bad Script', cursive;
+		padding-left: 30px;
+	}
+	
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+	
+	.autorisation {
+		position: relative;
+		display: grid;
+		/* grid-template-columns: repeat(2, minmax(50px, auto)); */
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		/* grid-gap: 20px; */
+		justify-items: end;
+		
+		button{
+			position: relative;
+			padding: 5px 6px 7px 6px;
+			cursor: pointer;
+			height: 35px;
+			outline: none;
+			border:1.5px solid #fff;
+			background-color: #0690fd;
+			border-radius: 5px;
+			justify-self: center;
+		}
+
+		a{
+			padding:5px 7px 3px 7px;
+			border:1.5px solid #fff;
+			border-radius: 5px;
+			min-width: 35px;
+			text-align: center;
+			align-self: center;
+			justify-self: center;
+		}
+	
+		svg{
+			width: 20px;
+			height: 20px;
+			fill:#fff;
+		}
+}
+	.btns{
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
+		align-items: center;
+	}
+
+	.user{
+		display: flex;
+		align-items: center;
+		
+		img {
+			margin-right: 20px;
+			margin-left: 10px;
+		}
+	}
+}

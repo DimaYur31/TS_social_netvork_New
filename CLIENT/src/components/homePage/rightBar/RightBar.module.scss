@@ -1,0 +1,35 @@
+.rightBar{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	padding: 0 10px;
+	justify-content: space-between;
+	height: calc(100vh - 60px);
+	
+	::-webkit-scrollbar{
+		display: none;
+	}
+	
+	p{
+		position: relative;
+		height: 150px;
+		background: url('https://img2.akspic.ru/previews/9/0/9/8/6/168909/168909-ballonchik-graffiti-ulichnoe_iskusstvo-svet-purpur-500x.jpg') center/cover;
+		color: #fff;
+		font-size: 20px;
+		text-align: center;
+		padding-top: 20px;
+		margin-bottom: 20px;
+	}
+	
+	ul{
+		position: relative;
+		max-height: 50vh;
+		overflow-y: scroll;
+		scrollbar-width: none;
+	}
+
+	ul::-webkit-scrollbar{
+		display: none;
+	}
+}

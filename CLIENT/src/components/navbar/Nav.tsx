@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import s from './Navbar.module.css'
+import s from './Navbar.module.scss'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { SVG } from './../../img/icons/exportIcons'
 

@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import s from './Header.module.css'
+import s from './Header.module.scss'
 import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
 import { useAvatar } from '../../hooks/hooks'
 import { userExit } from '../../store/slices/profileSlice'

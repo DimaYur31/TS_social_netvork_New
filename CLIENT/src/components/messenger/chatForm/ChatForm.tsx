@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useState } from 'react'
-import s from './ChatForm.module.css'
+import s from './ChatForm.module.scss'
 
 // import Input from '../../elements/input/Input'
 import Button from '../../styleedComponents/Button'

@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import s from './TimeLine.module.css'
+import s from './TimeLine.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
+
 import Post from '../myPosts/post/Post'
 
 const TimeLine = () => {
