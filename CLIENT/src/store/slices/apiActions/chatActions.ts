@@ -1,4 +1,4 @@
-import { fetchChats, fetchMessages } from '../../../api/messangerAPI'
+import { fetchChats, fetchMessages } from '../../../api/messengerAPI'
 import { AppDispatch } from '../../store'
 import { getChatMessages, getChats } from '../chatSlice'
 

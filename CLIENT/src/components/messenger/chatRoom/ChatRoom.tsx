@@ -10,7 +10,7 @@ type RoomProps = {
 	room: ConversationType
 }
 
-const MessageRoom: FC<RoomProps> = ({ room, userId }) => {
+const ChatRoom: FC<RoomProps> = ({ room, userId }) => {
 	const [member, setMember] = useState<UserType | null>(null)
 	const user = room.members.find(id => id !== userId)
 
@@ -30,4 +30,4 @@ const MessageRoom: FC<RoomProps> = ({ room, userId }) => {
 	)
 }
 
-export default MessageRoom
+export default ChatRoom

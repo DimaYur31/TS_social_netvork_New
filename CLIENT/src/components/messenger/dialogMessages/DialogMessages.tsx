@@ -1,13 +1,13 @@
 import { FC, useRef, useEffect } from 'react'
-import s from './ChatBox.module.scss'
+import s from './DialogMessages.module.css'
+import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
+import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions';
 // import { socket } from '../../../socket'
 // import { MessageType } from '../../../types/conwersations'
-import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
-import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 
 import Message from '../message/Message'
 
-const ChatBox: FC<{ conversationId: string }> = ({ conversationId }) => {
+const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 	const dispatch = useAppDispatch()
 	const { messages } = useAppSelector(store => store.messenger)
 	const scrollRef = useRef<HTMLDivElement>(null)
@@ -37,4 +37,4 @@ const ChatBox: FC<{ conversationId: string }> = ({ conversationId }) => {
 	)
 }
 
-export default ChatBox
+export default DialogMessages

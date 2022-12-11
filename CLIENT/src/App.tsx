@@ -18,7 +18,7 @@ const Profile = lazy(() => import('./components/profile/Profile'))
 const Photos = lazy(() => import('./components/photos/Photos'))
 const Rooms = lazy(() => import('./components/rooms/Rooms'))
 const Room = lazy(() => import('./components/rooms/Room'))
-const Messanger = lazy(() => import('./components/messanger/Messanger'))
+const Messenger = lazy(() => import('./components/messenger/Messenger'))
 
 
 
@@ -66,7 +66,7 @@ const App = () => {
 						<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 						<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
 						<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
-						<Route path='/messanger' element={<Suspense fallback={<Loading />}><Messanger /></Suspense>} />
+						<Route path='/messanger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>} />
 						{/* <Route path='*' element={<h2>Page not found</h2>} /> */}
 					</Routes>
 					: <Routes>
