@@ -1,7 +1,7 @@
 import { FC, useRef, useEffect } from 'react'
 import s from './DialogMessages.module.css'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
-import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions';
+import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 // import { socket } from '../../../socket'
 // import { MessageType } from '../../../types/conwersations'
 
