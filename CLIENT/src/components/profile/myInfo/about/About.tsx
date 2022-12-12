@@ -1,26 +1,30 @@
 import { useState } from 'react'
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
-import Modal from '../../../elements/modal/Modal'
-import s from '../../MyProfile.module.scss'
-import ProfileFormSetings from './profileForm/ProfileFormSetings'
-import { SVG } from './../../../../img/icons/exportIcons'
+import s from './About.module.scss'
 import { useIsOwner } from '../../../../hooks/hooks'
+import { SVG } from './../../../../img/icons/exportIcons'
+
+import ProfileFormSetings from './profileForm/ProfileFormSetings'
+import Modal from '../../../elements/modal/Modal'
 
 const About = () => {
 	const { birthday, city, country, job, languages } = useAppSelector(state => state.profilePage.renderUser)
 	const [isOpen, setIsOpen] = useState(false)
 	const isOwner = useIsOwner()
+
 	return (
 		<div className={s.info}>
 			<h3>About Me
-				{isOwner ? <button className={s.open} onClick={() => setIsOpen(true)}>
-					<SVG.Settings className={s.settings} />
-				</button>
-					: null
-				}
+				{isOwner &&
+					<button
+						className={s.open}
+						onClick={() => setIsOpen(true)}
+					>
+						<SVG.Settings className={s.settings} />
+					</button>}
 			</h3>
 
-			<ul onDoubleClick={() => alert('clik')}>
+			<ul>
 				<li><span>Birthday:</span><time dateTime={birthday}></time> {birthday}</li>
 				<li><span>City:</span> {city}</li>
 				<li><span>Country:</span> {country}</li>

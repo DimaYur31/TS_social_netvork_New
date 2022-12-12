@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import s from './userItem.module.css'
+import s from './userItem.module.scss'
 import { UserType } from '../../../types/profile'
 import { getPhoto } from '../../../hooks/hooks'
 

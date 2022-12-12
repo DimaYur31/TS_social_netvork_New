@@ -1,4 +1,5 @@
-import s from './Loading.module.css'//@ts-ignore
+import s from './Loading.module.scss'
+//@ts-ignore
 import loading from './Loading.svg'
 
 const Loading = () => {

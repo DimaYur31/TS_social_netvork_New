@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import s from './OverLayPopap.module.css'
+import s from './OverLayPopap.module.scss'
 
 import Portal from './Portal'
 
@@ -11,9 +11,7 @@ type propsType = {
 
 const OverLayPopap: FC<propsType> = ({ children, isOpened, onClose }) => {
 
-	if (!isOpened) {
-		return null
-	}
+	if (!isOpened) return null
 
 	return (
 		<Portal>

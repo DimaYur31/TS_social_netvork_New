@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import s from './LikeDislikeComponent.module.css'
+import s from './LikeDislikeComponent.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { dislikeThunk, likeThunk } from '../../../store/slices/apiActions/postActions'
 import { SVG } from '../../../img/icons/exportIcons'

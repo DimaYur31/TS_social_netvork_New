@@ -1,10 +1,6 @@
-.profile{
-	position: relative;
-	display: grid;
-	grid-template-columns: 1.5fr 0.5fr;
-	grid-gap: 10px;
-	margin: 10px;
-	
+
+.info{
+
 	ul {
 		list-style: none;
 	}
@@ -29,24 +25,25 @@
 		background: #fff;
 		cursor: pointer;
 		margin-left: 15px;
-	} 
+	} 	
 	
 	.settings{
 		position: relative;
 		width: 18px;
 		height: 18px;
 		fill: #000;
-	
-		:hover{
+		
+		&:hover{
 			animation: Rotate 0.35s 1 linear;
 		}
 		
-		@keyframes Rotate{
-			0%{
-				transform: rotate(0rad) scale(1);
-			}100%{
-				transform: rotate(1.5rad) scale(1.1);
-			}
-		}
-	}		
+	}
+}
+
+@keyframes Rotate{
+	0%{
+		transform: rotate(0rad);
+	}100%{
+		transform: rotate(1.05rad);
+	}
 }

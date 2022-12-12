@@ -6,17 +6,17 @@
 	padding: 30px;
 	background: #fff;
 	border-radius: 10px;
-}
-
-.form fieldset {
-	padding: 5px 10px;
-	border: 1px solid #000;
-	font-size:13px;
+	
+	fieldset {
+		padding: 5px 10px;
+		border: 1px solid #000;
+		font-size:13px;
 	line-height: 1;
-}
+	}
 
-.form input{
-	border: none;
-	outline: none;
-	line-height: 1;
+	input{
+		border: none;
+		outline: none;
+		line-height: 1;
+	}
 }

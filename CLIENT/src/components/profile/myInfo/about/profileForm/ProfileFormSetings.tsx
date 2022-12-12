@@ -1,8 +1,7 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks'
 import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions'
-//@ts-ignore
-import s from './ProfileFormSetings.module.css'
+import s from './ProfileFormSetings.module.scss'
 
 type FormFields = {
 	name: HTMLInputElement
@@ -28,8 +27,8 @@ let getFormValues = (obj: any) => {
 }
 
 const ProfileFormSetings = () => {
-	const { defaultUser } = useAppSelector(state => state.profilePage)
 	const dispatch = useAppDispatch()
+	const { defaultUser } = useAppSelector(state => state.profilePage)
 
 	const handelSubmit: React.FormEventHandler<HTMLFormElement & FormFields> = (event) => {
 		event.preventDefault()

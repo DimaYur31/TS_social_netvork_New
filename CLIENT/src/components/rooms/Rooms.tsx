@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { v4 } from 'uuid'
-import { ACTIONS } from '../../socket/actions'
+import { useNavigate } from 'react-router-dom'
 import { socket } from '../../socket/index'
+import { ACTIONS } from '../../socket/actions'
 
 const Rooms = () => {
 	const navigate = useNavigate()

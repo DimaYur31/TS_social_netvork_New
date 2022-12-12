@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import s from './ButtonsPopap.module.css'
+import s from './ButtonsPopap.module.scss'
 import { PostType } from '../../../../types/post'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { deletePostThunk } from '../../../../store/slices/apiActions/postActions'
@@ -24,18 +24,16 @@ const ButtonsPopap: FC<TypeProps> = ({ post }) => {
 		}
 	}
 
-	return <>
+	return (
 		<div className={s.wrapper}>
-
 			<span onClick={handlePopap}><SVG.More /></span>
-			{isOpend
-				? <div className={s.buttons}>
+			{isOpend &&
+				<div className={s.buttons}>
 					<span onClick={() => deletePost()}><SVG.Dustbin /></span>
 				</div>
-				: null
 			}
 		</div>
-	</>
+	)
 }
 
 export default ButtonsPopap

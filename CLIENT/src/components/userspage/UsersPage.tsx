@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import s from './usersPage.module.css'
+import s from './usersPage.module.scss'
 import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks'
 import { getAllUsers } from '../../store/slices/apiActions/usersActions'
 

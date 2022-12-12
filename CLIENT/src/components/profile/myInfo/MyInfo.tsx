@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
-import s from './MyInfo.module.css'
+import s from './MyInfo.module.scss'
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/hooks'
 import { useNavigate } from 'react-router-dom'
+
 import AddPostPopap from '../../elements/popap/AddPostPopap'
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 

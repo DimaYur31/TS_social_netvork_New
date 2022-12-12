@@ -1,0 +1,23 @@
+.wrapper{
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	
+	span {
+		cursor: pointer;
+		flex: 0 0 20px;
+		text-align: center;
+	}
+
+	svg{
+		transform: rotate(90deg);
+		width: 20px;
+		height: 20px;
+	}
+	
+	.buttons svg{
+		transform: rotate(0deg);
+		width: 20px;
+		height: 20px;
+	}
+}
