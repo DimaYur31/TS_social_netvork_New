@@ -25,10 +25,10 @@ module.exports = {
 				io.emit('getUsers', users)
 			})
 
-			socket.on('sendMessage', ({ senderId, conversationId, text }) => {
+			socket.on('sendMessage', ({ sender, conversationId, text }) => {
 
 				const createMessage = async () => {
-					const newMessage = new Message({ senderId, conversationId, text })
+					const newMessage = new Message({ sender, conversationId, text })
 					await newMessage.save()
 
 					const conversation = await Conversation.findById(conversationId)

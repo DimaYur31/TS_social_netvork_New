@@ -20,15 +20,16 @@ const chatSlice = createSlice({
 			state.currentChat = action.payload
 		},//-
 
-		getChatMessages(state: chatsStateType, action: PayloadAction<MessageType[]>) {
-			state.messages = action.payload
-		},//+
-
 		addChat(state: chatsStateType, action: PayloadAction<ConversationType>) {
 			state.chats.push(action.payload)
 		},
 
-		sendMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
+		getChatMessages(state: chatsStateType, action: PayloadAction<MessageType[]>) {
+			state.messages = action.payload
+		},//+
+
+
+		getMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
 			state.messages.push(action.payload)
 		},//-
 
@@ -45,7 +46,7 @@ const chatSlice = createSlice({
 
 export const {
 	getChats, setCurrentChat, getChatMessages,
-	removeChat, removeMessage, sendMessage
+	removeChat, removeMessage, getMessage
 } = chatSlice.actions
 
 export default chatSlice.reducer

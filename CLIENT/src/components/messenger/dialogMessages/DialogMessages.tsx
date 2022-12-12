@@ -2,10 +2,11 @@ import { FC, useRef, useEffect } from 'react'
 import s from './DialogMessages.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
-// import { socket } from '../../../socket'
+import { socket } from '../../../socket'
 // import { MessageType } from '../../../types/conwersations'
 
 import Message from '../message/Message'
+import { getMessage } from '../../../store/slices/chatSlice'
 
 const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 	const dispatch = useAppDispatch()
@@ -21,9 +22,16 @@ const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 
 		scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
 
-		// socket.on('getMessage', message => {
-		// addNewMessage(message)
-		// })
+		socket.on('getMessage', message => {
+			dispatch(getMessage(message))
+		})
+	}, [messages])
+
+	useEffect(() => {
+		socket.on('getMessage', message => {
+			// dispatch(getMessage(message)) 
+			console.log(message)
+		})
 	}, [])
 
 	return (

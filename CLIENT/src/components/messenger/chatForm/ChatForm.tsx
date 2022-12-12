@@ -1,9 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react'
 import s from './ChatForm.module.scss'
 
-// import Input from '../../elements/input/Input'
 import Button from '../../styleedComponents/Button'
-// import { messageApi } from '../../../store/query/messagesApi'
 import { socket } from '../../../socket'
 
 type ChatFormProps = {
@@ -12,31 +10,28 @@ type ChatFormProps = {
 }
 
 const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
-	// const [createMessage] = messageApi.useAddMessageMutation()
-	const [input, setInput] = useState('')
+	const [text, setText] = useState('')
 
 	const sendMessage = async () => {
-		if (input) {
-			// await createMessage(newMessage)
+		if (!text.trim()) return
 
-			socket.emit('sendMessage', {
-				conversationId: chatId,
-				sender: userId,
-				text: input
-			})
-			setInput('')
-		}
+		socket.emit('sendMessage', {
+			conversationId: chatId,
+			sender: userId,
+			text: text
+		})
+
+		setText('')
 	}
 
 	return (
 		<div className={s.panel} >
 			<input
-				value={input}
-				onChange={(e: ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
+				value={text}
+				onChange={(e: ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
 			/>
 			<Button onClick={() => sendMessage()}>Send</Button>
 		</div>
-
 	)
 }
 

@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import s from './DialogItem.module.scss'
+import { useAppSelector } from '../../../hooks/reactReduxHooks'
 
 import DialogMessages from '../dialogMessages/DialogMessages'
 import ChatForm from '../chatForm/ChatForm'
