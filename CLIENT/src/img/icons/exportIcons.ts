@@ -18,12 +18,11 @@ import { ReactComponent as Like } from './like.svg'//@ts-ignore
 import { ReactComponent as Dislike } from './dislike.svg'//@ts-ignore
 import { ReactComponent as Exit } from './exit.svg'//@ts-ignore
 import { ReactComponent as Home } from './home.svg'//@ts-ignore
-
-
+import { ReactComponent as Edit } from './edit.svg'//@ts-ignore
 
 export const SVG = {
 	Icon, Chat, Friends, Users, Community,
 	Gallery, VideoCall, Music, Folder, Login,
 	News, Settings, Cancel, Dustbin, More,
-	Like, Dislike, Exit, Home
+	Like, Dislike, Exit, Home, Edit
 }

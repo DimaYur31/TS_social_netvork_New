@@ -39,10 +39,15 @@ module.exports = {
 				}
 
 				createMessage()
-				// , {
-				//   senderId,
-				//   text,
-				// })
+
+			})
+
+			socket.on('deleteMessage', async messageId => {
+				const message = await Message.findById(messageId)
+
+				await message.deleteOne()
+
+				socket.emit('removedMessage', messageId)
 			})
 
 			socket.on('disconnect', () => {

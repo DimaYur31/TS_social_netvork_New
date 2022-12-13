@@ -6,6 +6,8 @@ import { MessageType } from '../../../types/conwersations'
 import { UserType } from '../../../types/profile'
 import { getUserData } from '../../../api/userApi'
 import { getPhoto } from '../../../hooks/hooks'
+import { SVG } from '../../../img/icons/exportIcons'
+import { socket } from '../../../socket'
 
 type MessagePropsType = {
 	message: MessageType
@@ -22,6 +24,11 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 			.then(data => setParticipant(data))
 	}
 
+	const deleteMessage = (messageId: string) => {
+		socket.emit('deleteMessage', messageId)
+	}
+
+
 	useEffect(() => {
 		!isOwner && getParticipant(message.sender)
 	}, [message._id])
@@ -33,6 +40,14 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 				<span>{format(message.createdAt)}</span>
 			</div>
 			<p>{message.text}</p>
+			<span
+				className={`${classOvner}`}
+				onClick={() => deleteMessage(message._id)}
+			><SVG.Dustbin /></span>
+			<span
+				className={`${classOvner}`}
+			// onClick={() => editMessage(message._id)}
+			><SVG.Edit /></span>
 		</div>
 	)
 }

@@ -3,36 +3,28 @@ import s from './DialogMessages.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 import { socket } from '../../../socket'
-// import { MessageType } from '../../../types/conwersations'
 
 import Message from '../message/Message'
-import { getMessage } from '../../../store/slices/chatSlice'
+import { getMessage, removeMessage } from '../../../store/slices/chatSlice'
 
 const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 	const dispatch = useAppDispatch()
-	const { messages } = useAppSelector(store => store.messenger)
 	const scrollRef = useRef<HTMLDivElement>(null)
-
-	// const addNewMessage = async (message: MessageType) => {
-	// await getMessage(message)
-	// }
+	const { messages } = useAppSelector(store => store.messenger)
 
 	useEffect(() => {
 		dispatch(getMessagesThunk(conversationId))
 
-		scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+		// scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
 
 		socket.on('getMessage', message => {
 			dispatch(getMessage(message))
 		})
-	}, [messages])
 
-	useEffect(() => {
-		socket.on('getMessage', message => {
-			// dispatch(getMessage(message)) 
-			console.log(message)
+		socket.on('removedMessage', (messageId: string) => {
+			dispatch(removeMessage(messageId))
 		})
-	}, [])
+	}, [messages])
 
 	return (
 		<div className={s.chat}>{
