@@ -39,14 +39,19 @@ const chatSlice = createSlice({
 
 		removeMessage(state: chatsStateType, action: PayloadAction<string>) {
 			state.messages = state.messages.filter(message => message._id !== action.payload)
-		}//-
-		// editMessage
+		},//-
+		editMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
+			console.log('edit')
+			let message = state.messages.find(message => message._id === action.payload._id)
+			const index = message && state.messages.indexOf(message)
+			if (index) state.messages[index] = action.payload
+		}
 	}
 })
 
 export const {
 	getChats, setCurrentChat, getChatMessages,
-	removeChat, removeMessage, getMessage
+	removeChat, removeMessage, getMessage, editMessage
 } = chatSlice.actions
 
 export default chatSlice.reducer

@@ -5,7 +5,7 @@ import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 import { socket } from '../../../socket'
 
 import Message from '../message/Message'
-import { getMessage, removeMessage } from '../../../store/slices/chatSlice'
+import { editMessage, getMessage, removeMessage } from '../../../store/slices/chatSlice'
 
 const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 	const dispatch = useAppDispatch()
@@ -23,6 +23,10 @@ const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 
 		socket.on('removedMessage', (messageId: string) => {
 			dispatch(removeMessage(messageId))
+		})
+
+		socket.on('updateMessage', (message: any) => {
+			dispatch(editMessage(message))
 		})
 	}, [messages])
 

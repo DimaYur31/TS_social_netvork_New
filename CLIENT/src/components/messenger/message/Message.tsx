@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import { format } from 'timeago.js'
 import s from './Message.module.scss'
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
@@ -8,6 +8,7 @@ import { getUserData } from '../../../api/userApi'
 import { getPhoto } from '../../../hooks/hooks'
 import { SVG } from '../../../img/icons/exportIcons'
 import { socket } from '../../../socket'
+import { EditContext } from '../messengerContext/EditMessageContext'
 
 type MessagePropsType = {
 	message: MessageType
@@ -18,6 +19,15 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 	const isOwner = message.sender === defaultUser._id
 	const classOvner = isOwner ? `${s.owner}` : null
 	const [participant, setParticipant] = useState<UserType | null>(null)
+	const { setEditState } = useContext(EditContext)
+
+	const editMessage = () => {
+		setEditState({
+			isEdit: true,
+			text: message.text,
+			messageId: message._id
+		})
+	}
 
 	const getParticipant = async (id: string) => {
 		!isOwner && await getUserData(id)
@@ -46,7 +56,7 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 			><SVG.Dustbin /></span>
 			<span
 				className={`${classOvner}`}
-			// onClick={() => editMessage(message._id)}
+				onClick={() => editMessage()}
 			><SVG.Edit /></span>
 		</div>
 	)

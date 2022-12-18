@@ -18,6 +18,15 @@ const getUser = (userId) => {
 
 module.exports = {
 	start: function (io) {
+
+		const sendToConversationMembers = async (conversationId, action, payload) => {
+			const conversation = await Conversation.findById(conversationId)
+
+			conversation.members.forEach(member => {
+				io.to(member).emit(action, payload)
+			})
+		}
+
 		io.on('connection', socket => {
 
 			socket.on('addUser', userId => {
@@ -25,29 +34,26 @@ module.exports = {
 				io.emit('getUsers', users)
 			})
 
-			socket.on('sendMessage', ({ sender, conversationId, text }) => {
+			socket.on('sendMessage', async ({ sender, conversationId, text }) => {
+				const newMessage = new Message({ sender, conversationId, text })
 
-				const createMessage = async () => {
-					const newMessage = new Message({ sender, conversationId, text })
-					await newMessage.save()
+				await newMessage.save()
+				await sendToConversationMembers(conversationId, 'getMessage', newMessage)
+			})
 
-					const conversation = await Conversation.findById(conversationId)
+			socket.on('editMessage', async ({ messageId, text }) => {
+				const message = await Message.findById(messageId)
 
-					conversation.members.forEach(member => {
-						io.to(member).emit('getMessage', newMessage)//ddd
-					})
-				}
-
-				createMessage()
-
+				await message.updateOne({ text }, { new: true })
+				await message.save()
+				await sendToConversationMembers(message.conversationId, 'updateMessage', message)
 			})
 
 			socket.on('deleteMessage', async messageId => {
 				const message = await Message.findById(messageId)
 
 				await message.deleteOne()
-
-				socket.emit('removedMessage', messageId)
+				await sendToConversationMembers(message.conversationId, 'removedMessage', messageId)
 			})
 
 			socket.on('disconnect', () => {
