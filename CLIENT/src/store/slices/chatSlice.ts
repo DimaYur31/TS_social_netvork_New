@@ -28,7 +28,6 @@ const chatSlice = createSlice({
 			state.messages = action.payload
 		},//+
 
-
 		getMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
 			state.messages.push(action.payload)
 		},//-
@@ -40,6 +39,7 @@ const chatSlice = createSlice({
 		removeMessage(state: chatsStateType, action: PayloadAction<string>) {
 			state.messages = state.messages.filter(message => message._id !== action.payload)
 		},//-
+
 		editMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
 			console.log('edit')
 			let message = state.messages.find(message => message._id === action.payload._id)
