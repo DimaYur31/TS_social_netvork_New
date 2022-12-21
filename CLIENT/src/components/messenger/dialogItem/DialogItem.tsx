@@ -19,7 +19,6 @@ const DialogItem = () => {
 							<ChatForm userId={_id} chatId={currentChat} />
 						</>
 					</EditMessageContext>
-
 				</div>
 				: <p>Open a conversation to start a chat.</p>
 		}

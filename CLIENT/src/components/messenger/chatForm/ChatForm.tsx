@@ -32,7 +32,6 @@ const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
 
 		} else {
 			setText(e.target.value)
-
 		}
 	}
 

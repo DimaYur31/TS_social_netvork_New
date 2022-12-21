@@ -28,6 +28,7 @@ const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 		socket.on('updateMessage', (message: any) => {
 			dispatch(editMessage(message))
 		})
+
 	}, [messages])
 
 	return (
