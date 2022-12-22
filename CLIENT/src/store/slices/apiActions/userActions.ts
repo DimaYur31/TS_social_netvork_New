@@ -62,7 +62,6 @@ export const changeUserProfile = (userId: string, changes: UserChanges) => {
 }
 
 export const followUnfollowThunk = (userId: string, id: string, isFollow: boolean) => {
-
 	return async (dispatch: AppDispatch) => {
 		const data = await followUser(userId, id, isFollow)
 		if (!isFollow) {
