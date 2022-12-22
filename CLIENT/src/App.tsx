@@ -37,7 +37,7 @@ const App = () => {
 		}
 
 		// return socket.off('getUsers')
-	}, [])
+	}, [defaultUser._id])
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')

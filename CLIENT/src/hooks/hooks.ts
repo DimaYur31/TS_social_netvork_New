@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from './reactReduxHooks'
 import { useParams } from 'react-router-dom'
-import { useEffect, useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import { changeDefaultAndCurrentUsers } from '../store/slices/apiActions/usersActions'
 
 

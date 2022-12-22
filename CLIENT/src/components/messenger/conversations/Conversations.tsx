@@ -9,15 +9,17 @@ const Conversations = () => {
 	const { chats } = useAppSelector(store => store.messenger)
 
 	return <>
-		{chats?.map(chat => {
-			return <div onClick={() => dispatch(setCurrentChat(chat._id))}>
-				<ChatRoom
-					key={chat._id}
-					userId={_id}
-					room={chat}
-				/>
-			</div>
-		})
+		{chats.length
+			? chats.map(chat => {
+				return <div onClick={() => dispatch(setCurrentChat(chat._id))}>
+					<ChatRoom
+						key={chat._id}
+						userId={_id}
+						room={chat}
+					/>
+				</div>
+			})
+			: <p>Conversations list is empty</p>
 		}
 	</>
 }

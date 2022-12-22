@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { followUnfollowThunk } from '../../../../store/slices/apiActions/userActions'
 import s from './FollowButton.module.scss'
+import { SVG } from '../../../../img/icons/exportIcons'
 
 type TypeProps = {
 	currentUserId: string
@@ -22,7 +23,8 @@ const FollowButton: FC<TypeProps> = ({ currentUserId }) => {
 		className={`${s.buttonFollowed} ${activeClass}`}
 		onClick={handleFollowed}
 	>
-		{isFollowed ? 'unfollow -' : 'follow +'}
+		<SVG.Subscribe />
+		{/* {isFollowed ? 'unfollow -' : 'follow +'} */}
 	</button>
 }
 

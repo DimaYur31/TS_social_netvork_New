@@ -1,12 +1,22 @@
 .buttonFollowed{
-	background:#0690FD;
 	color: #fff;
 	border :none;
 	outline : none;
 	cursor : pointer;
-	padding: 5px 10px;
+	padding: 5px;
+	background-color: transparent;
+
+	
+	svg{
+		width: 25px;
+		height: 25px;
+	}
 }
 
 .isActive{
-	background:#df04d1;
+	// background:#df04d1;
+
+	svg{
+		fill:#06fd17;
+	}
 }

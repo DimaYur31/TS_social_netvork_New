@@ -18,13 +18,11 @@ const UsersPage = () => {
 	return (
 		<div className={s.usersPage}>
 			<Feed />
-			<div>
-				{users
-					? users.map(user => {
-						return <UsersItem key={user._id} currentUser={user} />
-					})
-					: null
-				}
+
+			<div className={s.usersList}>
+				{users?.map(user => {
+					return <UsersItem key={user._id} thisUser={user} />
+				})}
 			</div>
 		</div>
 	)

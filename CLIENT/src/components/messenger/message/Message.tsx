@@ -7,7 +7,7 @@ import { UserType } from '../../../types/profile'
 import { getUserData } from '../../../api/userApi'
 import { getPhoto } from '../../../hooks/hooks'
 import useContextMenu from '../../../hooks/useContextMenu'
-import ContextMenu from '../../contextMenu/ContextMenu'
+import ContextMenu from '../../elements/contextMenu/ContextMenu'
 
 type MessagePropsType = {
 	message: MessageType
@@ -36,16 +36,16 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 				<img src={!participant ? getPhoto(defaultUser.avatar) : getPhoto(participant.avatar)} />
 				<span>{format(message.createdAt)}</span>
 			</div>
-			<p
-				onContextMenu={(e) => {
-					e.preventDefault()
-					setShow(true)
-				}}
+			<p onContextMenu={(e) => {
+				e.preventDefault()
+				setShow(true)
+			}}
 			>{message.text}
-				{isOwner && show && <ContextMenu
-					id={message._id}
-					text={message.text}
-				/>}
+				{isOwner && show &&
+					<ContextMenu
+						id={message._id}
+						text={message.text}
+					/>}
 			</p>
 		</div>
 	)

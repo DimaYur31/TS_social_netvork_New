@@ -3,7 +3,10 @@ import { deletePhoto, followUser, updateUser, uploadPhoto } from "../../../api/u
 import { UserChanges } from "../../../types/profile"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
-import { addPhoto, follow, removePhoto, setRenderUser, setUser, unfollow } from "../profileSlice"
+import {
+	addPhoto, follow, removePhoto,
+	setRenderUser, setUser, unfollow
+} from "../profileSlice"
 
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
 	return async (dispatch: AppDispatch) => {
@@ -51,10 +54,10 @@ export const deletePhotoThunk = (userId: string, photo: string) => {
 
 export const changeUserProfile = (userId: string, changes: UserChanges) => {
 	return async (dispatch: AppDispatch) => {
-		// console.log(changes)
 
 		let user = await updateUser(userId, changes)
 		dispatch(setUser(user))
+		dispatch(setRenderUser(user))
 	}
 }
 

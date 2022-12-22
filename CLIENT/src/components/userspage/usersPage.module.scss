@@ -6,4 +6,9 @@
 	justify-content: center;
 	padding-top: 15px;
 	gap: 20px;
+
+	.usersList{
+		display: flex;
+		gap:20px;
+	}
 }

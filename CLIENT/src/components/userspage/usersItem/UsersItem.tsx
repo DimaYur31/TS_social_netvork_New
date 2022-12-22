@@ -7,11 +7,11 @@ import { getPhoto } from '../../../hooks/hooks'
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 
 type propsType = {
-	currentUser: UserType
+	thisUser: UserType
 }
 
-const UsersItem: FC<propsType> = ({ currentUser }) => {
-	const { avatar, surname, name, _id } = currentUser
+const UsersItem: FC<propsType> = ({ thisUser }) => {
+	const { avatar, surname, name, _id } = thisUser
 
 	return (
 		<div className={s.usersItem}>
@@ -23,7 +23,8 @@ const UsersItem: FC<propsType> = ({ currentUser }) => {
 				<h3>{surname}</h3>
 			</Link>
 			<div className={s.btns} >
-				<FollowButton currentUserId={currentUser._id} />
+				<FollowButton currentUserId={thisUser._id} />
+				{/* <span>chat</span> */}
 			</div>
 		</div >
 	)
