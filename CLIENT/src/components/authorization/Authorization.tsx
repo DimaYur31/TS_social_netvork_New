@@ -1,12 +1,13 @@
-import { MouseEvent, useState } from 'react'
+import { ChangeEvent, MouseEvent, useCallback, useState } from 'react'
 import s from './Authorization.module.scss'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { errorEmail, errorPassword } from '../../hooks/useFormValidation'
 import { useFormValidation } from '../../hooks/useFormValidation'
-import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions';
+import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions'
 
 import Btn1 from '../elements/btn/Btn1'
 import Error from '../elements/error/Error'
+import CastomInput from '../elements/inputs/CastomInput'
 
 const Authorization = () => {
 	const dispatch = useAppDispatch()
@@ -34,6 +35,15 @@ const Authorization = () => {
 		setRegistration(!registration)
 	}
 
+	const changeName = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+		setName(e.target.value)
+	}, [])
+
+	const changeSurname = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+		setSurname(e.target.value)
+	}, [])
+
+
 	return (
 		<div className={s.auth}>
 			<div className={s.leftBox}>
@@ -42,15 +52,10 @@ const Authorization = () => {
 			</div>
 			<form>
 				<p>
-					{registration
-						? 'You have profile?'
-						: 'Make new profile?'
-					}
+					{registration ? 'You have profile?' : 'Make new profile?'}
+
 					<span onClick={e => changeForm(e)}>
-						{registration
-							? 'Login'
-							: 'Registration'
-						}
+						{registration ? 'Login' : 'Registration'}
 					</span>
 				</p>
 
@@ -61,38 +66,33 @@ const Authorization = () => {
 						<Error error={errorEmail(email)} />
 
 						<input
-							onChange={e => email.onChange(e)}
-							onBlur={() => email.onBlur()}
-							value={email.value}
 							type='text'
 							placeholder='Enter your email...'
+							value={email.value}
+							onChange={e => email.onChange(e)}
+							onBlur={() => email.onBlur()}
 						/>
 					</div>
 
 				</div>
 
 				<div className={s.box}>
-
 					<p>Password</p>
 
 					<div>
 						<Error error={errorPassword(password)} />
-
 						<input
-							onChange={e => password.onChange(e)}
-							// onBlur={() => password.onBlur()}
 							value={password.value}
 							type={checked ? 'text' : 'password'}
 							placeholder='Password'
+							onChange={e => password.onChange(e)}
+						// onBlur={() => password.onBlur()}
 						/>
-
 					</div>
 				</div>
 
 				<div className={s.box}>
-
 					<p>Repeat password</p>
-
 					<input
 						onChange={e => setCheckPasword(e.target.value)}
 						onBlur={() => password.onBlur()}
@@ -112,30 +112,24 @@ const Authorization = () => {
 				</div>
 
 				{registration && <>
-
-
 					<div className={s.box}>
-
 						<p>Name</p>
-
-						<input
-							onChange={e => setName(e.target.value)}
-							// onBlur={e => password.onBlur(e)}
-							value={name}
+						<CastomInput
 							type='text'
 							placeholder='Enter your Name...'
+							value={name}
+							onChange={changeName}
 						/>
 					</div>
-					<div className={s.box}>
 
+					<div className={s.box}>
 						<p>Surname</p>
 
-						<input
-							onChange={e => setSurname(e.target.value)}
-							// onBlur={e => password.onBlur(e)}
-							value={surname}
+						<CastomInput
 							type='text'
 							placeholder='Enter your surname...'
+							value={surname}
+							onChange={changeSurname}
 						/>
 					</div>
 				</>}

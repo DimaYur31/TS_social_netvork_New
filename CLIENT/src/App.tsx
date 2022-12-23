@@ -28,7 +28,7 @@ const App = () => {
 	const { isAuth, defaultUser } = useAppSelector(state => state.profilePage)
 
 	useEffect(() => {
-		if (defaultUser._id) {
+		if (defaultUser._id && isAuth) {
 
 			socket.emit('addUser', defaultUser._id)
 			socket.on('getUsers', users => {
