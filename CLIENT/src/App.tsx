@@ -11,7 +11,7 @@ import Loading from './components/elements/loading/Loading'
 import HomePage from './components/homePage/HomePage'
 import ContentWrapper from './components/styleedComponents/ContentWrapper'
 // import Authorization from './components/authorization/Authorization'
-// import AuthorizationTest from './components/authorization/AuthorizationTest'
+import AuthorizationTest from './components/authorization/AuthorizationTest'
 const UsersPage = lazy(() => import('./components/userspage/UsersPage'))
 const Authorization = lazy(() => import('./components/authorization/Authorization'))
 const Profile = lazy(() => import('./components/profile/Profile'))
@@ -70,8 +70,8 @@ const App = () => {
 						{/* <Route path='*' element={<h2>Page not found</h2>} /> */}
 					</Routes>
 					: <Routes>
-						<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
-						<Route path='/login' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
+						<Route path='/' element={<Suspense fallback={<Loading />}><AuthorizationTest /></Suspense>} />
+						<Route path='/login' element={<Suspense fallback={<Loading />}><AuthorizationTest /></Suspense>} />
 					</Routes>
 				}
 			</div>

@@ -2,14 +2,14 @@ import React, { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes } from '
 import s from './CustomInput.module.scss'
 
 type InputPropps = {
-	onChange: (e: ChangeEvent<HTMLInputElement>) => void
+	onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 const CastomInput: FC<InputPropps> = ({ onChange }, props) => {
 	console.log('CastomInput render')
 	return <input
 		className={s.customInput}
-		onChange={(e) => onChange(e)}
+		onChange={(e) => onChange && onChange(e)}
 		{...props} />
 }
 

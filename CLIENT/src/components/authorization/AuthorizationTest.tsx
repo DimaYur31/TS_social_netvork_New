@@ -1,167 +1,153 @@
-import { ChangeEvent, useState } from 'react'
+import { FormEventHandler, MouseEvent, useState } from 'react'
+import s from './Authorization.module.scss'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
-// @ts-ignore 
-import s from './Authorization.module.css'
+import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions'
 
-import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions';
-import Btn1 from '../elements/btn/Btn1'
-// import Input from '../styleedComponents/Input';
+// import Btn1 from '../elements/btn/Btn1'
+// import Error from '../elements/error/Error'
+import CastomInput from '../elements/inputs/CastomInput'
+import PrimaryInpyt from '../elements/inputs/primaryInput/PrimaryInpyt'
+
+type LoginFormFields = {
+	email: string
+	password: string
+	checkPassword: string
+	name?: string
+	surname?: string
+}
+
+type FormFields = {
+	email: HTMLInputElement
+	password: HTMLInputElement
+	checkPassword: HTMLInputElement
+	name?: HTMLInputElement
+	surname?: HTMLInputElement
+}
+
+type SybmitType = (form: LoginFormFields) => void
 
 const AuthorizationTest = () => {
-	const [registration, setRegistration] = useState(false)
-	const [values, setValues] = useState({
-		userName: '',
-		email: '',
-		password: '',
-		confirmPassword: ''
-	})
-
-	const inputs = [
-		{
-			id: 1,
-			name: "username",
-			type: "text",
-			placeholder: "Username",
-			errorMessage:
-				"Username should be 3-16 characters and shouldn't include any special character!",
-			// label: "Username",
-			pattern: "^[A-Za-z0-9]{3,16}$",
-			required: true,
-		},
-		{
-			id: 2,
-			name: "email",
-			type: "email",
-			placeholder: "Email",
-			errorMessage: "It should be a valid email address!",
-			// label: "Email",
-			required: true,
-		},
-		// {
-		//   id: 3,
-		//   name: "birthday",
-		//   type: "date",
-		//   placeholder: "Birthday",
-		//   label: "Birthday",
-		// },
-		{
-			id: 3,
-			name: "password",
-			type: "password",
-			placeholder: "Password",
-			errorMessage:
-				"Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
-			// label: "Password",
-			pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-			required: true,
-		},
-		{
-			id: 4,
-			name: "confirmPassword",
-			type: "password",
-			placeholder: "Confirm Password",
-			errorMessage: "Passwords don't match!",
-			// label: "Confirm Password",
-			pattern: values.password,
-			required: true,
-		},
-	]
-
-	const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-		e.preventDefault();
-	};
-
-	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setValues({ ...values, [e.target.name]: e.target.value });
-	};
-
 	const dispatch = useAppDispatch()
 
-	const [checkPasword, setCheckPasword] = useState('')
+	const [registration, setRegistration] = useState(false)
+	const [checked, setChecked] = useState(false)
 
-	const click = async () => {
-		console.log('clik)))');
+	const onSubmit: SybmitType = async (form) => {
+		const { email, password, name, surname } = form
 
-		// 	password.value !== checkPasword
-		// 		? alert('Проверьте пароль')
-		// 		: registration
-		// 			? dispatch(registrationThunkCreator(email.value, password.value, name, surname))
-		// 			: dispatch(loginThunkCreator(email.value, password.value))
+		registration
+			? name && surname && dispatch(registrationThunkCreator(email, password, name, surname))
+			: dispatch(loginThunkCreator(email, password))
 	}
 
+	const changeForm = (e: MouseEvent<HTMLSpanElement>) => {
+		setRegistration(!registration)
+	}
 
-	const [focused, setFocused] = useState(false)
+	const handleSubmit: FormEventHandler<HTMLFormElement & FormFields> = (e) => {
+		e.preventDefault()
 
-	const handleFocus = () => setFocused(true)
+		const form = e.currentTarget
+		const { email, password, checkPassword, name, surname } = form
+
+		password.value !== checkPassword.value
+			? alert('Проверьте пароль')
+			: onSubmit({
+				email: email.value,
+				password: password.value,
+				checkPassword: checkPassword.value,
+				name: name?.value,
+				surname: surname?.value,
+			})
+	}
 
 	return (
 		<div className={s.auth}>
-			<h1>V _ Comnate <br /> <span>This is social-media project for traning</span></h1>
+			<div className={s.leftBox}>
+				<h1>V _ Comnate</h1>
+				<p>This is social-media project for traning</p>
+			</div>
+
+			<p>
+				{registration ? 'You have profile?' : 'Make new profile?'}
+				<span onClick={e => changeForm(e)}>
+					{registration ? 'Login' : 'Registration'}
+				</span>
+			</p>
 
 			<form onSubmit={handleSubmit}>
-				<p>{registration ? 'You have profile?' : 'Make new profile?'}
-					<span onClick={(e) => {
-						e.preventDefault()
-						setRegistration(!registration)
-					}}>
-						{registration ? 'Login' : 'Registration'}
-					</span>
-				</p>
+				<label>
+					<span>Email</span>
+					<PrimaryInpyt
+						name='email'
+						type='email'
+						required
+					/>
+				</label>
 
-				{
-					inputs.map(input => (
-						<>
-							<input
-								onChange={onChange}
-								onBlur={handleFocus}
-							// onFocus={() => inputProps.name === "confirmPassword" && setFocused(true)}
-							// focused={focused.toString()}
+				<label>
+					<span>Password</span>
+					<PrimaryInpyt
+						name='password'
+						type={checked ? 'text' : 'password'}
+						minLength={3}
+						maxLength={8}
+						required
+						autoComplete='off'
+					/>
+				</label>
+
+				<label>
+					<span>Repeat Password</span>
+					<PrimaryInpyt
+						name='checkPassword'
+						type={checked ? 'text' : 'password'}
+						required
+						autoComplete='off'
+					/>
+				</label>
+
+				<label>
+					<span>Show Password</span>
+					<input
+						type='checkbox'
+						checked={checked}
+						onChange={() => setChecked(!checked)}
+					/>
+				</label>
+
+				{registration &&
+					<>
+						<label>
+							<span>Name</span>
+							<PrimaryInpyt
+								name='name'
+								type='text'
+								placeholder='Enter your Name'
 							/>
-							{/* <span>{errorMessage}</span> */}
-						</>
-					))
-				}
+						</label>
 
+						<label>
+							<span>Surname</span>
+							<PrimaryInpyt
+								name='surname'
+								type='text'
+								placeholder='Enter your Surname'
+							/>
+						</label>
+					</>}
+				<button type='submit'>
+					{registration ? 'Registration' : 'Login'}
+				</button>
+			</form>
 
-
-				{/* {registration && <>
-
-
-					<div className={s.box}>
-
-						<p>Name</p>
-
-						<input
-							onChange={e => setName(e.target.value)}
-							// onBlur={e => password.onBlur(e)}
-							value={name}
-							type='text'
-							placeholder='Enter your Name...'
-						/>
-					</div>
-					<div className={s.box}>
-
-						<p>Surname</p>
-
-						<input
-							onChange={e => setSurname(e.target.value)}
-							// onBlur={e => password.onBlur(e)}
-							value={surname}
-							type='text'
-							placeholder='Enter your surname...'
-						/>
-					</div>
-				</>} */}
-
-				<Btn1
-					// disabled={!email.inputValid || !password.inputValid}
+			{/* <Btn1
 					text={registration ? 'Registration' : 'Login'}
 					cnanging={true}
-					onClick={() => click()}
-				/>
-			</form>
+					onClick={() => submit()}
+				/> */}
 		</div>
 	)
 }
 
-// export default AuthorizationTest
+export default AuthorizationTest
