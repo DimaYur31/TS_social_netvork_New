@@ -1,48 +1,42 @@
-import { ChangeEvent, MouseEvent, useCallback, useState } from 'react'
+import { FormEventHandler, useState } from 'react'
 import s from './Authorization.module.scss'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
-import { errorEmail, errorPassword } from '../../hooks/useFormValidation'
-import { useFormValidation } from '../../hooks/useFormValidation'
-import { registrationThunkCreator, loginThunkCreator } from '../../store/slices/apiActions/userActions'
+import { registrationThunkCreator, loginThunkCreator, } from '../../store/slices/apiActions/userActions'
+import { FormFields, SybmitFotm } from '../../types/UIElements'
 
-import Btn1 from '../elements/btn/Btn1'
-import Error from '../elements/error/Error'
-import CastomInput from '../elements/inputs/CastomInput'
+import PrimaryInpyt from '../elements/inputs/primaryInput/PrimaryInpyt'
+import PrimaryButton from '../elements/btn/primaryButton/PrimaryButton'
 
 const Authorization = () => {
 	const dispatch = useAppDispatch()
-	const loginEmail = { isEmpty: true, minLength: 3, maxLength: 30, isEmail: true, }
-	const loginPassword = { isEmpty: true, minLength: 8, maxLength: 16, isEmail: null }
-	const email = useFormValidation('', loginEmail)
-	const password = useFormValidation('', loginPassword)
-
 	const [registration, setRegistration] = useState(false)
-	const [checkPasword, setCheckPasword] = useState('')
-	const [name, setName] = useState('')
-	const [surname, setSurname] = useState('')
 	const [checked, setChecked] = useState(false)
 
-	const submit = async () => {
-		password.value !== checkPasword
-			? alert('Проверьте пароль')
-			: registration
-				? dispatch(registrationThunkCreator(email.value, password.value, name, surname))
-				: dispatch(loginThunkCreator(email.value, password.value))
+	const onSubmit: SybmitFotm = async (form) => {
+		const { email, password, name, surname } = form
+		registration
+			? name && surname && dispatch(registrationThunkCreator(email, password, name, surname))
+			: dispatch(loginThunkCreator(email, password))
 	}
 
-	const changeForm = (e: MouseEvent<HTMLSpanElement>) => {
+	const changeForm = () => setRegistration(!registration)
+
+	const handleSubmit: FormEventHandler<HTMLFormElement & FormFields> = (e) => {
 		e.preventDefault()
-		setRegistration(!registration)
+
+		const form = e.currentTarget
+		const { email, password, checkPassword, name, surname } = form
+
+		password.value !== checkPassword.value
+			? alert('Проверьте пароль')
+			: onSubmit({
+				email: email.value,
+				password: password.value,
+				checkPassword: checkPassword.value,
+				name: name?.value,
+				surname: surname?.value,
+			})
 	}
-
-	const changeName = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		setName(e.target.value)
-	}, [])
-
-	const changeSurname = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-		setSurname(e.target.value)
-	}, [])
-
 
 	return (
 		<div className={s.auth}>
@@ -50,97 +44,81 @@ const Authorization = () => {
 				<h1>V _ Comnate</h1>
 				<p>This is social-media project for traning</p>
 			</div>
-			<form>
+
+			<div className={s.rightBox}>
 				<p>
 					{registration ? 'You have profile?' : 'Make new profile?'}
-
-					<span onClick={e => changeForm(e)}>
+					<span onClick={() => changeForm()}>
 						{registration ? 'Login' : 'Registration'}
 					</span>
 				</p>
 
-				<div className={s.box}>
-					<p>Email</p>
-
-					<div>
-						<Error error={errorEmail(email)} />
-
-						<input
-							type='text'
-							placeholder='Enter your email...'
-							value={email.value}
-							onChange={e => email.onChange(e)}
-							onBlur={() => email.onBlur()}
+				<form onSubmit={handleSubmit}>
+					<label>
+						<span>Email</span>
+						<PrimaryInpyt
+							name='email'
+							type='email'
+							required
 						/>
-					</div>
+					</label>
 
-				</div>
-
-				<div className={s.box}>
-					<p>Password</p>
-
-					<div>
-						<Error error={errorPassword(password)} />
-						<input
-							value={password.value}
+					<label>
+						<span>Password</span>
+						<PrimaryInpyt
+							name='password'
 							type={checked ? 'text' : 'password'}
-							placeholder='Password'
-							onChange={e => password.onChange(e)}
-						// onBlur={() => password.onBlur()}
+							minLength={3}
+							maxLength={16}
+							required
+							autoComplete='off'
 						/>
-					</div>
-				</div>
+					</label>
 
-				<div className={s.box}>
-					<p>Repeat password</p>
-					<input
-						onChange={e => setCheckPasword(e.target.value)}
-						onBlur={() => password.onBlur()}
-						value={checkPasword}
-						type={checked ? 'text' : 'password'}
-						placeholder='Enter your password...'
-					/>
-				</div>
-
-				<div className={s.check} >
-					<p>Show password</p>
-					<input
-						type="checkbox"
-						checked={checked}
-						onChange={() => setChecked(!checked)}
-					/>
-				</div>
-
-				{registration && <>
-					<div className={s.box}>
-						<p>Name</p>
-						<CastomInput
-							type='text'
-							placeholder='Enter your Name...'
-							value={name}
-							onChange={changeName}
+					<label>
+						<span>Repeat Password</span>
+						<PrimaryInpyt
+							name='checkPassword'
+							type={checked ? 'text' : 'password'}
+							required
+							autoComplete='off'
 						/>
-					</div>
+					</label>
 
-					<div className={s.box}>
-						<p>Surname</p>
-
-						<CastomInput
-							type='text'
-							placeholder='Enter your surname...'
-							value={surname}
-							onChange={changeSurname}
+					<label>
+						<span>Show Password</span>
+						<input
+							type='checkbox'
+							checked={checked}
+							onChange={() => setChecked(!checked)}
 						/>
-					</div>
-				</>}
+					</label>
 
-				<Btn1
-					// disabled={!email.inputValid || !password.inputValid}
-					text={registration ? 'Registration' : 'Login'}
-					cnanging={true}
-					onClick={() => submit()}
-				/>
-			</form>
+					{registration && <>
+						<label>
+							<span>Name</span>
+							<PrimaryInpyt
+								name='name'
+								type='text'
+								placeholder='Enter your Name'
+							/>
+						</label>
+
+						<label>
+							<span>Surname</span>
+							<PrimaryInpyt
+								name='surname'
+								type='text'
+								placeholder='Enter your Surname'
+							/>
+						</label>
+					</>}
+
+					<PrimaryButton type='submit'>
+						{registration ? 'Registration' : 'Login'}
+					</PrimaryButton>
+				</form>
+			</div>
 		</div>
 	)
 }

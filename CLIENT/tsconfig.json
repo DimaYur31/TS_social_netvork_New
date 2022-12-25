@@ -25,6 +25,7 @@
 		"мусор/StyledPhoto.tsx",
 		"мусор/usePosition.ts",
 		"мусор/useDeviceWidth.ts",
-		"мусор/query"
+		"мусор/query",
+		"мусор/AuthorizationOld.tsxtsx"
 	]
 }

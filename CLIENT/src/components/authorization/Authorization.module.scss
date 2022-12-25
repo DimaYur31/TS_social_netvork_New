@@ -8,50 +8,6 @@
 	padding: 30px 100px;
 	
 	
-	form {
-		display: flex;
-		flex-direction: column;
-		width: 35vw;
-		background: #f8f8f8;
-		padding: 20px;
-		border-radius: 15px;
-	}
-
-	.box{
-		display: grid;
-		grid-template-columns: 1fr 2fr;
-		align-items: center;
-	}
-
-	input {
-		margin: 5px 0 10px 0;
-		padding: 15px;
-		border-radius: 5px;
-		outline: none;
-		width: 90%;
-		height: 18px;
-	}
-
-	form button {
-		width: 50%;
-		align-self: center;
-	}
-
-	span{
-		margin-left: 10px;
-		color: #0692fda9;
-		font-style: italic;
-		/* text-decoration: underline; */
-		cursor: pointer;
-		font-size: 20px;
-		letter-spacing: 1px;
-		transition: .5s;
-	}
-
-	span:hover{
-		color: #0690fd;
-	}
-	
 	.leftBox {
 		
 		h1{
@@ -64,11 +20,59 @@
 			font-size: 20px;
 			text-decoration: none;
 		}
-	} 
+	}
+
+	.rightBox{
+		display: flex;
+		flex-direction: column;
+		background: #f8f8f8;
+		border-radius: 15px;
+		padding: 20px;
+
+		p{
+			margin: 0 10px 10px 0px;
+			font-size: 20px;
+			color: rgb(86, 83, 83);
+		}	
+		
+		span{
+			color: #0690fd;
+			font-style: italic;
+			cursor: pointer;
+			font-size: 20px;
+			letter-spacing: 1px;
+			transition: .5s;
+			padding-left: 5px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			width: 35vw;			
+						
+			label{
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;	
+				gap: 10px;
+				
+				span{
+					flex: 0 0 80px;
+					color: inherit;
+					font-style: normal;
+					font-size: 16px;
+				}
+
+			}
+		}
+	
+	}
+
+	form button {
+		width: 50%;
+		align-self: center;
+	}
+	 
 }
 	
-	.check{
-		display: grid;
-		grid-template-columns: 130px 20px;
-		align-items: center;
-	}
+	

@@ -10,17 +10,13 @@ import Header from './components/header/Header'
 import Loading from './components/elements/loading/Loading'
 import HomePage from './components/homePage/HomePage'
 import ContentWrapper from './components/styleedComponents/ContentWrapper'
-// import Authorization from './components/authorization/Authorization'
-import AuthorizationTest from './components/authorization/AuthorizationTest'
+import Authorization from './components/authorization/Authorization'
 const UsersPage = lazy(() => import('./components/userspage/UsersPage'))
-const Authorization = lazy(() => import('./components/authorization/Authorization'))
 const Profile = lazy(() => import('./components/profile/Profile'))
 const Photos = lazy(() => import('./components/photos/Photos'))
 const Rooms = lazy(() => import('./components/rooms/Rooms'))
 const Room = lazy(() => import('./components/rooms/Room'))
 const Messenger = lazy(() => import('./components/messenger/Messenger'))
-
-
 
 const App = () => {
 	const dispatch = useAppDispatch()
@@ -70,8 +66,8 @@ const App = () => {
 						{/* <Route path='*' element={<h2>Page not found</h2>} /> */}
 					</Routes>
 					: <Routes>
-						<Route path='/' element={<Suspense fallback={<Loading />}><AuthorizationTest /></Suspense>} />
-						<Route path='/login' element={<Suspense fallback={<Loading />}><AuthorizationTest /></Suspense>} />
+						<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
+						<Route path='/login' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
 					</Routes>
 				}
 			</div>
