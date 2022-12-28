@@ -11,9 +11,11 @@ const Conversations = () => {
 	return <>
 		{chats.length
 			? chats.map(chat => {
-				return <div onClick={() => dispatch(setCurrentChat(chat._id))}>
+				return <div
+					key={chat._id}
+					onClick={() => dispatch(setCurrentChat(chat._id))}
+				>
 					<ChatRoom
-						key={chat._id}
 						userId={_id}
 						room={chat}
 					/>

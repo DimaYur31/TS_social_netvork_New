@@ -1,75 +1,44 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import s from './Navbar.module.scss'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { SVG } from './../../img/icons/exportIcons'
-
-interface ILink extends React.HTMLProps<HTMLLinkElement> {
-	isActive: boolean
-}
+import LinkItem from './LinkItem'
 
 const Nav = () => {
+	console.log('Nav render')
 	const { _id } = useAppSelector(state => state.profilePage.defaultUser)
-	const handlerActive = ({ isActive }: ILink) => (isActive ? s.active : 'link')
 
 	return <nav className={s.nav} >
 		<ul>
-			<li>
-				<NavLink to={`/${_id}`} className={handlerActive} >
-					<SVG.Home className={s.icons} width='20' height='20' />
-					Home
-				</NavLink>
-			</li>
-			<li>
-				<NavLink to={`/profile/${_id}`} className={handlerActive} >
-					<SVG.Icon className={s.icons} width='20' height='20' />
-					Profile
-				</NavLink>
-			</li>
-			{/* <li>
-				<NavLink to="/" className={handlerActive} >
-					<SVG.Chat className={s.icons} width='20' height='20' />
-					Messanges
-				</NavLink>
-			</li> */}
-			<li>
-				<NavLink to='/friends' className={handlerActive} >
-					<SVG.Friends className={s.icons} width='20' height='20' />
-					Friends
-				</NavLink>
-			</li>
-			<li>
-				<NavLink to='/users' className={handlerActive} >
-					<SVG.Users className={s.icons} width='20' height='20' />
-					Users
-				</NavLink>
-			</li>
-			<li>
-				<NavLink to="/messanger" className={handlerActive} >
-					<SVG.Community className={s.icons} width='20' height='20' />
-					Messenger
-				</NavLink>
-			</li>
-			<li>
-				<NavLink to='/photos' className={handlerActive} >
-					<SVG.Gallery className={s.icons} width='20' height='20' />
-					Photos
-				</NavLink>
-			</li>
-			<li>
-				<NavLink to='/rooms' className={handlerActive} >
-					<SVG.VideoCall className={s.icons} width='20' height='20' />
-					Rooms
-				</NavLink>
-			</li>
-			{/* <li>
-				<NavLink to="/docs" className={handlerActive} >
-					<SVG.Folder className={s.icons} width='20' height='20' />
-					Docs
-				</NavLink>
-			</li> */}
+			<LinkItem to={`/${_id}`} title='Home'>
+				<SVG.Home className={s.icons} />
+			</LinkItem>
+
+			<LinkItem to={`/profile/${_id}`} title='Profile'>
+				<SVG.Icon className={s.icons} />
+			</LinkItem>
+
+			{/* <LinkItem to='/friends' title='Friends'>
+				<SVG.Friends className={s.icons} />
+			</LinkItem> */}
+
+			<LinkItem to='/users' title='Users'>
+				<SVG.Users className={s.icons} />
+			</LinkItem>
+
+			<LinkItem to='/messenger' title='Messenger'>
+				<SVG.Community className={s.icons} />
+			</LinkItem>
+
+			<LinkItem to='/photos' title='Photos'>
+				<SVG.Gallery className={s.icons} />
+			</LinkItem>
+
+			<LinkItem to='/rooms' title='Rooms'>
+				<SVG.VideoCall className={s.icons} />
+			</LinkItem>
 		</ul>
 	</nav>
 }
 
-export default Nav
+export default React.memo(Nav)

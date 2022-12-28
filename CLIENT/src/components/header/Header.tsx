@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import s from './Header.module.scss'
 import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
@@ -19,6 +20,7 @@ const Header = () => {
 		window.location.reload();
 	}
 
+	console.log('Header render')
 	return (
 		<header className={s.header} >
 			<Link to={`/${defaultUser._id}`}>
@@ -48,4 +50,4 @@ const Header = () => {
 	)
 }
 
-export default Header
+export default React.memo(Header)

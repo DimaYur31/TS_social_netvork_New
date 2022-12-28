@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 
 import UserItem from '../elements/user-item/UserItem'
 
 const FriendList = () => {
+	console.log('FriendList render')
 	const dispatch = useAppDispatch()
 	const { _id, followings } = useAppSelector(state => state.profilePage.defaultUser)
 	const { friends } = useAppSelector(state => state.usersPage)
@@ -27,4 +28,4 @@ const FriendList = () => {
 	</ul>
 }
 
-export default FriendList
+export default React.memo(FriendList)

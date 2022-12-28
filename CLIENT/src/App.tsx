@@ -31,7 +31,6 @@ const App = () => {
 				console.log('users online')
 			})
 		}
-
 		// return socket.off('getUsers')
 	}, [defaultUser._id])
 
@@ -40,9 +39,10 @@ const App = () => {
 		if (!token) {
 			navigate('/login')
 		} else {
-			dispatch(chechAuthUser()).then(
-				() => navigate(`/${defaultUser._id}`)
-			)
+			dispatch(chechAuthUser())
+			// .then(
+			// 	() => navigate(`/${defaultUser._id}`)
+			// )
 		}
 	}, [isAuth])
 
@@ -62,8 +62,8 @@ const App = () => {
 						<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 						<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
 						<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
-						<Route path='/messanger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>} />
-						{/* <Route path='*' element={<h2>Page not found</h2>} /> */}
+						<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>} />
+						<Route path='*' element={<h2>Page not found</h2>} />
 					</Routes>
 					: <Routes>
 						<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
