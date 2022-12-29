@@ -1,22 +1,13 @@
-import { lazy, useEffect, Suspense } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { chechAuthUser } from './store/slices/apiActions/userActions'
 import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks'
 import { socket } from './socket/index'
 
-import Navbar from './components/navbar/Navbar'
 import Header from './components/header/Header'
-import Loading from './components/elements/loading/Loading'
-import HomePage from './components/homePage/HomePage'
+import Navbar from './components/navbar/Navbar'
 import ContentWrapper from './components/styleedComponents/ContentWrapper'
-import Authorization from './components/authorization/Authorization'
-const UsersPage = lazy(() => import('./components/userspage/UsersPage'))
-const Profile = lazy(() => import('./components/profile/Profile'))
-const Photos = lazy(() => import('./components/photos/Photos'))
-const Rooms = lazy(() => import('./components/rooms/Rooms'))
-const Room = lazy(() => import('./components/rooms/Room'))
-const Messenger = lazy(() => import('./components/messenger/Messenger'))
+import Router from './components/routes/Router'
 
 const App = () => {
 	const dispatch = useAppDispatch()
@@ -52,25 +43,7 @@ const App = () => {
 
 		<ContentWrapper isAuth={isAuth}>
 			{isAuth && <Navbar />}
-
-			<div>
-				{isAuth
-					? <Routes>
-						<Route path='/:id' element={<HomePage />} />
-						<Route path='/profile/:id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
-						<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
-						<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
-						<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
-						<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
-						<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>} />
-						<Route path='*' element={<h2>Page not found</h2>} />
-					</Routes>
-					: <Routes>
-						<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
-						<Route path='/login' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
-					</Routes>
-				}
-			</div>
+			<Router isAuth={isAuth} />
 		</ContentWrapper>
 	</ >
 }

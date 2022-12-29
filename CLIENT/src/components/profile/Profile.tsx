@@ -4,7 +4,7 @@ import MyPosts from '../homePage/myPosts/MyPosts'
 import About from './myInfo/about/About'
 import MyInfo from './myInfo/MyInfo'
 
-const Profile: React.FC = () => {
+const Profile = () => {
 
 	return (
 		<section >

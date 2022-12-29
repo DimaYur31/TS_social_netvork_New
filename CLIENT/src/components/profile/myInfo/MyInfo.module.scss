@@ -1,9 +1,10 @@
 .user {
 	position: relative;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-end;
+	// justify-content: center;
 	flex-direction: column;
+	padding-right: 9%;
 	
 	
 	img{
@@ -17,23 +18,19 @@
 }
 
 .info{
-	margin-top: 80px;
+	margin-top: 50px;
 	
 	img {
 		position: relative;
-		width: 180px;
+		width: 150px;
 		height: 180px;
 		object-fit: cover;
-		border-radius: 50%;
+		border-radius: 15px;
 		cursor: pointer;
 		border: 3px solid #fff;
 	}
-	
-	h3 {
-		margin-top: 10px;
-		font-size: 23px;
-		color: #000;
-		text-align: center;
-		margin-bottom: 10px;
+
+	button{
+		margin-left: 20px;
 	}
 }	

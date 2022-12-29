@@ -8,13 +8,13 @@ import ProfileFormSetings from './profileForm/ProfileFormSetings'
 import Modal from '../../../elements/modal/Modal'
 
 const About = () => {
-	const { birthday, city, country, job, languages } = useAppSelector(state => state.profilePage.renderUser)
+	const { birthday, city, country, job, languages, name, surname } = useAppSelector(state => state.profilePage.renderUser)
 	const [isOpen, setIsOpen] = useState(false)
 	const isOwner = useIsOwner()
 
 	return (
 		<div className={s.info}>
-			<h3>About Me
+			<h3>{`${name} ${surname}`}
 				{isOwner &&
 					<button
 						className={s.open}

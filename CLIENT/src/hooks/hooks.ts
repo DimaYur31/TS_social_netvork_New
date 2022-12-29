@@ -26,8 +26,8 @@ export const useRenderUser = () => {
 	const params = useParams()
 
 	useEffect(() => {
-		params._id && dispatch(changeDefaultAndCurrentUsers(defaultUser, params._id))
-	}, [params._id])
+		params.id && dispatch(changeDefaultAndCurrentUsers(defaultUser, params.id))
+	}, [params.id])
 }
 
 export const useIsOwner = () => {
