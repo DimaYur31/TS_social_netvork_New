@@ -10,13 +10,14 @@ import { getUserData } from '../../../../api/userApi'
 import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
+import { selectDefaultUser } from '../../../../selectors/selectors'
 
 type TPost = {
 	post: PostType<string>
 }
 
 const Post: FC<TPost> = ({ post }) => {
-	const { defaultUser } = useAppSelector(state => state.profilePage)
+	const defaultUser = useAppSelector(selectDefaultUser)
 	const [thisUser, setThisUser] = useState(defaultUser)
 
 	const getUsersData = async (id: string) => {

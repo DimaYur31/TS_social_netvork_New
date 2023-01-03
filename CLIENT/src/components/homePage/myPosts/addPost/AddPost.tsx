@@ -2,6 +2,7 @@ import { ChangeEvent, FC, useState } from 'react'
 import s from './AddPost.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { createPostThunk } from '../../../../store/slices/apiActions/postActions'
+import { selectDefaultUserId } from '../../../../selectors/selectors'
 
 import Button from '../../../styleedComponents/Button'
 
@@ -11,7 +12,7 @@ type typeProps = {
 
 const AddPost: FC<typeProps> = ({ onClose }) => {
 	const dispatch = useAppDispatch()
-	const { _id } = useAppSelector(store => store.profilePage.defaultUser)
+	const _id = useAppSelector(selectDefaultUserId)
 	const [text, setText] = useState('')
 	const [img, setImg] = useState<Blob>()
 

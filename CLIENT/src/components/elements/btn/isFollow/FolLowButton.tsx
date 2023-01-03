@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { followUnfollowThunk } from '../../../../store/slices/apiActions/userActions'
 import s from './FollowButton.module.scss'
@@ -28,4 +28,4 @@ const FollowButton: FC<TypeProps> = ({ currentUserId }) => {
 	</button>
 }
 
-export default FollowButton
+export default React.memo(FollowButton)

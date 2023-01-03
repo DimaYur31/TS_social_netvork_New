@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { chechAuthUser } from './store/slices/apiActions/userActions'
 import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks'
 import { socket } from './socket/index'
+import { selectProfileState } from './selectors/selectors'
 
 import Header from './components/header/Header'
 import Navbar from './components/navbar/Navbar'
@@ -12,7 +13,7 @@ import Router from './components/routes/Router'
 const App = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const { isAuth, defaultUser } = useAppSelector(state => state.profilePage)
+	const { isAuth, defaultUser } = useAppSelector(selectProfileState)
 
 	useEffect(() => {
 		if (defaultUser._id && isAuth) {
@@ -31,12 +32,8 @@ const App = () => {
 			navigate('/login')
 		} else {
 			dispatch(chechAuthUser())
-			// .then(
-			// 	() => navigate(`/${defaultUser._id}`)
-			// )
 		}
 	}, [isAuth])
-
 
 	return <>
 		{isAuth && <Header />}

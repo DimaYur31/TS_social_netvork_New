@@ -1,15 +1,16 @@
-import { useEffect } from 'react'
-import s from './usersPage.module.scss'
+import React, { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks'
 import { getAllUsers } from '../../store/slices/apiActions/usersActions'
+import { selectDefaultUserId, selectUsers } from '../../selectors/selectors'
+import s from './usersPage.module.scss'
 
 import Feed from '../homePage/feed/Feed'
 import UsersItem from './usersItem/UsersItem'
 
 const UsersPage = () => {
 	const dispatch = useAppDispatch()
-	const { _id } = useAppSelector(state => state.profilePage.defaultUser)
-	const { users } = useAppSelector(state => state.usersPage)
+	const _id = useAppSelector(selectDefaultUserId)
+	const users = useAppSelector(selectUsers)
 
 	useEffect(() => {
 		dispatch(getAllUsers(_id))
@@ -28,4 +29,4 @@ const UsersPage = () => {
 	)
 }
 
-export default UsersPage
+export default React.memo(UsersPage)

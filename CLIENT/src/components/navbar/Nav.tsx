@@ -1,12 +1,14 @@
 import React from 'react'
-import s from './Navbar.module.scss'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
+import { selectDefaultUserId } from '../../selectors/selectors'
+import s from './Navbar.module.scss'
 import { SVG } from './../../img/icons/exportIcons'
+
 import LinkItem from './LinkItem'
 
 const Nav = () => {
 	console.log('Nav render')
-	const { _id } = useAppSelector(state => state.profilePage.defaultUser)
+	const _id = useAppSelector(selectDefaultUserId)
 
 	return <nav className={s.nav} >
 		<ul>

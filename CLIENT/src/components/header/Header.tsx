@@ -8,10 +8,11 @@ import { SVG } from '../../img/icons/exportIcons'
 
 import Search from '../styleedComponents/Search'
 import SmalAvatar from '../styleedComponents/SmalAvatar'
+import { selectProfileState } from '../../selectors/selectors'
 
 const Header = () => {
 	const dispatch = useAppDispatch()
-	const { isAuth, defaultUser } = useAppSelector((state) => state.profilePage)
+	const { isAuth, defaultUser } = useAppSelector(selectProfileState)
 	const avatar = useAvatar(defaultUser.avatar)
 
 	const exit = (e: React.MouseEvent) => {

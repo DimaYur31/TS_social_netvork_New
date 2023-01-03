@@ -6,10 +6,11 @@ import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/h
 
 import AddPostPopap from '../../elements/popap/AddPostPopap'
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
+import { selectProfileState } from '../../../selectors/selectors';
 
 const MyInfo: React.FC = () => {
 	const navigate = useNavigate()
-	const { renderUser, isAuth } = useAppSelector(state => state.profilePage)
+	const { renderUser, isAuth } = useAppSelector(selectProfileState)
 	const avatar = useAvatar()
 	const isOwner = useIsOwner()
 

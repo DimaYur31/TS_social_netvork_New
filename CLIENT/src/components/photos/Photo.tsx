@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { getPhoto } from '../../hooks/hooks'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
-import s from './Photo.module.scss'
 import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions'
+import s from './Photo.module.scss'
 import { SVG } from '../../img/icons/exportIcons'
 
 type TPprops = {

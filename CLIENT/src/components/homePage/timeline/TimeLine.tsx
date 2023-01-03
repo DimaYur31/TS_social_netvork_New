@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
-import s from './TimeLine.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
+import { selectDefaultUser, selectPosts } from '../../../selectors/selectors'
+import s from './TimeLine.module.scss'
 
 import Post from '../myPosts/post/Post'
 
 const TimeLine = () => {
 	const dispatch = useAppDispatch()
-	const { defaultUser } = useAppSelector(store => store.profilePage)
-	const { posts } = useAppSelector(store => store.postPage)
+	const defaultUser = useAppSelector(selectDefaultUser)
+	const posts = useAppSelector(selectPosts)
 
 
 	useEffect(() => {

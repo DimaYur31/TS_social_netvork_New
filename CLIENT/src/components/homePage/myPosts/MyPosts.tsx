@@ -2,12 +2,13 @@ import { useEffect } from 'react'
 import s from './MyPosts.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
+import { selectPosts, selectRenderUserId } from '../../../selectors/selectors'
 
 import Post from './post/Post'
 
 const MyPosts = () => {
-	const { _id } = useAppSelector(store => store.profilePage.renderUser)
-	const { posts } = useAppSelector(store => store.postPage)
+	const _id = useAppSelector(selectRenderUserId)
+	const posts = useAppSelector(selectPosts)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {

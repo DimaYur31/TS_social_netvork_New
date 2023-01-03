@@ -6,6 +6,7 @@ import SmalAvatar from '../../styleedComponents/SmalAvatar'
 
 const Share = () => {
 	const avatar = useAvatar()
+
 	return <div className={s.share}>
 		<SmalAvatar src={avatar} />
 		<StyledInput />

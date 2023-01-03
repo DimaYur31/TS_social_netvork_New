@@ -2,13 +2,14 @@ import { useState } from 'react'
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
 import s from './About.module.scss'
 import { useIsOwner } from '../../../../hooks/hooks'
+import { selectRenderUser } from '../../../../selectors/selectors'
 import { SVG } from './../../../../img/icons/exportIcons'
 
 import ProfileFormSetings from './profileForm/ProfileFormSetings'
 import Modal from '../../../elements/modal/Modal'
 
 const About = () => {
-	const { birthday, city, country, job, languages, name, surname } = useAppSelector(state => state.profilePage.renderUser)
+	const { birthday, city, country, job, languages, name, surname } = useAppSelector(selectRenderUser)
 	const [isOpen, setIsOpen] = useState(false)
 	const isOwner = useIsOwner()
 

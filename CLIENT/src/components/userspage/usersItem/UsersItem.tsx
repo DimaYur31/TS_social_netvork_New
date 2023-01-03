@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import s from './userItem.module.scss'
 import { UserType } from '../../../types/profile'
@@ -30,4 +30,4 @@ const UsersItem: FC<propsType> = ({ thisUser }) => {
 	)
 }
 
-export default UsersItem
+export default React.memo(UsersItem)

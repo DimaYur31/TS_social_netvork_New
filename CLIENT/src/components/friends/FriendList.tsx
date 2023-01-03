@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
+import { selectDefaultUser, selectFriends } from '../../selectors/selectors'
 
 import UserItem from '../elements/user-item/UserItem'
 
 const FriendList = () => {
 	console.log('FriendList render')
 	const dispatch = useAppDispatch()
-	const { _id, followings } = useAppSelector(state => state.profilePage.defaultUser)
-	const { friends } = useAppSelector(state => state.usersPage)
+	const { _id, followings } = useAppSelector(selectDefaultUser)
+	const friends = useAppSelector(selectFriends)
 
 	useEffect(() => {
 		dispatch(getFriendsThunk(_id))

@@ -1,13 +1,14 @@
 import { ChangeEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { uploadPhotoThunkCreator } from '../../store/slices/apiActions/userActions'
+import { selectDefaultUser } from '../../selectors/selectors'
 import s from './Photo.module.scss'
 
 import Photo from './Photo'
 
 const Photos = () => {
 	const dispatch = useAppDispatch()
-	const { _id, photos } = useAppSelector(state => state.profilePage.defaultUser)
+	const { _id, photos } = useAppSelector(selectDefaultUser)
 
 	const selectFile = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {

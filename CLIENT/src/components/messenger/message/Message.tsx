@@ -1,12 +1,14 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { format } from 'timeago.js'
-import s from './Message.module.scss'
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { MessageType } from '../../../types/conwersations'
 import { UserType } from '../../../types/profile'
 import { getUserData } from '../../../api/userApi'
 import { getPhoto } from '../../../hooks/hooks'
+import { selectDefaultUser } from '../../../selectors/selectors'
+import s from './Message.module.scss'
 import useContextMenu from '../../../hooks/useContextMenu'
+
 import ContextMenu from '../../elements/contextMenu/ContextMenu'
 
 type MessagePropsType = {
@@ -14,7 +16,7 @@ type MessagePropsType = {
 }
 
 const Message: FC<MessagePropsType> = ({ message }) => {
-	const { defaultUser } = useAppSelector(store => store.profilePage)
+	const defaultUser = useAppSelector(selectDefaultUser)
 	const { setShow, show } = useContextMenu()
 	const isOwner = message.sender === defaultUser._id
 	const classOvner = isOwner ? `${s.owner}` : null
@@ -51,4 +53,4 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 	)
 }
 
-export default Message
+export default React.memo(Message)

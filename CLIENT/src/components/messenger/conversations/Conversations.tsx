@@ -1,12 +1,14 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
+import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
 import { setCurrentChat } from '../../../store/slices/chatSlice'
+
 import ChatRoom from '../chatRoom/ChatRoom'
 
 
 const Conversations = () => {
 	const dispatch = useAppDispatch()
-	const { _id } = useAppSelector(store => store.profilePage.defaultUser)
-	const { chats } = useAppSelector(store => store.messenger)
+	const _id = useAppSelector(selectDefaultUserId)
+	const chats = useAppSelector(selectChats)
 
 	return <>
 		{chats.length
