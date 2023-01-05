@@ -1,16 +1,17 @@
 import { FC, useState } from 'react'
-import s from './ButtonsPopap.module.scss'
 import { PostType } from '../../../../types/post'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { deletePostThunk } from '../../../../store/slices/apiActions/postActions'
+import { selectDefaultUserId } from '../../../../selectors/selectors'
 import { SVG } from '../../../../img/icons/exportIcons'
+import s from './ButtonsPopap.module.scss'
 
 type TypeProps = {
 	post: PostType<string>
 }
 
 const ButtonsPopap: FC<TypeProps> = ({ post }) => {
-	const { defaultUser } = useAppSelector(store => store.profilePage)
+	const _id = useAppSelector(selectDefaultUserId)
 	const dispatch = useAppDispatch()
 	const [isOpend, setIsOpen] = useState(false)
 
@@ -19,9 +20,7 @@ const ButtonsPopap: FC<TypeProps> = ({ post }) => {
 	}
 
 	const deletePost = () => {
-		if (post.img !== defaultUser.avatar) {
-			dispatch(deletePostThunk(post._id))
-		}
+		if (post.userId === _id) dispatch(deletePostThunk(post._id))
 	}
 
 	return (

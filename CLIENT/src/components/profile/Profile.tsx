@@ -1,3 +1,4 @@
+import React from 'react'
 import s from './Profile.module.scss'
 
 import MyPosts from '../homePage/myPosts/MyPosts'
@@ -5,7 +6,7 @@ import About from './myInfo/about/About'
 import MyInfo from './myInfo/MyInfo'
 
 const Profile = () => {
-
+	console.log('Profile render')
 	return (
 		<section >
 			<MyInfo />
@@ -17,4 +18,4 @@ const Profile = () => {
 	)
 }
 
-export default Profile
+export default React.memo(Profile)

@@ -11,7 +11,7 @@ const UsersPage = () => {
 	const dispatch = useAppDispatch()
 	const _id = useAppSelector(selectDefaultUserId)
 	const users = useAppSelector(selectUsers)
-
+	console.log('UsersPage render')
 	useEffect(() => {
 		dispatch(getAllUsers(_id))
 	}, [])

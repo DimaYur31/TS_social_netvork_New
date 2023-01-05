@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import React, { ChangeEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { uploadPhotoThunkCreator } from '../../store/slices/apiActions/userActions'
 import { selectDefaultUser } from '../../selectors/selectors'
@@ -11,14 +11,14 @@ const Photos = () => {
 	const { _id, photos } = useAppSelector(selectDefaultUser)
 
 	const selectFile = (e: ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			const formData = new FormData()
-			formData.append('userId', _id)
-			formData.append('img', e.target.files[0])
-			dispatch(uploadPhotoThunkCreator(_id, formData))
-		}
-	}
+		if (!e.target.files) return
 
+		const formData = new FormData()
+		formData.append('userId', _id)
+		formData.append('img', e.target.files[0])
+		dispatch(uploadPhotoThunkCreator(_id, formData))
+	}
+	console.log('Photos render')
 	return (
 		<>
 			<input type="file" onChange={selectFile} />
@@ -32,4 +32,4 @@ const Photos = () => {
 	)
 }
 
-export default Photos
+export default React.memo(Photos)

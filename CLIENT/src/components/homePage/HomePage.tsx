@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useRenderUser } from '../../hooks/hooks'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
+import { selectDefaultUserId } from '../../selectors/selectors'
 import s from './HomePage.module.scss'
 
 import Feed from './feed/Feed'
@@ -10,9 +11,10 @@ import TimeLine from './timeline/TimeLine'
 
 
 const HomePage = () => {
+	console.log('HomePage render')
 	const location = useLocation()
 
-	const { _id } = useAppSelector(state => state.profilePage.defaultUser)
+	const _id = useAppSelector(selectDefaultUserId)
 
 	useRenderUser()
 	useEffect(() => {
@@ -30,4 +32,4 @@ const HomePage = () => {
 	)
 }
 
-export default HomePage
+export default React.memo(HomePage)

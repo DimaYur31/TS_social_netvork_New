@@ -1,3 +1,4 @@
+import React from 'react'
 import { getPhoto } from "../../../hooks/hooks"
 import { UsersType } from "../../../types/profile"
 import s from './UserItem.module.scss'
@@ -11,6 +12,7 @@ interface IProps {
 }
 
 const UserItem: React.FC<IProps> = ({ user, isDB }) => {
+	console.log('UserItem render')
 	return (
 		<li className={s.list}>
 			<SmalAvatar src={getPhoto(user.avatar, isDB)} />
@@ -20,4 +22,4 @@ const UserItem: React.FC<IProps> = ({ user, isDB }) => {
 	)
 }
 
-export default UserItem
+export default React.memo(UserItem)

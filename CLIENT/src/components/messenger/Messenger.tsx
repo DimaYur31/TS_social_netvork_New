@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { getChatsThunk } from '../../store/slices/apiActions/chatActions'
 import { selectDefaultUserId } from '../../selectors/selectors'
@@ -14,13 +14,14 @@ const Messanger = () => {
 	useEffect(() => {
 		dispatch(getChatsThunk(_id))
 	}, [])
-
+	console.log('Messanger render')
 	return (
 		<div className={s.messenger}>
+
 			<Conversations />
 			<DialogItem />
 		</div>
 	)
 }
 
-export default Messanger
+export default React.memo(Messanger)

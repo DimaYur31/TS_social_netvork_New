@@ -1,18 +1,20 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import s from './MyInfo.module.scss'
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/hooks'
+import { selectProfileState } from '../../../selectors/selectors'
+import s from './MyInfo.module.scss'
 
 import AddPostPopap from '../../elements/popap/AddPostPopap'
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
-import { selectProfileState } from '../../../selectors/selectors';
 
 const MyInfo: React.FC = () => {
+	console.log('MyInfo render')
 	const navigate = useNavigate()
 	const { renderUser, isAuth } = useAppSelector(selectProfileState)
 	const avatar = useAvatar()
 	const isOwner = useIsOwner()
+
 
 	useRenderUser()
 
@@ -39,4 +41,4 @@ const MyInfo: React.FC = () => {
 	)
 }
 
-export default MyInfo
+export default React.memo(MyInfo)

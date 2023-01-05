@@ -1,20 +1,21 @@
-import { useEffect } from 'react'
-import s from './MyPosts.module.scss'
+import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
 import { selectPosts, selectRenderUserId } from '../../../selectors/selectors'
+import s from './MyPosts.module.scss'
 
 import Post from './post/Post'
 
 const MyPosts = () => {
+	const dispatch = useAppDispatch()
 	const _id = useAppSelector(selectRenderUserId)
 	const posts = useAppSelector(selectPosts)
-	const dispatch = useAppDispatch()
 
 	useEffect(() => {
 		dispatch(fetchPostsThunk(_id))
 	}, [_id])
 
+	console.log('MyPosts render')
 	return (
 		<div className={s.posts}>
 			{posts.length
@@ -29,4 +30,4 @@ const MyPosts = () => {
 	)
 }
 
-export default MyPosts
+export default React.memo(MyPosts)

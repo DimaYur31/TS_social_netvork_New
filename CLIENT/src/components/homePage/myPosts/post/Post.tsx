@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'timeago.js'
 import s from './Post.module.scss'
@@ -6,17 +6,18 @@ import { useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { getPhoto } from './../../../../hooks/hooks'
 import { PostType } from '../../../../types/post'
 import { getUserData } from '../../../../api/userApi'
+import { selectDefaultUser } from '../../../../selectors/selectors'
 
 import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
-import { selectDefaultUser } from '../../../../selectors/selectors'
 
 type TPost = {
 	post: PostType<string>
 }
 
 const Post: FC<TPost> = ({ post }) => {
+	console.log('Post render')
 	const defaultUser = useAppSelector(selectDefaultUser)
 	const [thisUser, setThisUser] = useState(defaultUser)
 
@@ -67,4 +68,4 @@ const Post: FC<TPost> = ({ post }) => {
 	)
 }
 
-export default Post
+export default React.memo(Post)

@@ -1,7 +1,7 @@
 .post{
 	position: relative;
 	margin-bottom: 20px;
-	border-radius: 10px;
+	border-radius: 20px;
 	-webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
 	box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);	
 	
@@ -32,21 +32,19 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		padding: 10px;
-		
 		
 		p{
-			padding: 10px;
+			padding: 10px 20px;
 		}
 		
 		div{
 			position: relative;
-			padding-top: 50%;
+			padding-top: 40%;
 		}
 		
 		img{
 			position: absolute;
-			width: 90%;
+			width: 85%;
 			height: 100%;
 			top: 0;
 			left: 50%;

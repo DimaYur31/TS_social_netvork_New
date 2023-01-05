@@ -1,7 +1,9 @@
+import React from 'react'
 import s from './Feed.module.scss'
 import Share from '../share/Share'
 
 const Feed = () => {
+	console.log('Feed render')
 	return (
 		<div className={s.feed}>
 			<Share />
@@ -18,4 +20,4 @@ const Feed = () => {
 	)
 }
 
-export default Feed
+export default React.memo(Feed)

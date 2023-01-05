@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { ConversationType } from '../../../types/conwersations'
 import { UserType } from '../../../types/profile'
 import { getUserData } from '../../../api/userApi'
@@ -18,7 +18,7 @@ const ChatRoom: FC<RoomProps> = ({ room, userId }) => {
 		await getUserData(user)
 			.then(data => setMember(data))
 	}
-
+	console.log('ChatRoom render')
 	useEffect(() => {
 		fetchData()
 	}, [user])
@@ -30,4 +30,4 @@ const ChatRoom: FC<RoomProps> = ({ room, userId }) => {
 	)
 }
 
-export default ChatRoom
+export default React.memo(ChatRoom)

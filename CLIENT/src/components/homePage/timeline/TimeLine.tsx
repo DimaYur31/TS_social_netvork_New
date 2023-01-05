@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
 import { selectDefaultUser, selectPosts } from '../../../selectors/selectors'
@@ -7,10 +7,10 @@ import s from './TimeLine.module.scss'
 import Post from '../myPosts/post/Post'
 
 const TimeLine = () => {
+	console.log('TimeLine render')
 	const dispatch = useAppDispatch()
 	const defaultUser = useAppSelector(selectDefaultUser)
 	const posts = useAppSelector(selectPosts)
-
 
 	useEffect(() => {
 		dispatch(fetchTimeLineThunk(defaultUser._id))
@@ -30,4 +30,5 @@ const TimeLine = () => {
 	)
 }
 
-export default TimeLine
+// export default TimeLine
+export default React.memo(TimeLine)
