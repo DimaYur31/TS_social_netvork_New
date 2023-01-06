@@ -11,6 +11,7 @@ import ContentWrapper from './components/styleedComponents/ContentWrapper'
 import Router from './components/routes/Router'
 
 const App = () => {
+	console.log('App render')
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const { isAuth, defaultUser } = useAppSelector(selectProfileState)

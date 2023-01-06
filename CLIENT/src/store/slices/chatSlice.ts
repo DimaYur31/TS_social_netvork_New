@@ -41,7 +41,6 @@ const chatSlice = createSlice({
 		},//-
 
 		editMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
-			console.log('edit')
 			let message = state.messages.find(message => message._id === action.payload._id)
 			const index = message && state.messages.indexOf(message)
 			if (index) state.messages[index] = action.payload
@@ -50,7 +49,7 @@ const chatSlice = createSlice({
 })
 
 export const {
-	getChats, setCurrentChat, getChatMessages,
+	getChats, setCurrentChat, getChatMessages, addChat,
 	removeChat, removeMessage, getMessage, editMessage
 } = chatSlice.actions
 

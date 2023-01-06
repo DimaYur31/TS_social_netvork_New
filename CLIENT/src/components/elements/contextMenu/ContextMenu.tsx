@@ -25,14 +25,14 @@ const ContextMenu: FC<ContextMenuProps> = ({ text, id }) => {
 	}
 
 	return <>
-		<div className={s.contextMenu}>
+		<span className={s.contextMenu}>
 			<span onClick={() => editMessage()}>
 				<SVG.Edit style={{ fill: 'green' }} />
 			</span>
 			<span onClick={() => deleteMessage(id)}>
 				<SVG.Cancel style={{ fill: 'red' }} />
 			</span>
-		</div>
+		</span>
 	</>
 }
 

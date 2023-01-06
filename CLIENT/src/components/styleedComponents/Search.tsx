@@ -2,9 +2,9 @@ import { useState, ReactNode } from 'react'
 import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 
-const StyledSearch = styled.div`
+const StyledSearch = styled.div<{ isActive: boolean }>`
 	position: relative;
-	width: ${(props: Iprops) => props.isActive ? '85%' : '35px'};
+	width: ${({ isActive }) => isActive ? '85%' : '35px'};
 	height: 35px;
 	border-radius: 35px;
 	background: #fff;
@@ -97,24 +97,21 @@ position: absolute;
 }
 `
 
-interface Iprops {
-	isActive: boolean
-	children?: ReactNode
-}
-
 const Search = () => {
 	const [isActive, setIsActive] = useState(false)
 	const search = useInput()
 
 	return <StyledSearch isActive={isActive}>
 		<div onClick={() => setIsActive(!isActive)}></div>
-		<span className="search">
+		<span className='search'>
 			<input
-				type="text"
+				type='text'
 				placeholder='Search'
 				{...search}
 			/>
-			<Clear onClick={() => search.reset()} />
+			<Clear
+			// onClick={() => search.clear()}
+			/>
 		</span>
 	</StyledSearch>
 }

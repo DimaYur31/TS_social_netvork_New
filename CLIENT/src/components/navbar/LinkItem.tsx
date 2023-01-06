@@ -14,7 +14,7 @@ interface LinkItemProps {
 
 const LinkItem: React.FC<LinkItemProps> = ({ to, title, children }) => {
 
-	const handlerActive = ({ isActive }: ILink) => (isActive && s.active)
+	const handlerActive = ({ isActive }: ILink) => (isActive ? s.active : null)
 
 	return <li>
 		<NavLink to={to} className={handlerActive} >

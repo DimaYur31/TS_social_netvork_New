@@ -1,9 +1,10 @@
-import { ChangeEvent, FC, useContext, useEffect, useState } from 'react'
+import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react'
 import s from './ChatForm.module.scss'
 
 import Button from '../../styleedComponents/Button'
 import { socket } from '../../../socket'
 import { EditContext } from '../messengerContext/EditMessageContext'
+import PrimaryInpyt from '../../elements/inputs/primaryInput/PrimaryInpyt'
 
 type ChatFormProps = {
 	userId: string
@@ -11,6 +12,7 @@ type ChatFormProps = {
 }
 
 const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
+	console.log('ChatForm render')
 	const { editState, setEditState } = useContext(EditContext)
 	const [text, setText] = useState('')
 
@@ -66,7 +68,11 @@ const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
 
 	return (
 		<div className={s.panel} >
-			<input
+			{/* <input
+				value={editState.isEdit ? editState.text : text}
+				onChange={(e: ChangeEvent<HTMLInputElement>) => changeText(e)}
+			/> */}
+			<PrimaryInpyt
 				value={editState.isEdit ? editState.text : text}
 				onChange={(e: ChangeEvent<HTMLInputElement>) => changeText(e)}
 			/>
@@ -77,4 +83,4 @@ const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
 	)
 }
 
-export default ChatForm
+export default React.memo(ChatForm)

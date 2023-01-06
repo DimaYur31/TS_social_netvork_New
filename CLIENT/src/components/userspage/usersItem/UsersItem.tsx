@@ -1,29 +1,40 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserType } from '../../../types/profile'
 import { getPhoto } from '../../../hooks/hooks'
 import { SVG } from '../../../img/icons/exportIcons'
-import { useAppSelector } from '../../../hooks/reactReduxHooks'
-import { selectChats } from '../../../selectors/selectors'
+import { useAppSelector, useAppDispatch } from '../../../hooks/reactReduxHooks';
+import { selectChats, selectDefaultUserId } from '../../../selectors/selectors';
 import s from './userItem.module.scss'
 
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
+import { createConversationThunc } from '../../../store/slices/apiActions/chatActions'
 
 type propsType = {
 	thisUser: UserType
 }
 
 const UsersItem: FC<propsType> = ({ thisUser }) => {
-	const { avatar, surname, name, _id } = thisUser
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
+	const { avatar, surname, name, _id: receiverId } = thisUser
 	const chats = useAppSelector(selectChats)
+	const senderId = useAppSelector(selectDefaultUserId)
 
 	const getChat = () => {
-		console.log(chats)
+		chats.forEach(chat => {
+			if (chat.members.includes(thisUser._id)) {
+				navigate(`/messenger/${chat._id}`)
+			} else {
+				dispatch(createConversationThunc(senderId, receiverId))
+					.then(() => navigate(`/messenger/${chat._id}`))
+			}
+		})
 	}
 
 	return (
 		<div className={s.usersItem}>
-			<Link to={`/profile/${_id}`}>
+			<Link to={`/profile/${receiverId}`}>
 				<div className={s.image}>
 					<img src={getPhoto(avatar)} />
 				</div>

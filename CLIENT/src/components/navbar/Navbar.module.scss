@@ -11,7 +11,7 @@
 		list-style: none;
 		padding-left: 20px;
 		transition: 0.5s;
-	margin: 10px 0;
+		margin: 10px 0;
 	}
 
 	li {
@@ -29,15 +29,15 @@
 		width: 100%;
 		color: inherit;
 		text-decoration: none;
-	}
-
-	a.active {
-		color:  #0690FD;
-		background: #fff;
-	}
-
-	a.active .icons{
-		fill:#0690FD
+		
+		&.active {
+			color:  #0690FD;
+			background: #fff;
+		}
+		
+		&.active .icons{
+			fill:#0690FD
+		}
 	}
 
 	.icons {
@@ -46,5 +46,4 @@
 		width: 20px;
 		height:20px;
 	}
-
 }

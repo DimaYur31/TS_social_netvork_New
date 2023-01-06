@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 import { socket } from '../../../socket'
@@ -10,32 +10,36 @@ import Message from '../message/Message'
 
 const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 	const dispatch = useAppDispatch()
-	const scrollRef = useRef<HTMLDivElement>(null)
 	const messages = useAppSelector(selectMessages)
+	// const scrollRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		dispatch(getMessagesThunk(conversationId))
-
 		// scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
-
-		socket.on('getMessage', message => {
-			dispatch(getMessage(message))
-		})
-
-		socket.on('removedMessage', (messageId: string) => {
-			dispatch(removeMessage(messageId))
-		})
-
-		socket.on('updateMessage', (message: any) => {
-			dispatch(editMessage(message))
-		})
-
 	}, [messages])
 
+
+	socket.on('getMessage', message => {
+		dispatch(getMessage(message))
+	})
+
+	socket.on('removedMessage', (messageId: string) => {
+		dispatch(removeMessage(messageId))
+	})
+
+	socket.on('updateMessage', (message: any) => {
+		dispatch(editMessage(message))
+	})
+
+
+	// Данный компонент постоянно рендерится, пока не заню что с этим делать
+	// console.log('DialogMessages render')
 	return (
 		<div className={s.chat}>{
 			messages?.map(message => {
-				return <div ref={scrollRef} key={message._id}>
+				return <div key={message._id}
+				// ref={scrollRef}
+				>
 					<Message message={message} />
 				</div>
 			})
@@ -43,4 +47,4 @@ const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 	)
 }
 
-export default DialogMessages
+export default React.memo(DialogMessages)
