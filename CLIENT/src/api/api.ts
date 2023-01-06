@@ -4,7 +4,7 @@ const instans = axios.create({ baseURL: process.env.REACT_APP_API_URL })
 
 const authInstans = axios.create({ baseURL: process.env.REACT_APP_API_URL })
 
-const authIntercepter = config => {
+const authIntercepter = (config: any) => {
 	config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
 	return config
 }

@@ -39,8 +39,17 @@
 .owner{
 	justify-content: end;
 
+   *:hover span{
+		opacity: 1;
+	}
+	
 	p{
 		background-color: #0690FD;
 		color:#fff;
+
+		span{
+			opacity: 0;
+			transition: .4s;
+		}
 	}
 }

@@ -7,7 +7,6 @@ import { getUserData } from '../../../api/userApi'
 import { getPhoto } from '../../../hooks/hooks'
 import { selectDefaultUser } from '../../../selectors/selectors'
 import s from './Message.module.scss'
-import useContextMenu from '../../../hooks/useContextMenu'
 
 import ContextMenu from '../../elements/contextMenu/ContextMenu'
 
@@ -17,7 +16,6 @@ type MessagePropsType = {
 
 const Message: FC<MessagePropsType> = ({ message }) => {
 	const defaultUser = useAppSelector(selectDefaultUser)
-	const { setShow, show } = useContextMenu()
 	const isOwner = message.sender === defaultUser._id
 	const classOvner = isOwner ? `${s.owner}` : null
 	const [participant, setParticipant] = useState<UserType | null>(null)
@@ -31,23 +29,19 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 			.then(data => setParticipant(data))
 	}
 
-
 	return (
 		<div className={`${s.message} ${classOvner}`}>
 			<div>
 				<img src={!participant ? getPhoto(defaultUser.avatar) : getPhoto(participant.avatar)} />
 				<span>{format(message.createdAt)}</span>
 			</div>
-			<p onContextMenu={(e) => {
-				e.preventDefault()
-				setShow(true)
-			}}
-			>{message.text}
-				{isOwner && show &&
+			<p>{message.text}
+				{isOwner &&
 					<ContextMenu
 						id={message._id}
 						text={message.text}
-					/>}
+					/>
+				}
 			</p>
 		</div>
 	)

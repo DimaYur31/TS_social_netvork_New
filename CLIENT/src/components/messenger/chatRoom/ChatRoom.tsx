@@ -15,7 +15,7 @@ const ChatRoom: FC<RoomProps> = ({ room, userId }) => {
 	const user = room.members.find(id => id !== userId)
 
 	let fetchData = async () => {
-		await getUserData(user)
+		await getUserData(user!)
 			.then(data => setMember(data))
 	}
 	console.log('ChatRoom render')

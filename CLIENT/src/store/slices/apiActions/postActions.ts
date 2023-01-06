@@ -3,7 +3,7 @@ import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
 import { likeDislike, removePost, setPosts } from "../postsSlice"
 import { addPhoto } from "../profileSlice"
-import { createPost } from './../../../api/postAPI'
+import { createPost } from '../../../api/postAPI'
 import { uploadPhoto } from "../../../api/userApi"
 
 

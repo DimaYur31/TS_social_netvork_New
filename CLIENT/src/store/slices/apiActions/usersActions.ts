@@ -24,7 +24,7 @@ export const changeDefaultAndCurrentUsers = (defaultUser: UserType, id: string |
 			dispatch(setRenderUser(defaultUser))
 		} else {
 			dispatch(toggleLoading(true))
-			const currentUser = await getUserData(id)
+			const currentUser = await getUserData(id!)
 			dispatch(setCurrentUser(currentUser))
 			dispatch(setRenderUser(currentUser))
 			dispatch(toggleLoading(false))

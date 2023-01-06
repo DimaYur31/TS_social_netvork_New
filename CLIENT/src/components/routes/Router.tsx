@@ -11,6 +11,7 @@ const Photos = lazy(() => import('../photos/Photos'))
 const Rooms = lazy(() => import('../rooms/Rooms'))
 const Room = lazy(() => import('../rooms/Room'))
 const Messenger = lazy(() => import('../messenger/Messenger'))
+const DialogItem = lazy(() => import('../messenger/dialogItem/DialogItem'))
 
 const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 	return <div>
@@ -23,7 +24,10 @@ const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 				<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 				<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
 				<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
-				<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>} />
+				<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>}>
+					<Route path=':id' element={<Suspense fallback={<Loading />}><DialogItem /></Suspense>} />
+
+				</Route>
 				<Route path='*' element={<h2>Page not found</h2>} />
 			</Routes>
 			: <Routes>

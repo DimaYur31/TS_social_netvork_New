@@ -1,8 +1,11 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import s from './userItem.module.scss'
 import { UserType } from '../../../types/profile'
 import { getPhoto } from '../../../hooks/hooks'
+import { SVG } from '../../../img/icons/exportIcons'
+import { useAppSelector } from '../../../hooks/reactReduxHooks'
+import { selectChats } from '../../../selectors/selectors'
+import s from './userItem.module.scss'
 
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 
@@ -12,6 +15,11 @@ type propsType = {
 
 const UsersItem: FC<propsType> = ({ thisUser }) => {
 	const { avatar, surname, name, _id } = thisUser
+	const chats = useAppSelector(selectChats)
+
+	const getChat = () => {
+		console.log(chats)
+	}
 
 	return (
 		<div className={s.usersItem}>
@@ -24,7 +32,7 @@ const UsersItem: FC<propsType> = ({ thisUser }) => {
 			</Link>
 			<div className={s.btns} >
 				<FollowButton currentUserId={thisUser._id} />
-				{/* <span>chat</span> */}
+				<span onClick={() => getChat()}><SVG.AddChat /></span>
 			</div>
 		</div >
 	)

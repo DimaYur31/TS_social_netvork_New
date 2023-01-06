@@ -12,8 +12,8 @@ export const registrationThunkCreator = (email: string, password: string, name: 
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
 		const user = await userRegistration(email, password, name, surname)
-		dispatch(setUser(user))
-		dispatch(setRenderUser(user))
+		dispatch(setUser(user!))
+		dispatch(setRenderUser(user!))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -22,8 +22,8 @@ export const loginThunkCreator = (email: string, password: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
 		const user = await userLogin(email, password)
-		dispatch(setUser(user))
-		dispatch(setRenderUser(user))
+		dispatch(setUser(user!))
+		dispatch(setRenderUser(user!))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -32,8 +32,8 @@ export const chechAuthUser = () => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
 		const user = await check()
-		dispatch(setUser(user))
-		dispatch(setRenderUser(user))
+		dispatch(setUser(user!))
+		dispatch(setRenderUser(user!))
 		dispatch(toggleLoading(false))
 	}
 }

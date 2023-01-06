@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
-import { useAppSelector } from '../../../../hooks/reactReduxHooks'
+import React, { FC, useState } from 'react'
 import { useIsOwner } from '../../../../hooks/hooks'
-import { selectRenderUser } from '../../../../selectors/selectors'
 import { SVG } from './../../../../img/icons/exportIcons'
 import s from './About.module.scss'
 
 import ProfileFormSetings from './profileForm/ProfileFormSetings'
 import Modal from '../../../elements/modal/Modal'
+import { UserType } from '../../../../types/profile'
 
-const About = () => {
-	const { birthday, city, country, job, languages, name, surname } = useAppSelector(selectRenderUser)
+const About: FC<{ user: UserType }> = ({ user }) => {
+	const { birthday, city, country, job, languages, name, surname } = user
 	const [isOpen, setIsOpen] = useState(false)
 	const isOwner = useIsOwner()
 	console.log('About render')

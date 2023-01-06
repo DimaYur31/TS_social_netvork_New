@@ -20,10 +20,12 @@ import { ReactComponent as Exit } from './exit.svg'//@ts-ignore
 import { ReactComponent as Home } from './home.svg'//@ts-ignore
 import { ReactComponent as Edit } from './edit.svg'//@ts-ignore
 import { ReactComponent as Subscribe } from './subscribe.svg'//@ts-ignore
+import { ReactComponent as AddChat } from './addchat.svg'//@ts-ignore
 
 export const SVG = {
 	Icon, Chat, Friends, Users, Community,
 	Gallery, VideoCall, Music, Folder, Login,
 	News, Settings, Cancel, Dustbin, More,
-	Like, Dislike, Exit, Home, Edit, Subscribe
+	Like, Dislike, Exit, Home, Edit, Subscribe,
+	AddChat
 }

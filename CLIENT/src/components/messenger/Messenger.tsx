@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { getChatsThunk } from '../../store/slices/apiActions/chatActions'
 import { selectDefaultUserId } from '../../selectors/selectors'
 import s from './Messenger.module.scss'
 
 import Conversations from './conversations/Conversations'
-import DialogItem from './dialogItem/DialogItem'
+import { Outlet } from 'react-router-dom'
 
 const Messanger = () => {
 	const dispatch = useAppDispatch()
@@ -19,7 +19,7 @@ const Messanger = () => {
 		<div className={s.messenger}>
 
 			<Conversations />
-			<DialogItem />
+			<Outlet />
 		</div>
 	)
 }

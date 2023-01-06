@@ -1,8 +1,8 @@
 import { FC, useContext } from 'react'
-import s from './ContextMenu.module.scss'
 import { SVG } from '../../../img/icons/exportIcons'
 import { socket } from '../../../socket'
 import { EditContext } from '../../messenger/messengerContext/EditMessageContext'
+import s from './ContextMenu.module.scss'
 
 type ContextMenuProps = {
 	text: string
@@ -24,22 +24,16 @@ const ContextMenu: FC<ContextMenuProps> = ({ text, id }) => {
 		socket.emit('deleteMessage', messageId)
 	}
 
-	return (
+	return <>
 		<div className={s.contextMenu}>
-			<ul>
-				<li>
-					<span
-						onClick={() => deleteMessage(id)}
-					><SVG.Dustbin /></span>
-				</li>
-				<li>
-					<span
-						onClick={() => editMessage()}
-					><SVG.Edit /></span>
-				</li>
-			</ul>
+			<span onClick={() => editMessage()}>
+				<SVG.Edit style={{ fill: 'green' }} />
+			</span>
+			<span onClick={() => deleteMessage(id)}>
+				<SVG.Cancel style={{ fill: 'red' }} />
+			</span>
 		</div>
-	)
+	</>
 }
 
 export default ContextMenu

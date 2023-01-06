@@ -5,12 +5,13 @@
 	flex-direction: column;
 	background: #82808010;
 	border-radius: 10px;
-	padding: 10px;
+	// padding: 10px;
 	backdrop-filter: 5px;
 	box-shadow: 0 0 3px 3px inset #79797a1d;
 	
 	h3{
 		transition: 0.25s;
+		font-size: 20px;
 	}
 	
 	&:hover h3{
@@ -35,7 +36,7 @@
 		
 		img{
 			padding: 10px;
-			border-radius: 50%;
+			border-radius: 25px;
 			height: max(20vh, 150px);
 			width: max(20vh, 150px);
 			object-fit: cover;
@@ -53,6 +54,13 @@
 			padding-top: 5px;
 			font-style: italic;
 			cursor: pointer;
+			
+			svg{
+				width: 24px;
+				height: 24px;
+				fill:rgb(7, 155, 229);
+			}
 		}
+
 	}
 }
