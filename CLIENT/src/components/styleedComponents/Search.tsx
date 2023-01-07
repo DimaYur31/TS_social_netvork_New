@@ -66,7 +66,7 @@ const StyledSearch = styled.div<{ isActive: boolean }>`
 	}
 `
 
-const Clear = styled.span`
+export const Clear = styled.span`
 position: absolute;
 	top: 50%;
 	transform: translateY(-50%);

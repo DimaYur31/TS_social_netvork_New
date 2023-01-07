@@ -16,7 +16,7 @@ const useGetPageData = (index: number, cb: (id: string) => any) => {
 
 	useEffect(() => {
 		getData()
-	}, [])
+	}, [renderId])
 
 	return { data, renderId }
 }

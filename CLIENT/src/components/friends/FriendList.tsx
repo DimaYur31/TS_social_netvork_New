@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectDefaultUser, selectFriends } from '../../selectors/selectors'
+import s from './FriendList.module.scss'
 
 import UserItem from '../elements/user-item/UserItem'
 
@@ -19,10 +21,14 @@ const FriendList = () => {
 		{
 			friends.map((friend) => {
 				return (
-					<UserItem
-						user={friend}
+					<Link to={`/profile/${friend._id}`}
 						key={friend._id}
-					/>
+						className={s.link}
+					>
+						<UserItem
+							user={friend}
+						/>
+					</Link>
 				)
 			})
 		}

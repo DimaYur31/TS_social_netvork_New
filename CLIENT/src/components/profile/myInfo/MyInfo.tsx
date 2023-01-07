@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../../../hooks/reactReduxHooks'
+// import { useNavigate } from 'react-router-dom'
+// import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getPhoto, useAvatar, useIsOwner, useRenderUser } from '../../../hooks/hooks'
-import { selectProfileState } from '../../../selectors/selectors'
+// import { selectProfileState } from '../../../selectors/selectors'
 import s from './MyInfo.module.scss'
 
 import AddPostPopap from '../../elements/popap/AddPostPopap'
@@ -10,6 +10,7 @@ import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 import { UserType } from '../../../types/profile'
 
 const MyInfo: React.FC<{ user: UserType }> = ({ user }) => {
+	console.log(user)
 	// const { renderUser } = useAppSelector(selectProfileState)
 	const avatar = useAvatar()
 	const isOwner = useIsOwner()
