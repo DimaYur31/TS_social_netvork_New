@@ -54,7 +54,6 @@ const Post: FC<TPost> = ({ post }) => {
 				<p>{post.text}</p>
 			</div>
 
-
 			<div className={s.statistic} >
 
 				<LikeDislikeComponent
