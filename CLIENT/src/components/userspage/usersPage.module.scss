@@ -2,10 +2,10 @@
 	position: relative;
 	display: flex;
 	flex-direction:column;
-	align-items: center;
-	justify-content: center;
+	// justify-content: center;
 	padding-top: 15px;
 	gap: 20px;
+	margin-left: 20px;
 
 	.usersList{
 		display: flex;

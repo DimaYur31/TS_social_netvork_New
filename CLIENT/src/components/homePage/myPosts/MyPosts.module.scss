@@ -1,14 +1,15 @@
 .posts {
 	width: 100%;
 	position: relative;
-	margin-top: 15px;
+	// margin-top: 15px;
 	display: flex;
 	justify-content: center;
-	height: 70vh;
-	overflow-y: scroll;
-
+	// height: 70vh;
+	// overflow-y: scroll;
+	// top: -150px;
+	
 	>div{
-		width: 95%;
+		width: 96%;
 	}
 
 	h2 {

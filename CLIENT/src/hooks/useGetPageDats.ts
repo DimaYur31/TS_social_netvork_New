@@ -8,7 +8,7 @@ const useGetPageData = (index: number, cb: (id: string) => any) => {
 	const path = location.pathname.split('/')
 	const renderId = path[index]
 	const [data, setData] = useState()
-
+	console.log(renderId)
 	const getData = async () => {
 		const response = await cb(renderId)
 		response && setData(response)

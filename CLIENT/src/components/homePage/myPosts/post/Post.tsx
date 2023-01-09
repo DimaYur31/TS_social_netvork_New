@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { format } from 'timeago.js'
 import s from './Post.module.scss'
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
@@ -20,6 +20,7 @@ const Post: FC<TPost> = ({ post }) => {
 	console.log('Post render')
 	const defaultUser = useAppSelector(selectDefaultUser)
 	const [thisUser, setThisUser] = useState(defaultUser)
+	const navigate = useNavigate()
 
 	const getUsersData = async (id: string) => {
 		if (post.userId === defaultUser._id) {
@@ -46,12 +47,13 @@ const Post: FC<TPost> = ({ post }) => {
 				<ButtonsPopap post={post} />
 			</div>
 
-			<div className={s.body}>
+			<div onClick={() => navigate(`/post/${post._id}`)} className={s.body}>
 				<div>
 					<img src={getPhoto(post.img)} />
 				</div>
 				<p>{post.text}</p>
 			</div>
+
 
 			<div className={s.statistic} >
 

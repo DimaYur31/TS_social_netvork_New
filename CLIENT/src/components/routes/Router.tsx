@@ -11,6 +11,7 @@ const Profile = lazy(() => import('../profile/Profile'))
 const Photos = lazy(() => import('../photos/Photos'))
 const Rooms = lazy(() => import('../rooms/Rooms'))
 const Room = lazy(() => import('../rooms/Room'))
+const PostPage = lazy(() => import('../postPage/PostPage'))
 const Messenger = lazy(() => import('../messenger/Messenger'))
 
 const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
@@ -20,6 +21,7 @@ const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 				<Route path='/:id' element={<Suspense fallback={<Loading />}><HomePage /></Suspense>} />
 				<Route path='/' element={<Suspense fallback={<Loading />}><Navigate to='/:id' replace /></Suspense>} />
 				<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
+				<Route path='/post/:id' element={<Suspense fallback={<Loading />}><PostPage /></Suspense>} />
 				<Route path='/profile/:id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
 				<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
 				<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />

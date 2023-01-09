@@ -23,7 +23,8 @@ const MyPosts: FC<{ _id: string }> = ({ _id }) => {
 						return <Post key={post._id} post={post} />
 					})
 				}</div>
-				: <h2>Add Your Posts</h2>
+				// : <h2>Add Your Posts</h2>
+				: null
 			}
 		</div>
 	)
