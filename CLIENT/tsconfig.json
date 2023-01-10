@@ -26,6 +26,7 @@
 		"мусор/usePosition.ts",
 		"мусор/useDeviceWidth.ts",
 		"мусор/query",
-		"мусор/AuthorizationOld.tsxtsx"
+		"мусор/AuthorizationOld.tsxtsx",
+		"мусор/hoc"
 	]
 }

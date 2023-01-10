@@ -16,16 +16,16 @@ const App = () => {
 	const navigate = useNavigate()
 	const { isAuth, defaultUser } = useAppSelector(selectProfileState)
 
-	useEffect(() => {
-		if (defaultUser._id && isAuth) {
+	// useEffect(() => {
+	// 	if (defaultUser._id && isAuth) {
 
-			socket.emit('addUser', defaultUser._id)
-			socket.on('getUsers', users => {
-				console.log('users online')
-			})
-		}
-		// return socket.off('getUsers')
-	}, [defaultUser._id])
+	// 		socket.emit('addUser', defaultUser._id)
+	// 		socket.on('getUsers', users => {
+	// 			console.log('users online')
+	// 		})
+	// 	}
+	// 	// return socket.off('getUsers')
+	// }, [defaultUser._id])
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
@@ -37,12 +37,12 @@ const App = () => {
 	}, [isAuth])
 
 	return <>
-		{isAuth && <Header />}
+		{/* {isAuth && <Header />} */}
 
-		<ContentWrapper isAuth={isAuth}>
-			{isAuth && <Navbar />}
-			<Router isAuth={isAuth} />
-		</ContentWrapper>
+		{/* <ContentWrapper isAuth={isAuth}> */}
+		{/* {isAuth && <Navbar />} */}
+		<Router isAuth={isAuth} />
+		{/* </ContentWrapper> */}
 	</ >
 }
 

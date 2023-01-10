@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Loading from '../elements/loading/Loading'
 import DialogItem from '../messenger/dialogItem/DialogItem'
+import Layout from '../layout/Layout'
 
 const Authorization = lazy(() => import('../authorization/Authorization'))
 const HomePage = lazy(() => import('../homePage/HomePage'))
@@ -18,18 +19,20 @@ const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 	return <div>
 		{isAuth
 			? <Routes>
-				<Route path='/:id' element={<Suspense fallback={<Loading />}><HomePage /></Suspense>} />
-				<Route path='/' element={<Suspense fallback={<Loading />}><Navigate to='/:id' replace /></Suspense>} />
-				<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
-				<Route path='/post/:id' element={<Suspense fallback={<Loading />}><PostPage /></Suspense>} />
-				<Route path='/profile/:id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
-				<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
-				<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
-				<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
-				<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>}>
-					<Route path=':id' element={<DialogItem />} />
+				<Route path='/' element={<Suspense fallback={<Loading />}><Layout /></Suspense>} >
+					{/* <Route path='/' element={<Suspense fallback={<Loading />}><Navigate to='/:id' replace /></Suspense>} /> */}
+					<Route path='/:id' element={<Suspense fallback={<Loading />}><HomePage /></Suspense>} />
+					<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
+					<Route path='/post/:id' element={<Suspense fallback={<Loading />}><PostPage /></Suspense>} />
+					<Route path='/profile/:id' element={<Suspense fallback={<Loading />}><Profile /></Suspense>} />
+					<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
+					<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
+					<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
+					<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>}>
+						<Route path=':id' element={<DialogItem />} />
+					</Route>
+					{/* <Route path='*' element={<h2>Page not found</h2>} /> */}
 				</Route>
-				<Route path='*' element={<h2>Page not found</h2>} />
 			</Routes>
 			: <Routes>
 				<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
