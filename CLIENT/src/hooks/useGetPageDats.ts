@@ -2,13 +2,13 @@ import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 
 
-
+// принимает индекс, под которым находится id в массиве из адресной строки, и колбэк который делает запрос нужных данных
 const useGetPageData = (index: number, cb: (id: string) => any) => {
 	const location = useLocation()
 	const path = location.pathname.split('/')
 	const renderId = path[index]
 	const [data, setData] = useState()
-	console.log(renderId)
+
 	const getData = async () => {
 		const response = await cb(renderId)
 		response && setData(response)

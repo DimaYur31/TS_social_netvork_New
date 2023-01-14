@@ -18,17 +18,17 @@ const Photos = () => {
 		formData.append('img', e.target.files[0])
 		dispatch(uploadPhotoThunkCreator(_id, formData))
 	}
-	console.log('Photos render')
+
 	return (
-		<>
+		<div className={s.wrapper}>
 			<input type="file" onChange={selectFile} />
 
 			<div className={s.photos}>
 				{photos.map((photo: string) => {
-					return <Photo key={photo} photo={photo} id={_id} />
+					return <Photo key={photo} photo={photo} userId={_id} />
 				})}
 			</div>
-		</>
+		</div>
 	)
 }
 

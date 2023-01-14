@@ -8,16 +8,15 @@ import Modal from '../../../elements/modal/Modal'
 import { UserType } from '../../../../types/profile'
 
 const About: FC<{ user: UserType }> = ({ user }) => {
-	const { birthday, city, country, job, languages, name, surname } = user
+	const { birthday, city, country, job, languages, name, surname, _id } = user
 	const [isOpen, setIsOpen] = useState(false)
-	const isOwner = useIsOwner()
-	console.log('About render')
+	const isOwner = useIsOwner(_id)
+
 	return (
 		<div className={s.info}>
 			<h3>{`${name} ${surname}`}
 				{isOwner &&
-					<button
-						className={s.open}
+					<button className={s.open}
 						onClick={() => setIsOpen(true)}
 					>
 						<SVG.Settings className={s.settings} />

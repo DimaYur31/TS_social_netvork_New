@@ -20,8 +20,6 @@ export type UserType = {
 
 export type ProfileType = {
 	defaultUser: UserType,
-	currentUser: UserType
-	renderUser: UserType
 	isAuth: boolean
 }
 

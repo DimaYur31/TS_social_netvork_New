@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
-import { selectDefaultUser, selectPosts } from '../../../selectors/selectors'
+import { selectDefaultUserId, sortedPosts } from '../../../selectors/selectors'
 import s from './TimeLine.module.scss'
 
 import Post from '../myPosts/post/Post'
 
 const TimeLine = () => {
-	console.log('TimeLine render')
 	const dispatch = useAppDispatch()
-	const defaultUser = useAppSelector(selectDefaultUser)
-	const posts = useAppSelector(selectPosts)
+	const _id = useAppSelector(selectDefaultUserId)
+	const posts = useAppSelector(sortedPosts)
 
 	useEffect(() => {
-		dispatch(fetchTimeLineThunk(defaultUser._id))
+		dispatch(fetchTimeLineThunk(_id))
 	}, [])
 
 	return (
@@ -24,11 +23,10 @@ const TimeLine = () => {
 						return <Post key={post._id} post={post} />
 					})
 				}</div>
-				: <h2>Your timeline is empty</h2>
+				: <h2>Add post or friends</h2>
 			}
 		</div>
 	)
 }
 
-// export default TimeLine
 export default React.memo(TimeLine)

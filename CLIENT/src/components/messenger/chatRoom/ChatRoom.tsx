@@ -18,7 +18,7 @@ const ChatRoom: FC<RoomProps> = ({ room, userId }) => {
 		await getUserData(user!)
 			.then(data => setMember(data))
 	}
-	console.log('ChatRoom render')
+
 	useEffect(() => {
 		fetchData()
 	}, [user])

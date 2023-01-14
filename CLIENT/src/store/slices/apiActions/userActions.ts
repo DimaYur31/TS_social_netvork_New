@@ -4,8 +4,7 @@ import { UserChanges } from "../../../types/profile"
 import { AppDispatch } from "../../store"
 import { toggleLoading } from "../appSlice"
 import {
-	addPhoto, follow, removePhoto,
-	setRenderUser, setUser, unfollow
+	addPhoto, follow, removePhoto, setUser, unfollow
 } from "../profileSlice"
 
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
@@ -13,7 +12,6 @@ export const registrationThunkCreator = (email: string, password: string, name: 
 		dispatch(toggleLoading(true))
 		const user = await userRegistration(email, password, name, surname)
 		dispatch(setUser(user!))
-		dispatch(setRenderUser(user!))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -23,7 +21,6 @@ export const loginThunkCreator = (email: string, password: string) => {
 		dispatch(toggleLoading(true))
 		const user = await userLogin(email, password)
 		dispatch(setUser(user!))
-		dispatch(setRenderUser(user!))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -33,7 +30,6 @@ export const chechAuthUser = () => {
 		dispatch(toggleLoading(true))
 		const user = await check()
 		dispatch(setUser(user!))
-		dispatch(setRenderUser(user!))
 		dispatch(toggleLoading(false))
 	}
 }
@@ -54,10 +50,8 @@ export const deletePhotoThunk = (userId: string, photo: string) => {
 
 export const changeUserProfile = (userId: string, changes: UserChanges) => {
 	return async (dispatch: AppDispatch) => {
-
 		let user = await updateUser(userId, changes)
 		dispatch(setUser(user))
-		dispatch(setRenderUser(user))
 	}
 }
 
@@ -67,7 +61,6 @@ export const followUnfollowThunk = (userId: string, id: string, isFollow: boolea
 		if (!isFollow) {
 			dispatch(follow(data))
 			return true
-
 		} else {
 			dispatch(unfollow(data))
 			return false

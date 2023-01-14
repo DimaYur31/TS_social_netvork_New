@@ -7,7 +7,6 @@ import DialogMessages from '../dialogMessages/DialogMessages'
 import ChatForm from '../chatForm/ChatForm'
 
 const DialogItem = () => {
-	console.log('DialigItem render')
 	const _id = useAppSelector(selectDefaultUserId)
 	const currentChat = useAppSelector(selectCurrentChat)
 

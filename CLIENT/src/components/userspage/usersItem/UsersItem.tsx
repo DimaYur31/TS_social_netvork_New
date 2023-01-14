@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserType } from '../../../types/profile'
-import { getPhoto } from '../../../hooks/hooks'
+import { usePhotosPath } from '../../../hooks/hooks'
+import { useAppSelector, useAppDispatch } from '../../../hooks/reactReduxHooks'
+import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
+import { createConversationThunc } from '../../../store/slices/apiActions/chatActions'
 import { SVG } from '../../../img/icons/exportIcons'
-import { useAppSelector, useAppDispatch } from '../../../hooks/reactReduxHooks';
-import { selectChats, selectDefaultUserId } from '../../../selectors/selectors';
 import s from './userItem.module.scss'
 
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
-import { createConversationThunc } from '../../../store/slices/apiActions/chatActions'
 
 type propsType = {
 	thisUser: UserType
@@ -17,9 +17,9 @@ type propsType = {
 const UsersItem: FC<propsType> = ({ thisUser }) => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const { avatar, surname, name, _id: receiverId } = thisUser
 	const chats = useAppSelector(selectChats)
 	const senderId = useAppSelector(selectDefaultUserId)
+	const { avatar, surname, name, _id: receiverId } = thisUser
 
 	const getChat = () => {
 		chats.forEach(chat => {
@@ -36,7 +36,7 @@ const UsersItem: FC<propsType> = ({ thisUser }) => {
 		<div className={s.usersItem}>
 			<Link to={`/profile/${receiverId}`}>
 				<div className={s.image}>
-					<img src={getPhoto(avatar)} />
+					<img src={usePhotosPath(avatar)} />
 				</div>
 				<h3>{name}</h3>
 				<h3>{surname}</h3>

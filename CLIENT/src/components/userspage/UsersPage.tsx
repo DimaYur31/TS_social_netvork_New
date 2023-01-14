@@ -4,21 +4,21 @@ import { getAllUsers } from '../../store/slices/apiActions/usersActions'
 import { selectDefaultUserId, selectUsers } from '../../selectors/selectors'
 import s from './usersPage.module.scss'
 
-import Feed from '../homePage/feed/Feed'
 import UsersItem from './usersItem/UsersItem'
+import Share from '../homePage/share/Share'
 
 const UsersPage = () => {
 	const dispatch = useAppDispatch()
 	const _id = useAppSelector(selectDefaultUserId)
 	const users = useAppSelector(selectUsers)
-	console.log('UsersPage render')
+
 	useEffect(() => {
 		dispatch(getAllUsers(_id))
 	}, [])
 
 	return (
 		<div className={s.usersPage}>
-			<Feed />
+			<Share />
 
 			<div className={s.usersList}>
 				{users?.map(user => {

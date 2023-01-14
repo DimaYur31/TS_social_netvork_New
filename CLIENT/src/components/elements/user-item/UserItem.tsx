@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPhoto } from "../../../hooks/hooks"
+import { usePhotosPath } from "../../../hooks/hooks"
 import { UsersType } from "../../../types/profile"
 import s from './UserItem.module.scss'
 
@@ -12,10 +12,10 @@ interface IProps {
 }
 
 const UserItem: React.FC<IProps> = ({ user, isDB }) => {
-	console.log('UserItem render')
+
 	return (
 		<li className={s.list}>
-			<SmalAvatar src={getPhoto(user.avatar, isDB)} />
+			<SmalAvatar src={usePhotosPath(user.avatar, isDB)} />
 			<IsOnline isOnline={false} />
 			<p>{user.name}</p>
 		</li>

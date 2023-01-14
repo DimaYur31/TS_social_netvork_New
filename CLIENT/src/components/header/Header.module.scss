@@ -3,7 +3,7 @@
 .header {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(210px, 2fr) minmax(150px, 2fr) minmax(210px, 3fr);
+	grid-template-columns: minmax(210px, 2fr) minmax(210px, 3fr);
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -66,6 +66,7 @@
 		display: grid;
 		grid-template-columns: repeat(3,1fr);
 		align-items: center;
+		grid-gap: 10px;
 	}
 
 	.user{

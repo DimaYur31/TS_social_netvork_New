@@ -10,7 +10,6 @@ import useGetPageData from '../../hooks/useGetPageDats'
 const Profile = () => {
 	const { data: user, renderId } = useGetPageData(2, getUserData)
 
-	console.log('Profile render')
 	return (
 		<section >
 			{

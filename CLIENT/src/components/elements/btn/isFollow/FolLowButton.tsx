@@ -24,7 +24,7 @@ const FollowButton: FC<TypeProps> = ({ currentUserId }) => {
 		onClick={handleFollowed}
 	>
 		<SVG.Subscribe />
-		{/* {isFollowed ? 'unfollow -' : 'follow +'} */}
+		{/* {isFollowed ? 'Unfollow' : 'Follow'} */}
 	</button>
 }
 

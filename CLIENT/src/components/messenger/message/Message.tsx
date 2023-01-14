@@ -4,8 +4,8 @@ import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { MessageType } from '../../../types/conwersations'
 import { UserType } from '../../../types/profile'
 import { getUserData } from '../../../api/userApi'
-import { getPhoto } from '../../../hooks/hooks'
-import { selectDefaultUser } from '../../../selectors/selectors'
+import { useIsOwner, usePhotosPath } from '../../../hooks/hooks'
+import { selectDefaultUserAvatar } from '../../../selectors/selectors'
 import s from './Message.module.scss'
 
 import ContextMenu from '../../elements/contextMenu/ContextMenu'
@@ -15,8 +15,8 @@ type MessagePropsType = {
 }
 
 const Message: FC<MessagePropsType> = ({ message }) => {
-	const defaultUser = useAppSelector(selectDefaultUser)
-	const isOwner = message.sender === defaultUser._id
+	const avatar = useAppSelector(selectDefaultUserAvatar)
+	const isOwner = useIsOwner(message.sender)
 	const classOvner = isOwner ? `${s.owner}` : null
 	const [participant, setParticipant] = useState<UserType | null>(null)
 
@@ -25,14 +25,14 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 	}, [message._id])
 
 	const getParticipant = async (id: string) => {
-		!isOwner && await getUserData(id)
+		await getUserData(id)
 			.then(data => setParticipant(data))
 	}
 
 	return (
 		<div className={`${s.message} ${classOvner}`}>
 			<div>
-				<img src={!participant ? getPhoto(defaultUser.avatar) : getPhoto(participant.avatar)} />
+				<img src={usePhotosPath(!participant ? avatar : participant.avatar)} />
 				<span>{format(message.createdAt)}</span>
 			</div>
 			<p>{message.text}

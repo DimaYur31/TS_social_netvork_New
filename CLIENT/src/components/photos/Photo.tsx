@@ -1,33 +1,32 @@
 import React, { FC } from 'react'
-import { getPhoto } from '../../hooks/hooks'
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions'
+import { usePhotosPath } from '../../hooks/hooks'
 import { SVG } from '../../img/icons/exportIcons'
 import s from './Photo.module.scss'
 
 type TPprops = {
 	photo: string
-	id: string
+	userId: string
 }
 
-const Photo: FC<TPprops> = ({ id, photo }) => {
+const Photo: FC<TPprops> = ({ userId, photo }) => {
 	const dispatch = useAppDispatch()
-	console.log('Photo render')
 	const delPhoto = (id: string, photo: string) => {
 		dispatch(deletePhotoThunk(id, photo))
 	}
 
 	const setAvatar = (photo: string) => {
-		dispatch(changeUserProfile(id, { avatar: photo }))
+		dispatch(changeUserProfile(userId, { avatar: photo }))
 	}
 
 	return (
 		<div className={s.photo}>
-			<img src={getPhoto(photo)} />
+			<img src={usePhotosPath(photo)} />
 
 			<div>
 				<button
-					onClick={() => delPhoto(id, photo)}>
+					onClick={() => delPhoto(userId, photo)}>
 					<SVG.Dustbin className={s.button} />
 				</button>
 				<button onClick={() => setAvatar(photo)}>

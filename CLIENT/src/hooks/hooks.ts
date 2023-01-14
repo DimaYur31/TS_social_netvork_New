@@ -1,41 +1,22 @@
-import { useAppDispatch, useAppSelector } from './reactReduxHooks'
-import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import { changeDefaultAndCurrentUsers } from '../store/slices/apiActions/usersActions'
+import { useAppSelector } from './reactReduxHooks'
 
+// import { changeDefaultAndCurrentUsers } from '../store/slices/apiActions/usersActions'
+import { selectDefaultUserAvatar, selectDefaultUserId } from './../selectors/selectors'
 
-export const useAvatar = (img?: string) => {
-	const { avatar } = useAppSelector(store => store.profilePage.renderUser)
-	if (img) {
-		return `${process.env.REACT_APP_API_URL}${img}`
-	} else {
-		return `${process.env.REACT_APP_API_URL}${avatar}`
-
-	}
-}
-
-export const getPhoto = (img: string, isDB = true) => {
+// если передана картинка возвращает полный путь к ней, !isDB передавать если ссылка для др сайтов , если нет img то путь к аватару пользователся
+export const usePhotosPath = (img?: string, isDB = true) => {
+	const avatar: string = useAppSelector(selectDefaultUserAvatar)
+	if (!img) return `${process.env.REACT_APP_API_URL}${avatar}`
 	if (!isDB) return img
 	return `${process.env.REACT_APP_API_URL}${img}`
-
-}
-//hook берет id из адресной строки и задает в state данные юзера которые нужно отрисовывать на данной странице
-export const useRenderUser = () => {
-	const dispatch = useAppDispatch()
-	const { defaultUser } = useAppSelector(state => state.profilePage)
-	const params = useParams()
-
-	useEffect(() => {
-		params.id && dispatch(changeDefaultAndCurrentUsers(defaultUser, params.id))
-	}, [params.id])
 }
 
-export const useIsOwner = () => {
-	const { defaultUser, renderUser } = useAppSelector(state => state.profilePage)
-	if (defaultUser._id === renderUser._id) {
+// проверяет является ли пользыватель автором контетна
+export const useIsOwner = (id: string) => {
+	const _id = useAppSelector(selectDefaultUserId)
+	if (_id === id) {
 		return true
 	} else {
 		return false
 	}
-
 }

@@ -20,7 +20,6 @@ const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 		{isAuth
 			? <Routes>
 				<Route path='/' element={<Suspense fallback={<Loading />}><Layout /></Suspense>} >
-					{/* <Route path='/' element={<Suspense fallback={<Loading />}><Navigate to='/:id' replace /></Suspense>} /> */}
 					<Route path='/:id' element={<Suspense fallback={<Loading />}><HomePage /></Suspense>} />
 					<Route path='/users' element={<Suspense fallback={<Loading />}><UsersPage /></Suspense>} />
 					<Route path='/post/:id' element={<Suspense fallback={<Loading />}><PostPage /></Suspense>} />

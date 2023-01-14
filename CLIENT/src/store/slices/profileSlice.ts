@@ -3,8 +3,6 @@ import { ProfileType, UserType } from '../../types/profile'
 
 const initialState: ProfileType = {
 	defaultUser: {} as UserType,
-	currentUser: {} as UserType,
-	renderUser: {} as UserType,
 	isAuth: false
 }
 
@@ -15,14 +13,6 @@ const profileSlice = createSlice({
 		setUser(state: ProfileType, action: PayloadAction<UserType>) {
 			state.defaultUser = action.payload
 			state.isAuth = true
-		},
-
-		setCurrentUser(state: ProfileType, action: PayloadAction<UserType>) {
-			state.currentUser = action.payload
-		},
-
-		setRenderUser(state: ProfileType, action: PayloadAction<UserType>) {
-			state.renderUser = action.payload
 		},
 
 		addPhoto(state: ProfileType, action: PayloadAction<string>) {
@@ -49,8 +39,7 @@ const profileSlice = createSlice({
 })
 
 export const {
-	setUser, addPhoto, userExit, removePhoto,
-	setCurrentUser, setRenderUser, follow, unfollow,
+	setUser, addPhoto, userExit, removePhoto, follow, unfollow,
 } = profileSlice.actions
 
 export default profileSlice.reducer

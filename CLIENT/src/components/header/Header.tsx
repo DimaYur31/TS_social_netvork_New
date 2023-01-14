@@ -1,19 +1,18 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import s from './Header.module.scss'
 import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
-import { useAvatar } from '../../hooks/hooks'
+import { usePhotosPath } from '../../hooks/hooks'
 import { userExit } from '../../store/slices/profileSlice'
 import { SVG } from '../../img/icons/exportIcons'
-
-import Search from '../styleedComponents/Search'
-import SmalAvatar from '../styleedComponents/SmalAvatar'
 import { selectProfileState } from '../../selectors/selectors'
+import s from './Header.module.scss'
+
+import SmalAvatar from '../styleedComponents/SmalAvatar'
 
 const Header = () => {
 	const dispatch = useAppDispatch()
 	const { isAuth, defaultUser } = useAppSelector(selectProfileState)
-	const avatar = useAvatar(defaultUser.avatar)
+	const avatar = usePhotosPath()
 
 	const exit = (e: React.MouseEvent) => {
 		e.preventDefault()
@@ -28,13 +27,10 @@ const Header = () => {
 				<h1>V_Komnate</h1>
 			</Link>
 
-			<Search />
-
 			{isAuth
 				? <div className={s.autorisation}>
 					<div className={s.btns}>
 						<NavLink to={`/${defaultUser._id}`}><SVG.Home /></NavLink>
-						<NavLink to={'/rooms'}>TimeLine</NavLink>
 						<button onClick={exit}><SVG.Exit /></button>
 					</div>
 
