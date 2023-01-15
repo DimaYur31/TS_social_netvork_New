@@ -7,12 +7,11 @@ import { SVG } from './../../img/icons/exportIcons'
 import LinkItem from './LinkItem'
 
 const Nav = () => {
-	console.log('Nav render')
 	const _id = useAppSelector(selectDefaultUserId)
 
 	return <nav className={s.nav} >
 		<ul>
-			<LinkItem to={`/${_id}`} title='Home'>
+			<LinkItem to={`/`} title='Home'>
 				<SVG.Home className={s.icons} />
 			</LinkItem>
 

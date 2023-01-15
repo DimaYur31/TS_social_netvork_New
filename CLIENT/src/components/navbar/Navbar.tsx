@@ -5,7 +5,6 @@ import Nav from './Nav'
 import FriendList from '../friends/FriendList'
 
 const Navbar = () => {
-	console.log('Navbar render')
 	return (
 		<section className={s.navbar}>
 			<Nav />
