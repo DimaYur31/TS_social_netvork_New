@@ -1,4 +1,5 @@
 import { PostType } from '../types/post'
+
 import { authInstans } from './api'
 
 export const createPost = async (formData: FormData) => {

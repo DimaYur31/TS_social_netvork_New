@@ -1,6 +1,7 @@
-import { ChangeEvent, FC, ReactComponentElement, useState } from "react"
-import styled from "styled-components"
-import { useInput } from "../../hooks/useInput"
+import { ChangeEvent, FC, ReactComponentElement, useState } from 'react'
+import styled from 'styled-components'
+
+import { useInput } from '../../hooks/useInput'
 
 interface IProps {
 	input: {
@@ -33,7 +34,7 @@ box-shadow: -2px -2px 5px rgba(255,255,255,1),
 `
 
 const Input: FC<IProps> = ({ input }) => {
-	const [focused, setFocused] = useState(false);
+	const [focused, setFocused] = useState(false)
 	const { label, errorMessage, onChange, id, ...inputProps } = input
 	// const input = useInput
 	// const {placeholder, value,onChange} = input

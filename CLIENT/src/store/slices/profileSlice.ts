@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { ProfileType, UserType } from '../../types/profile'
 
 const initialState: ProfileType = {

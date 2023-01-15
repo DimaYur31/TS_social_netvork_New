@@ -1,10 +1,12 @@
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { EditMessageContext } from '../messengerContext/EditMessageContext'
 import { selectCurrentChat, selectDefaultUserId } from '../../../selectors/selectors'
-import s from './DialogItem.module.scss'
+
 
 import DialogMessages from '../dialogMessages/DialogMessages'
 import ChatForm from '../chatForm/ChatForm'
+
+import s from './DialogItem.module.scss'
 
 const DialogItem = () => {
 	const _id = useAppSelector(selectDefaultUserId)

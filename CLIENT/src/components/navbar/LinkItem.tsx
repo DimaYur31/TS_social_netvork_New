@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
+
 import s from './Navbar.module.scss'
 
 interface ILink extends React.HTMLProps<HTMLLinkElement> {

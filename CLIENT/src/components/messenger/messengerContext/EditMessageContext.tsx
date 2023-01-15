@@ -1,4 +1,4 @@
-import { createContext, Dispatch, FC, ReactElement, SetStateAction, useState, } from "react"
+import { createContext, Dispatch, FC, ReactElement, SetStateAction, useState, } from 'react'
 
 export type EditContextType = {
 	editState: {

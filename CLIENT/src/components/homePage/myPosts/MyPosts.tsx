@@ -1,7 +1,9 @@
 import React, { useEffect, FC } from 'react'
+
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
 import { selectPosts } from '../../../selectors/selectors'
+
 import s from './MyPosts.module.scss'
 
 import Post from './post/Post'

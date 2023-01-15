@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react'
+
 import s from './PrimaryButton.module.scss'
 
 const PrimaryButton: FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>> = ({ children }, props) => {

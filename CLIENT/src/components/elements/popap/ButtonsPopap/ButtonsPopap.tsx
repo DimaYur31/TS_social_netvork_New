@@ -1,9 +1,11 @@
 import { FC, useState } from 'react'
+
 import { PostType } from '../../../../types/post'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { deletePostThunk } from '../../../../store/slices/apiActions/postActions'
 import { selectDefaultUserId } from '../../../../selectors/selectors'
 import { SVG } from '../../../../img/icons/exportIcons'
+
 import s from './ButtonsPopap.module.scss'
 
 type TypeProps = {

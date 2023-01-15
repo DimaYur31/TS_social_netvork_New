@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 
 // принимает индекс, под которым находится id в массиве из адресной строки, и колбэк который делает запрос нужных данных

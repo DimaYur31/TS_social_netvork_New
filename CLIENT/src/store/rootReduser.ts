@@ -1,4 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
+
 import profileReducer from './slices/profileSlice'
 import postsReducer from './slices/postsSlice'
 import applicationReducer from './slices/appSlice'

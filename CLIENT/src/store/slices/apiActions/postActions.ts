@@ -1,10 +1,10 @@
-import { deletePost, dislikePost, getProfilePosts, getTimeLine, likePost } from "../../../api/postAPI"
-import { AppDispatch } from "../../store"
-import { toggleLoading } from "../appSlice"
-import { likeDislike, removePost, setPosts } from "../postsSlice"
-import { addPhoto } from "../profileSlice"
+import { deletePost, dislikePost, getProfilePosts, getTimeLine, likePost } from '../../../api/postAPI'
+import { AppDispatch } from '../../store'
+import { toggleLoading } from '../appSlice'
+import { likeDislike, removePost, setPosts } from '../postsSlice'
+import { addPhoto } from '../profileSlice'
 import { createPost } from '../../../api/postAPI'
-import { uploadPhoto } from "../../../api/userApi"
+import { uploadPhoto } from '../../../api/userApi'
 
 
 export const createPostThunk = (_id: string, text: string, img: Blob,) => {
@@ -14,13 +14,13 @@ export const createPostThunk = (_id: string, text: string, img: Blob,) => {
 		const photoFormData = new FormData()
 		photoFormData.append('userId', _id)
 		photoFormData.append('img', img)
-		let image = await uploadPhoto(_id, photoFormData)
+		const image = await uploadPhoto(_id, photoFormData)
 
 		const formData = new FormData()
 		formData.append('userId', _id)
 		formData.append('text', text)
 		formData.append('img', image)
-		let posts = await createPost(formData)
+		const posts = await createPost(formData)
 		dispatch(addPhoto(image))
 		dispatch(setPosts(posts))
 

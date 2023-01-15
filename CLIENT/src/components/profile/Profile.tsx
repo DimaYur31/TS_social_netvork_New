@@ -1,11 +1,16 @@
 import React from 'react'
+
 import { getUserData } from '../../api/userApi'
-import s from './Profile.module.scss'
 
 import MyPosts from '../homePage/myPosts/MyPosts'
+
+import useGetPageData from '../../hooks/useGetPageDats'
+
+import s from './Profile.module.scss'
+
 import About from './myInfo/about/About'
 import MyInfo from './myInfo/MyInfo'
-import useGetPageData from '../../hooks/useGetPageDats'
+
 
 const Profile = () => {
 	const { data: user, renderId } = useGetPageData(2, getUserData)

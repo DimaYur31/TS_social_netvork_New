@@ -1,8 +1,11 @@
 import React, { FC, useState } from 'react'
+
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { followUnfollowThunk } from '../../../../store/slices/apiActions/userActions'
-import s from './FollowButton.module.scss'
+
 import { SVG } from '../../../../img/icons/exportIcons'
+
+import s from './FollowButton.module.scss'
 
 type TypeProps = {
 	currentUserId: string

@@ -1,16 +1,20 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { format } from 'timeago.js'
+
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
-import { usePhotosPath } from './../../../../hooks/hooks'
+
 import { PostType } from '../../../../types/post'
 import { selectDefaultUser } from '../../../../selectors/selectors'
 import { getUserData } from '../../../../api/userApi'
-import s from './Post.module.scss'
+
 
 import SmalAvatar from '../../../styleedComponents/SmalAvatar'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
+
+import s from './Post.module.scss'
+import { usePhotosPath } from './../../../../hooks/hooks'
 
 type TPost = {
 	post: PostType<string>

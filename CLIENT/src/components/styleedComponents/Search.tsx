@@ -1,5 +1,6 @@
 import { useState, ReactNode } from 'react'
 import styled from 'styled-components'
+
 import { useInput } from '../../hooks/useInput'
 
 const StyledSearch = styled.div<{ isActive: boolean }>`

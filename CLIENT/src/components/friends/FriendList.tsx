@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
 import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectDefaultUser, selectFriends } from '../../selectors/selectors'
-import s from './FriendList.module.scss'
-
 import UserItem from '../elements/user-item/UserItem'
+
+import s from './FriendList.module.scss'
 
 const FriendList = () => {
 	const dispatch = useAppDispatch()

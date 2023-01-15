@@ -1,6 +1,8 @@
 import { FC, ReactNode } from 'react'
-import s from './Modal.module.scss'
+
 import { SVG } from '../../../img/icons/exportIcons'
+
+import s from './Modal.module.scss'
 
 type ModalProps = {
 	isOpen: boolean

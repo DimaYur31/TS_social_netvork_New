@@ -1,8 +1,10 @@
 import React, { FC } from 'react'
+
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions'
 import { usePhotosPath } from '../../hooks/hooks'
 import { SVG } from '../../img/icons/exportIcons'
+
 import s from './Photo.module.scss'
 
 type TPprops = {

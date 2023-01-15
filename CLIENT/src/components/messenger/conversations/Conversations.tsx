@@ -1,11 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
 import { setCurrentChat } from '../../../store/slices/chatSlice'
-import s from './Conversations.module.scss'
 
 import ChatRoom from '../chatRoom/ChatRoom'
+
+import s from './Conversations.module.scss'
+
 
 const Conversations = () => {
 	const dispatch = useAppDispatch()

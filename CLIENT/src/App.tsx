@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { chechAuthUser } from './store/slices/apiActions/userActions'
 import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks'
 import { selectIsAuth } from './selectors/selectors'
@@ -7,7 +8,6 @@ import { selectIsAuth } from './selectors/selectors'
 import Router from './components/routes/Router'
 
 const App = () => {
-	console.log('App render')
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const isAuth = useAppSelector(selectIsAuth)
@@ -19,6 +19,7 @@ const App = () => {
 		} else {
 			dispatch(chechAuthUser())
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isAuth])
 
 	return <Router isAuth={isAuth} />

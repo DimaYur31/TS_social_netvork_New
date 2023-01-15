@@ -1,9 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit'
+
 import { RootState } from '../store/store'
 
 const sortDate = (a: Date, b: Date) => {
-	let dateA = new Date(a)
-	let dateB = new Date(b)
+	const dateA = new Date(a)
+	const dateB = new Date(b)
 
 	if (dateA.getTime() > dateB.getTime()) {
 		return -1
@@ -27,9 +28,8 @@ export const selectPosts = (state: RootState) => state.postPage.posts
 export const sortedPosts = createSelector(
 	[selectPosts],
 	(posts) => {
-		let sort = [...posts]
+		const sort = [...posts]
 		sort.sort((a, b) => sortDate(a.createdAt, b.createdAt))
-		console.log(sort)
 		return sort
 	}
 )

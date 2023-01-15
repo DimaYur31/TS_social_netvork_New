@@ -1,4 +1,5 @@
 import React from 'react'
+
 import s from './HomePage.module.scss'
 
 import RightBar from './rightBar/RightBar'

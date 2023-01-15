@@ -1,11 +1,13 @@
 import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react'
-import s from './ChatForm.module.scss'
+
 
 import Button from '../../styleedComponents/Button'
 import { socket } from '../../../socket'
 import { EditContext } from '../messengerContext/EditMessageContext'
 import PrimaryInpyt from '../../elements/inputs/primaryInput/PrimaryInpyt'
 import { Clear } from '../../styleedComponents/Search'
+
+import s from './ChatForm.module.scss'
 
 type ChatFormProps = {
 	userId: string

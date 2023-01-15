@@ -1,6 +1,8 @@
 import React from 'react'
+
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectDefaultUserId } from '../../selectors/selectors'
+
 import s from './Navbar.module.scss'
 import { SVG } from './../../img/icons/exportIcons'
 
@@ -11,7 +13,7 @@ const Nav = () => {
 
 	return <nav className={s.nav} >
 		<ul>
-			<LinkItem to={`/`} title='Home'>
+			<LinkItem to={'/'} title='Home'>
 				<SVG.Home className={s.icons} />
 			</LinkItem>
 

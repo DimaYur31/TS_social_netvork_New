@@ -1,5 +1,6 @@
-import { authInstans, instans } from './api'
 import { UserType } from '../types/profile'
+
+import { authInstans, instans } from './api'
 
 type ResponseToken = {
 	token: string

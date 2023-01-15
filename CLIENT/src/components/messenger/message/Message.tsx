@@ -1,14 +1,17 @@
 import React, { FC, useEffect, useState } from 'react'
 import { format } from 'timeago.js'
+
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
 import { MessageType } from '../../../types/conwersations'
 import { UserType } from '../../../types/profile'
 import { getUserData } from '../../../api/userApi'
 import { useIsOwner, usePhotosPath } from '../../../hooks/hooks'
 import { selectDefaultUserAvatar } from '../../../selectors/selectors'
-import s from './Message.module.scss'
 
 import ContextMenu from '../../elements/contextMenu/ContextMenu'
+
+import s from './Message.module.scss'
+
 
 type MessagePropsType = {
 	message: MessageType

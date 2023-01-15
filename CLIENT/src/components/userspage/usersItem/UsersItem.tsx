@@ -1,14 +1,17 @@
 import React, { FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+
 import { UserType } from '../../../types/profile'
 import { usePhotosPath } from '../../../hooks/hooks'
 import { useAppSelector, useAppDispatch } from '../../../hooks/reactReduxHooks'
 import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
 import { createConversationThunc } from '../../../store/slices/apiActions/chatActions'
 import { SVG } from '../../../img/icons/exportIcons'
-import s from './userItem.module.scss'
 
 import FollowButton from '../../elements/btn/isFollow/FolLowButton'
+
+import s from './userItem.module.scss'
+
 
 type propsType = {
 	thisUser: UserType

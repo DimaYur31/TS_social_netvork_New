@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
+
+import { Outlet } from 'react-router-dom'
+
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { getChatsThunk } from '../../store/slices/apiActions/chatActions'
 import { selectDefaultUserId } from '../../selectors/selectors'
+
 import s from './Messenger.module.scss'
 
 import Conversations from './conversations/Conversations'
-import { Outlet } from 'react-router-dom'
 
 const Messenger = () => {
 	const dispatch = useAppDispatch()

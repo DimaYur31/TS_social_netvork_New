@@ -1,4 +1,5 @@
 import { ConversationType, MessageType } from '../types/conwersations'
+
 import { authInstans } from './api'
 
 export const fetchChats = async (userId: string) => {
@@ -7,7 +8,7 @@ export const fetchChats = async (userId: string) => {
 }
 
 export const createChat = async (senderId: string, receiverId: string) => {
-	const { data } = await authInstans.post<ConversationType>(`api/conversations`, { senderId, receiverId })
+	const { data } = await authInstans.post<ConversationType>('api/conversations', { senderId, receiverId })
 	return data
 }
 

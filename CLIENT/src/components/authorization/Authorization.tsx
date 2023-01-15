@@ -1,11 +1,13 @@
 import { FormEventHandler, useState } from 'react'
-import s from './Authorization.module.scss'
+
 import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { registrationThunkCreator, loginThunkCreator, } from '../../store/slices/apiActions/userActions'
 import { FormFields, SybmitFotm } from '../../types/UIElements'
 
 import PrimaryInpyt from '../elements/inputs/primaryInput/PrimaryInpyt'
 import PrimaryButton from '../elements/btn/primaryButton/PrimaryButton'
+
+import s from './Authorization.module.scss'
 
 const Authorization = () => {
 	const dispatch = useAppDispatch()

@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
+
 import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks'
 import { getAllUsers } from '../../store/slices/apiActions/usersActions'
 import { selectDefaultUserId, selectUsers } from '../../selectors/selectors'
+
+import Share from '../homePage/share/Share'
+
 import s from './usersPage.module.scss'
 
 import UsersItem from './usersItem/UsersItem'
-import Share from '../homePage/share/Share'
 
 const UsersPage = () => {
 	const dispatch = useAppDispatch()

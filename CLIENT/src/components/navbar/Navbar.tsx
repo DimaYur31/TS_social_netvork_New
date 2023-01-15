@@ -1,8 +1,10 @@
 import React from 'react'
+
+import FriendList from '../friends/FriendList'
+
 import s from './Navbar.module.scss'
 
 import Nav from './Nav'
-import FriendList from '../friends/FriendList'
 
 const Navbar = () => {
 	return (

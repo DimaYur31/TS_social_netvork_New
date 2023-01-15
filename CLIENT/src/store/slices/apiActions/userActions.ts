@@ -1,11 +1,11 @@
-import { userRegistration, userLogin, check } from "../../../api/authAPI"
-import { deletePhoto, followUser, updateUser, uploadPhoto } from "../../../api/userApi"
-import { UserChanges } from "../../../types/profile"
-import { AppDispatch } from "../../store"
-import { toggleLoading } from "../appSlice"
+import { userRegistration, userLogin, check } from '../../../api/authAPI'
+import { deletePhoto, followUser, updateUser, uploadPhoto } from '../../../api/userApi'
+import { UserChanges } from '../../../types/profile'
+import { AppDispatch } from '../../store'
+import { toggleLoading } from '../appSlice'
 import {
 	addPhoto, follow, removePhoto, setUser, unfollow
-} from "../profileSlice"
+} from '../profileSlice'
 
 export const registrationThunkCreator = (email: string, password: string, name: string, surname: string) => {
 	return async (dispatch: AppDispatch) => {
@@ -43,14 +43,14 @@ export const uploadPhotoThunkCreator = (id: string, formData: FormData) => {
 
 export const deletePhotoThunk = (userId: string, photo: string) => {
 	return async (dispatch: AppDispatch) => {
-		let status = await deletePhoto(userId, photo)
+		const status = await deletePhoto(userId, photo)
 		status === 204 && dispatch(removePhoto(photo))
 	}
 }
 
 export const changeUserProfile = (userId: string, changes: UserChanges) => {
 	return async (dispatch: AppDispatch) => {
-		let user = await updateUser(userId, changes)
+		const user = await updateUser(userId, changes)
 		dispatch(setUser(user))
 	}
 }

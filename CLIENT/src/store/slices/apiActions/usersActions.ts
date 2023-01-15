@@ -1,7 +1,7 @@
-import { getFriendsData, getUsers } from "../../../api/allUsersApi"
-import { AppDispatch } from "../../store"
-import { toggleLoading } from "../appSlice"
-import { setFriends, setUsers } from "../usersSlice"
+import { getFriendsData, getUsers } from '../../../api/allUsersApi'
+import { AppDispatch } from '../../store'
+import { toggleLoading } from '../appSlice'
+import { setFriends, setUsers } from '../usersSlice'
 
 export const getAllUsers = (_id: string) => {
 	return async (dispatch: AppDispatch) => {

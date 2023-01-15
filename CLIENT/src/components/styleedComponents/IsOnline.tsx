@@ -17,7 +17,7 @@ const Sircle = styled.span<IProps>`
 		border-radius: 50%;
 		background: ${({ isOnline }) => isOnline ? 'rgb(10, 207, 3)' : 'none'};
 	}
-`;
+`
 
 interface IProps {
 	isOnline: boolean

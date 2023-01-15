@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { ConversationType, MessageType, chatsStateType } from '../../types/conwersations'
 
 const initialState = {
@@ -41,7 +42,7 @@ const chatSlice = createSlice({
 		},//-
 
 		editMessage(state: chatsStateType, action: PayloadAction<MessageType>) {
-			let message = state.messages.find(message => message._id === action.payload._id)
+			const message = state.messages.find(message => message._id === action.payload._id)
 			const index = message && state.messages.indexOf(message)
 			if (index) state.messages[index] = action.payload
 		}

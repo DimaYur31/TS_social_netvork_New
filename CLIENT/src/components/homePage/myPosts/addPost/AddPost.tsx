@@ -1,10 +1,12 @@
 import { ChangeEvent, FC, useState } from 'react'
-import s from './AddPost.module.scss'
+
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { createPostThunk } from '../../../../store/slices/apiActions/postActions'
 import { selectDefaultUserId } from '../../../../selectors/selectors'
 
 import Button from '../../../styleedComponents/Button'
+
+import s from './AddPost.module.scss'
 
 type typeProps = {
 	onClose: () => void
@@ -41,7 +43,7 @@ const AddPost: FC<typeProps> = ({ onClose }) => {
 				<input
 					id='post-photo'
 					onChange={selectFile}
-					type="file"
+					type='file'
 					accept='image/*,.png,.jpg,.gif,.web'
 				/>
 			</label>

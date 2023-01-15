@@ -1,4 +1,5 @@
 import React, { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react'
+
 import s from './PrimaryInput.module.scss'
 
 type InputPropps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>

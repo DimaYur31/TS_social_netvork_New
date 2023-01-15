@@ -1,5 +1,6 @@
 
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { PostType, PostsTypeState } from '../../types/post'
 
 const initialState = {
@@ -18,8 +19,8 @@ const postsSlice = createSlice({
 	reducers: {
 		setPosts(state: PostsTypeState, action: PayloadAction<PostType<string>[]>) {
 			const sortedPost = action.payload.sort((a, b) => {
-				let dateOne = new Date(`${a.updatedAt}`)
-				let dateTwo = new Date(`${b.updatedAt}`)
+				const dateOne = new Date(`${a.updatedAt}`)
+				const dateTwo = new Date(`${b.updatedAt}`)
 				return dateTwo.getTime() - dateOne.getTime()
 			})
 			state.posts = sortedPost

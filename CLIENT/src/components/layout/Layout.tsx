@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+
 import { socket } from '../../socket'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectProfileState } from '../../selectors/selectors'

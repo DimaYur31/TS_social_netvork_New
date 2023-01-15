@@ -1,9 +1,11 @@
-import { FC, useState } from "react"
-import styled from "styled-components"
-import { useInput } from "../../hooks/useInput"
-import { StyledInput } from "./Input"//@ts-ignore
+import { FC, useState } from 'react'
+import styled from 'styled-components'
+
+import { useInput } from '../../hooks/useInput'//@ts-ignore
 import { ReactComponent as Show } from '../../img/show.svg'//@ts-ignore
 import { ReactComponent as Hide } from '../../img/hide.svg'
+
+import { StyledInput } from './Input'
 
 
 

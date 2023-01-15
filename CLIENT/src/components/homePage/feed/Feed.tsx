@@ -1,6 +1,8 @@
 import React from 'react'
-import s from './Feed.module.scss'
+
 import Share from '../share/Share'
+
+import s from './Feed.module.scss'
 
 const Feed = () => {
 	console.log('Feed render')

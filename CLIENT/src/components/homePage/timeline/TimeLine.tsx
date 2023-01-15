@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
+
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
 import { selectDefaultUserId, sortedPosts } from '../../../selectors/selectors'
-import s from './TimeLine.module.scss'
 
 import Post from '../myPosts/post/Post'
+
+import s from './TimeLine.module.scss'
+
 
 const TimeLine = () => {
 	const dispatch = useAppDispatch()

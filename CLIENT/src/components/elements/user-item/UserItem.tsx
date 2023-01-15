@@ -1,10 +1,12 @@
 import React from 'react'
-import { usePhotosPath } from "../../../hooks/hooks"
-import { UsersType } from "../../../types/profile"
-import s from './UserItem.module.scss'
 
-import IsOnline from "../../styleedComponents/IsOnline"
-import SmalAvatar from "../../styleedComponents/SmalAvatar"
+import { usePhotosPath } from '../../../hooks/hooks'
+import { UsersType } from '../../../types/profile'
+
+import IsOnline from '../../styleedComponents/IsOnline'
+import SmalAvatar from '../../styleedComponents/SmalAvatar'
+
+import s from './UserItem.module.scss'
 
 interface IProps {
 	user: UsersType

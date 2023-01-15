@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
+
 import { usePhotosPath } from '../../hooks/hooks'
 import { userExit } from '../../store/slices/profileSlice'
 import { SVG } from '../../img/icons/exportIcons'
 import { selectDefaultUserName } from '../../selectors/selectors'
-import s from './Header.module.scss'
 
 import SmalAvatar from '../styleedComponents/SmalAvatar'
+
+import s from './Header.module.scss'
+
+import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
 
 const Header = () => {
 	const dispatch = useAppDispatch()
@@ -22,7 +25,7 @@ const Header = () => {
 
 	return (
 		<header className={s.header} >
-			<Link to={`/`}>
+			<Link to={'/'}>
 				<h1>V_Komnate</h1>
 			</Link>
 

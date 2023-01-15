@@ -1,5 +1,6 @@
-import { authInstans } from "./api"
 import { UserChanges, UserType } from '../types/profile'
+
+import { authInstans } from './api'
 
 export const updateUser = async (userId: string, changes: UserChanges) => {
 	const { data } = await authInstans.put<UserType>(`api/user/${userId}`, { userId, ...changes })

@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks'
 import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions'
 import { selectDefaultUser } from '../../../../../selectors/selectors'
+
 import s from './ProfileFormSetings.module.scss'
 
 type FormFields = {
@@ -14,10 +16,10 @@ type FormFields = {
 	languages: HTMLInputElement
 }
 
-let getFormValues = (obj: any) => {
-	let key = Object.keys(obj)
-	let value = Object.values(obj)
-	let newObj = {} as any
+const getFormValues = (obj: any) => {
+	const key = Object.keys(obj)
+	const value = Object.values(obj)
+	const newObj = {} as any
 
 	for (let i = 0; i < value.length; i++) {
 		if (value[i] !== '') {
@@ -46,7 +48,7 @@ const ProfileFormSetings = () => {
 			languages: languages.value,
 		}
 
-		let changes = getFormValues(formChanges)
+		const changes = getFormValues(formChanges)
 
 		if (changes) dispatch(changeUserProfile(defaultUser._id, changes))
 	}
@@ -55,31 +57,31 @@ const ProfileFormSetings = () => {
 		<form onSubmit={handelSubmit} className={s.form}>
 			<fieldset>
 				<legend>Name</legend>
-				<input name='name' type="text" />
+				<input name='name' type='text' />
 			</fieldset>
 			<fieldset>
 				<legend>Surname</legend>
-				<input name='surname' type="text" />
+				<input name='surname' type='text' />
 			</fieldset>
 			<fieldset>
 				<legend>Birthday</legend>
-				<input name='birthday' type="date" />
+				<input name='birthday' type='date' />
 			</fieldset>
 			<fieldset>
 				<legend>City</legend>
-				<input name='city' type="text" />
+				<input name='city' type='text' />
 			</fieldset>
 			<fieldset>
 				<legend>Country</legend>
-				<input name='country' type="text" />
+				<input name='country' type='text' />
 			</fieldset>
 			<fieldset>
 				<legend>Job</legend>
-				<input name='job' type="text" />
+				<input name='job' type='text' />
 			</fieldset>
 			<fieldset>
 				<legend>Languages</legend>
-				<input name='languages' type="text" />
+				<input name='languages' type='text' />
 			</fieldset>
 			<button type='submit'>Edit</button>
 		</form>
