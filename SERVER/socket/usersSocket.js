@@ -53,11 +53,17 @@ module.exports = {
 				const message = await Message.findById(messageId)
 
 				await message.deleteOne()
-				await sendToConversationMembers(message.conversationId, 'removedMessage', messageId)
+			})
+
+			socket.on('deleteConversation', async conversationId => {
+				await Message.deleteMany({ conversationId })
+				await Conversation.deleteOne({ _id: conversationId })
+
+				io.emit("deleteConversations", conversationId)
 			})
 
 			socket.on('disconnect', () => {
-				console.log('a user disconnected!')
+				// console.log('a user disconnected!')
 				removeUser(socket.id);
 				io.emit("getUsers", users);
 			})

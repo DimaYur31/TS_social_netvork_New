@@ -35,7 +35,10 @@ const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 			</Routes>
 			: <Routes>
 				<Route path='/' element={<Suspense fallback={<Loading />}><Authorization /></Suspense>} />
-				<Route path='/login' element={<Suspense fallback={<Loading />}><Navigate to='/' replace /></Suspense>} />
+				<Route path='/login' element={
+					<Suspense fallback={<Loading />}>
+						<Navigate to='/' replace />
+					</Suspense>} />
 			</Routes>
 		}
 	</div>

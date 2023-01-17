@@ -25,7 +25,10 @@
 		"react-hooks/exhaustive-deps": "off",
 		"quotes": [
 			"warn",
-			"single"
+			"single",
+			{
+				"allowTemplateLiterals": true
+			}
 		],
 		"jsx-quotes": [
 			"warn",

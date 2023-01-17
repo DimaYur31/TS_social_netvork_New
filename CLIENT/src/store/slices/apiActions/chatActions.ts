@@ -13,9 +13,11 @@ export const getChatsThunk = (userId: string) => {
 export const createConversationThunc = (senderId: string, receiverId: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoading(true))
-		const chat = await createChat(senderId, receiverId)
+		const chat: any = await createChat(senderId, receiverId)
 		dispatch(addChat(chat))
 		dispatch(toggleLoading(false))
+
+		return chat._id
 	}
 }
 
