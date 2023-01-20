@@ -15,7 +15,6 @@ type ChatFormProps = {
 }
 
 const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
-	console.log('ChatForm render')
 	const { editState, setEditState } = useContext(EditContext)
 	const [text, setText] = useState('')
 

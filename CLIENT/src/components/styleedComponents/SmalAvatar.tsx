@@ -14,9 +14,7 @@ interface IProps {
 }
 
 const SmalAvatar: React.FC<IProps> = ({ src }) => {
-	console.log('SmalAvatar render')
 	return <StyledSmalAvatar src={src} />
-
 }
 
 export default React.memo(SmalAvatar)

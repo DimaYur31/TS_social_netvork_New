@@ -5,7 +5,6 @@ import Button from '../../styleedComponents/Button'
 import OverLayPopap from '../UiKit/OverLayPopap'
 
 const AddPostPopap = () => {
-	console.log('AddPostPopap render')
 	const [isOpend, setIsOpen] = useState(false)
 	const handlePopap = () => {
 		setIsOpen(!isOpend)

@@ -12,12 +12,12 @@ import FollowButton from '../../elements/btn/isFollow/FolLowButton'
 
 import s from './userItem.module.scss'
 
-
 type propsType = {
 	thisUser: UserType
 }
 
 const UsersItem: FC<propsType> = ({ thisUser }) => {
+
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const chats = useAppSelector(selectChats)
@@ -25,36 +25,32 @@ const UsersItem: FC<propsType> = ({ thisUser }) => {
 	const { avatar, surname, name, _id: receiverId } = thisUser
 
 	const getChat = async () => {
+		let chat = null
 		if (!chats.length) {
 			const id = await dispatch(createConversationThunc(senderId, receiverId))
 			dispatch(setCurrentChat(id))
 			navigate(`/messenger/${id}`)
 			return
 		}
-		chats.forEach(chat => {
-			if (chat.members.includes(receiverId)) {
-				debugger
-				alert(1)
-				dispatch(setCurrentChat(receiverId))
-				navigate(`/messenger/${receiverId}`)
 
-			} else {
-				alert(2)
-				dispatch(createConversationThunc(senderId, receiverId))
-					.then(id => {
-						dispatch(setCurrentChat(id))
-						navigate(`/messenger/${id}`)
-					})
-
+		for (let i = 0; i < chats.length; i++) {
+			if (chats[i].members.includes(receiverId)) {
+				chat = chats[i]
+				break
 			}
-		})
-		// } else {
-		// 	alert(3)
-		// 	const id = await dispatch(createConversationThunc(senderId, receiverId))
-		// 	dispatch(setCurrentChat(id))
-		// 	navigate(`/messenger/${id}`)
-		// }
-		return
+		}
+
+		if (chat) {
+			navigate(`/messenger/${chat._id}`)
+			dispatch(setCurrentChat(chat._id))
+			return
+		}
+
+		dispatch(createConversationThunc(senderId, receiverId))
+			.then(id => {
+				navigate(`/messenger/${id}`)
+				dispatch(setCurrentChat(id))
+			})
 	}
 
 	return (
@@ -74,4 +70,4 @@ const UsersItem: FC<propsType> = ({ thisUser }) => {
 	)
 }
 
-export default React.memo(UsersItem)
+export default UsersItem
