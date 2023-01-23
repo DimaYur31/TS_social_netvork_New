@@ -14,7 +14,7 @@
 	}
 	
 	&:hover h3{
-		color:#0690FD;
+		color:var(--primary);
 		transition: 0.25s;
 	}
 	&:hover .image{
@@ -26,7 +26,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		color: #000;
+		color: var(--black);
 		text-decoration: none;
 	}
 	
@@ -57,9 +57,8 @@
 			svg{
 				width: 24px;
 				height: 24px;
-				fill:rgb(7, 155, 229);
+				fill:var(--primury-color);
 			}
 		}
-
 	}
 }

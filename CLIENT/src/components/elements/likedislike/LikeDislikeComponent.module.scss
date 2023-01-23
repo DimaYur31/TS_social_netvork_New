@@ -19,12 +19,12 @@
 	}
 
 	.active .like{
-		fill: #fff;
+		fill: var(--white);
 		background-color: rgb(76, 199, 76);
 	}
 
 	.active .dislike{
 		background-color: rgb(229, 28, 28);
-		fill: #fff;
+		fill: var(--white);
 	}	
 }

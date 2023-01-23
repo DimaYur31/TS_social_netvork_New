@@ -3,7 +3,7 @@
 	display: grid;
 	grid-template-columns: 50px 1fr 100px;
 	align-items: center;
-	background: #0690FD;
+	background: var(--primary);
 	grid-gap: 1px;
 	border-radius: 10px;
 	width: 95%;

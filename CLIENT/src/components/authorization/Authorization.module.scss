@@ -11,12 +11,12 @@
 	.leftBox {
 		
 		h1{
-			color: #0690fd;
+			color: var(--primary);
 			margin-bottom: 20px;
 		}
 		
 		p{
-			color:#000;
+			color:var(--black);
 			font-size: 20px;
 			text-decoration: none;
 		}
@@ -36,7 +36,7 @@
 		}	
 		
 		span{
-			color: #0690fd;
+			color: var(--primary);
 			font-style: italic;
 			cursor: pointer;
 			font-size: 20px;
@@ -71,8 +71,5 @@
 	form button {
 		width: 50%;
 		align-self: center;
-	}
-	 
+	}	 
 }
-	
-	

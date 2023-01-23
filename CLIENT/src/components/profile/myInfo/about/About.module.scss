@@ -12,13 +12,13 @@
 	
 	li {
 		padding: 0 0 5px 0;
-		color: #000;
+		color: var(--black);
 		font-weight: 400;
 	}
 	
 	span {
 		display: inline-block;
-		color: #000;
+		color: var(--black);
 		font-weight: 600;
 	}
 	
@@ -27,7 +27,7 @@
 		width: 18px;
 		height: 18px;
 		border: none;
-		background: #fff;
+		background: var(--white);
 		cursor: pointer;
 		margin-left: 15px;
 	} 	
@@ -36,7 +36,7 @@
 		position: relative;
 		width: 18px;
 		height: 18px;
-		fill: #000;
+		fill:var(--black);
 		
 		&:hover{
 			animation: Rotate 0.35s 1 linear;
