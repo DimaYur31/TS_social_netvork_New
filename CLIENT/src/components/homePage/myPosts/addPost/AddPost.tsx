@@ -1,18 +1,18 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, memo, useState } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { createPostThunk } from '../../../../store/slices/apiActions/postActions'
 import { selectDefaultUserId } from '../../../../selectors/selectors'
 
-import Button from '../../../styleedComponents/Button'
+import { Button } from '../../../styleedComponents/Button'
 
 import s from './AddPost.module.scss'
 
-type typeProps = {
+type AddPostProps = {
 	onClose: () => void
 }
 
-const AddPost: FC<typeProps> = ({ onClose }) => {
+export const AddPost = memo(({ onClose }: AddPostProps) => {
 	const dispatch = useAppDispatch()
 	const _id = useAppSelector(selectDefaultUserId)
 	const [text, setText] = useState('')
@@ -50,6 +50,4 @@ const AddPost: FC<typeProps> = ({ onClose }) => {
 			<Button onClick={createPost}>Send</Button>
 		</div>
 	)
-}
-
-export default AddPost
+})

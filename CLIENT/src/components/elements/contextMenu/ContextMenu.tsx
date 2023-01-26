@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react'
+import { useContext } from 'react'
 
 import { SVG } from '../../../img/icons/exportIcons'
 import { socket } from '../../../socket'
@@ -11,7 +11,7 @@ type ContextMenuProps = {
 	id: string
 }
 
-const ContextMenu: FC<ContextMenuProps> = ({ text, id }) => {
+export const ContextMenu = ({ text, id }: ContextMenuProps) => {
 	const { setEditState } = useContext(EditContext)
 
 	const editMessage = () => {
@@ -36,6 +36,4 @@ const ContextMenu: FC<ContextMenuProps> = ({ text, id }) => {
 			</span>
 		</span>
 	</>
-}
-
-export default ContextMenu
+} 

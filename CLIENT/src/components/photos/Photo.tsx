@@ -14,6 +14,7 @@ type TPprops = {
 
 const Photo: FC<TPprops> = ({ userId, photo }) => {
 	const dispatch = useAppDispatch()
+
 	const delPhoto = (id: string, photo: string) => {
 		dispatch(deletePhotoThunk(id, photo))
 	}
@@ -24,9 +25,9 @@ const Photo: FC<TPprops> = ({ userId, photo }) => {
 
 	return (
 		<div className={s.photo}>
-			<img src={usePhotosPath(photo)} />
+			<img src={usePhotosPath(photo)} alt='avatar' />
 
-			<div>
+			<div className={s.buttons} >
 				<button
 					onClick={() => delPhoto(userId, photo)}>
 					<SVG.Dustbin className={s.button} />
@@ -34,7 +35,6 @@ const Photo: FC<TPprops> = ({ userId, photo }) => {
 				<button onClick={() => setAvatar(photo)}>
 					<SVG.More className={`${s.button} ${s.more}`} />
 				</button>
-
 			</div>
 		</div>
 	)

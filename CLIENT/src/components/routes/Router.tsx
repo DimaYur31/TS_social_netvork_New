@@ -1,9 +1,9 @@
-import React, { FC, Suspense, lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import Loading from '../elements/loading/Loading'
 import HomePage from '../homePage/HomePage'
-import DialogItem from '../messenger/dialogItem/DialogItem'
+import { DialogItem } from '../messenger/dialogItem/DialogItem'
 import Layout from '../layout/Layout'
 
 const Authorization = lazy(() => import('../authorization/Authorization'))
@@ -15,7 +15,7 @@ const Room = lazy(() => import('../rooms/Room'))
 const PostPage = lazy(() => import('../postPage/PostPage'))
 const Messenger = lazy(() => import('../messenger/Messenger'))
 
-const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
+export const Router = ({ isAuth }: { isAuth: boolean }) => {
 	return <div>
 		{isAuth
 			? <Routes>
@@ -43,5 +43,3 @@ const Router: FC<{ isAuth: boolean }> = ({ isAuth }) => {
 		}
 	</div>
 }
-
-export default React.memo(Router)

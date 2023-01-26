@@ -1,10 +1,9 @@
-import React, { ChangeEvent, FC, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, memo, useContext, useEffect, useState } from 'react'
 
-
-import Button from '../../styleedComponents/Button'
 import { socket } from '../../../socket'
 import { EditContext } from '../messengerContext/EditMessageContext'
-import PrimaryInpyt from '../../elements/inputs/primaryInput/PrimaryInpyt'
+import { Button } from '../../styleedComponents/Button'
+import { PrimaryInput } from '../../elements/inputs/primaryInput/PrimaryInpyt'
 import { Clear } from '../../styleedComponents/Search'
 
 import s from './ChatForm.module.scss'
@@ -14,7 +13,7 @@ type ChatFormProps = {
 	chatId: string
 }
 
-const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
+export const ChatForm = memo(({ chatId, userId }: ChatFormProps) => {
 	const { editState, setEditState } = useContext(EditContext)
 	const [text, setText] = useState('')
 
@@ -78,7 +77,7 @@ const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
 	return (
 		<div className={s.panel} >
 			<div>
-				<PrimaryInpyt
+				<PrimaryInput
 					value={editState.isEdit ? editState.text : text}
 					onChange={(e: ChangeEvent<HTMLInputElement>) => changeText(e)}
 				/>
@@ -90,6 +89,4 @@ const ChatForm: FC<ChatFormProps> = ({ chatId, userId }) => {
 			</Button>
 		</div>
 	)
-}
-
-export default React.memo(ChatForm)
+})

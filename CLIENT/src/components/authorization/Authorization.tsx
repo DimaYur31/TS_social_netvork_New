@@ -4,8 +4,8 @@ import { useAppDispatch } from '../../hooks/reactReduxHooks'
 import { registrationThunkCreator, loginThunkCreator, } from '../../store/slices/apiActions/userActions'
 import { FormFields, SybmitFotm } from '../../types/UIElements'
 
-import PrimaryInpyt from '../elements/inputs/primaryInput/PrimaryInpyt'
-import PrimaryButton from '../elements/btn/primaryButton/PrimaryButton'
+import { PrimaryInput } from '../elements/inputs/primaryInput/PrimaryInpyt'
+import { PrimaryButton } from '../elements/btn/primaryButton/PrimaryButton'
 
 import s from './Authorization.module.scss'
 
@@ -58,7 +58,7 @@ const Authorization = () => {
 				<form onSubmit={handleSubmit}>
 					<label>
 						<span>Email</span>
-						<PrimaryInpyt
+						<PrimaryInput
 							name='email'
 							type='email'
 							required
@@ -67,7 +67,7 @@ const Authorization = () => {
 
 					<label>
 						<span>Password</span>
-						<PrimaryInpyt
+						<PrimaryInput
 							name='password'
 							type={checked ? 'text' : 'password'}
 							minLength={3}
@@ -79,7 +79,7 @@ const Authorization = () => {
 
 					<label>
 						<span>Repeat Password</span>
-						<PrimaryInpyt
+						<PrimaryInput
 							name='checkPassword'
 							type={checked ? 'text' : 'password'}
 							required
@@ -99,7 +99,7 @@ const Authorization = () => {
 					{registration && <>
 						<label>
 							<span>Name</span>
-							<PrimaryInpyt
+							<PrimaryInput
 								name='name'
 								type='text'
 								placeholder='Enter your Name'
@@ -108,7 +108,7 @@ const Authorization = () => {
 
 						<label>
 							<span>Surname</span>
-							<PrimaryInpyt
+							<PrimaryInput
 								name='surname'
 								type='text'
 								placeholder='Enter your Surname'

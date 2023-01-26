@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { memo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { UserType } from '../../../types/profile'
@@ -8,16 +8,15 @@ import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
 import { createConversationThunc } from '../../../store/slices/apiActions/chatActions'
 import { SVG } from '../../../img/icons/exportIcons'
 import { setCurrentChat } from '../../../store/slices/chatSlice'
-import FollowButton from '../../elements/btn/isFollow/FolLowButton'
+import { FollowButton } from '../../elements/btn/isFollow/FolLowButton'
 
 import s from './userItem.module.scss'
 
-type propsType = {
+type UsersPropsType = {
 	thisUser: UserType
 }
 
-const UsersItem: FC<propsType> = ({ thisUser }) => {
-
+export const UsersItem = memo(({ thisUser }: UsersPropsType) => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const chats = useAppSelector(selectChats)
@@ -68,6 +67,4 @@ const UsersItem: FC<propsType> = ({ thisUser }) => {
 			</div>
 		</div >
 	)
-}
-
-export default UsersItem
+})

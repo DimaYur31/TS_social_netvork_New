@@ -6,7 +6,7 @@ import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectProfileState } from '../../selectors/selectors'
 
 import ContentWrapper from '../styleedComponents/ContentWrapper'
-import Header from '../header/Header'
+import { Header } from '../header/Header'
 import Navbar from '../navbar/Navbar'
 
 const Layout = () => {

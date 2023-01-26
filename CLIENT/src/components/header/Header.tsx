@@ -1,4 +1,4 @@
-import React from 'react'
+import { MouseEvent, memo } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import { usePhotosPath } from '../../hooks/hooks'
@@ -6,18 +6,18 @@ import { userExit } from '../../store/slices/profileSlice'
 import { SVG } from '../../img/icons/exportIcons'
 import { selectDefaultUserName } from '../../selectors/selectors'
 
-import SmalAvatar from '../styleedComponents/SmalAvatar'
+import { SmalAvatar } from '../styleedComponents/SmalAvatar'
 
 import s from './Header.module.scss'
 
 import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
 
-const Header = () => {
+export const Header = memo(() => {
 	const dispatch = useAppDispatch()
 	const name = useAppSelector(selectDefaultUserName)
 	const avatar = usePhotosPath()
 
-	const exit = (e: React.MouseEvent) => {
+	const exit = (e: MouseEvent) => {
 		e.preventDefault()
 		dispatch(userExit())
 		window.location.reload()
@@ -42,6 +42,4 @@ const Header = () => {
 			</div>
 		</header >
 	)
-}
-
-export default React.memo(Header)
+})

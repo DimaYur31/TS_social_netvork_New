@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import { FC, MouseEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 
 const SButton = styled.button`
@@ -21,13 +21,11 @@ cursor:pointer;
 	background: #334CBE;
 }
 `
-interface IProps {
+interface ButtonProps {
 	children: ReactNode
-	onClick: (e: React.MouseEvent) => void
+	onClick: (e: MouseEvent) => void
 }
 
-const Button: FC<IProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
 	return <SButton {...props} />
 }
-
-export default Button

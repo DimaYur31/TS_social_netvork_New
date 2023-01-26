@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import styled from 'styled-components'
 
 const StyledSmalAvatar = styled.img`
@@ -13,8 +13,6 @@ interface IProps {
 	src: string
 }
 
-const SmalAvatar: React.FC<IProps> = ({ src }) => {
+export const SmalAvatar = memo(({ src }: IProps) => {
 	return <StyledSmalAvatar src={src} />
-}
-
-export default React.memo(SmalAvatar)
+})

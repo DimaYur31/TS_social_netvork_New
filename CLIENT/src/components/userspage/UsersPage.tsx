@@ -6,9 +6,9 @@ import { selectDefaultUserId, selectUsers } from '../../selectors/selectors'
 
 import Share from '../homePage/share/Share'
 
-import s from './usersPage.module.scss'
+import { UsersItem } from './usersItem/UsersItem'
 
-import UsersItem from './usersItem/UsersItem'
+import s from './usersPage.module.scss'
 
 const UsersPage = () => {
 	const dispatch = useAppDispatch()

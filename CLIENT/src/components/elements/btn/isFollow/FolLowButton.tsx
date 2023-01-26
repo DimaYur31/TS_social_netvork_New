@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { memo, useState } from 'react'
 
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { followUnfollowThunk } from '../../../../store/slices/apiActions/userActions'
@@ -11,7 +11,7 @@ type TypeProps = {
 	currentUserId: string
 }
 
-const FollowButton: FC<TypeProps> = ({ currentUserId }) => {
+export const FollowButton = memo(({ currentUserId }: TypeProps) => {
 	const dispatch = useAppDispatch()
 	const { followings, _id } = useAppSelector(state => state.profilePage.defaultUser)
 	const [isFollowed, setIsFollowed] = useState(followings.includes(currentUserId))
@@ -29,6 +29,4 @@ const FollowButton: FC<TypeProps> = ({ currentUserId }) => {
 		<SVG.Subscribe />
 		{/* {isFollowed ? 'Unfollow' : 'Follow'} */}
 	</button>
-}
-
-export default React.memo(FollowButton)
+})

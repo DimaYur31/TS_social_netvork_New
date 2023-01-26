@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { memo, useState } from 'react'
 
-import AddPost from '../../homePage/myPosts/addPost/AddPost'
-import Button from '../../styleedComponents/Button'
+import { AddPost } from '../../homePage/myPosts/addPost/AddPost'
+import { Button } from '../../styleedComponents/Button'
 import OverLayPopap from '../UiKit/OverLayPopap'
 
-const AddPostPopap = () => {
+export const AddPostPopap = memo(() => {
 	const [isOpend, setIsOpen] = useState(false)
 	const handlePopap = () => {
 		setIsOpen(!isOpend)
@@ -18,6 +18,4 @@ const AddPostPopap = () => {
 			</OverLayPopap>
 		</>
 	)
-}
-
-export default React.memo(AddPostPopap)
+})

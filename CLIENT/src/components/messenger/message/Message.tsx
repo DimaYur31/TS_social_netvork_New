@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { format } from 'timeago.js'
 
 import { useAppSelector } from '../../../hooks/reactReduxHooks'
@@ -8,16 +8,15 @@ import { getUserData } from '../../../api/userApi'
 import { useIsOwner, usePhotosPath } from '../../../hooks/hooks'
 import { selectDefaultUserAvatar } from '../../../selectors/selectors'
 
-import ContextMenu from '../../elements/contextMenu/ContextMenu'
+import { ContextMenu } from '../../elements/contextMenu/ContextMenu'
 
 import s from './Message.module.scss'
-
 
 type MessagePropsType = {
 	message: MessageType
 }
 
-const Message: FC<MessagePropsType> = ({ message }) => {
+export const Message = memo(({ message }: MessagePropsType) => {
 	const avatar = useAppSelector(selectDefaultUserAvatar)
 	const isOwner = useIsOwner(message.sender)
 	const classOvner = isOwner ? `${s.owner}` : null
@@ -35,7 +34,10 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 	return (
 		<div className={`${s.message} ${classOvner}`}>
 			<div>
-				<img src={usePhotosPath(!participant ? avatar : participant.avatar)} />
+				<img
+					src={usePhotosPath(!participant ? avatar : participant.avatar)}
+					alt='avatar'
+				/>
 				<span>{format(message.createdAt)}</span>
 			</div>
 			<p>{message.text}
@@ -48,6 +50,4 @@ const Message: FC<MessagePropsType> = ({ message }) => {
 			</p>
 		</div>
 	)
-}
-
-export default React.memo(Message)
+})

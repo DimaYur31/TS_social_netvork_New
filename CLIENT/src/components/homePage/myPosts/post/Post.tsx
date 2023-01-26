@@ -9,7 +9,7 @@ import { selectDefaultUser } from '../../../../selectors/selectors'
 import { getUserData } from '../../../../api/userApi'
 
 
-import SmalAvatar from '../../../styleedComponents/SmalAvatar'
+import { SmalAvatar } from '../../../styleedComponents/SmalAvatar'
 import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
 

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
@@ -6,12 +6,12 @@ import { socket } from '../../../socket'
 import { editMessage, getMessage, removeMessage } from '../../../store/slices/chatSlice'
 import { selectMessages } from '../../../selectors/selectors'
 
-import Message from '../message/Message'
+import { Message } from '../message/Message'
 
 import s from './DialogMessages.module.scss'
 
 
-const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
+export const DialogMessages = React.memo(({ conversationId }: { conversationId: string }) => {
 	const dispatch = useAppDispatch()
 	const messages = useAppSelector(selectMessages)
 	// const scrollRef = useRef<HTMLDivElement>(null)
@@ -48,6 +48,4 @@ const DialogMessages: FC<{ conversationId: string }> = ({ conversationId }) => {
 			})
 		}</div>
 	)
-}
-
-export default React.memo(DialogMessages)
+})
