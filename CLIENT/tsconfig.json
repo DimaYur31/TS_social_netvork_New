@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "ESNext",
 		"lib": [
 			"dom",
 			"dom.iterable",
@@ -8,6 +8,7 @@
 		],
 		"allowJs": true,
 		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"strict": true,
@@ -22,12 +23,10 @@
 	},
 	"include": [
 		"src",
-		"мусор/StyledPhoto.tsx",
-		"мусор/usePosition.ts",
-		"мусор/useDeviceWidth.ts",
-		"мусор/query",
-		"мусор/AuthorizationOld.tsxtsx",
-		"мусор/hoc",
-		"мусор/error"
+		"мусор/Btn1.jsx"
+	],
+	"exclude": [
+		"node_modules",
+		"мусор"
 	]
 }

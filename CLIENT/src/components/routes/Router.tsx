@@ -1,10 +1,10 @@
 import { Suspense, lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import Loading from '../elements/loading/Loading'
-import HomePage from '../homePage/HomePage'
+import { Loading } from '../elements/loading/Loading'
+import { HomePage } from '../homePage/HomePage'
 import { DialogItem } from '../messenger/dialogItem/DialogItem'
-import Layout from '../layout/Layout'
+import { Layout } from '../layout/Layout'
 
 const Authorization = lazy(() => import('../authorization/Authorization'))
 const UsersPage = lazy(() => import('../userspage/UsersPage'))

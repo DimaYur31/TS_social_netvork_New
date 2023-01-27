@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import { SVG } from '../../../img/icons/exportIcons'
 
@@ -10,8 +10,7 @@ type ModalProps = {
 	children: ReactNode
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, setIsOpen, children }) => {
-
+export const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
 	return <>
 		{
 			isOpen &&
@@ -24,5 +23,3 @@ const Modal: FC<ModalProps> = ({ isOpen, setIsOpen, children }) => {
 		}
 	</>
 }
-
-export default Modal

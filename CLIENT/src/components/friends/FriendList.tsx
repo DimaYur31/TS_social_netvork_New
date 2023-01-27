@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectDefaultUser, selectFriends } from '../../selectors/selectors'
-import UserItem from '../elements/user-item/UserItem'
+import { UserItem } from '../elements/user-item/UserItem'
 
 import s from './FriendList.module.scss'
 
-const FriendList = () => {
+export const FriendList = memo(() => {
 	const dispatch = useAppDispatch()
 	const { _id, followings } = useAppSelector(selectDefaultUser)
 	const friends = useAppSelector(selectFriends)
@@ -32,6 +32,4 @@ const FriendList = () => {
 			})
 		}
 	</ul>
-}
-
-export default React.memo(FriendList)
+})

@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks'
 import { getAllUsers } from '../../store/slices/apiActions/usersActions'
 import { selectDefaultUserId, selectUsers } from '../../selectors/selectors'
 
-import Share from '../homePage/share/Share'
+import { Share } from '../homePage/share/Share'
 
 import { UsersItem } from './usersItem/UsersItem'
 

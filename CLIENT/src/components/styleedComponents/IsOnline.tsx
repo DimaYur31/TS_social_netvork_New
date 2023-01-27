@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Sircle = styled.span<IProps>`
+const Sircle = styled.span<IsOnlineProps>`
 	content:'';
 	position: absolute;
 	top: 0;
@@ -19,12 +19,10 @@ const Sircle = styled.span<IProps>`
 	}
 `
 
-interface IProps {
+interface IsOnlineProps {
 	isOnline: boolean
 }
 
-const IsOnline: React.FC<IProps> = (props) => {
+export const IsOnline = (props: IsOnlineProps) => {
 	return <Sircle  {...props} />
 }
-
-export default IsOnline

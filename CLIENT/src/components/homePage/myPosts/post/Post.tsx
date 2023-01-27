@@ -1,26 +1,23 @@
-import React, { FC, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { format } from 'timeago.js'
 
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
-
 import { PostType } from '../../../../types/post'
 import { selectDefaultUser } from '../../../../selectors/selectors'
 import { getUserData } from '../../../../api/userApi'
-
-
 import { SmalAvatar } from '../../../styleedComponents/SmalAvatar'
-import ButtonsPopap from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
-import LikeDislikeComponent from '../../../elements/likedislike/LikeDislikeComponent'
+import { ButtonsPopap } from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
+import { LikeDislikeComponent } from '../../../elements/likedislike/LikeDislikeComponent'
 
-import s from './Post.module.scss'
 import { usePhotosPath } from './../../../../hooks/hooks'
+import s from './Post.module.scss'
 
-type TPost = {
+type PostProps = {
 	post: PostType<string>
 }
 
-const Post: FC<TPost> = ({ post }) => {
+export const Post = memo(({ post }: PostProps) => {
 	const navigate = useNavigate()
 	const defaultUser = useAppSelector(selectDefaultUser)
 	const [thisUser, setThisUser] = useState(defaultUser)
@@ -52,7 +49,7 @@ const Post: FC<TPost> = ({ post }) => {
 
 			<div onClick={() => navigate(`/post/${post._id}`)} className={s.body}>
 				<div>
-					<img src={usePhotosPath(post.img)} />
+					<img src={usePhotosPath(post.img)} alt='post-img' />
 				</div>
 				<p>{post.text}</p>
 			</div>
@@ -68,6 +65,4 @@ const Post: FC<TPost> = ({ post }) => {
 			</div>
 		</div >
 	)
-}
-
-export default React.memo(Post)
+})

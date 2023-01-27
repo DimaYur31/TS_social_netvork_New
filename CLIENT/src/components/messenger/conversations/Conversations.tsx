@@ -1,16 +1,15 @@
-import React from 'react'
+import { memo } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
 import { setCurrentChat } from '../../../store/slices/chatSlice'
 
-import ChatRoom from '../chatRoom/ChatRoom'
+import { ChatRoom } from '../chatRoom/ChatRoom'
 
 import s from './Conversations.module.scss'
 
-
-const Conversations = () => {
+export const Conversations = memo(() => {
 	const dispatch = useAppDispatch()
 	const _id = useAppSelector(selectDefaultUserId)
 	const chats = useAppSelector(selectChats)
@@ -39,6 +38,4 @@ const Conversations = () => {
 			}
 		</div>
 	</>
-}
-
-export default React.memo(Conversations)
+})

@@ -8,9 +8,10 @@ import { selectDefaultUserName } from '../../selectors/selectors'
 
 import { SmalAvatar } from '../styleedComponents/SmalAvatar'
 
+import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
+
 import s from './Header.module.scss'
 
-import { useAppDispatch, useAppSelector } from './../../hooks/reactReduxHooks'
 
 export const Header = memo(() => {
 	const dispatch = useAppDispatch()

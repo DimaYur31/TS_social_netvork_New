@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
 import { PostType } from '../../../../types/post'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
@@ -12,7 +12,7 @@ type TypeProps = {
 	post: PostType<string>
 }
 
-const ButtonsPopap: FC<TypeProps> = ({ post }) => {
+export const ButtonsPopap = ({ post }: TypeProps) => {
 	const _id = useAppSelector(selectDefaultUserId)
 	const dispatch = useAppDispatch()
 	const [isOpend, setIsOpen] = useState(false)
@@ -36,5 +36,3 @@ const ButtonsPopap: FC<TypeProps> = ({ post }) => {
 		</div>
 	)
 }
-
-export default ButtonsPopap

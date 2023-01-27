@@ -1,13 +1,12 @@
-import React from 'react'
+import { memo } from 'react'
 
 import s from './HomePage.module.scss'
 
-import RightBar from './rightBar/RightBar'
-import TimeLine from './timeline/TimeLine'
-import Share from './share/Share'
+import { RightBar } from './rightBar/RightBar'
+import { TimeLine } from './timeline/TimeLine'
+import { Share } from './share/Share'
 
-const HomePage = () => {
-
+export const HomePage = memo(() => {
 	return (
 		<div className={s.home}>
 			<div className={s.left}>
@@ -17,6 +16,4 @@ const HomePage = () => {
 			<RightBar />
 		</div>
 	)
-}
-
-export default React.memo(HomePage)
+})

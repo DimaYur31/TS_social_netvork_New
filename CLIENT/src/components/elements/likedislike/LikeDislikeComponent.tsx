@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { dislikeThunk, likeThunk } from '../../../store/slices/apiActions/postActions'
@@ -6,14 +6,14 @@ import { SVG } from '../../../img/icons/exportIcons'
 
 import s from './LikeDislikeComponent.module.scss'
 
-type LikeDislikePropsType = {
+type LikeDislikeProps = {
 	likes: string[]
 	dislikes: string[]
 	currentObjectId: string
 	currentObjectUserId: string
 }
 
-const LikeDislikeComponent: FC<LikeDislikePropsType> = (props) => {
+export const LikeDislikeComponent = (props: LikeDislikeProps) => {
 	const dispatch = useAppDispatch()
 	const { defaultUser } = useAppSelector(store => store.profilePage)
 	const { likes, dislikes, currentObjectId, currentObjectUserId } = props
@@ -37,16 +37,24 @@ const LikeDislikeComponent: FC<LikeDislikePropsType> = (props) => {
 
 	return (
 		<div className={s.statistic}>
-			<span className={isLiked ? `${s.active}` : ''}
+			<span
+				className={isLiked ? `${s.active}` : ''}
 				onClick={() => hendelLikes()}
-			><SVG.Like className={s.like} /></span>
-			<p>{`${likes.length}`}</p>
-			<span className={isDisliked ? `${s.active}` : ''}
+			>
+				<SVG.Like className={s.like} />
+			</span>
+			<p>
+				{`${likes.length}`}
+			</p>
+			<span
+				className={isDisliked ? `${s.active}` : ''}
 				onClick={() => hendelDislikes()}
-			><SVG.Dislike className={s.dislike} /></span>
-			<p>{`${dislikes.length}`}</p>
+			>
+				<SVG.Dislike className={s.dislike} />
+			</span>
+			<p>
+				{`${dislikes.length}`}
+			</p>
 		</div>
 	)
 }
-
-export default LikeDislikeComponent

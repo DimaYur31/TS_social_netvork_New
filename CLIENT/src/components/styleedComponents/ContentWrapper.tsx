@@ -1,19 +1,17 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 
-export interface IProps {
+interface ContentWrapperProps {
 	children: ReactNode
 	isAuth: boolean
 }
 
-const StyledContent = styled.div<IProps>`
+const StyledContent = styled.div<ContentWrapperProps>`
 position: relative;
 display: grid;
 grid-template-columns: ${({ isAuth }) => (isAuth ? 'minmax(130px, 230px) auto' : '1fr')};
 `
 
-const ContentWrapper: FC<IProps> = (props) => {
+export const ContentWrapper = (props: ContentWrapperProps) => {
 	return <StyledContent {...props} />
 }
-
-export default ContentWrapper

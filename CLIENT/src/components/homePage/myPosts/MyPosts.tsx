@@ -1,14 +1,14 @@
-import React, { useEffect, FC } from 'react'
+import { useEffect, memo } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { fetchPostsThunk } from '../../../store/slices/apiActions/postActions'
 import { selectPosts } from '../../../selectors/selectors'
 
+import { Post } from './post/Post'
 import s from './MyPosts.module.scss'
 
-import Post from './post/Post'
 
-const MyPosts: FC<{ _id: string }> = ({ _id }) => {
+export const MyPosts = memo(({ _id }: { _id: string }) => {
 	const dispatch = useAppDispatch()
 	const posts = useAppSelector(selectPosts)
 
@@ -28,6 +28,4 @@ const MyPosts: FC<{ _id: string }> = ({ _id }) => {
 			}
 		</div>
 	)
-}
-
-export default React.memo(MyPosts)
+})

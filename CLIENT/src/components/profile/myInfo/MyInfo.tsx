@@ -1,15 +1,13 @@
-import React from 'react'
+import { memo } from 'react'
 
 import { usePhotosPath, useIsOwner } from '../../../hooks/hooks'
 import { UserType } from '../../../types/profile'
-
-
 import { AddPostPopap } from '../../elements/popap/AddPostPopap'
 import { FollowButton } from '../../elements/btn/isFollow/FolLowButton'
 
 import s from './MyInfo.module.scss'
 
-const MyInfo: React.FC<{ user: UserType }> = ({ user }) => {
+export const MyInfo = memo(({ user }: { user: UserType }) => {
 	const isOwner = useIsOwner(user._id)
 
 	return (
@@ -26,6 +24,4 @@ const MyInfo: React.FC<{ user: UserType }> = ({ user }) => {
 			</div>
 		</div>
 	)
-}
-
-export default React.memo(MyInfo)
+})

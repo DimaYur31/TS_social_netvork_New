@@ -5,11 +5,11 @@ import { socket } from '../../socket'
 import { useAppSelector } from '../../hooks/reactReduxHooks'
 import { selectProfileState } from '../../selectors/selectors'
 
-import ContentWrapper from '../styleedComponents/ContentWrapper'
+import { ContentWrapper } from '../styleedComponents/ContentWrapper'
 import { Header } from '../header/Header'
-import Navbar from '../navbar/Navbar'
+import { Navbar } from '../navbar/Navbar'
 
-const Layout = () => {
+export const Layout = () => {
 	const { isAuth, defaultUser } = useAppSelector(selectProfileState)
 
 	useEffect(() => {
@@ -17,7 +17,6 @@ const Layout = () => {
 
 			socket.emit('addUser', defaultUser._id)
 			socket.on('getUsers', users => {
-				console.log('users online 111111')
 			})
 		}
 		// return socket.off('getUsers')
@@ -32,5 +31,3 @@ const Layout = () => {
 	</ >
 	)
 }
-
-export default Layout

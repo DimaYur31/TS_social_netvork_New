@@ -1,11 +1,9 @@
 import s from './RightBar.module.scss'
 
-const RightBar = () => {
+export const RightBar = () => {
 	return (
 		<div className={s.rightBar}>
 			<p>Todey is dey ....</p>
 		</div>
 	)
 }
-
-export default RightBar

@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 import { useInput } from '../../hooks/useInput'
@@ -98,7 +98,7 @@ position: absolute;
 }
 `
 
-const Search = () => {
+export const Search = () => {
 	const [isActive, setIsActive] = useState(false)
 	const search = useInput()
 
@@ -116,5 +116,3 @@ const Search = () => {
 		</span>
 	</StyledSearch>
 }
-
-export default Search

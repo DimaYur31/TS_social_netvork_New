@@ -1,12 +1,12 @@
-import React from 'react'
+import { memo } from 'react'
 
-import FriendList from '../friends/FriendList'
+import { FriendList } from '../friends/FriendList'
 
 import s from './Navbar.module.scss'
 
 import Nav from './Nav'
 
-const Navbar = () => {
+export const Navbar = memo(() => {
 	return (
 		<section className={s.navbar}>
 			<Nav />
@@ -14,6 +14,4 @@ const Navbar = () => {
 			<FriendList />
 		</section>
 	)
-}
-
-export default React.memo(Navbar)
+})

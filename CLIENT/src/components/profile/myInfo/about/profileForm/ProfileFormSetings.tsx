@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks'
 import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions'
 import { selectDefaultUser } from '../../../../../selectors/selectors'
@@ -29,7 +27,7 @@ const getFormValues = (obj: any) => {
 	return newObj
 }
 
-const ProfileFormSetings = () => {
+export const ProfileFormSetings = () => {
 	const dispatch = useAppDispatch()
 	const defaultUser = useAppSelector(selectDefaultUser)
 
@@ -47,7 +45,6 @@ const ProfileFormSetings = () => {
 			country: country.value,
 			languages: languages.value,
 		}
-
 		const changes = getFormValues(formChanges)
 
 		if (changes) dispatch(changeUserProfile(defaultUser._id, changes))
@@ -87,5 +84,3 @@ const ProfileFormSetings = () => {
 		</form>
 	)
 }
-
-export default React.memo(ProfileFormSetings)

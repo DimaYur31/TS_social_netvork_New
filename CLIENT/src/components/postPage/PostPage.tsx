@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Post from '../homePage/myPosts/post/Post'
 import useGetPageData from '../../hooks/useGetPageDats'
+import { Post } from '../homePage/myPosts/post/Post'
 import { getPost } from '../../api/postAPI'
 
 const PostPage = () => {

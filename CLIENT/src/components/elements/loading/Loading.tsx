@@ -1,13 +1,11 @@
 import s from './Loading.module.scss'
-//@ts-ignore
+
 import loading from './Loading.svg'
 
-const Loading = () => {
+export const Loading = () => {
 	return (
 		<div className={s.loading} >
-			<img src={loading} />
+			<img src={loading} alt='loading' />
 		</div>
 	)
 }
-
-export default Loading

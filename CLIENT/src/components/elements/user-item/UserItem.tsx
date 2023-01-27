@@ -1,19 +1,19 @@
-import React from 'react'
+import { memo } from 'react'
 
 import { usePhotosPath } from '../../../hooks/hooks'
 import { UsersType } from '../../../types/profile'
 
-import IsOnline from '../../styleedComponents/IsOnline'
+import { IsOnline } from '../../styleedComponents/IsOnline'
 import { SmalAvatar } from '../../styleedComponents/SmalAvatar'
 
 import s from './UserItem.module.scss'
 
-interface IProps {
+interface UserItemProps {
 	user: UsersType
 	isDB?: boolean
 }
 
-const UserItem: React.FC<IProps> = ({ user, isDB }) => {
+export const UserItem = memo(({ user, isDB }: UserItemProps) => {
 
 	return (
 		<li className={s.list}>
@@ -22,6 +22,4 @@ const UserItem: React.FC<IProps> = ({ user, isDB }) => {
 			<p>{user.name}</p>
 		</li>
 	)
-}
-
-export default React.memo(UserItem)
+})

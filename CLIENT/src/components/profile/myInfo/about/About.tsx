@@ -1,17 +1,14 @@
-import React, { FC, useState } from 'react'
+import { memo, useState } from 'react'
 
 import { useIsOwner } from '../../../../hooks/hooks'
-
-import Modal from '../../../elements/modal/Modal'
-
+import { Modal } from '../../../elements/modal/Modal'
 import { UserType } from '../../../../types/profile'
 
 import { SVG } from './../../../../img/icons/exportIcons'
+import { ProfileFormSetings } from './profileForm/ProfileFormSetings'
 import s from './About.module.scss'
 
-import ProfileFormSetings from './profileForm/ProfileFormSetings'
-
-const About: FC<{ user: UserType }> = ({ user }) => {
+export const About = memo(({ user }: { user: UserType }) => {
 	const { birthday, city, country, job, languages, name, surname, _id } = user
 	const [isOpen, setIsOpen] = useState(false)
 	const isOwner = useIsOwner(_id)
@@ -40,6 +37,4 @@ const About: FC<{ user: UserType }> = ({ user }) => {
 			</Modal>
 		</div>
 	)
-}
-
-export default React.memo(About)
+})

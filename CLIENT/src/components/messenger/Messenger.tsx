@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
 import { getChatsThunk } from '../../store/slices/apiActions/chatActions'
 import { selectChats, selectDefaultUserId } from '../../selectors/selectors'
 
-import Conversations from './conversations/Conversations'
+import { Conversations } from './conversations/Conversations'
 import s from './Messenger.module.scss'
 
 
