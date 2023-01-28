@@ -6,7 +6,6 @@ const initialState = {
 	chats: [] as ConversationType[],
 	currentChat: '' as string,
 	messages: [] as MessageType[]
-
 }
 
 const chatSlice = createSlice({
@@ -49,9 +48,4 @@ const chatSlice = createSlice({
 	}
 })
 
-export const {
-	getChats, setCurrentChat, getChatMessages, addChat,
-	removeChat, removeMessage, getMessage, editMessage
-} = chatSlice.actions
-
-export default chatSlice.reducer
+export const { reducer: chatReducer, actions: chatActions } = chatSlice

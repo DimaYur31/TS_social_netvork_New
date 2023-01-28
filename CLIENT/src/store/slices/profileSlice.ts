@@ -39,8 +39,4 @@ const profileSlice = createSlice({
 	}
 })
 
-export const {
-	setUser, addPhoto, userExit, removePhoto, follow, unfollow,
-} = profileSlice.actions
-
-export default profileSlice.reducer
+export const { reducer: profileReducer, actions: profileActionst } = profileSlice

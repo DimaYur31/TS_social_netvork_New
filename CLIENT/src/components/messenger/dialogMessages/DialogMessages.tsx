@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { getMessagesThunk } from '../../../store/slices/apiActions/chatActions'
 import { socket } from '../../../socket'
-import { editMessage, getMessage, removeMessage } from '../../../store/slices/chatSlice'
+import { chatActions } from '../../../store/slices/chatSlice'
 import { selectMessages } from '../../../selectors/selectors'
 
 import { Message } from '../message/Message'
@@ -23,15 +23,15 @@ export const DialogMessages = React.memo(({ conversationId }: { conversationId: 
 
 
 	socket.on('getMessage', message => {
-		dispatch(getMessage(message))
+		dispatch(chatActions.getMessage(message))
 	})
 
 	socket.on('removedMessage', (messageId: string) => {
-		dispatch(removeMessage(messageId))
+		dispatch(chatActions.removeMessage(messageId))
 	})
 
 	socket.on('updateMessage', (message: any) => {
-		dispatch(editMessage(message))
+		dispatch(chatActions.editMessage(message))
 	})
 
 

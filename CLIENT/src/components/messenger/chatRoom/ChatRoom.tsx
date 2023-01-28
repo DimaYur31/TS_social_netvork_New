@@ -6,7 +6,7 @@ import { getUserData } from '../../../api/userApi'
 import { socket } from '../../../socket'
 import { useAppDispatch } from '../../../hooks/reactReduxHooks'
 import { UserItem } from '../../elements/user-item/UserItem'
-import { removeChat, setCurrentChat } from '../../../store/slices/chatSlice'
+import { chatActions } from '../../../store/slices/chatSlice'
 
 import s from './ChatRoom.module.scss'
 
@@ -30,12 +30,12 @@ export const ChatRoom = memo(({ room, userId }: RoomProps) => {
 	}, [user])
 
 	socket.on('deleteConversation', (conversationId: string) => {
-		dispatch(removeChat(conversationId))
+		dispatch(chatActions.removeChat(conversationId))
 	})
 
 	const deleteChat = () => {
 		socket.emit('deleteConversation', room._id)
-		dispatch(setCurrentChat(''))
+		dispatch(chatActions.setCurrentChat(''))
 	}
 
 	return (

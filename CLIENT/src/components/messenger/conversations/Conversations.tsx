@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
-import { setCurrentChat } from '../../../store/slices/chatSlice'
+import { chatActions } from '../../../store/slices/chatSlice'
 
 import { ChatRoom } from '../chatRoom/ChatRoom'
 
@@ -15,7 +15,7 @@ export const Conversations = memo(() => {
 	const chats = useAppSelector(selectChats)
 
 	const handelCurrentChat = (chatid: string) => {
-		dispatch(setCurrentChat(chatid))
+		dispatch(chatActions.setCurrentChat(chatid))
 	}
 
 	return <>

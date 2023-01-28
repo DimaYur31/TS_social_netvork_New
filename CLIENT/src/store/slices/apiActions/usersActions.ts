@@ -1,22 +1,20 @@
 import { getFriendsData, getUsers } from '../../../api/allUsersApi'
 import { AppDispatch } from '../../store'
-import { toggleLoading } from '../appSlice'
-import { setFriends, setUsers } from '../usersSlice'
+import { appActions } from '../appSlice'
+import { userActions } from '../usersSlice'
 
 export const getAllUsers = (_id: string) => {
 	return async (dispatch: AppDispatch) => {
-		dispatch(toggleLoading(true))
-
+		dispatch(appActions.toggleLoading(true))
 		const users = await getUsers(_id)
-
-		dispatch(setUsers(users))
-		dispatch(toggleLoading(false))
+		dispatch(userActions.setUsers(users))
+		dispatch(appActions.toggleLoading(false))
 	}
 }
 
 export const getFriendsThunk = (id: string) => {
 	return async (dispatch: AppDispatch) => {
 		const friends = await getFriendsData(id)
-		dispatch(setFriends(friends))
+		dispatch(userActions.setFriends(friends))
 	}
 }

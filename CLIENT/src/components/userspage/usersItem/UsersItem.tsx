@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks/reactReduxHooks'
 import { selectChats, selectDefaultUserId } from '../../../selectors/selectors'
 import { createConversationThunc } from '../../../store/slices/apiActions/chatActions'
 import { SVG } from '../../../img/icons/exportIcons'
-import { setCurrentChat } from '../../../store/slices/chatSlice'
+import { chatActions } from '../../../store/slices/chatSlice'
 import { FollowButton } from '../../elements/btn/isFollow/FolLowButton'
 
 import s from './userItem.module.scss'
@@ -27,7 +27,7 @@ export const UsersItem = memo(({ thisUser }: UsersPropsType) => {
 		let chat = null
 		if (!chats.length) {
 			const id = await dispatch(createConversationThunc(senderId, receiverId))
-			dispatch(setCurrentChat(id))
+			dispatch(chatActions.setCurrentChat(id))
 			navigate(`/messenger/${id}`)
 			return
 		}
@@ -41,14 +41,14 @@ export const UsersItem = memo(({ thisUser }: UsersPropsType) => {
 
 		if (chat) {
 			navigate(`/messenger/${chat._id}`)
-			dispatch(setCurrentChat(chat._id))
+			dispatch(chatActions.setCurrentChat(chat._id))
 			return
 		}
 
 		dispatch(createConversationThunc(senderId, receiverId))
 			.then(id => {
 				navigate(`/messenger/${id}`)
-				dispatch(setCurrentChat(id))
+				dispatch(chatActions.setCurrentChat(id))
 			})
 	}
 

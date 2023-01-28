@@ -7,20 +7,19 @@ const initialState = {
 	friends: [] as UsersType[]
 }
 
-type StateInterfase = typeof initialState
+type StateType = typeof initialState
 
 const usersSlice = createSlice({
 	name: 'usersSlice',
 	initialState,
 	reducers: {
-		setUsers(state: StateInterfase, action: PayloadAction<UserType[]>) {
+		setUsers(state: StateType, action: PayloadAction<UserType[]>) {
 			state.users = action.payload
 		},
-		setFriends(state: StateInterfase, action: PayloadAction<UsersType[]>) {
+		setFriends(state: StateType, action: PayloadAction<UsersType[]>) {
 			state.friends = action.payload
 		}
 	}
 })
 
-export const { setUsers, setFriends } = usersSlice.actions
-export default usersSlice.reducer
+export const { reducer: usersReducer, actions: userActions } = usersSlice

@@ -2,7 +2,7 @@ import { MouseEvent, memo } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 import { usePhotosPath } from '../../hooks/hooks'
-import { userExit } from '../../store/slices/profileSlice'
+import { profileActionst } from '../../store/slices/profileSlice'
 import { SVG } from '../../img/icons/exportIcons'
 import { selectDefaultUserName } from '../../selectors/selectors'
 
@@ -20,7 +20,7 @@ export const Header = memo(() => {
 
 	const exit = (e: MouseEvent) => {
 		e.preventDefault()
-		dispatch(userExit())
+		dispatch(profileActionst.userExit())
 		window.location.reload()
 	}
 

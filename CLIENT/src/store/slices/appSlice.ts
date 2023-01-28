@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type Tstate = {
+type AppSliceState = {
 	isLoading: boolean
 }
 
-const initialState: Tstate = {
+const initialState: AppSliceState = {
 	isLoading: false
 }
 
@@ -12,12 +12,10 @@ const appSlice = createSlice({
 	name: 'appSlice',
 	initialState,
 	reducers: {
-		toggleLoading(state: Tstate, action: PayloadAction<boolean>) {
+		toggleLoading(state: AppSliceState, action: PayloadAction<boolean>) {
 			state.isLoading = action.payload
 		}
 	}
 })
 
-export const { toggleLoading } = appSlice.actions
-
-export default appSlice.reducer
+export const { reducer: appReducer, actions: appActions } = appSlice
