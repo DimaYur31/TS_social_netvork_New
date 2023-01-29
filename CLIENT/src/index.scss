@@ -4,18 +4,46 @@
 	box-sizing: border-box;
 }
 
-:root{
+html[data-theme='light'] {
 	--primary:#0690fd;
+	--primary-active: var(--primary);
+	--list-color: #000;
 	--white: #fff;
+	--active-item:#fff;
 	--black: #000;
+	--phon-color: #fff;
+	--scrollbar-track-color:#f1f1f1;
+	--scrollbar-thumb-color:rgb(179,179,179);
 }
+
+html[data-theme='dark'] {
+	--primary:#7E6DD1;
+	--primary-active: #fff;
+	--list-color:  #8774E1;
+	--white: rgb(237, 239, 240);
+	--black:  #8774E1;
+	--active-item:#8774E1;
+	--phon-color: #212121;
+	--scrollbar-track-color:transparent;
+	--scrollbar-thumb-color:#4D4D4D;
+}
+// #8774E1  - активный чат
+// #7E6DD1 – мое сообщение, кнопка
+// #707070  #AAAAAA – плейсхолдер  ховер
+// #212121 – чат, чужое сообщение, инпут
+// #4D4D4D- скрол, сама полоса под цвет фона
+
 
 ::-webkit-scrollbar{
 	width: 5px;
 }
 ::-webkit-scrollbar-track{
-	background: #f1f1f1;
+	background: var(--scrollbar-track-color);
 }
 ::-webkit-scrollbar-thumb{
-	background: rgb(179,179,179);
+	background: var(--scrollbar-thumb-color);
+}
+
+body{
+	background-color: var(--phon-color);
 }

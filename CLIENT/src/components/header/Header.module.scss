@@ -43,6 +43,7 @@
 			background-color: var(--primary);
 			border-radius: 5px;
 			justify-self: center;
+			color: inherit;
 		}
 
 		a{
@@ -63,7 +64,7 @@
 }
 	.btns{
 		display: grid;
-		grid-template-columns: repeat(3,1fr);
+		grid-template-columns: repeat(4,1fr);
 		align-items: center;
 		grid-gap: 10px;
 	}

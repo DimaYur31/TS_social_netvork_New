@@ -37,18 +37,6 @@
 		width: 18px;
 		height: 18px;
 		fill:var(--black);
-		
-		&:hover{
-			animation: Rotate 0.35s 1 linear;
-		}
-		
-	}
-}
-
-@keyframes Rotate{
-	0%{
-		transform: rotate(0rad);
-	}100%{
-		transform: rotate(1.05rad);
+		background-color: var(--phon-color);		
 	}
 }

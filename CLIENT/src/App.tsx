@@ -6,11 +6,13 @@ import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks'
 import { selectIsAuth } from './selectors/selectors'
 
 import { Router } from './components/routes/Router'
+import { useTheme } from './hooks/useTheme'
 
 export const App = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const isAuth = useAppSelector(selectIsAuth)
+	useTheme()
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')

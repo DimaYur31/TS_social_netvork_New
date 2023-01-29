@@ -27,16 +27,15 @@
 		display: flex;
 		align-items: center;
 		width: 100%;
-		color: inherit;
 		text-decoration: none;
 		
 		&.active {
-			color: var(--primary);
-			background: var(--white);
+			color: var(--primary-active);
+			background: var(--active-item);
 		}
 		
 		&.active .icons{
-			fill:var(--primary);
+			fill:var(--primary-active);
 		}
 	}
 
