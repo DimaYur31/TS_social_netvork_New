@@ -5,23 +5,25 @@
 }
 
 html[data-theme='light'] {
+	--white: #fff;
+	--black: #000;
+
 	--primary:#0690fd;
 	--primary-active: var(--primary);
-	--list-color: #000;
-	--white: #fff;
 	--active-item:#fff;
-	--black: #000;
+	--list-color: #000;
 	--phon-color: #fff;
 	--scrollbar-track-color:#f1f1f1;
 	--scrollbar-thumb-color:rgb(179,179,179);
 }
 
 html[data-theme='dark'] {
+	--white: rgb(237, 239, 240);
+	--black:  #8774E1;
+
 	--primary:#7E6DD1;
 	--primary-active: #fff;
 	--list-color:  #8774E1;
-	--white: rgb(237, 239, 240);
-	--black:  #8774E1;
 	--active-item:#8774E1;
 	--phon-color: #212121;
 	--scrollbar-track-color:transparent;

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode, memo } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import s from './Navbar.module.scss'
@@ -13,16 +13,14 @@ interface LinkItemProps {
 	children: ReactNode
 }
 
-const LinkItem: React.FC<LinkItemProps> = ({ to, title, children }) => {
+export const LinkItem = memo(({ to, title, children }: LinkItemProps) => {
 
 	const handlerActive = ({ isActive }: ILink) => (isActive ? s.active : null)
 
 	return <li>
 		<NavLink to={to} className={handlerActive} >
 			{children}
-			{title}
+			<span>{title}</span>
 		</NavLink>
 	</li>
-}
-
-export default React.memo(LinkItem)
+})

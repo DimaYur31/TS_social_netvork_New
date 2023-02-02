@@ -2,12 +2,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	margin: 5px;
+	gap: 5px;
 	cursor: pointer;
-	margin: 10px;
 	color:var(--list-color);
-	
-	img{
-		margin-right: 10px;
-	}
 }
