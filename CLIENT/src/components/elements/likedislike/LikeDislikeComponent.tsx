@@ -1,9 +1,7 @@
 import { useState } from 'react'
-
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
 import { dislikeThunk, likeThunk } from '../../../store/slices/apiActions/postActions'
 import { SVG } from '../../../img/icons/exportIcons'
-
 import s from './LikeDislikeComponent.module.scss'
 
 type LikeDislikeProps = {
@@ -27,6 +25,7 @@ export const LikeDislikeComponent = (props: LikeDislikeProps) => {
 			setIsDisliked(false)
 		}
 	}
+
 	const hendelDislikes = () => {
 		if (defaultUser._id !== currentObjectUserId) {
 			dispatch(dislikeThunk(defaultUser._id, currentObjectId))

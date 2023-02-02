@@ -1,12 +1,10 @@
 import { useState } from 'react'
-
 import { PostType } from '../../../../types/post'
 import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
 import { deletePostThunk } from '../../../../store/slices/apiActions/postActions'
 import { selectDefaultUserId } from '../../../../selectors/selectors'
 import { SVG } from '../../../../img/icons/exportIcons'
-
-import s from './ButtonsPopap.module.scss'
+import style from './ButtonsPopap.module.scss'
 
 type TypeProps = {
 	post: PostType<string>
@@ -26,10 +24,10 @@ export const ButtonsPopap = ({ post }: TypeProps) => {
 	}
 
 	return (
-		<div className={s.wrapper}>
+		<div className={style.wrapper}>
 			<span onClick={handlePopap}><SVG.More /></span>
 			{isOpend &&
-				<div className={s.buttons}>
+				<div className={style.buttons}>
 					<span onClick={() => deletePost()}><SVG.Dustbin /></span>
 				</div>
 			}

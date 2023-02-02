@@ -13,11 +13,14 @@
 		transform: rotate(90deg);
 		width: 20px;
 		height: 20px;
+		fill:var(--text-color);
+
 	}
 	
 	.buttons svg{
 		transform: rotate(0deg);
 		width: 20px;
 		height: 20px;
+		fill:var(--text-color);
 	}
 }

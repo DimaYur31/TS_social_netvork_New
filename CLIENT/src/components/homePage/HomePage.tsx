@@ -1,15 +1,13 @@
 import { memo } from 'react'
-
-import s from './HomePage.module.scss'
-
 import { RightBar } from './rightBar/RightBar'
 import { TimeLine } from './timeline/TimeLine'
 import { Share } from './share/Share'
+import style from './HomePage.module.scss'
 
 export const HomePage = memo(() => {
 	return (
-		<div className={s.home}>
-			<div className={s.left}>
+		<div className={style.home}>
+			<div className={style.left}>
 				<Share />
 				<TimeLine />
 			</div>

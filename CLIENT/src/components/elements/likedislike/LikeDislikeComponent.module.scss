@@ -1,6 +1,7 @@
 .statistic{
 	display: flex;
 	align-items: center;
+	// color: var(--text-color);
 	
 	span{
 		cursor:pointer;
@@ -9,22 +10,22 @@
 
 	p{
 		margin-right: 5px;
+		color: var(--text-color);
 	}
 	
 	span svg{
 		width: 25px;
 		height: 25px;
 		padding: 4px;
-		border-radius: 5px;
+		border-radius: 3px;
+		fill: var(--text-color);
 	}
 
 	.active .like{
-		fill: var(--white);
 		background-color: rgb(76, 199, 76);
 	}
 
 	.active .dislike{
 		background-color: rgb(229, 28, 28);
-		fill: var(--white);
 	}	
 }

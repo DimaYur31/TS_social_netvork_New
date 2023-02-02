@@ -1,7 +1,6 @@
 import { memo, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { format } from 'timeago.js'
-
 import { useAppSelector } from '../../../../hooks/reactReduxHooks'
 import { PostType } from '../../../../types/post'
 import { selectDefaultUser } from '../../../../selectors/selectors'
@@ -9,9 +8,8 @@ import { getUserData } from '../../../../api/userApi'
 import { SmalAvatar } from '../../../styleedComponents/SmalAvatar'
 import { ButtonsPopap } from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
 import { LikeDislikeComponent } from '../../../elements/likedislike/LikeDislikeComponent'
-
 import { usePhotosPath } from './../../../../hooks/hooks'
-import s from './Post.module.scss'
+import style from './Post.module.scss'
 
 type PostProps = {
 	post: PostType<string>
@@ -36,25 +34,27 @@ export const Post = memo(({ post }: PostProps) => {
 	}, [post.userId])
 
 	return (
-		<div className={s.post} >
+		<div className={style.post} >
 
-			<div className={s.head}>
+			<div className={style.head}>
 				<Link to={`/profile/${thisUser._id}`}>
 					<SmalAvatar src={usePhotosPath(thisUser.avatar)} />
-					<p className={s.time}>{thisUser.name}</p>
+					<p className={style.time}>{thisUser.name}</p>
 				</Link>
-				<p className={s.time}>{format(post.createdAt)}</p>
+				<p className={style.time}>{format(post.createdAt)}</p>
 				<ButtonsPopap post={post} />
 			</div>
 
-			<div onClick={() => navigate(`/post/${post._id}`)} className={s.body}>
+			<div
+				onClick={() => navigate(`/post/${post._id}`)} className={style.body}
+			>
 				<div>
 					<img src={usePhotosPath(post.img)} alt='post-img' />
 				</div>
-				<p>{post.text}</p>
+				<p className={style.text} >{post.text}</p>
 			</div>
 
-			<div className={s.statistic} >
+			<div className={style.statistic} >
 				<LikeDislikeComponent
 					likes={post.likes}
 					dislikes={post.dislikes}
