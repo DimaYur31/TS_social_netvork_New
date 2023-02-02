@@ -1,5 +1,5 @@
 import { MouseEvent, memo } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { usePhotosPath } from '../../hooks/hooks'
 import { profileActionst } from '../../store/slices/profileSlice'
@@ -28,19 +28,17 @@ export const Header = memo(() => {
 				<h1>V_Komnate</h1>
 			</Link>
 
-			<div className={s.autorisation}>
-				<div className={s.btns}>
-					<NavLink to={'/'}><SVG.Home /></NavLink>
-					<button onClick={exit}><SVG.Exit /></button>
-
-					<LightDarkCheckbox />
-				</div>
-
+			<div className={s.info}>
 				<div className={s.user}>
-					<div>{name}
-					</div>
 					<SmalAvatar src={avatar} />
+					<p>{name}</p>
 				</div>
+
+				<div className={s.btns}>
+					<LightDarkCheckbox />
+					<button onClick={exit}><SVG.Exit /></button>
+				</div>
+
 			</div>
 		</header >
 	)

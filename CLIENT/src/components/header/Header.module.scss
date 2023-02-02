@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 
 .header {
-	position: relative;
-	display: grid;
-	grid-template-columns: minmax(210px, 2fr) minmax(210px, 3fr);
 	position: sticky;
 	top: 0;
 	left: 0;
-	width: 100%;
+	display: flex;
 	justify-content: space-between;
-	background:  var(--primary);
 	align-items: center;
-	color: var(--white);
+	background:  var(--primary);
+	width: 100%;
 	height: 60px;
+	padding: 0 20px;
+	color: var(--white);
 	z-index: 100;
+	gap: 10px;
 	
 	h1 {
 		font-family: 'Bad Script', cursive;
-		padding-left: 30px;
+		font-size: calc(20px + 15 * (100vw / 1600));
 	}
 	
 	a {
@@ -25,13 +25,12 @@
 		text-decoration: none;
 	}
 	
-	.autorisation {
+	.info {
 		position: relative;
-		display: grid;
-		/* grid-template-columns: repeat(2, minmax(50px, auto)); */
-		grid-template-columns: 1fr 1fr;
+		display: flex;
 		align-items: center;
 		justify-items: end;
+		gap: 20px;
 		
 		button{
 			position: relative;
@@ -39,43 +38,52 @@
 			cursor: pointer;
 			height: 35px;
 			outline: none;
-			border:1.5px solid var(--white);
+			border-color: transparent;
+			border:1.5px solid transparent;
 			background-color: var(--primary);
 			border-radius: 5px;
 			justify-self: center;
 			color: inherit;
+
+			&:hover{
+				border:1.5px solid var(--white);
+			}
 		}
 
-		a{
-			padding:5px 7px 3px 7px;
-			border:1.5px solid var(--white);
-			border-radius: 5px;
-			min-width: 35px;
-			text-align: center;
-			align-self: center;
-			justify-self: center;
-		}
-	
 		svg{
 			width: 20px;
 			height: 20px;
 			fill:var(--white);
 		}
-}
+	}
+
 	.btns{
-		display: grid;
-		grid-template-columns: repeat(3,1fr);
+		display: flex;
 		align-items: center;
-		grid-gap: 10px;
 	}
 
 	.user{
 		display: flex;
 		align-items: center;
-		
-		img {
-			margin-right: 20px;
-			margin-left: 10px;
+		gap: 10px;
+	}
+}
+
+@media (max-width: 460px){
+	.header {
+		padding: 0 10px;
+
+		.info {
+			gap: 10px;
 		}
+		.user {
+			gap: 5px;
+		}
+	}
+}
+
+@media (max-width: 310px){
+	.user p{
+		display: none;
 	}
 }

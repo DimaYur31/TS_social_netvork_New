@@ -4,7 +4,6 @@
 		display: none;
 
 		&:checked ~ .check{
-			background:var(--white);
 
 			&::before{
 				transform: translateX(-50px);
@@ -21,7 +20,7 @@
 		display: inline-block;
 		width: 36px;
 		height: 20px;
-		background:var(--phon-color);
+		background:var(--white);
 		cursor: pointer;
 		border-radius: 20px;
 		overflow: hidden;
@@ -35,7 +34,7 @@
 			width: 14px;
 			height: 14px;
 			border-radius: 50%;
-			background: var(--primary-active);
+			background: var(--active-item);
 			transition: .25s;
 		}
 
