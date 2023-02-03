@@ -2,7 +2,6 @@
 	position: relative;
 	margin-bottom: 20px;
 	border-radius: 20px;
-	-webkit-box-shadow: 0px 0px 16px -8px var(--black-shadow);
 	box-shadow: 0px 0px 16px -8px var(--black-shadow);	
 	background: var(--post-phon);
 	
@@ -65,5 +64,22 @@
 		justify-content: space-between;
 		padding: 5px 20px;
 		color: var(--text-color);
+	}
+}
+
+@media(max-width:320px){
+	.head{
+		padding: 5px;
+		
+		.time{
+			margin-left: 5px;
+		}
+		
+		a{
+			flex-direction: column;		
+		}
+	}
+	.statistic{
+		flex-direction: column;
 	}
 }

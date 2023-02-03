@@ -1,9 +1,9 @@
 .btn {
 	border-radius: 5px;
-	color: #fff;
-	background: #0690FD;
+	color: var(--white);
+	background: var(--primary);
 	outline: none;
-	border: none;
+	border: transparent;
 	padding: 8px;
 	letter-spacing: 1px;
 	margin: 0px 5px 0px 5px;

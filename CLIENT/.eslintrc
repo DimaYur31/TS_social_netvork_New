@@ -9,8 +9,8 @@
 		"prefer-const": "error",
 		"semi": [
 			"warn",
-			// "always"
-			"never"
+			"always"
+			// "never"
 		],
 		// "indent": [
 		// 	"warn",

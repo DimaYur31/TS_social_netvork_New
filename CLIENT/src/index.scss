@@ -16,6 +16,8 @@ html[data-theme='light'] {
 	--phon-color: #fff;
 	--text-color:#000;
 	--black-shadow:rgba(0, 0, 0, 0.68);
+	--buttons-color: green;
+
 	--scrollbar-track-color:#f1f1f1;
 	--scrollbar-thumb-color:rgb(179,179,179);
 }
@@ -32,6 +34,7 @@ html[data-theme='dark'] {
 	--phon-color: #212121;
 	--text-color:rgb(237, 239, 240);
 	--black-shadow:rgba(255, 255, 255, 0.68);
+	--buttons-color: #212121;
 
 	--scrollbar-track-color:transparent;
 	--scrollbar-thumb-color:#4D4D4D;

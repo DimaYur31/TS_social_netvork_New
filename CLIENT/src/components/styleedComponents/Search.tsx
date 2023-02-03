@@ -1,29 +1,28 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-
-import { useInput } from '../../hooks/useInput'
+import { useState } from 'react';
+import styled from 'styled-components';
+import { useInput } from '../../hooks/useInput';
 
 const StyledSearch = styled.div<{ isActive: boolean }>`
 	position: relative;
 	width: ${({ isActive }) => isActive ? '85%' : '35px'};
 	height: 35px;
 	border-radius: 35px;
-	background: #fff;
+	background: var(--white);
 	transition: 0.5s;
 	overflow:hidden;
 
 	& div{
-	position: absolute;
-	width: 35px;
-	height: 35px;
-	border-radius: 35px;
-	background: #fff;
-	transition: 0.5s;
-	z-index: 10;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
+		position: absolute;
+		width: 35px;
+		height: 35px;
+		border-radius: 35px;
+		background: var(--white);
+		transition: 0.5s;
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
 	}
 
 	& div::before{
@@ -32,7 +31,7 @@ const StyledSearch = styled.div<{ isActive: boolean }>`
 		width: 9px;
 		height: 9px;
 		border-radius: 50%;
-		border: 2px solid #0690fd;
+		border: 2px solid var(--primary);
 		transform: translate(-2.5px,-2.5px);
 	}
 
@@ -41,7 +40,7 @@ const StyledSearch = styled.div<{ isActive: boolean }>`
 		position: absolute;
 		width: 2px;
 		height: 8px;
-		background: #0690fd;
+		background: var(--primary);
 		transform: translate(4px,4px) rotate(315deg);
 	}
 
@@ -64,55 +63,64 @@ const StyledSearch = styled.div<{ isActive: boolean }>`
 		outline: none;
 		padding-left: 8px;
 		font-size: 15px;
+		background-color:var(--white);
+		transition: 0.5s;
 	}
-`
+`;
 
 export const Clear = styled.span`
-position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 13px;
-	height: 13px;
-	right: 1px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-
-&::before{
-	content: '';
 	position: absolute;
-	width: 1px;
-	height: 13px;
-	background: #999;
-	transform: rotate(45deg);
-}
+		top: 50%;
+		transform: translateY(-50%);
+		width: 13px;
+		height: 13px;
+		right: 1px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
 
-&::after{
-	content: '';
-	position: absolute;
-	width: 1px;
-	height: 13px;
-	background: #999;
-	transform: rotate(315deg);
-}
-`
+		&:hover {
+			&:before,
+			&:after{
+				background: red;
+			}
+		}
 
-export const Search = () => {
-	const [isActive, setIsActive] = useState(false)
-	const search = useInput()
+	&::before{
+		content: '';
+		position: absolute;
+		width: 1px;
+		height: 13px;
+		background: #999;
+		transform: rotate(45deg);
+	}
 
-	return <StyledSearch isActive={isActive}>
-		<div onClick={() => setIsActive(!isActive)}></div>
-		<span className='search'>
-			<input
-				type='text'
-				placeholder='Search'
-				{...search}
-			/>
-			<Clear
-			// onClick={() => search.clear()}
-			/>
-		</span>
-	</StyledSearch>
-}
+	&::after{
+		content: '';
+		position: absolute;
+		width: 1px;
+		height: 13px;
+		background: #999;
+		transform: rotate(315deg);
+	}
+`;
+
+export const Search = (): JSX.Element => {
+	const [isActive, setIsActive] = useState(false);
+	const search = useInput();
+
+	return (
+		<StyledSearch isActive={isActive}>
+			<div onClick={() => setIsActive(!isActive)}></div>
+			<span className='search'>
+				<input
+					type='text'
+					placeholder='Search'
+					{...search}
+				/>
+				<Clear onClick={() => search.clear()} />
+			</span>
+		</StyledSearch>
+	);
+};

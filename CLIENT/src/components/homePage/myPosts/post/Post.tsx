@@ -1,37 +1,37 @@
-import { memo, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { format } from 'timeago.js'
-import { useAppSelector } from '../../../../hooks/reactReduxHooks'
-import { PostType } from '../../../../types/post'
-import { selectDefaultUser } from '../../../../selectors/selectors'
-import { getUserData } from '../../../../api/userApi'
-import { SmalAvatar } from '../../../styleedComponents/SmalAvatar'
-import { ButtonsPopap } from '../../../elements/popap/ButtonsPopap/ButtonsPopap'
-import { LikeDislikeComponent } from '../../../elements/likedislike/LikeDislikeComponent'
-import { usePhotosPath } from './../../../../hooks/hooks'
-import style from './Post.module.scss'
+import { memo, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { format } from 'timeago.js';
+import { useAppSelector } from '../../../../hooks/reactReduxHooks';
+import { PostType } from '../../../../types/post';
+import { selectDefaultUser } from '../../../../selectors/selectors';
+import { getUserData } from '../../../../api/userApi';
+import { SmalAvatar } from '../../../styleedComponents/SmalAvatar';
+import { ButtonsPopap } from '../../../elements/popap/ButtonsPopap/ButtonsPopap';
+import { LikeDislikeComponent } from '../../../elements/likedislike/LikeDislikeComponent';
+import { usePhotosPath } from './../../../../hooks/hooks';
+import style from './Post.module.scss';
 
 type PostProps = {
 	post: PostType<string>
 }
 
 export const Post = memo(({ post }: PostProps) => {
-	const navigate = useNavigate()
-	const defaultUser = useAppSelector(selectDefaultUser)
-	const [thisUser, setThisUser] = useState(defaultUser)
+	const navigate = useNavigate();
+	const defaultUser = useAppSelector(selectDefaultUser);
+	const [thisUser, setThisUser] = useState(defaultUser);
 
 	const getUsersData = async (id: string) => {
 		if (post.userId === defaultUser._id) {
-			setThisUser(defaultUser)
+			setThisUser(defaultUser);
 		} else {
 			await getUserData(id)
-				.then((data) => setThisUser(data))
+				.then((data) => setThisUser(data));
 		}
-	}
+	};
 
 	useEffect(() => {
-		getUsersData(post.userId)
-	}, [post.userId])
+		getUsersData(post.userId);
+	}, [post.userId]);
 
 	return (
 		<div className={style.post} >
@@ -64,5 +64,5 @@ export const Post = memo(({ post }: PostProps) => {
 				9 comments
 			</div>
 		</div >
-	)
-})
+	);
+});

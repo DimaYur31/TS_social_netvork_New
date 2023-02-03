@@ -1,9 +1,9 @@
-import s from './RightBar.module.scss'
+import style from './RightBar.module.scss';
 
 export const RightBar = () => {
 	return (
-		<div className={s.rightBar}>
+		<div className={style.rightBar}>
 			<p>Todey is dey ....</p>
 		</div>
-	)
-}
+	);
+};

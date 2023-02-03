@@ -1,32 +1,28 @@
-import { memo, useEffect } from 'react'
-
-import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks'
-import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions'
-import { selectDefaultUserId, sortedPosts } from '../../../selectors/selectors'
-
-import { Post } from '../myPosts/post/Post'
-
-import s from './TimeLine.module.scss'
+import { memo, useEffect, useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks';
+import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions';
+import { selectDefaultUserId, sortedPosts } from '../../../selectors/selectors';
+import { Post } from '../myPosts/post/Post';
+import style from './TimeLine.module.scss';
 
 export const TimeLine = memo(() => {
-	const dispatch = useAppDispatch()
-	const _id = useAppSelector(selectDefaultUserId)
-	const posts = useAppSelector(sortedPosts)
+	const dispatch = useAppDispatch();
+	const _id = useAppSelector(selectDefaultUserId);
+	const posts = useAppSelector(sortedPosts);
 
 	useEffect(() => {
-		dispatch(fetchTimeLineThunk(_id))
-	}, [])
+		dispatch(fetchTimeLineThunk(_id));
+	}, []);
+
+	const timeline = useCallback(() => {
+		return posts.length && posts.map(post => {
+			return <Post key={post._id} post={post} />;
+		});
+	}, [posts]);
 
 	return (
-		<div className={s.posts}>
-			{posts.length
-				? <div>{
-					posts.map(post => {
-						return <Post key={post._id} post={post} />
-					})
-				}</div>
-				: <h2>Add post or friends</h2>
-			}
+		<div className={style.posts}>
+			<div>{timeline()}</div>
 		</div>
-	)
-})
+	);
+});

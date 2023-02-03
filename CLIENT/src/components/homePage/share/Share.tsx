@@ -1,17 +1,17 @@
-import { usePhotosPath } from '../../../hooks/hooks'
-
-import { SmalAvatar } from '../../styleedComponents/SmalAvatar'
-import { Search } from '../../styleedComponents/Search'
-import { PrimaryButton } from '../../elements/btn/primaryButton/PrimaryButton'
-
-import s from './Share.module.scss'
+import { usePhotosPath } from '../../../hooks/hooks';
+import { SmalAvatar } from '../../styleedComponents/SmalAvatar';
+import { Search } from '../../styleedComponents/Search';
+import { PrimaryButton } from '../../elements/btn/primaryButton/PrimaryButton';
+import style from './Share.module.scss';
 
 export const Share = () => {
-	const avatar = usePhotosPath()
+	const avatar = usePhotosPath();
 
-	return <div className={s.share}>
-		<SmalAvatar src={avatar} />
-		<Search />
-		<PrimaryButton >Serch</PrimaryButton>
-	</div>
-}
+	return (
+		<div className={style.share}>
+			<SmalAvatar src={avatar} />
+			<Search />
+			<PrimaryButton >Serch</PrimaryButton>
+		</div>
+	);
+};

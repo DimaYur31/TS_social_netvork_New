@@ -1,16 +1,10 @@
-import { ChangeEvent, useState } from 'react'
-
-// interface InputReturn {
-// 	value: string
-// 	onChange: (e: ChangeEvent<HTMLInputElement>) => void
-// 	reset: () => void
-// }
+import { ChangeEvent, useState } from 'react';
 
 export const useInput = (initialValue = '') => {
-	const [value, setValue] = useState(initialValue)
+	const [value, setValue] = useState(initialValue);
 
-	const onChange = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value);
+	const clear = () => setValue('');
 
-	// const clear = () => setValue('')
-	return { value, onChange }
-}
+	return { value, onChange, clear };
+};

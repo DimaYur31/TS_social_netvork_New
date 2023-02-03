@@ -1,8 +1,8 @@
-import { memo } from 'react'
-import { RightBar } from './rightBar/RightBar'
-import { TimeLine } from './timeline/TimeLine'
-import { Share } from './share/Share'
-import style from './HomePage.module.scss'
+import { memo } from 'react';
+import { RightBar } from './rightBar/RightBar';
+import { TimeLine } from './timeline/TimeLine';
+import { Share } from './share/Share';
+import style from './HomePage.module.scss';
 
 export const HomePage = memo(() => {
 	return (
@@ -13,5 +13,5 @@ export const HomePage = memo(() => {
 			</div>
 			<RightBar />
 		</div>
-	)
-})
+	);
+});
