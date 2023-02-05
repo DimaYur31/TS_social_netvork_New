@@ -1,27 +1,35 @@
-import { memo } from 'react'
+import { memo } from 'react';
+import { usePhotosPath, useIsOwner } from '../../../hooks/hooks';
+import { UserType } from '../../../types/profile';
+import { AddPostPopap } from '../../elements/popap/AddPostPopap';
+import { FollowButton } from '../../elements/btn/isFollow/FolLowButton';
+import style from './MyInfo.module.scss';
+import { About } from './about/About';
 
-import { usePhotosPath, useIsOwner } from '../../../hooks/hooks'
-import { UserType } from '../../../types/profile'
-import { AddPostPopap } from '../../elements/popap/AddPostPopap'
-import { FollowButton } from '../../elements/btn/isFollow/FolLowButton'
+type MyInfoProps = {
+	user: UserType
+	reload: () => void
+}
 
-import s from './MyInfo.module.scss'
+export const MyInfo = memo(({ user, reload }: MyInfoProps) => {
+	const isOwner = useIsOwner(user._id);
 
-export const MyInfo = memo(({ user }: { user: UserType }) => {
-	const isOwner = useIsOwner(user._id)
+	const photo = usePhotosPath(user.coverPicture);
 
 	return (
-		<div className={s.user}>
-			<div>
-				<img src={usePhotosPath(user.coverPicture)} alt='phon' />
-			</div>
+		<div
+			className={style.user}
+			style={{ '--my-phon': `url(${photo})` } as React.CSSProperties}
+		>
 
-			<div className={s.info} >
+			<div className={style.info} >
 				<img src={usePhotosPath(user.avatar)} alt='avatar' />
-				{isOwner
-					? <AddPostPopap />
-					: <FollowButton currentUserId={user._id} />}
+				<About user={user} reload={reload} />
 			</div>
+			{isOwner
+				? <AddPostPopap />
+				: <FollowButton currentUserId={user._id} />
+			}
 		</div>
-	)
-})
+	);
+});

@@ -1,27 +1,31 @@
-import { memo, useState } from 'react'
+import { memo, useState } from 'react';
+import { useIsOwner } from '../../../../hooks/hooks';
+import { UserType } from '../../../../types/profile';
+import { OverLayPopap } from '../../../elements/UiKit/OverLayPopap';
+import { SVG } from './../../../../img/icons/exportIcons';
+import { ProfileFormSetings } from './profileForm/ProfileFormSetings';
+import style from './About.module.scss';
 
-import { useIsOwner } from '../../../../hooks/hooks'
-import { Modal } from '../../../elements/modal/Modal'
-import { UserType } from '../../../../types/profile'
+type AboutProps = {
+	user: UserType
+	reload: () => void
+}
 
-import { SVG } from './../../../../img/icons/exportIcons'
-import { ProfileFormSetings } from './profileForm/ProfileFormSetings'
-import s from './About.module.scss'
-
-export const About = memo(({ user }: { user: UserType }) => {
-	const { birthday, city, country, job, languages, name, surname, _id } = user
-	const [isOpen, setIsOpen] = useState(false)
-	const isOwner = useIsOwner(_id)
+export const About = memo(({ user, reload }: AboutProps) => {
+	const { birthday, city, country, job, languages, name, surname, _id } = user;
+	const [isOpen, setIsOpen] = useState(false);
+	const isOwner = useIsOwner(_id);
 
 	return (
-		<div className={s.info}>
+		<div className={style.info}>
 			<h3>{`${name} ${surname}`}
 				{isOwner &&
-					<button className={s.open}
+					<button className={style.open}
 						onClick={() => setIsOpen(true)}
 					>
-						<SVG.Settings className={s.settings} />
-					</button>}
+						<SVG.Settings className={style.settings} />
+					</button>
+				}
 			</h3>
 
 			<ul>
@@ -32,9 +36,12 @@ export const About = memo(({ user }: { user: UserType }) => {
 				<li><span>Languages:</span> {languages.join(', ')}</li>
 			</ul>
 
-			<Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-				<ProfileFormSetings />
-			</Modal>
+			<OverLayPopap
+				isOpened={isOpen}
+				onClose={() => setIsOpen(!isOpen)}
+			>
+				<ProfileFormSetings onClose={setIsOpen} reload={reload} />
+			</OverLayPopap >
 		</div>
-	)
-})
+	);
+});

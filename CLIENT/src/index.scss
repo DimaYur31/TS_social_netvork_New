@@ -11,12 +11,13 @@ html[data-theme='light'] {
 	--primary:#0690fd;
 	--primary-active: var(--primary);
 	--active-item:#fff;
-	--post-phon:#fff;
 	--list-color: #000;
+	--post-phon:#fff;
 	--phon-color: #fff;
 	--text-color:#000;
 	--black-shadow:rgba(0, 0, 0, 0.68);
 	--buttons-color: green;
+	--white-violet:#fff;
 
 	--scrollbar-track-color:#f1f1f1;
 	--scrollbar-thumb-color:rgb(179,179,179);
@@ -35,6 +36,7 @@ html[data-theme='dark'] {
 	--text-color:rgb(237, 239, 240);
 	--black-shadow:rgba(255, 255, 255, 0.68);
 	--buttons-color: #212121;
+	--white-violet:#8774E1;
 
 	--scrollbar-track-color:transparent;
 	--scrollbar-thumb-color:#4D4D4D;

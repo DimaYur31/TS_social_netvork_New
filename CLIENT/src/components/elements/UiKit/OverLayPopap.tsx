@@ -1,31 +1,27 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react';
+import { Portal } from './Portal';
+import style from './OverLayPopap.module.scss';
 
-import s from './OverLayPopap.module.scss'
-
-import Portal from './Portal'
-
-type propsType = {
+type OverLayProps = {
 	children: ReactNode
 	onClose: () => void
 	isOpened: boolean
 }
 
-const OverLayPopap: FC<propsType> = ({ children, isOpened, onClose }) => {
+export const OverLayPopap = ({ children, isOpened, onClose }: OverLayProps) => {
 
-	if (!isOpened) return null
+	if (!isOpened) return null;
 
 	return (
 		<Portal>
-			<div className={s.container}>
+			<div className={style.container}>
 				<div
-					className={s.overlay}
+					className={style.overlay}
 					tabIndex={0}
 					onClick={onClose}
 				/>
-				<div className={s.content}>{children}</div>
+				<div className={style.content}>{children}</div>
 			</div>
 		</Portal>
-	)
-}
-
-export default OverLayPopap
+	);
+};

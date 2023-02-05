@@ -1,5 +1,5 @@
-import { FC, MouseEvent, ReactNode } from 'react'
-import styled from 'styled-components'
+import { FC, MouseEvent, ReactNode } from 'react';
+import styled from 'styled-components';
 
 const SButton = styled.button`
 position: relative;
@@ -20,12 +20,12 @@ cursor:pointer;
 &:hover{
 	background: #334CBE;
 }
-`
+`;
 interface ButtonProps {
 	children: ReactNode
 	onClick: (e: MouseEvent) => void
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-	return <SButton {...props} />
-}
+	return <SButton {...props} />;
+};

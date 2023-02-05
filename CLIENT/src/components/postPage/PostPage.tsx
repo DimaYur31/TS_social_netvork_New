@@ -1,18 +1,18 @@
-import React from 'react'
-
-import useGetPageData from '../../hooks/useGetPageDats'
-import { Post } from '../homePage/myPosts/post/Post'
-import { getPost } from '../../api/postAPI'
+import React from 'react';
+import { useGetPageData } from '../../hooks/useGetPageDats';
+import { Post } from '../homePage/myPosts/post/Post';
+import { getPost } from '../../api/postAPI';
 
 const PostPage = () => {
-	const { data: post } = useGetPageData(2, getPost)
-	return <>
-		{
-			post &&
-			<Post post={post} />
-		}
-	</>
+	const { data: post } = useGetPageData(2, getPost);
+	return (
+		<>
+			{
+				post &&
+				<Post post={post} />
+			}
+		</>
+	);
+};
 
-}
-
-export default React.memo(PostPage)
+export default React.memo(PostPage);

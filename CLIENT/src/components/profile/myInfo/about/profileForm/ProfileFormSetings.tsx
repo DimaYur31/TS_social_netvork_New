@@ -1,8 +1,18 @@
-import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks'
-import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions'
-import { selectDefaultUser } from '../../../../../selectors/selectors'
+import { FormEventHandler } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks';
+import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions';
+import { selectDefaultUserId } from '../../../../../selectors/selectors';
+import style from './ProfileFormSetings.module.scss';
 
-import s from './ProfileFormSetings.module.scss'
+type FormChanges = {
+	name: string
+	surname: string
+	birthday: string
+	city: string
+	job: string
+	country: string
+	languages: string
+}
 
 type FormFields = {
 	name: HTMLInputElement
@@ -14,27 +24,34 @@ type FormFields = {
 	languages: HTMLInputElement
 }
 
-const getFormValues = (obj: any) => {
-	const key = Object.keys(obj)
-	const value = Object.values(obj)
-	const newObj = {} as any
+const getFormValues = (obj: FormChanges) => {
+	const key = Object.keys(obj);
+	const values = Object.values(obj);
+	const newObj = {} as any;
 
-	for (let i = 0; i < value.length; i++) {
-		if (value[i] !== '') {
-			newObj[key[i]] = value[i]
+	for (let i = 0; i < values.length; i++) {
+		if (values[i].trim() !== '') {
+			newObj[key[i]] = values[i];
 		}
+
 	}
-	return newObj
+
+	return newObj;
+};
+
+type ProfileFormSetingsProps = {
+	onClose: (isopen: false) => void
+	reload: () => void
 }
+export const ProfileFormSetings = ({ onClose, reload }: ProfileFormSetingsProps) => {
+	const dispatch = useAppDispatch();
+	const defaultUserId = useAppSelector(selectDefaultUserId);
 
-export const ProfileFormSetings = () => {
-	const dispatch = useAppDispatch()
-	const defaultUser = useAppSelector(selectDefaultUser)
+	const handelSubmit: FormEventHandler<HTMLFormElement & FormFields> = (event) => {
+		event.preventDefault();
 
-	const handelSubmit: React.FormEventHandler<HTMLFormElement & FormFields> = (event) => {
-		event.preventDefault()
-		const form = event.currentTarget
-		const { name, surname, birthday, city, country, job, languages } = form
+		const form = event.currentTarget;
+		const { name, surname, birthday, city, country, job, languages } = form;
 
 		const formChanges = {
 			name: name.value,
@@ -44,14 +61,19 @@ export const ProfileFormSetings = () => {
 			job: job.value,
 			country: country.value,
 			languages: languages.value,
-		}
-		const changes = getFormValues(formChanges)
+		};
 
-		if (changes) dispatch(changeUserProfile(defaultUser._id, changes))
-	}
+		const changes = getFormValues(formChanges);
+
+		if (!changes) return;
+
+		dispatch(changeUserProfile(defaultUserId, changes));
+		reload();
+		onClose(false);
+	};
 
 	return (
-		<form onSubmit={handelSubmit} className={s.form}>
+		<form onSubmit={handelSubmit} className={style.form}>
 			<fieldset>
 				<legend>Name</legend>
 				<input name='name' type='text' />
@@ -80,7 +102,8 @@ export const ProfileFormSetings = () => {
 				<legend>Languages</legend>
 				<input name='languages' type='text' />
 			</fieldset>
+
 			<button type='submit'>Edit</button>
 		</form>
-	)
-}
+	);
+};

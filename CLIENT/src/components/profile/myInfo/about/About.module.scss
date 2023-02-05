@@ -1,9 +1,15 @@
-
 .info{
-	padding-left: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 20px;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.1);
+	backdrop-filter: blur(5px);
 
 	h3{
 		margin-bottom: 10px;
+		color:var(--active-item);
 	}
 
 	ul {
@@ -12,22 +18,25 @@
 	
 	li {
 		padding: 0 0 5px 0;
-		color: var(--black);
+		color: var(--active-item);
 		font-weight: 400;
 	}
 	
 	span {
 		display: inline-block;
-		color: var(--black);
+		color: var(--primary-active);
 		font-weight: 600;
+		margin-right: 10px;
 	}
 	
 	.open{
 		position: relative;
-		width: 18px;
-		height: 18px;
-		border: none;
-		background: var(--white);
+		width: 26px;
+		height: 26px;
+		padding: 3px;
+		border-radius: 50%;
+		border: 1px solid var(--white-violet);
+		background: transparent;		
 		cursor: pointer;
 		margin-left: 15px;
 	} 	
@@ -36,7 +45,6 @@
 		position: relative;
 		width: 18px;
 		height: 18px;
-		fill:var(--black);
-		background-color: var(--phon-color);		
+		fill:var(--white-violet);
 	}
 }
