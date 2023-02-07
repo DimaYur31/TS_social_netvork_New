@@ -5,11 +5,11 @@
 	padding: 20px;
 	border-radius: 10px;
 	background: rgba(255,255,255,0.1);
-	backdrop-filter: blur(5px);
+	backdrop-filter: blur(25px);
 
 	h3{
 		margin-bottom: 10px;
-		color:var(--active-item);
+		color:var(--text-color);
 	}
 
 	ul {
@@ -35,7 +35,7 @@
 		height: 26px;
 		padding: 3px;
 		border-radius: 50%;
-		border: 1px solid var(--white-violet);
+		border: 1px solid var(--text-color);
 		background: transparent;		
 		cursor: pointer;
 		margin-left: 15px;
@@ -45,6 +45,6 @@
 		position: relative;
 		width: 18px;
 		height: 18px;
-		fill:var(--white-violet);
+		fill:var(--text-color);
 	}
 }

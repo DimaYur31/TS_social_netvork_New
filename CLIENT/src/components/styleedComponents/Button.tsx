@@ -1,15 +1,15 @@
-import { FC, MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import styled from 'styled-components';
 
-const SButton = styled.button`
+const StyledButton = styled.button`
 position: relative;
-background: #0690fd;
-color: #fff;
 width: 100px;
 height: 30px;
 display: flex;
 justify-content: center;
 align-items: center;
+background: var(--primary);
+color: var(--white);
 transition: 0.35s;// overflow: hidden;
 letter-spacing: 0.1em;
 font-size: 18px;
@@ -18,7 +18,7 @@ outline: none;
 cursor:pointer;
 
 &:hover{
-	background: #334CBE;
+	background: var(--buttons-color);
 }
 `;
 interface ButtonProps {
@@ -26,6 +26,6 @@ interface ButtonProps {
 	onClick: (e: MouseEvent) => void
 }
 
-export const Button: FC<ButtonProps> = (props) => {
-	return <SButton {...props} />;
+export const Button = (props: ButtonProps) => {
+	return <StyledButton {...props} />;
 };
