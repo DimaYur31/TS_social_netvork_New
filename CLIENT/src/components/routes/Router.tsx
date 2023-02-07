@@ -4,8 +4,9 @@ import { Loading } from '../elements/loading/Loading';
 import { HomePage } from '../homePage/HomePage';
 import { DialogItem } from '../messenger/dialogItem/DialogItem';
 import { Layout } from '../layout/Layout';
+import { Authorization } from '../authorization/Authorization';
 
-const Authorization = lazy(() => import('../authorization/Authorization'));
+// const Authorization = lazy(() => import('../authorization/Authorization'));
 const UsersPage = lazy(() => import('../userspage/UsersPage'));
 const ProfilePage = lazy(() => import('../profile/ProfilePage'));
 const Photos = lazy(() => import('../photos/Photos'));

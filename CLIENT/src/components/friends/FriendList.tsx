@@ -1,19 +1,19 @@
-import { memo, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { getFriendsThunk } from '../../store/slices/apiActions/usersActions'
-import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks'
-import { selectDefaultUser, selectFriends } from '../../selectors/selectors'
-import { UserItem } from '../elements/user-item/UserItem'
-import style from './FriendList.module.scss'
+import { memo, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getFriendsThunk } from '../../store/slices/apiActions/usersActions';
+import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks';
+import { selectDefaultUser, selectFriends } from '../../selectors/selectors';
+import { UserItem } from '../elements/user-item/UserItem';
+import style from './FriendList.module.scss';
 
 export const FriendList = memo(() => {
-	const dispatch = useAppDispatch()
-	const { _id, followings } = useAppSelector(selectDefaultUser)
-	const friends = useAppSelector(selectFriends)
+	const dispatch = useAppDispatch();
+	const { _id, followings } = useAppSelector(selectDefaultUser);
+	const friends = useAppSelector(selectFriends);
 
 	useEffect(() => {
-		dispatch(getFriendsThunk(_id))
-	}, [followings])
+		dispatch(getFriendsThunk(_id));
+	}, [followings]);
 
 	return (
 		<ul className={style.list}>
@@ -26,8 +26,8 @@ export const FriendList = memo(() => {
 					>
 						<UserItem user={friend} />
 					</Link>
-				)
+				);
 			})}
 		</ul>
-	)
-})
+	);
+});

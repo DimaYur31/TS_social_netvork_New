@@ -3,20 +3,28 @@
 	display: grid;
 	grid-template-columns: repeat(2,1fr);
 	grid-gap: 10px;
-	padding: 30px;
-	background: #fff;
+	background: var(--phon-color);
 	border-radius: 10px;
 	
 	fieldset {
 		padding: 5px 10px;
-		border: 1px solid #000;
+		border: 1px solid var(--primary);
 		font-size:13px;
-	line-height: 1;
+		line-height: 1;
+		color: var(--primary);
+		
+	}
+
+	legend{
+		padding: 0 5px;
 	}
 
 	input{
 		border: none;
 		outline: none;
 		line-height: 1;
+		background-color: transparent;
+		color: var(--text-color);
+
 	}
 }

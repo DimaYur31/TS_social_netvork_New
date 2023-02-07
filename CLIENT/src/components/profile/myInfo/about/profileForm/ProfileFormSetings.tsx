@@ -2,6 +2,7 @@ import { FormEventHandler } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks';
 import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions';
 import { selectDefaultUserId } from '../../../../../selectors/selectors';
+import { PrimaryButton } from '../../../../elements/btn/primaryButton/PrimaryButton';
 import style from './ProfileFormSetings.module.scss';
 
 type FormChanges = {
@@ -103,7 +104,7 @@ export const ProfileFormSetings = ({ onClose, reload }: ProfileFormSetingsProps)
 				<input name='languages' type='text' />
 			</fieldset>
 
-			<button type='submit'>Edit</button>
+			<PrimaryButton type='submit'>Edit</PrimaryButton>
 		</form>
 	);
 };

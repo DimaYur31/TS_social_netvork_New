@@ -3,8 +3,8 @@ import { usePhotosPath, useIsOwner } from '../../../hooks/hooks';
 import { UserType } from '../../../types/profile';
 import { AddPostPopap } from '../../elements/popap/AddPostPopap';
 import { FollowButton } from '../../elements/btn/isFollow/FolLowButton';
-import style from './MyInfo.module.scss';
 import { About } from './about/About';
+import style from './MyInfo.module.scss';
 
 type MyInfoProps = {
 	user: UserType

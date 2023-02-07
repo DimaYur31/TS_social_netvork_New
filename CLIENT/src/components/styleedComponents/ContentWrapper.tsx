@@ -11,7 +11,7 @@ const StyledContent = styled.div<ContentWrapperProps>`
 	display: grid;
 	grid-template-columns: ${({ isAuth }) => (isAuth ? 'minmax(120px, 200px) auto' : '1fr')};
 
-	@media(max-width:450px){
+	@media(max-width:550px){
 		grid-template-columns: ${({ isAuth }) => (isAuth ? '60px auto' : '1fr')};
 	}
 `;

@@ -1,10 +1,8 @@
-import { useContext } from 'react'
-
-import { SVG } from '../../../img/icons/exportIcons'
-import { socket } from '../../../socket'
-import { EditContext } from '../../messenger/messengerContext/EditMessageContext'
-
-import s from './ContextMenu.module.scss'
+import { useContext } from 'react';
+import { SVG } from '../../../img/icons/exportIcons';
+import { socket } from '../../../socket';
+import { EditContext } from '../../messenger/messengerContext/EditMessageContext';
+import style from './ContextMenu.module.scss';
 
 type ContextMenuProps = {
 	text: string
@@ -12,22 +10,22 @@ type ContextMenuProps = {
 }
 
 export const ContextMenu = ({ text, id }: ContextMenuProps) => {
-	const { setEditState } = useContext(EditContext)
+	const { setEditState } = useContext(EditContext);
 
 	const editMessage = () => {
 		setEditState({
 			isEdit: true,
 			text: text,
 			messageId: id
-		})
-	}
+		});
+	};
 
 	const deleteMessage = (messageId: string) => {
-		socket.emit('deleteMessage', messageId)
-	}
+		socket.emit('deleteMessage', messageId);
+	};
 
-	return <>
-		<span className={s.contextMenu}>
+	return (
+		<span className={style.contextMenu}>
 			<span onClick={() => editMessage()}>
 				<SVG.Edit style={{ fill: 'green' }} />
 			</span>
@@ -35,5 +33,5 @@ export const ContextMenu = ({ text, id }: ContextMenuProps) => {
 				<SVG.Cancel style={{ fill: 'red' }} />
 			</span>
 		</span>
-	</>
-} 
+	);
+}; 

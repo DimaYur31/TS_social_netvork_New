@@ -1,13 +1,12 @@
 .conversations{
 	display: flex;
 	flex-direction: column;
-	// border-right: 1px solid #0690FD;
-	border-left: 1px solid #9A9A9A;
+	min-width: 110px;
 	
 	a{
+		padding: 5px;
 		color: inherit;
 		text-decoration: none;
-		
 	}
 	
 	.active{

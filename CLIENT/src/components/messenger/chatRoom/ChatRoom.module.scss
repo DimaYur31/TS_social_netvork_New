@@ -3,14 +3,6 @@
 		
 	span{
 		display: none;
-		position: absolute;
-		right: 5px;
-		top: -10px;
-		color: red;
-
-		&:hover{
-			transform: scale(1.3);
-		}
 	}
 
 	&:hover span{

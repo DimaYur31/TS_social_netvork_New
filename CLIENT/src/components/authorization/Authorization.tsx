@@ -1,33 +1,30 @@
-import { FormEventHandler, useState } from 'react'
+import { FormEventHandler, useState } from 'react';
+import { useAppDispatch } from '../../hooks/reactReduxHooks';
+import { registrationThunkCreator, loginThunkCreator, } from '../../store/slices/apiActions/userActions';
+import { FormFields, SybmitFotm } from '../../types/UIElements';
+import { PrimaryInput } from '../elements/inputs/primaryInput/PrimaryInpyt';
+import { PrimaryButton } from '../elements/btn/primaryButton/PrimaryButton';
+import style from './Authorization.module.scss';
 
-import { useAppDispatch } from '../../hooks/reactReduxHooks'
-import { registrationThunkCreator, loginThunkCreator, } from '../../store/slices/apiActions/userActions'
-import { FormFields, SybmitFotm } from '../../types/UIElements'
-
-import { PrimaryInput } from '../elements/inputs/primaryInput/PrimaryInpyt'
-import { PrimaryButton } from '../elements/btn/primaryButton/PrimaryButton'
-
-import s from './Authorization.module.scss'
-
-const Authorization = () => {
-	const dispatch = useAppDispatch()
-	const [registration, setRegistration] = useState(false)
-	const [checked, setChecked] = useState(false)
+export const Authorization = () => {
+	const dispatch = useAppDispatch();
+	const [registration, setRegistration] = useState(false);
+	const [checked, setChecked] = useState(false);
 
 	const onSubmit: SybmitFotm = async (form) => {
-		const { email, password, name, surname } = form
+		const { email, password, name, surname } = form;
 		registration
 			? name && surname && dispatch(registrationThunkCreator(email, password, name, surname))
-			: dispatch(loginThunkCreator(email, password))
-	}
+			: dispatch(loginThunkCreator(email, password));
+	};
 
-	const changeForm = () => setRegistration(!registration)
+	const changeForm = () => setRegistration(!registration);
 
 	const handleSubmit: FormEventHandler<HTMLFormElement & FormFields> = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 
-		const form = e.currentTarget
-		const { email, password, checkPassword, name, surname } = form
+		const form = e.currentTarget;
+		const { email, password, checkPassword, name, surname } = form;
 
 		password.value !== checkPassword.value
 			? alert('Проверьте пароль')
@@ -37,17 +34,17 @@ const Authorization = () => {
 				checkPassword: checkPassword.value,
 				name: name?.value,
 				surname: surname?.value,
-			})
-	}
+			});
+	};
 
 	return (
-		<div className={s.auth}>
-			<div className={s.leftBox}>
+		<div className={style.auth}>
+			<div className={style.leftBox}>
 				<h1>V _ Comnate</h1>
 				<p>This is social-media project for traning</p>
 			</div>
 
-			<div className={s.rightBox}>
+			<div className={style.rightBox}>
 				<p>
 					{registration ? 'You have profile?' : 'Make new profile?'}
 					<span onClick={() => changeForm()}>
@@ -55,7 +52,7 @@ const Authorization = () => {
 					</span>
 				</p>
 
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} autoComplete='new-password'>
 					<label>
 						<span>Email</span>
 						<PrimaryInput
@@ -122,7 +119,5 @@ const Authorization = () => {
 				</form>
 			</div>
 		</div>
-	)
-}
-
-export default Authorization
+	);
+};
