@@ -5,6 +5,7 @@ import { FormFields, SybmitFotm } from '../../types/UIElements';
 import { PrimaryInput } from '../elements/inputs/primaryInput/PrimaryInpyt';
 import { PrimaryButton } from '../elements/btn/primaryButton/PrimaryButton';
 import style from './Authorization.module.scss';
+import { LightDarkCheckbox } from '../elements/checkbox/light-dark/LightDarkCheckbox';
 
 export const Authorization = () => {
 	const dispatch = useAppDispatch();
@@ -39,6 +40,9 @@ export const Authorization = () => {
 
 	return (
 		<div className={style.auth}>
+			<span className={style.themeCheckbox} >
+				<LightDarkCheckbox />
+			</span>
 			<div className={style.leftBox}>
 				<h1>V _ Comnate</h1>
 				<p>This is social-media project for traning</p>
