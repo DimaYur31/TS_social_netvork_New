@@ -1,43 +1,39 @@
-import React, { FC } from 'react'
-
-import { useAppDispatch } from '../../hooks/reactReduxHooks'
-import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions'
-import { usePhotosPath } from '../../hooks/hooks'
-import { SVG } from '../../img/icons/exportIcons'
-
-import s from './Photo.module.scss'
+import { memo } from 'react';
+import { useAppDispatch } from '../../hooks/reactReduxHooks';
+import { changeUserProfile, deletePhotoThunk } from '../../store/slices/apiActions/userActions';
+import { usePhotosPath } from '../../hooks/hooks';
+import { SVG } from '../../img/icons/exportIcons';
+import style from './Photo.module.scss';
 
 type TPprops = {
 	photo: string
 	userId: string
 }
 
-const Photo: FC<TPprops> = ({ userId, photo }) => {
-	const dispatch = useAppDispatch()
+export const Photo = memo(({ userId, photo }: TPprops) => {
+	const dispatch = useAppDispatch();
 
 	const delPhoto = (id: string, photo: string) => {
-		dispatch(deletePhotoThunk(id, photo))
-	}
+		dispatch(deletePhotoThunk(id, photo));
+	};
 
 	const setAvatar = (photo: string) => {
-		dispatch(changeUserProfile(userId, { avatar: photo }))
-	}
+		dispatch(changeUserProfile(userId, { avatar: photo }));
+	};
 
 	return (
-		<div className={s.photo}>
+		<div className={style.photo}>
 			<img src={usePhotosPath(photo)} alt='avatar' />
 
-			<div className={s.buttons} >
+			<div className={style.buttons} >
 				<button
 					onClick={() => delPhoto(userId, photo)}>
-					<SVG.Dustbin className={s.button} />
+					<SVG.Dustbin className={style.button} />
 				</button>
 				<button onClick={() => setAvatar(photo)}>
-					<SVG.More className={`${s.button} ${s.more}`} />
+					<SVG.More className={`${style.button} ${style.more}`} />
 				</button>
 			</div>
 		</div>
-	)
-}
-
-export default React.memo(Photo)
+	);
+});

@@ -20,11 +20,12 @@ import { ReactComponent as Home } from './home.svg';
 import { ReactComponent as Edit } from './edit.svg';
 import { ReactComponent as Subscribe } from './subscribe.svg';
 import { ReactComponent as AddChat } from './addchat.svg';
+import { ReactComponent as AddImage } from './add-image.svg';
 
 export const SVG = {
 	Icon, Chat, Friends, Users, Community,
 	Gallery, VideoCall, Music, Folder, Login,
 	News, Settings, Cancel, Dustbin, More,
 	Like, Dislike, Exit, Home, Edit, Subscribe,
-	AddChat
+	AddChat, AddImage
 };

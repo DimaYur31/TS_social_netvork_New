@@ -1,13 +1,23 @@
 .wrapper{
 	display: flex;	
 	flex-direction: column;
+	padding-top: 10px;
+
+	.addphoto{
+		svg{
+			fill:var(--primary)
+		}
+	}
 	
+	input{
+		display: none;
+	}
+
 	.photos{
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(100px, 24%));
-		align-content:center;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 24%));
 		padding: 10px;
-		align-content: start;		
+		gap: 10px;
 	}
 }
 	
@@ -35,7 +45,6 @@
 		bottom: 10px;
 		width: 80%;
 		display: flex;
-		/* transition: 1s; */
 		justify-content: space-between;
 		z-index: 2;
 	}
