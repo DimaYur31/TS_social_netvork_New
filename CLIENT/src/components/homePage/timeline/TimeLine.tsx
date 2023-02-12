@@ -15,7 +15,9 @@ export const TimeLine = memo(() => {
 	}, []);
 
 	const timeline = useCallback(() => {
-		return posts.length && posts.map(post => {
+		if (!posts.length) return;
+
+		return posts.map(post => {
 			return <Post key={post._id} post={post} />;
 		});
 	}, [posts]);
