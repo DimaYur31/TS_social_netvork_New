@@ -1,12 +1,11 @@
-import { memo } from 'react'
-import { useAppSelector } from '../../hooks/reactReduxHooks'
-import { selectDefaultUserId } from '../../selectors/selectors'
-import { LinkItem } from './LinkItem'
-import { SVG } from './../../img/icons/exportIcons'
-import style from './Navbar.module.scss'
+import { useAppSelector } from '../../hooks/reactReduxHooks';
+import { selectDefaultUserId } from '../../selectors/selectors';
+import { LinkItem } from './LinkItem';
+import { SVG } from './../../img/icons/exportIcons';
+import style from './Navbar.module.scss';
 
-export const Nav = memo(() => {
-	const _id = useAppSelector(selectDefaultUserId)
+export const Nav = () => {
+	const _id = useAppSelector(selectDefaultUserId);
 
 	return <nav className={style.nav} >
 		<ul>
@@ -34,5 +33,5 @@ export const Nav = memo(() => {
 				<SVG.VideoCall className={style.icons} />
 			</LinkItem>
 		</ul>
-	</nav>
-})
+	</nav>;
+};

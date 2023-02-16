@@ -10,7 +10,7 @@ type TPprops = {
 	userId: string
 }
 
-export const Photo = memo(({ userId, photo }: TPprops) => {
+export const Photo = memo(function Photo({ userId, photo }: TPprops) {
 	const dispatch = useAppDispatch();
 
 	const delPhoto = (id: string, photo: string) => {

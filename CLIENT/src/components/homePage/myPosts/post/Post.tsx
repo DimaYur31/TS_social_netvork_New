@@ -15,7 +15,7 @@ type PostProps = {
 	post: PostType<string>
 }
 
-export const Post = memo(({ post }: PostProps) => {
+export const Post = memo(function Post({ post }: PostProps) {
 	const navigate = useNavigate();
 	const defaultUser = useAppSelector(selectDefaultUser);
 	const [thisUser, setThisUser] = useState(defaultUser);
@@ -61,7 +61,7 @@ export const Post = memo(({ post }: PostProps) => {
 					currentObjectId={post._id}
 					currentObjectUserId={post.userId}
 				/>
-				9 comments
+				{post.comments.length} comments
 			</div>
 		</div >
 	);

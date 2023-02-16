@@ -5,7 +5,7 @@ import { selectDefaultUserId, sortedPosts } from '../../../selectors/selectors';
 import { Post } from '../myPosts/post/Post';
 import style from './TimeLine.module.scss';
 
-export const TimeLine = memo(() => {
+export const TimeLine = memo(function TimeLine() {
 	const dispatch = useAppDispatch();
 	const _id = useAppSelector(selectDefaultUserId);
 	const posts = useAppSelector(sortedPosts);

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reactReduxHooks';
 import { uploadPhotoThunkCreator } from '../../store/slices/apiActions/userActions';
 import { selectDefaultUser } from '../../selectors/selectors';
@@ -35,4 +35,4 @@ const Photos = () => {
 	);
 };
 
-export default React.memo(Photos);
+export default Photos;

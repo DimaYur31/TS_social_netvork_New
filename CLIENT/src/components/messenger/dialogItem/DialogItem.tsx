@@ -11,17 +11,18 @@ export const DialogItem = () => {
 
 	return (
 		<>
-			{
-				currentChat
-					? <div className={style.dialog}>
-						<EditMessageContext>
-							<>
-								<DialogMessages conversationId={currentChat} />
-								<ChatForm userId={_id} chatId={currentChat} />
-							</>
-						</EditMessageContext>
-					</div>
-					: <p>Open a conversation to start a chat.</p>
+			{currentChat
+				? <div className={style.dialog}>
+					<EditMessageContext>
+						<>
+							<DialogMessages
+								currentChat={currentChat}
+							/>
+							<ChatForm userId={_id} chatId={currentChat} />
+						</>
+					</EditMessageContext>
+				</div>
+				: <p>Open a conversation to start a chat.</p>
 			}
 		</>
 	);

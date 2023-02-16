@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { format } from 'timeago.js';
 import { useAppSelector } from '../../../hooks/reactReduxHooks';
 import { MessageType } from '../../../types/conwersations';
@@ -13,7 +13,7 @@ type MessagePropsType = {
 	message: MessageType
 }
 
-export const Message = memo(({ message }: MessagePropsType) => {
+export const Message = ({ message }: MessagePropsType) => {
 	const avatar = useAppSelector(selectDefaultUserAvatar);
 	const isOwner = useIsOwner(message.sender);
 	const classOvner = isOwner && `${style.owner}`;
@@ -49,4 +49,4 @@ export const Message = memo(({ message }: MessagePropsType) => {
 			</p>
 		</div>
 	);
-});
+};

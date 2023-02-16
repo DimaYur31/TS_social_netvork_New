@@ -7,13 +7,13 @@ import { selectMessages } from '../../../selectors/selectors';
 import { Message } from '../message/Message';
 import style from './DialogMessages.module.scss';
 
-export const DialogMessages = React.memo(({ conversationId }: { conversationId: string }) => {
+export const DialogMessages = React.memo(({ currentChat }: { currentChat: string }) => {
 	const dispatch = useAppDispatch();
 	const messages = useAppSelector(selectMessages);
 	// const scrollRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
-		dispatch(getMessagesThunk(conversationId));
+		dispatch(getMessagesThunk(currentChat));
 		// scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
 	}, [messages]);
 

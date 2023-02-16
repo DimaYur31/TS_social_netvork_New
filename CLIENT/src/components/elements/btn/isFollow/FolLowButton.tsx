@@ -8,7 +8,7 @@ type TypeProps = {
 	currentUserId: string
 }
 
-export const FollowButton = memo(({ currentUserId }: TypeProps) => {
+export const FollowButton = memo(function FollowButton({ currentUserId }: TypeProps) {
 	const dispatch = useAppDispatch();
 	const { followings, _id } = useAppSelector(state => state.profilePage.defaultUser);
 	const [isFollowed, setIsFollowed] = useState(followings.includes(currentUserId));

@@ -1,11 +1,8 @@
-import { memo } from 'react'
+import { useTheme } from '../../../../hooks/useTheme';
+import style from './LightDarkCheckbox.module.scss';
 
-import { useTheme } from '../../../../hooks/useTheme'
-
-import style from './LightDarkCheckbox.module.scss'
-
-export const LightDarkCheckbox = memo(() => {
-	const { theme, setTheme } = useTheme()
+export const LightDarkCheckbox = () => {
+	const { theme, setTheme } = useTheme();
 	return (
 		<label className={style.label} >
 			<input
@@ -15,5 +12,5 @@ export const LightDarkCheckbox = memo(() => {
 			/>
 			<span className={style.check} ></span>
 		</label>
-	)
-})
+	);
+};

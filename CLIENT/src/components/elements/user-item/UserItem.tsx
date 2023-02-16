@@ -10,7 +10,7 @@ interface UserItemProps {
 	isDB?: boolean
 }
 
-export const UserItem = memo(({ user, isDB }: UserItemProps) => {
+export const UserItem = memo(function UserItem({ user, isDB }: UserItemProps) {
 
 	return (
 		<li className={style.list}>

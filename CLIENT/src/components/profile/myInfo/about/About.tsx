@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { useIsOwner } from '../../../../hooks/hooks';
 import { UserType } from '../../../../types/profile';
 import { OverLayPopap } from '../../../elements/UiKit/OverLayPopap';
@@ -11,7 +11,8 @@ type AboutProps = {
 	reload: () => void
 }
 
-export const About = memo(({ user, reload }: AboutProps) => {
+export const About = ({ user, reload }: AboutProps) => {
+
 	const { birthday, city, country, job, languages, name, surname, _id } = user;
 	const [isOpen, setIsOpen] = useState(false);
 	const isOwner = useIsOwner(_id);
@@ -44,4 +45,4 @@ export const About = memo(({ user, reload }: AboutProps) => {
 			</OverLayPopap >
 		</div>
 	);
-});
+};

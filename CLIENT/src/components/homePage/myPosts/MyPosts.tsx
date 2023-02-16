@@ -5,7 +5,7 @@ import { selectPosts } from '../../../selectors/selectors';
 import { Post } from './post/Post';
 import style from './MyPosts.module.scss';
 
-export const MyPosts = memo(({ _id }: { _id: string }) => {
+export const MyPosts = memo(function MyPosts({ _id }: { _id: string }) {
 	const dispatch = useAppDispatch();
 	const posts = useAppSelector(selectPosts);
 

@@ -1,11 +1,10 @@
 
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-import { PostType, PostsTypeState } from '../../types/post'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PostType, PostsTypeState } from '../../types/post';
 
 const initialState = {
 	posts: [] as Array<PostType<string>>
-}
+};
 
 interface likePayload {
 	postId: string,
@@ -19,26 +18,26 @@ const postsSlice = createSlice({
 	reducers: {
 		setPosts(state: PostsTypeState, action: PayloadAction<PostType<string>[]>) {
 			const sortedPost = action.payload.sort((a, b) => {
-				const dateOne = new Date(`${a.updatedAt}`)
-				const dateTwo = new Date(`${b.updatedAt}`)
-				return dateTwo.getTime() - dateOne.getTime()
-			})
-			state.posts = sortedPost
+				const dateOne = new Date(`${a.updatedAt}`);
+				const dateTwo = new Date(`${b.updatedAt}`);
+				return dateTwo.getTime() - dateOne.getTime();
+			});
+			state.posts = sortedPost;
 		},
 
 		likeDislike(state: PostsTypeState, action: PayloadAction<likePayload>) {
 			state.posts.forEach((post: PostType<string>, item, posts) => {
 				if (posts[item]._id === action.payload.postId) {
-					posts[item].likes = action.payload.likes
-					posts[item].dislikes = action.payload.dislikes
+					posts[item].likes = action.payload.likes;
+					posts[item].dislikes = action.payload.dislikes;
 				}
-			})
+			});
 		},
 
 		removePost(state: PostsTypeState, action: PayloadAction<string>) {
-			state.posts = state.posts.filter(post => post._id !== action.payload)
+			state.posts = state.posts.filter(post => post._id !== action.payload);
 		}
 	}
-})
+});
 
-export const { reducer: postsReducer, actions: postsActions } = postsSlice
+export const { reducer: postsReducer, actions: postsActions } = postsSlice;

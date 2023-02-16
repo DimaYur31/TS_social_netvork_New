@@ -6,7 +6,7 @@ import { selectDefaultUser, selectFriends } from '../../selectors/selectors';
 import { UserItem } from '../elements/user-item/UserItem';
 import style from './FriendList.module.scss';
 
-export const FriendList = memo(() => {
+export const FriendList = memo(function FriendList() {
 	const dispatch = useAppDispatch();
 	const { _id, followings } = useAppSelector(selectDefaultUser);
 	const friends = useAppSelector(selectFriends);
@@ -20,9 +20,9 @@ export const FriendList = memo(() => {
 			{friends.map((friend) => {
 				return (
 					<Link
+						className={style.link}
 						to={`/profile/${friend._id}`}
 						key={friend._id}
-						className={style.link}
 					>
 						<UserItem user={friend} />
 					</Link>

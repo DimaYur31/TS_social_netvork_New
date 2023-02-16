@@ -1,3 +1,12 @@
+export type CommentType = {
+	postId: string
+	commentatorId: string
+	text: string
+	likes: Array<string>
+	dislikes: Array<string>
+	createdAt: Date
+	updatedAt: Date
+}
 
 export type PostType<T> = {
 	_id: string
@@ -6,6 +15,7 @@ export type PostType<T> = {
 	img: T
 	likes: Array<string>
 	dislikes: Array<string>
+	comments: Array<string>
 	createdAt: Date
 	updatedAt: Date
 }

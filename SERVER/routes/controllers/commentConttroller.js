@@ -1,14 +1,17 @@
-const Comment = require('../../models/Comment');
 const jwt = require('jsonwebtoken');
+const Comment = require('../../models/Comment');
+const Post = require('../../models/Post');
 
 class CommentController {
 	async createComment(req, res) {
 		try {
 			const newComent = new Comment(req.body);
-			console.log(req.body)
+			const post = await Post.findById(req.body.postId);
 
 			await newComent.save();
-			res.status(200).json('comment created');
+			await post.updateOne({ $push: { comments: newComent._id } }, { new: true });
+
+			res.status(200).json(post);
 		} catch (error) {
 			res.status(500).json(error);
 		};
@@ -20,10 +23,15 @@ class CommentController {
 			const token = jwt.decode(tokenArray[1]);
 
 			const comment = await Comment.findById(req.params.id);
+			const post = await Post.findById(comment.postId);
+
 
 			if (comment.userId === token.id) {
+				await post.updateOne({ $pull: { comments: comment._id } }, { new: true });
+
 				await comment.deleteOne();
-				res.status(200).json('комментарий удален');
+
+				res.status(200).json(comment);
 			} else {
 				res.status(403).json('Вы не можете удалять комментарии других пользователей');
 			}

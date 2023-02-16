@@ -14,7 +14,7 @@ type UsersPropsType = {
 	thisUser: UserType
 }
 
-export const UsersItem = memo(({ thisUser }: UsersPropsType) => {
+export const UsersItem = memo(function UserItem({ thisUser }: UsersPropsType) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const chats = useAppSelector(selectChats);

@@ -11,7 +11,7 @@ type MyInfoProps = {
 	reload: () => void
 }
 
-export const MyInfo = memo(({ user, reload }: MyInfoProps) => {
+export const MyInfo = memo(function MyInfo({ user, reload }: MyInfoProps) {
 	const isOwner = useIsOwner(user._id);
 
 	const photo = usePhotosPath(user.coverPicture);

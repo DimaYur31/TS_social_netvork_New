@@ -1,42 +1,42 @@
-import { createSelector } from '@reduxjs/toolkit'
+import { createSelector } from '@reduxjs/toolkit';
 
-import { RootState } from '../store/store'
+import { RootState } from '../store/store';
 
 const sortDate = (a: Date, b: Date) => {
-	const dateA = new Date(a)
-	const dateB = new Date(b)
+	const dateA = new Date(a);
+	const dateB = new Date(b);
 
 	if (dateA.getTime() > dateB.getTime()) {
-		return -1
+		return -1;
 	} else if (dateA.getTime() < dateB.getTime()) {
-		return 1
+		return 1;
 	} else {
-		return 0
+		return 0;
 	}
-}
+};
 
 
-export const selectProfileState = (state: RootState) => state.profilePage
-export const selectIsAuth = (state: RootState) => state.profilePage.isAuth
+export const selectProfileState = (state: RootState) => state.profilePage;
+export const selectIsAuth = (state: RootState) => state.profilePage.isAuth;
 
-export const selectDefaultUser = (state: RootState) => state.profilePage.defaultUser
-export const selectDefaultUserId = (state: RootState) => state.profilePage.defaultUser._id
-export const selectDefaultUserName = (state: RootState) => state.profilePage.defaultUser.name
-export const selectDefaultUserAvatar = (state: RootState) => state.profilePage.defaultUser.avatar
+export const selectDefaultUser = (state: RootState) => state.profilePage.defaultUser;
+export const selectDefaultUserId = (state: RootState) => state.profilePage.defaultUser._id;
+export const selectDefaultUserName = (state: RootState) => state.profilePage.defaultUser.name;
+export const selectDefaultUserAvatar = (state: RootState) => state.profilePage.defaultUser.avatar;
 
-export const selectPosts = (state: RootState) => state.postPage.posts
+export const selectPosts = (state: RootState) => state.postPage.posts;
 export const sortedPosts = createSelector(
 	[selectPosts],
 	(posts) => {
-		const sort = [...posts]
-		sort.sort((a, b) => sortDate(a.createdAt, b.createdAt))
-		return sort
+		const sort = [...posts];
+		sort.sort((a, b) => sortDate(a.createdAt, b.createdAt));
+		return sort;
 	}
-)
+);
 
-export const selectUsers = (state: RootState) => state.usersPage.users
-export const selectFriends = (state: RootState) => state.usersPage.friends
+export const selectUsers = (state: RootState) => state.usersPage.users;
+export const selectFriends = (state: RootState) => state.usersPage.friends;
 
-export const selectChats = (state: RootState) => state.messenger.chats
-export const selectCurrentChat = (state: RootState) => state.messenger.currentChat
-export const selectMessages = (state: RootState) => state.messenger.messages
+export const selectChats = (state: RootState) => state.messenger.chats;
+export const selectCurrentChat = (state: RootState) => state.messenger.currentChat;
+export const selectMessages = (state: RootState) => state.messenger.messages;
