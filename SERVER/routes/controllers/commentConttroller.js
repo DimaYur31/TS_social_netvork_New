@@ -43,7 +43,6 @@ class CommentController {
 	async likeComment(req, res) {
 		try {
 			const comment = await Comment.findById(req.params.id);
-
 			if (comment.commentatorId !== req.body.userId) {
 				if (comment.dislikes.includes(req.body.userId)) {
 					await comment.updateOne({ $pull: { dislikes: req.body.userId } }, { new: true });
@@ -98,7 +97,7 @@ class CommentController {
 
 	async getPostComments(req, res) {
 		try {
-			const coments = await Comment.find({ postId: req.params.userId });
+			const coments = await Comment.find({ postId: req.params.postId });
 			res.status(200).json(coments);
 		} catch (error) {
 			res.status(500).json(error);

@@ -7,7 +7,7 @@ import { selectDefaultUser } from '../../../../selectors/selectors';
 import { getUserData } from '../../../../api/userApi';
 import { SmalAvatar } from '../../../styleedComponents/SmalAvatar';
 import { ButtonsPopap } from '../../../elements/popap/ButtonsPopap/ButtonsPopap';
-import { LikeDislikeComponent } from '../../../elements/likedislike/LikeDislikeComponent';
+import { PostLikeDislike } from '../../../elements/likedislike/PostLikeDislike';
 import { usePhotosPath } from './../../../../hooks/hooks';
 import style from './Post.module.scss';
 
@@ -45,9 +45,7 @@ export const Post = memo(function Post({ post }: PostProps) {
 				<ButtonsPopap post={post} />
 			</div>
 
-			<div
-				onClick={() => navigate(`/post/${post._id}`)} className={style.body}
-			>
+			<div onClick={() => navigate(`/post/${post._id}`)} className={style.body}>
 				<div>
 					<img src={usePhotosPath(post.img)} alt='post-img' />
 				</div>
@@ -55,7 +53,7 @@ export const Post = memo(function Post({ post }: PostProps) {
 			</div>
 
 			<div className={style.statistic} >
-				<LikeDislikeComponent
+				<PostLikeDislike
 					likes={post.likes}
 					dislikes={post.dislikes}
 					currentObjectId={post._id}

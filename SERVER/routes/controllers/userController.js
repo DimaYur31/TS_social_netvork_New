@@ -56,20 +56,20 @@ class UserController {
 			return res.status(403).json('Вы можете удалить только свой аккаунт!')
 		}
 	}
-	// get a user
-	async getUser(req, res) {
-		const userId = req.query
-		const name = req.query.name
-		try {
-			const user = userId
-				? await User.findById(req.params.id)
-				: await User.findOne({ name })
-			const { password, updatedAt, ...other } = user._doc
-			res.status(200).json(other)
-		} catch (e) {
-			res.status(500).json(e)
-		}
-	}
+
+	// async getUser(req, res) {
+	// 	const userId = req.query
+	// 	const name = req.query.name
+	// 	try {
+	// 		const user = userId
+	// 			? await User.findById(req.params.id)
+	// 			: await User.findOne({ name })
+	// 		const { password, updatedAt, ...other } = user._doc
+	// 		res.status(200).json(other)
+	// 	} catch (e) {
+	// 		res.status(500).json(e)
+	// 	}
+	// }
 
 	async getUsers(req, res) {
 		try {
@@ -94,7 +94,7 @@ class UserController {
 			res.status(500).json(error)
 		}
 	}
-	// folllow a user
+
 	async follow(req, res) {
 		const { userId } = req.body
 		if (userId !== req.params.id) {
@@ -116,7 +116,7 @@ class UserController {
 			res.status(500).json('Вы не можете подписаться на себя')
 		}
 	}
-	// unfollow a user
+
 	async unfollow(req, res) {
 		const { userId } = req.body
 

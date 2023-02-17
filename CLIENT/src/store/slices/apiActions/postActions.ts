@@ -46,7 +46,7 @@ export const fetchTimeLineThunk = (userId: string) => {
 	};
 };
 
-export const likeThunk = (_id: string, postId: string) => {
+export const postLikeThunk = (_id: string, postId: string) => {
 	return async (dispatch: AppDispatch) => {
 		const { likes, dislikes } = await likePost(_id, postId);
 		if (likes && dislikes) {
@@ -55,7 +55,7 @@ export const likeThunk = (_id: string, postId: string) => {
 	};
 };
 
-export const dislikeThunk = (_id: string, postId: string) => {
+export const postDislikeThunk = (_id: string, postId: string) => {
 	return async (dispatch: AppDispatch) => {
 		const { likes, dislikes } = await dislikePost(_id, postId);
 		if (likes && dislikes) {

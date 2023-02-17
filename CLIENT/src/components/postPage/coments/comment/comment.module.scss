@@ -1,0 +1,37 @@
+.comment{
+	margin: 8px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	color:var(--text-color);
+	border: 1px solid var(--primary);
+	border-radius: 10px;
+
+	.item{
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		gap: 10px;
+		padding: 10px;
+
+		p{
+			padding-left: 20px;
+		}
+		span{
+			padding-right: 10px;
+		}
+
+		.user{
+			display: flex;
+			align-items: center;
+			gap: 5px;
+		}
+	}
+}
+
+@media (max-width:860px) {
+	.comment{
+		flex-direction: column;
+		align-items: start;
+	}
+}

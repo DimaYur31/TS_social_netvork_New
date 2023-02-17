@@ -1,4 +1,5 @@
 export type CommentType = {
+	_id: string
 	postId: string
 	commentatorId: string
 	text: string

@@ -11,7 +11,7 @@ type ChatFormProps = {
 	chatId: string
 }
 
-export const ChatForm = memo(({ chatId, userId }: ChatFormProps) => {
+export const ChatForm = memo(function ChatForm({ chatId, userId }: ChatFormProps) {
 	const { editState, setEditState } = useContext(EditContext);
 	const [text, setText] = useState('');
 
