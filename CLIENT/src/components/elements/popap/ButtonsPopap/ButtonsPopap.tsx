@@ -1,27 +1,23 @@
-import { useState } from 'react'
-import { PostType } from '../../../../types/post'
-import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks'
-import { deletePostThunk } from '../../../../store/slices/apiActions/postActions'
-import { selectDefaultUserId } from '../../../../selectors/selectors'
-import { SVG } from '../../../../img/icons/exportIcons'
-import style from './ButtonsPopap.module.scss'
+import { useState } from 'react';
+import { PostType } from '../../../../types/post';
+import { useAppSelector, useAppDispatch } from '../../../../hooks/reactReduxHooks';
+import { deletePostThunk } from '../../../../store/slices/apiActions/postActions';
+import { selectDefaultUserId } from '../../../../selectors/selectors';
+import { SVG } from '../../../../img/icons/exportIcons';
+import style from './ButtonsPopap.module.scss';
 
-type TypeProps = {
-	post: PostType<string>
-}
-
-export const ButtonsPopap = ({ post }: TypeProps) => {
-	const _id = useAppSelector(selectDefaultUserId)
-	const dispatch = useAppDispatch()
-	const [isOpend, setIsOpen] = useState(false)
+export const ButtonsPopap = ({ post }: { post: PostType<string> }) => {
+	const _id = useAppSelector(selectDefaultUserId);
+	const dispatch = useAppDispatch();
+	const [isOpend, setIsOpen] = useState(false);
 
 	const handlePopap = () => {
-		setIsOpen(!isOpend)
-	}
+		setIsOpen(!isOpend);
+	};
 
 	const deletePost = () => {
-		if (post.userId === _id) dispatch(deletePostThunk(post._id))
-	}
+		if (post.userId === _id) dispatch(deletePostThunk(post._id));
+	};
 
 	return (
 		<div className={style.wrapper}>
@@ -32,5 +28,5 @@ export const ButtonsPopap = ({ post }: TypeProps) => {
 				</div>
 			}
 		</div>
-	)
-}
+	);
+};

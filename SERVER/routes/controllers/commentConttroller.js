@@ -26,7 +26,7 @@ class CommentController {
 			const post = await Post.findById(comment.postId);
 
 
-			if (comment.userId === token.id) {
+			if (comment.commentatorId === token.id) {
 				await post.updateOne({ $pull: { comments: comment._id } }, { new: true });
 
 				await comment.deleteOne();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getUserData } from '../../api/userApi';
 import { MyPosts } from '../homePage/myPosts/MyPosts';
-import { useGetPageData } from '../../hooks/useGetPageDats';
+import { useGetPageData } from '../../hooks/useGetPageData';
 import { MyInfo } from './myInfo/MyInfo';
 
 const ProfilePage = () => {

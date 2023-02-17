@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetPageData } from '../../hooks/useGetPageDats';
+import { useGetPageData } from '../../hooks/useGetPageData';
 import { Post } from '../homePage/myPosts/post/Post';
 import { getPost } from '../../api/postAPI';
 import { PostType } from '../../types/post';

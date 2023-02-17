@@ -7,8 +7,8 @@ export const createPost = async (formData: FormData) => {
 };
 
 export const deletePost = async (id: string) => {
-	const response = await authInstans.delete<number>(`api/post/${id}`);
-	return response.status;
+	const { status } = await authInstans.delete<number>(`api/post/${id}`);
+	return status;
 };
 
 export const likePost = async (_id: string, postId: string) => {
@@ -45,6 +45,13 @@ export const getComments = async (postId: string) => {
 	return data;
 };
 
+export const createComment = async (postId: string, commentatorId: string, text: string) => {
+	const { data } = await authInstans
+		.post<CommentType>('api/comments/', { postId, commentatorId, text });
+
+	return data;
+};
+
 export const likeComment = async (_id: string, commentId: string) => {
 	const { data } = await authInstans
 		.patch<{ likes: string[], dislikes: string[] }>(`api/comments/like/${commentId}`, { userId: _id });
@@ -55,4 +62,9 @@ export const dislikeComment = async (_id: string, commentId: string) => {
 	const { data } = await authInstans
 		.patch<{ likes: string[], dislikes: string[] }>(`api/comments/dislike/${commentId}`, { userId: _id });
 	return data;
+};
+
+export const deleteComment = async (id: string) => {
+	const { status } = await authInstans.delete<number>(`api/comments/${id}`);
+	return status;
 };
