@@ -1,25 +1,24 @@
 export type UserType = {
-	_id: string,
-	email: string,
-	password: string,
-	name: string,
-	surname: string,
-	status: string,
-	avatar: string,
-	coverPicture: string,
-	birthday: string,
-	country: string,
-	city: string,
-	job: string,
-	languages: Array<string>,
-	photos: Array<string>,
-	// posts: [] as Array<PoastType> | null,
-	followers: Array<string>,
-	followings: Array<string>,
+	_id: string
+	email: string
+	password: string
+	name: string
+	surname: string
+	// status: string
+	avatar: string
+	coverPicture: string
+	birthday: string
+	country: string
+	city: string
+	job: string
+	languages: Array<string>
+	photos: Array<string>
+	followers: Array<string>
+	followings: Array<string>
 }
 
 export type ProfileType = {
-	defaultUser: UserType,
+	defaultUser: UserType
 	isAuth: boolean
 }
 
@@ -27,12 +26,13 @@ export type ProfileType = {
 export type UsersType = Pick<UserType, '_id' | 'name' | 'avatar'>
 
 export type UserChanges = {
-	// email?: string,
-	password?: string,
-	name?: string,
-	surname?: string,
+	// email?: string
+	password?: string
+	name?: string
+	surname?: string
 	// status?: string
-	avatar?: string,
+	coverPicture?: string
+	avatar?: string
 	birthday?: string
 	country?: string
 	city?: string

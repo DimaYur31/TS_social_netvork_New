@@ -23,6 +23,7 @@ export const selectDefaultUser = (state: RootState) => state.profilePage.default
 export const selectDefaultUserId = (state: RootState) => state.profilePage.defaultUser._id;
 export const selectDefaultUserName = (state: RootState) => state.profilePage.defaultUser.name;
 export const selectDefaultUserAvatar = (state: RootState) => state.profilePage.defaultUser.avatar;
+export const selectDefaultCoverPicture = (state: RootState) => state.profilePage.defaultUser.coverPicture;
 
 export const selectPosts = (state: RootState) => state.postPage.posts;
 export const sortedPosts = createSelector(
