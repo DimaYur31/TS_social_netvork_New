@@ -26,6 +26,8 @@ export const selectDefaultUserAvatar = (state: RootState) => state.profilePage.d
 export const selectDefaultCoverPicture = (state: RootState) => state.profilePage.defaultUser.coverPicture;
 
 export const selectPosts = (state: RootState) => state.postPage.posts;
+export const searchText = (state: RootState) => state.app.searchText;
+
 export const sortedPosts = createSelector(
 	[selectPosts],
 	(posts) => {
@@ -35,9 +37,32 @@ export const sortedPosts = createSelector(
 	}
 );
 
+export const filterPosat = createSelector(
+	[sortedPosts, searchText],
+	(sortedPosts, searchText) => {
+		const filterSortedPosat = sortedPosts.filter((post) => {
+			return post.text.toLowerCase().includes(searchText.toLowerCase());
+		});
+
+		return filterSortedPosat;
+	}
+);
+
 export const selectUsers = (state: RootState) => state.usersPage.users;
 export const selectFriends = (state: RootState) => state.usersPage.friends;
 
 export const selectChats = (state: RootState) => state.messenger.chats;
 export const selectCurrentChat = (state: RootState) => state.messenger.currentChat;
 export const selectMessages = (state: RootState) => state.messenger.messages;
+
+
+export const usersFilter = createSelector(
+	[selectUsers, searchText],
+	(selectUsers, searchText) => {
+		const usersFilter = selectUsers.filter((user) => {
+			return user.name.toLowerCase().includes(searchText.toLowerCase());
+		});
+
+		return usersFilter;
+	}
+);

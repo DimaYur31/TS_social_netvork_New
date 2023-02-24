@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type AppSliceState = {
 	isLoading: boolean
+	searchText: string
 }
 
 const initialState: AppSliceState = {
-	isLoading: false
+	isLoading: false,
+	searchText: ''
 };
 
 const appSlice = createSlice({
@@ -14,7 +16,11 @@ const appSlice = createSlice({
 	reducers: {
 		toggleLoading(state: AppSliceState, action: PayloadAction<boolean>) {
 			state.isLoading = action.payload;
-		}
+		},
+
+		setSearch(state: AppSliceState, action: PayloadAction<string>) {
+			state.searchText = action.payload;
+		},
 	}
 });
 

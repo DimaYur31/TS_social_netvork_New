@@ -23,7 +23,8 @@
 	},
 	"include": [
 		"src",
-		"мусор/Btn1.jsx"
+		"мусор/Btn1.jsx",
+		"мусор/selectors"
 	],
 	"exclude": [
 		"node_modules",

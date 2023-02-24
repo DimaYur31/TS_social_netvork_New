@@ -40,14 +40,14 @@ export const Photo = memo(function Photo({ userId, photo }: TPprops) {
 			<img src={usePhotosPath(photo)} alt='avatar' />
 
 			<div className={style.buttons} >
-				<button onClick={() => delPhoto(userId, photo)}>
+				<button onClick={() => delPhoto(userId, photo)} title='удалить'>
 					<SVG.Dustbin className={style.button} />
 				</button>
 
 				<button onClick={() => setBackground(photo)}>
-					<SVG.Background className={style.button} />
+					<SVG.Background title='Фон' className={style.button} />
 				</button>
-				<button onClick={() => setAvatar(photo)}>
+				<button onClick={() => setAvatar(photo)} title='Аватар'>
 					<SVG.Change className={`${style.button}`} />
 				</button>
 			</div>

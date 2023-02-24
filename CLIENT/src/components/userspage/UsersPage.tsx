@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks';
 import { getAllUsers } from '../../store/slices/apiActions/usersActions';
-import { selectDefaultUserId, selectUsers } from '../../selectors/selectors';
+import { selectDefaultUserId, usersFilter } from '../../selectors/selectors';
 import { Share } from '../homePage/share/Share';
 import { UsersItem } from './usersItem/UsersItem';
 import style from './usersPage.module.scss';
@@ -9,7 +9,7 @@ import style from './usersPage.module.scss';
 const UsersPage = () => {
 	const dispatch = useAppDispatch();
 	const _id = useAppSelector(selectDefaultUserId);
-	const users = useAppSelector(selectUsers);
+	const users = useAppSelector(usersFilter);
 
 	useEffect(() => {
 		dispatch(getAllUsers(_id));

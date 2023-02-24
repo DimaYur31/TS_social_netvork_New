@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useInput } from '../../hooks/useInput';
+import { appActions } from '../../store/slices/appSlice';
+import { useAppDispatch } from '../../hooks/reactReduxHooks';
+import { useDebounce } from '../../hooks/useDebounse';
 
 const StyledSearch = styled.div<{ isActive: boolean }>`
 	position: relative;
@@ -107,8 +110,18 @@ export const Clear = styled.span`
 `;
 
 export const Search = (): JSX.Element => {
+	const dispatch = useAppDispatch();
 	const [isActive, setIsActive] = useState(false);
 	const search = useInput();
+	const debaunsText = useDebounce(search.value, 500);
+
+	const dispatchSearch = (value: string) => {
+		dispatch(appActions.setSearch(value));
+	};
+
+	useEffect(() => {
+		dispatchSearch(debaunsText);
+	}, [debaunsText]);
 
 	return (
 		<StyledSearch isActive={isActive}>

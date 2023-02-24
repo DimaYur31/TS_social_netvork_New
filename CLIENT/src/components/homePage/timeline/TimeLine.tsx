@@ -1,14 +1,14 @@
 import { memo, useEffect, useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reactReduxHooks';
 import { fetchTimeLineThunk } from '../../../store/slices/apiActions/postActions';
-import { selectDefaultUserId, sortedPosts } from '../../../selectors/selectors';
+import { selectDefaultUserId, filterPosat } from '../../../selectors/selectors';
 import { Post } from '../myPosts/post/Post';
 import style from './TimeLine.module.scss';
 
 export const TimeLine = memo(function TimeLine() {
 	const dispatch = useAppDispatch();
 	const _id = useAppSelector(selectDefaultUserId);
-	const posts = useAppSelector(sortedPosts);
+	const posts = useAppSelector(filterPosat);
 
 	useEffect(() => {
 		dispatch(fetchTimeLineThunk(_id));
