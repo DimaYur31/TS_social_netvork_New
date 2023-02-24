@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { chechAuthUser } from './store/slices/apiActions/userActions';
 import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks';
@@ -13,14 +13,13 @@ export const App = () => {
 
 	useTheme();
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const token = localStorage.getItem('token');
 		if (!token) {
 			navigate('/login');
 		} else {
 			dispatch(chechAuthUser());
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isAuth]);
 
 	return <Router isAuth={isAuth} />;

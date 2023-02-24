@@ -1,28 +1,31 @@
-import styled from 'styled-components'
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { selectOnlineUsers } from '../../selectors/selectors';
+import { useAppSelector } from '../../hooks/reactReduxHooks';
 
 const Sircle = styled.span<IsOnlineProps>`
-	content:'';
 	position: absolute;
-	top: 0;
-	left: 0;
-	
-	&::before{
-		content:'';
-		position: absolute;
-		left:30px;
-		top: -4px;
-		width: 10px;
-		height: 10px;
-		border: ${({ isOnline }) => isOnline ? '2px solid white' : 'none'};
-		border-radius: 50%;
-		background: ${({ isOnline }) => isOnline ? 'rgb(10, 207, 3)' : 'none'};
-	}
-`
+	top:0;
+	z-index:10;
+	left:29px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: ${({ isOnline }) => isOnline ? 'rgb(27, 255, 38)' : 'none'};
+`;
 
 interface IsOnlineProps {
 	isOnline: boolean
 }
 
-export const IsOnline = (props: IsOnlineProps) => {
-	return <Sircle  {...props} />
-}
+export const IsOnline = ({ userId }: { userId: string }) => {
+	const onlineUsers = useAppSelector(selectOnlineUsers);
+
+	const [isOnline, setIsonline] = useState(onlineUsers.includes(userId));
+
+	useEffect(() => {
+		setIsonline(onlineUsers.includes(userId));
+	}, [onlineUsers]);
+
+	return <Sircle isOnline={isOnline} />;
+};

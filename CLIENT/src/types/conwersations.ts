@@ -26,3 +26,10 @@ export type AddConversations = {
 	senderId: string
 	receiverId: string
 }
+
+export type SocketUser = {
+	socketId: string
+	userId: string
+}
+
+export type SocketUsers = SocketUser[]

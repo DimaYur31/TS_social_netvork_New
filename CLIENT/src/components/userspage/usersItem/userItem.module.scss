@@ -8,6 +8,11 @@
 	backdrop-filter: 25px;
 	box-shadow: 0 0 3px 3px inset var(--black-shadow);
 	
+	span{
+		top: 8px;
+		left: calc(100% - 19px);
+	}
+
 	h3{
 		transition: 0.25s;
 		font-size: 20px;

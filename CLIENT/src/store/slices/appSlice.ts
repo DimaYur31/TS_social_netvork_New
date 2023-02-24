@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type AppSliceState = {
 	isLoading: boolean
 	searchText: string
+	onlineUsers: string[]
 }
 
 const initialState: AppSliceState = {
 	isLoading: false,
-	searchText: ''
+	searchText: '',
+	onlineUsers: [],
 };
 
 const appSlice = createSlice({
@@ -21,6 +23,11 @@ const appSlice = createSlice({
 		setSearch(state: AppSliceState, action: PayloadAction<string>) {
 			state.searchText = action.payload;
 		},
+
+		setOnlineUsers(state: AppSliceState, action: PayloadAction<string[]>) {
+			state.onlineUsers = action.payload;
+		},
+
 	}
 });
 

@@ -27,6 +27,7 @@ export const selectDefaultCoverPicture = (state: RootState) => state.profilePage
 
 export const selectPosts = (state: RootState) => state.postPage.posts;
 export const searchText = (state: RootState) => state.app.searchText;
+export const selectOnlineUsers = (state: RootState) => state.app.onlineUsers;
 
 export const sortedPosts = createSelector(
 	[selectPosts],

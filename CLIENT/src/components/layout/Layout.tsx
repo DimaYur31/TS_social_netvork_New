@@ -1,23 +1,38 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { socket } from '../../socket';
-import { useAppSelector } from '../../hooks/reactReduxHooks';
-import { selectProfileState } from '../../selectors/selectors';
+import { useAppSelector, useAppDispatch } from '../../hooks/reactReduxHooks';
+import { selectDefaultUserId, selectIsAuth } from '../../selectors/selectors';
 import { ContentWrapper } from '../styleedComponents/ContentWrapper';
 import { Header } from '../header/Header';
 import { Navbar } from '../navbar/Navbar';
+import { SocketUsers } from '../../types/conwersations';
+import { appActions } from '../../store/slices/appSlice';
+
+
 
 export const Layout = () => {
-	const { isAuth, defaultUser } = useAppSelector(selectProfileState);
+	const dispatch = useAppDispatch();
+	const isAuth = useAppSelector(selectIsAuth);
+	const _id = useAppSelector(selectDefaultUserId);
 
-	useEffect(() => {
-		if (defaultUser._id && isAuth) {
-			socket.emit('addUser', defaultUser._id);
-			socket.on('getUsers', users => {
+	useLayoutEffect(() => {
+		if (_id && isAuth) {
+			socket.emit('addUser', _id);
+			socket.on('getUsers', (users: SocketUsers) => {
+				const onlineUsers = users
+					.reduce((previousValue: string[], currentValu) => {
+						previousValue.push(currentValu.userId);
+
+						return previousValue;
+
+					}, []);
+
+				dispatch(appActions.setOnlineUsers(onlineUsers));
 			});
 		}
 		// return socket.off('getUsers')
-	}, [defaultUser._id]);
+	}, [_id]);
 
 	return (
 		<>

@@ -12,9 +12,9 @@ const removeUser = (socketId) => {
 	users = users.filter(user => user.socketId !== socketId)
 };
 
-const getUser = (userId) => {
-	return users.find(user => user.userId === userId)
-};
+// const getUser = (userId) => {
+// 	return users.find(user => user.userId === userId)
+// };
 
 module.exports = {
 	start: function (io) {
@@ -63,7 +63,7 @@ module.exports = {
 			})
 
 			socket.on('disconnect', () => {
-				// console.log('a user disconnected!')
+				console.log('a user disconnected!')
 				removeUser(socket.id);
 				io.emit("getUsers", users);
 			})

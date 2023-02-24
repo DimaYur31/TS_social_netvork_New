@@ -9,6 +9,7 @@ import { SVG } from '../../../img/icons/exportIcons';
 import { chatActions } from '../../../store/slices/chatSlice';
 import { FollowButton } from '../../elements/btn/isFollow/FolLowButton';
 import style from './userItem.module.scss';
+import { IsOnline } from '../../styleedComponents/IsOnline';
 
 type UsersPropsType = {
 	thisUser: UserType
@@ -55,6 +56,7 @@ export const UsersItem = memo(function UserItem({ thisUser }: UsersPropsType) {
 	return (
 		<div className={style.usersItem}>
 			<Link to={`/profile/${receiverId}`}>
+				<IsOnline userId={thisUser._id} />
 				<div className={style.image}>
 					<img src={usePhotosPath(avatar)} alt='avatar' />
 				</div>

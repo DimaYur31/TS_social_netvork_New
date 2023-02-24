@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useIsOwner } from '../../../../hooks/hooks';
 import { UserType } from '../../../../types/profile';
 import { OverLayPopap } from '../../../elements/UiKit/OverLayPopap';
+import { IsOnline } from '../../../styleedComponents/IsOnline';
 import { SVG } from './../../../../img/icons/exportIcons';
 import { ProfileFormSetings } from './profileForm/ProfileFormSetings';
 import style from './About.module.scss';
@@ -20,12 +21,14 @@ export const About = ({ user, reload }: AboutProps) => {
 	return (
 		<div className={style.info}>
 			<h3>{`${name} ${surname}`}
-				{isOwner &&
-					<button className={style.open}
+				{isOwner
+					? <button className={style.open}
 						onClick={() => setIsOpen(true)}
 					>
 						<SVG.Settings className={style.settings} />
 					</button>
+					: <IsOnline userId={user._id} />
+
 				}
 			</h3>
 

@@ -15,7 +15,7 @@ export const UserItem = memo(function UserItem({ user, isDB }: UserItemProps) {
 	return (
 		<li className={style.list}>
 			<SmalAvatar src={usePhotosPath(user.avatar, isDB)} />
-			<IsOnline isOnline={false} />
+			<IsOnline userId={user._id} />
 			<p>
 				{user.name}
 			</p>
