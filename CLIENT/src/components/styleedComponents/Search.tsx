@@ -130,7 +130,8 @@ export const Search = (): JSX.Element => {
 				<input
 					type='text'
 					placeholder='Search'
-					{...search}
+					value={search.value}
+					onChange={(e) => search.onChange(e)}
 				/>
 				<Clear onClick={() => search.clear()} />
 			</span>

@@ -9,8 +9,6 @@ import { Navbar } from '../navbar/Navbar';
 import { SocketUsers } from '../../types/conwersations';
 import { appActions } from '../../store/slices/appSlice';
 
-
-
 export const Layout = () => {
 	const dispatch = useAppDispatch();
 	const isAuth = useAppSelector(selectIsAuth);
