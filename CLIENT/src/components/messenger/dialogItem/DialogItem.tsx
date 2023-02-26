@@ -8,7 +8,7 @@ import { Clear } from '../../styleedComponents/Search';
 import { ChatForm } from '../chatForm/ChatForm';
 import style from './DialogItem.module.scss';
 
-export const DialogItem = () => {
+const DialogItem = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const _id = useAppSelector(selectDefaultUserId);
@@ -38,3 +38,5 @@ export const DialogItem = () => {
 		</>
 	);
 };
+
+export default DialogItem;
