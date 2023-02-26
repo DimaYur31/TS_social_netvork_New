@@ -1,12 +1,12 @@
 import { ChangeEvent, useState } from 'react';
-import { useAppSelector } from '../../../hooks/reactReduxHooks';
-import { selectDefaultUserAvatar, selectDefaultUserId, selectDefaultUserName } from '../../../selectors/selectors';
-import { usePhotosPath } from '../../../hooks/hooks';
-import { Clear } from '../../styleedComponents/Search';
-import { createComment } from '../../../api/postAPI';
-import { PrimaryInput } from '../inputs/primaryInput/PrimaryInpyt';
-import { PrimaryButton } from '../btn/primaryButton/PrimaryButton';
-import { SmalAvatar } from '../../styleedComponents/SmalAvatar';
+import { useAppSelector } from '../../../../hooks/reactReduxHooks';
+import { selectDefaultUserAvatar, selectDefaultUserId, selectDefaultUserName } from '../../../../selectors/selectors';
+import { usePhotosPath } from '../../../../hooks/hooks';
+import { Clear } from '../../../styleedComponents/Search';
+import { createComment } from '../../../../api/postAPI';
+import { PrimaryInput } from '../primaryInput/PrimaryInpyt';
+import { PrimaryButton } from '../../btn/primaryButton/PrimaryButton';
+import { SmalAvatar } from '../../../styleedComponents/SmalAvatar';
 import style from './inputPanel.module.scss';
 
 type InputPanelProps = {

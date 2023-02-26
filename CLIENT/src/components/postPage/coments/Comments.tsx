@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { CommentType } from '../../../types/post';
-import { InputPanel } from '../../elements/inputPanel/InputPanel';
+import { InputPanel } from '../../elements/inputs/inputPanel/InputPanel';
 import { useGetPageData } from '../../../hooks/useGetPageData';
 import { getComments } from '../../../api/postAPI';
 import { Comment } from './comment/Comment';
