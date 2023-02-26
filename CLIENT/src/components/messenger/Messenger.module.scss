@@ -1,8 +1,14 @@
 .messenger{
 	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 4fr;
+	grid-template-columns: 1.5fr 3.5fr;
 	height: calc(100vh - 60px);
+}
+
+@media(max-width:550px){
+	.messenger{
+		grid-template-columns: 1fr;
+	}
 }
 
 

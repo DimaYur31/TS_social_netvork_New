@@ -34,7 +34,6 @@ const getFormValues = (obj: FormChanges) => {
 		if (values[i].trim() !== '') {
 			newObj[key[i]] = values[i];
 		}
-
 	}
 
 	return newObj;

@@ -32,7 +32,6 @@ export const chechAuthUser = () => {
 		dispatch(appActions.toggleLoading(true));
 
 		const user = await check();
-
 		dispatch(profileActionst.setUser(user!));
 		dispatch(appActions.toggleLoading(false));
 	};

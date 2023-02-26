@@ -20,19 +20,21 @@
 
 	ul {
 		list-style: none;
-	}
-	
-	li {
-		padding: 0 0 5px 0;
-		color: var(--revers-text-color);
-		font-weight: 400;
-	}
-	
-	span {
-		display: inline-block;
-		color: var(--primary-active);
-		font-weight: 600;
-		margin-right: 10px;
+		
+		li {
+			padding: 0 0 5px 0;
+			color: var(--revers-text-color);
+			-webkit-text-stroke: .15px var(--text-color);
+			font-weight: 600;
+			
+			span {
+				display: inline-block;
+				color: var(--primary-active);
+				font-weight: 600;
+				margin-right: 10px;
+				-webkit-text-stroke: 0px var(--primary-active);
+			}
+		}
 	}
 	
 	.open{

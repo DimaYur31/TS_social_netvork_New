@@ -6,7 +6,7 @@ import { useAppSelector } from '../../hooks/reactReduxHooks';
 const Sircle = styled.span<IsOnlineProps>`
 	position: absolute;
 	top:0;
-	z-index:10;
+	z-index:2;
 	left:29px;
 	width: 10px;
 	height: 10px;
