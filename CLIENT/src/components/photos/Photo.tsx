@@ -5,6 +5,7 @@ import { usePhotosPath } from '../../hooks/hooks';
 import { selectDefaultCoverPicture, selectDefaultUserAvatar } from '../../selectors/selectors';
 import { SVG } from '../../img/icons/exportIcons';
 import style from './Photo.module.scss';
+import { Link } from 'react-router-dom';
 
 type TPprops = {
 	photo: string
@@ -37,7 +38,9 @@ export const Photo = memo(function Photo({ userId, photo }: TPprops) {
 
 	return (
 		<div className={style.photo}>
-			<img src={usePhotosPath(photo)} alt='avatar' />
+			<Link to={`${photo}`}>
+				<img src={usePhotosPath(photo)} alt='' />
+			</Link>
 
 			<div className={style.buttons} >
 				<button onClick={() => delPhoto(userId, photo)} title='удалить'>

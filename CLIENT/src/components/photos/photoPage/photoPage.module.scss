@@ -1,0 +1,19 @@
+.photo{
+	position: relative;
+	max-width: 100%;
+		height: calc(100vh - 64px);
+
+	img{
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	SVG{
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		fill:red;
+		cursor: pointer;
+	}
+}

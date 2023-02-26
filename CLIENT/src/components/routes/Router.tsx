@@ -17,6 +17,7 @@ const Rooms = lazy(() => import('../rooms/Rooms'));
 const Room = lazy(() => import('../rooms/Room'));
 const PostPage = lazy(() => import('../postPage/PostPage'));
 const Messenger = lazy(() => import('../messenger/Messenger'));
+const PhotoPage = lazy(() => import('../photos/photoPage/PhotoPage'));
 
 export const Router = () => {
 	const dispatch = useAppDispatch();
@@ -45,6 +46,8 @@ export const Router = () => {
 								<ProfilePage />
 							</Suspense>} />
 						<Route path='/photos' element={<Suspense fallback={<Loading />}><Photos /></Suspense>} />
+						<Route path='/photos/:id' element={<Suspense fallback={<Loading />}><PhotoPage /></Suspense>} />
+
 						<Route path='/rooms' element={<Suspense fallback={<Loading />}><Rooms /></Suspense>} />
 						<Route path='/rooms/:id' element={<Suspense fallback={<Loading />}><Room /></Suspense>} />
 						<Route path='/messenger' element={<Suspense fallback={<Loading />}><Messenger /></Suspense>}>
