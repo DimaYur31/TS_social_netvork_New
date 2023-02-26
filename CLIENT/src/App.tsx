@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { chechAuthUser } from './store/slices/apiActions/userActions';
 import { useAppSelector, useAppDispatch } from './hooks/reactReduxHooks';
@@ -13,7 +13,7 @@ export const App = () => {
 
 	useTheme();
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const token = localStorage.getItem('token');
 		if (!token) {
 			navigate('/login');
