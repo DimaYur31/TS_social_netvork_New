@@ -32,6 +32,7 @@ export const chechAuthUser = () => {
 		dispatch(appActions.toggleLoading(true));
 
 		const user = await check();
+
 		dispatch(profileActionst.setUser(user!));
 		dispatch(appActions.toggleLoading(false));
 	};
@@ -48,6 +49,7 @@ export const uploadPhotoThunkCreator = (id: string, formData: FormData) => {
 export const deletePhotoThunk = (userId: string, photo: string) => {
 	return async (dispatch: AppDispatch) => {
 		const status = await deletePhoto(userId, photo);
+
 		status === 204 && dispatch(profileActionst.removePhoto(photo));
 	};
 };

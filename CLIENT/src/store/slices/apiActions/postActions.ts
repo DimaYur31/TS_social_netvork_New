@@ -20,7 +20,9 @@ export const createPostThunk = (_id: string, text: string, img: Blob,) => {
 		formData.append('userId', _id);
 		formData.append('text', text);
 		formData.append('img', image);
+
 		const posts = await createPost(formData);
+
 		dispatch(profileActionst.addPhoto(image));
 		dispatch(postsActions.setPosts(posts));
 
@@ -72,6 +74,7 @@ export const deletePostThunk = (id: string) => {
 		if (status === 200) {
 			dispatch(postsActions.removePost(id));
 		}
+
 		dispatch(appActions.toggleLoading(true));
 	};
 };

@@ -28,10 +28,6 @@ export const Nav = () => {
 			<LinkItem to='/photos' title='Photos'>
 				<SVG.Gallery className={style.icons} />
 			</LinkItem>
-
-			<LinkItem to='/rooms' title='Rooms'>
-				<SVG.VideoCall className={style.icons} />
-			</LinkItem>
 		</ul>
 	</nav>;
 };

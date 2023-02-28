@@ -1,31 +1,12 @@
 import { FormEventHandler } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/reactReduxHooks';
 import { changeUserProfile } from '../../../../../store/slices/apiActions/userActions';
+import { ProfileFormChanges, ProfileFormFields } from '../../../../../types/UIElements';
 import { selectDefaultUserId } from '../../../../../selectors/selectors';
 import { PrimaryButton } from '../../../../elements/btn/primaryButton/PrimaryButton';
 import style from './ProfileFormSetings.module.scss';
 
-type FormChanges = {
-	name: string
-	surname: string
-	birthday: string
-	city: string
-	job: string
-	country: string
-	languages: string
-}
-
-type FormFields = {
-	name: HTMLInputElement
-	surname: HTMLInputElement
-	birthday: HTMLInputElement
-	city: HTMLInputElement
-	country: HTMLInputElement
-	job: HTMLInputElement
-	languages: HTMLInputElement
-}
-
-const getFormValues = (obj: FormChanges) => {
+const getFormValues = (obj: ProfileFormChanges) => {
 	const key = Object.keys(obj);
 	const values = Object.values(obj);
 	const newObj = {} as any;
@@ -47,12 +28,11 @@ export const ProfileFormSetings = ({ onClose, reload }: ProfileFormSetingsProps)
 	const dispatch = useAppDispatch();
 	const defaultUserId = useAppSelector(selectDefaultUserId);
 
-	const handelSubmit: FormEventHandler<HTMLFormElement & FormFields> = (event) => {
+	const handelSubmit: FormEventHandler<HTMLFormElement & ProfileFormFields> = (event) => {
 		event.preventDefault();
 
 		const form = event.currentTarget;
 		const { name, surname, birthday, city, country, job, languages } = form;
-
 		const formChanges = {
 			name: name.value,
 			surname: surname.value,
@@ -62,7 +42,6 @@ export const ProfileFormSetings = ({ onClose, reload }: ProfileFormSetingsProps)
 			country: country.value,
 			languages: languages.value,
 		};
-
 		const changes = getFormValues(formChanges);
 
 		if (!changes) return;

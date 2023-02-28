@@ -1,4 +1,3 @@
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PostType, PostsTypeState } from '../../types/post';
 
@@ -6,7 +5,7 @@ const initialState = {
 	posts: [] as Array<PostType<string>>
 };
 
-interface likePayload {
+interface LikeDislikePayload {
 	postId: string,
 	likes: string[],
 	dislikes: string[],
@@ -25,11 +24,11 @@ const postsSlice = createSlice({
 			state.posts = sortedPost;
 		},
 
-		likeDislike(state: PostsTypeState, action: PayloadAction<likePayload>) {
-			state.posts.forEach((post: PostType<string>, item, posts) => {
-				if (posts[item]._id === action.payload.postId) {
-					posts[item].likes = action.payload.likes;
-					posts[item].dislikes = action.payload.dislikes;
+		likeDislike(state: PostsTypeState, action: PayloadAction<LikeDislikePayload>) {
+			state.posts.forEach((post) => {
+				if (post._id === action.payload.postId) {
+					post.likes = action.payload.likes;
+					post.dislikes = action.payload.dislikes;
 				}
 			});
 		},

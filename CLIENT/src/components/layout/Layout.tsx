@@ -27,6 +27,10 @@ export const Layout = () => {
 				}, []);
 
 			dispatch(appActions.setOnlineUsers(onlineUsers));
+
+			return () => {
+				socket.emit('disconnect');
+			};
 		});
 
 	}, [_id]);

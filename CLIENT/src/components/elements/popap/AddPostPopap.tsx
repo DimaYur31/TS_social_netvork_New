@@ -5,7 +5,6 @@ import { OverLayPopap } from '../UiKit/OverLayPopap';
 
 export const AddPostPopap = () => {
 	const [isOpend, setIsOpen] = useState(false);
-
 	const handlePopap = () => setIsOpen(!isOpend);
 
 	return (

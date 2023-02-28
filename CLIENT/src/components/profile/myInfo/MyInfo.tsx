@@ -13,7 +13,6 @@ type MyInfoProps = {
 
 export const MyInfo = memo(function MyInfo({ user, reload }: MyInfoProps) {
 	const isOwner = useIsOwner(user._id);
-
 	const photo = usePhotosPath(user.coverPicture);
 
 	return (
@@ -21,7 +20,6 @@ export const MyInfo = memo(function MyInfo({ user, reload }: MyInfoProps) {
 			className={style.user}
 			style={{ '--my-phon': `url(${photo})` } as React.CSSProperties}
 		>
-
 			<div className={style.info} >
 				<img src={usePhotosPath(user.avatar)} alt='avatar' />
 				<About user={user} reload={reload} />

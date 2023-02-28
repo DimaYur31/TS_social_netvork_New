@@ -4,8 +4,8 @@ import { registrationThunkCreator, loginThunkCreator, } from '../../store/slices
 import { FormFields, SybmitFotm } from '../../types/UIElements';
 import { PrimaryInput } from '../elements/inputs/primaryInput/PrimaryInpyt';
 import { PrimaryButton } from '../elements/btn/primaryButton/PrimaryButton';
-import style from './Authorization.module.scss';
 import { LightDarkCheckbox } from '../elements/checkbox/light-dark/LightDarkCheckbox';
+import style from './Authorization.module.scss';
 
 export const Authorization = () => {
 	const dispatch = useAppDispatch();

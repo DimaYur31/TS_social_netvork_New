@@ -1,5 +1,6 @@
 const Conversation = require("../models/Conversation")
-const Message = require("../models/Message")
+const Message = require("../models/Message");
+const socketActions = require("./actions");
 
 let users = []
 
@@ -12,10 +13,6 @@ const removeUser = (socketId) => {
 	users = users.filter(user => user.socketId !== socketId)
 };
 
-// const getUser = (userId) => {
-// 	return users.find(user => user.userId === userId)
-// };
-
 module.exports = {
 	start: function (io) {
 
@@ -27,21 +24,21 @@ module.exports = {
 			})
 		}
 
-		io.on('connection', socket => {
+		io.on(socketActions.CONNECTION, socket => {
 
-			socket.on('addUser', userId => {
+			socket.on(socketActions.ADD_USER, userId => {
 				addUser(userId, socket.id)
 				io.emit('getUsers', users)
 			})
 
-			socket.on('sendMessage', async ({ sender, conversationId, text }) => {
+			socket.on(socketActions.SEND_MESSAGE, async ({ sender, conversationId, text }) => {
 				const newMessage = new Message({ sender, conversationId, text })
 
 				await newMessage.save()
 				await sendToConversationMembers(conversationId, 'getMessage', newMessage)
 			})
 
-			socket.on('editMessage', async ({ messageId, text }) => {
+			socket.on(socketActions.EDIT_MESSAGE, async ({ messageId, text }) => {
 				const message = await Message.findById(messageId)
 
 				await message.updateOne({ text }, { new: true })
@@ -49,20 +46,20 @@ module.exports = {
 				await sendToConversationMembers(message.conversationId, 'updateMessage', message)
 			})
 
-			socket.on('deleteMessage', async messageId => {
+			socket.on(socketActions.DELETE_MESSAGE, async messageId => {
 				const message = await Message.findById(messageId)
 
 				await message.deleteOne()
 			})
 
-			socket.on('deleteConversation', async conversationId => {
+			socket.on(socketActions.DELETE_CONVERSATION, async conversationId => {
 				await Message.deleteMany({ conversationId })
 				await Conversation.deleteOne({ _id: conversationId })
 
-				io.emit("deleteConversations", conversationId)
+				io.emit(socketActions.DELETE_CONVERSATION, conversationId)
 			})
 
-			socket.on('disconnect', () => {
+			socket.on(socketActions.DISCONNECT, () => {
 				console.log('a user disconnected!')
 				removeUser(socket.id);
 				io.emit("getUsers", users);
